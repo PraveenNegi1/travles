@@ -3,7 +3,9 @@ import React from "react";
 export default function Page() {
   return (
     <div>
-      <h1 className="justify-center text-center text-4xl font-bold font-serif">About Us</h1>
+      <h1 className="justify-center text-center text-4xl font-bold font-serif">
+        About Us
+      </h1>
       <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-xl">
         <h1 className="text-4xl font-bold text-gray-900 mb-6 text-center font-serif">
           Explore the World with Travels
@@ -22,7 +24,7 @@ export default function Page() {
           Discover hidden gems, enjoy exclusive travel deals, and let us handle
           the details so you can focus on making memories.
         </p>
-        <div className="flex items-center gap-6 mb-6">
+        <div className="md:flex items-center gap-6 mb-6">
           <div className="flex-1 bg-blue-50 p-4 rounded-lg shadow-md transition duration-300 transform hover:scale-105 hover:shadow-xl">
             <h3 className="text-xl font-semibold text-blue-700 mb-2">
               Tailored Itineraries
@@ -32,7 +34,7 @@ export default function Page() {
               and budget.
             </p>
           </div>
-          <div className="flex-1 bg-green-50 p-4 rounded-lg shadow-md transition duration-300 transform hover:scale-105 hover:shadow-xl">
+          <div className="flex-1 bg-green-50 p-4 rounded-lg shadow-md transition duration-300 transform hover:scale-105 hover:shadow-xl mt-6 md:mt-0">
             <h3 className="text-xl font-semibold text-green-700 mb-2">
               Hassle-Free Booking
             </h3>

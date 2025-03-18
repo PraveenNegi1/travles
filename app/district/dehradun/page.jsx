@@ -8,28 +8,28 @@ const Page = () => {
       description:
         "Tapkeshwar Temple is a popular cave temple dedicated to Lord Shiva. It is known for the continuous water droplets falling on the Shivling.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/tapkeshwar-temple-159065.jpg",
+        "/tapkeshwar-temple.jpg",
     },
     {
       name: "Sai Darbar Temple",
       description:
         "Sai Darbar Temple is a peaceful shrine dedicated to Sai Baba. The temple is adorned with beautiful marble architecture and peaceful surroundings.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/sai-darbar-temple-162065.jpg",
+        "/Sai-Darbar-Temple-Dehradun-Uttarakhand.jpg",
     },
     {
       name: "Mindrolling Monastery",
       description:
         "Mindrolling Monastery is one of the largest Buddhist centers in India. It features a 60-meter tall stupa and beautiful wall paintings.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/mindrolling-monastery-158065.jpg",
+        "/mindrolling-monastery.jpeg",
     },
     {
       name: "Shiv Mandir",
       description:
         "Shiv Mandir is a sacred temple dedicated to Lord Shiva, located on the Mussoorie road. It attracts devotees throughout the year.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/shiv-mandir-164065.jpg",
+        "/shivmandir.avif",
     },
   ];
 
@@ -39,28 +39,28 @@ const Page = () => {
       description:
         "George Everest Trek offers a scenic trail leading to the historic house of Sir George Everest. It provides panoramic views of the Doon Valley and the Himalayas.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/george-everest-trek-166065.jpg",
+        "/georgeEverest.webp",
     },
     {
       name: "Nag Tibba Trek",
       description:
         "Nag Tibba Trek is a popular weekend trek known for its breathtaking views of the snow-capped peaks and rich flora and fauna.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/nag-tibba-trek-167065.jpg",
+        "/nag-tibba-range.jpg",
     },
     {
       name: "Robber's Cave Trek",
       description:
         "Robber's Cave is a narrow gorge formed by a river. It is a popular spot for trekking and exploring the natural rock formations.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/robbers-cave-trek-169065.jpg",
+        "/Robbers-Caves.jpg",
     },
     {
       name: "Bhadraj Temple Trek",
       description:
         "Bhadraj Temple Trek leads to the Bhadraj Temple, dedicated to Lord Balbhadra. The trek offers stunning views of the Doon Valley and Chakrata ranges.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/bhadraj-trek-168065.jpg",
+        "/bhadraj-temple.webp",
     },
   ];
 

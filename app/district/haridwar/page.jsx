@@ -7,29 +7,25 @@ const Page = () => {
       name: "Har Ki Pauri",
       description:
         "Har Ki Pauri is a sacred ghat on the banks of the Ganges, where the famous Ganga Aarti is performed daily. It is a major pilgrimage site for Hindus.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/har-ki-pauri-159065.jpg",
+      image: "/har-ki-pauri-haridwar.jpeg",
     },
     {
       name: "Mansa Devi Temple",
       description:
         "Mansa Devi Temple is situated on the Bilwa Parvat and is dedicated to Goddess Mansa Devi. It offers a panoramic view of Haridwar and the Ganges.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/mansa-devi-temple-162065.jpg",
+      image: "/mansadevitemple.jpg",
     },
     {
       name: "Chandi Devi Temple",
       description:
         "Chandi Devi Temple, located on the Neel Parvat, is one of the major Shakti Peethas in India. The temple can be reached by a cable car ride.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/chandi-devi-temple-158065.jpg",
+      image: "/chandi-devi-temple-haridwar.jpg",
     },
     {
       name: "Maya Devi Temple",
       description:
         "Maya Devi Temple is one of the oldest temples in Haridwar, dedicated to Goddess Maya. It is considered one of the Siddh Peethas.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/maya-devi-temple-164065.jpg",
+      image: "/maya-devi-temple.jpg",
     },
   ];
 
@@ -38,29 +34,25 @@ const Page = () => {
       name: "Ganga Aarti",
       description:
         "Ganga Aarti at Har Ki Pauri is a mesmerizing ritual where priests perform prayers with fire lamps while chanting mantras. Thousands of devotees gather to witness it.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/ganga-aarti-166065.jpg",
+      image: "/Ganga-Aarti-Haridwar.webp",
     },
     {
       name: "Shanti Kunj",
       description:
         "Shanti Kunj is the headquarters of the All World Gayatri Pariwar. It is a spiritual center offering meditation, yoga, and spiritual discourses.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/shanti-kunj-167065.jpg",
+      image: "/santikunj.webp",
     },
     {
       name: "Bharat Mata Mandir",
       description:
         "Bharat Mata Mandir is a unique temple dedicated to Mother India. It features a map of undivided India and statues of freedom fighters and deities.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/bharat-mata-mandir-169065.jpg",
+      image: "/bharatmatamandir.webp",
     },
     {
       name: "Rajaji National Park",
       description:
         "Rajaji National Park is a wildlife sanctuary known for its elephants, tigers, and leopards. It offers jeep safaris and nature walks.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/rajaji-national-park-168065.jpg",
+      image: "/rajaji-national-park-haridwar.jpg",
     },
   ];
 

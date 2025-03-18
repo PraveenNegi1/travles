@@ -1,17 +1,11 @@
 "use client";
 import Link from "next/link";
-import {
-  FaWhatsapp,
-  FaPhone,
-  FaInstagram,
-  FaFacebook,
-  FaTwitter,
-} from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Footer = () => {
   return (
     <footer className="bg-blue-900 text-white py-8">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 ">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h2 className="text-lg font-semibold mb-4">About Us</h2>
@@ -21,7 +15,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <div>
+          <div className="">
             <h2 className="text-lg font-semibold mb-4">Explore</h2>
             <ul>
               <li>
@@ -52,25 +46,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <h2 className="text-lg font-semibold mb-4">Contact Us</h2>
-            <p className="text-gray-300">
-              Get in touch for custom travel plans and offers!
-            </p>
-            <div className="flex items-center space-x-4 mt-4 ">
-              <a
-                href="https://wa.me/1234567890"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-green-400 hover:text-green-500 transition duration-300 transform hover:scale-105 hover:shadow-xl"
-              >
-                <FaWhatsapp size={24} />
-              </a>
-              <a
-                href="tel:+1234567890"
-                className="text-blue-400 hover:text-blue-500 transition duration-300 transform hover:scale-105 hover:shadow-xl"
-              >
-                <FaPhone size={24} />
-              </a>
+            <h2 className="text-lg font-semibold mb-4">Get in Touch</h2>
+
+            <div className="flex items-center space-x-4 mt-4">
               <a
                 href="https://instagram.com/yourcompany"
                 target="_blank"
@@ -79,21 +57,22 @@ const Footer = () => {
               >
                 <FaInstagram size={24} />
               </a>
+
               <a
-                href="https://facebook.com/yourcompany"
+                href="https://www.linkedin.com/in/praveen-negi1/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-500 hover:text-blue-600 transition duration-300 transform hover:scale-105 hover:shadow-xl"
+                className="text-blue-700 hover:text-blue-800 transition duration-300 transform hover:scale-105 hover:shadow-xl"
               >
-                <FaFacebook size={24} />
+                <FaLinkedin size={24} />
               </a>
               <a
-                href="https://twitter.com/yourcompany"
+                href="https://github.com/PraveenNegi1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sky-400 hover:text-sky-500 transition duration-300 transform hover:scale-105 hover:shadow-xl"
+                className="text-gray-700 hover:text-gray-900 transition duration-300 transform hover:scale-105 hover:shadow-xl"
               >
-                <FaTwitter size={24} />
+                <FaGithub size={24} />
               </a>
             </div>
           </div>

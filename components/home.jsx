@@ -17,7 +17,7 @@ const HomePage = () => {
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="text-4xl md:text-6xl font-extrabold text-white leading-tight"
+            className="text-4xl md:text-6xl font-extrabold text-white leading-tight font-serif"
           >
             Explore Uttarakhand
           </motion.h1>
@@ -25,7 +25,7 @@ const HomePage = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="text-lg md:text-2xl text-gray-300 mt-4"
+            className="text-lg md:text-2xl text-gray-300 mt-4 font-sans"
           >
             Discover the land of gods and breathtaking beauty
           </motion.p>
@@ -50,8 +50,8 @@ const HomePage = () => {
         transition={{ duration: 0.7, delay: 0.1 }}
         className="py-16 bg-white"
       >
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6">
+        <div className="container mx-auto px-4 font-sans">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6 font-serif">
             Welcome to Uttarakhand
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed text-center max-w-3xl mx-auto">
@@ -89,7 +89,7 @@ const HomePage = () => {
 
       <section className="py-16 bg-gradient-to-r from-blue-100 to-blue-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12 font-serif">
             Top Highlights of Uttarakhand
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -137,20 +137,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-blue-600 text-center text-white">
-        <h2 className="text-3xl md:text-4xl font-bold">
-          Plan Your Journey to Uttarakhand
-        </h2>
-        <p className="text-lg mt-2">Embark on an unforgettable adventure</p>
-        <Link
-          href="https://www.google.com/maps?q=Uttarakhand"
-          target="_blank"
-          className="mt-6 inline-block bg-white text-blue-600 font-semibold px-8 py-3 rounded-full hover:bg-gray-200 transition duration-300"
-        >
-          Get Started
-        </Link>
-      </section>
+      
     </div>
   );
 };

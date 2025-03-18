@@ -7,29 +7,25 @@ const Page = () => {
       name: "Naini Lake",
       description:
         "Naini Lake is the centerpiece of Nainital, offering beautiful views and boating experiences. It is surrounded by hills and is believed to be one of the Shakti Peethas.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/naini-lake-159065.jpg",
+      image: "/nainilake.jpeg",
     },
     {
       name: "Bhimtal Lake",
       description:
         "Bhimtal Lake is larger than Naini Lake and features an island at its center. Visitors can enjoy boating and the scenic beauty of the surrounding hills.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/bhimtal-lake-162065.jpg",
+      image: "/bhimtal-lake-nainital.jpg",
     },
     {
       name: "Sattal Lake",
       description:
         "Sattal is a group of seven interconnected lakes surrounded by lush forests. It is a peaceful spot for birdwatching and nature walks.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/sattal-lake-158065.jpg",
+      image: "/sattal-lake.jpg",
     },
     {
       name: "Naukuchiatal Lake",
       description:
         "Naukuchiatal is a nine-cornered lake known for its tranquility and opportunities for kayaking and paragliding.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/naukuchiatal-lake-164065.jpg",
+      image: "/Naukuchiatal.webp",
     },
   ];
 
@@ -38,33 +34,40 @@ const Page = () => {
       name: "Naina Devi Temple",
       description:
         "Naina Devi Temple, located near Naini Lake, is dedicated to Goddess Naina Devi. It is one of the 51 Shakti Peethas and holds great religious significance.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/naina-devi-temple-166065.jpg",
+      image: "/nainadevitample.jpg",
     },
     {
       name: "Snow View Point",
       description:
         "Snow View Point offers a panoramic view of the snow-capped Himalayan peaks. It can be reached by a cable car ride from Mallital.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/snow-view-point-167065.jpg",
+      image: "/view-from-snow-point.jpg",
     },
     {
       name: "The Mall Road",
       description:
         "The Mall Road runs along the side of Naini Lake and is lined with shops, restaurants, and hotels. It&apos;s a popular spot for evening walks and shopping.",
-      image: "https://www.euttaranchal.com/tourism/photos/mall-road-169065.jpg",
+      image: "/mallroad.jpg",
     },
     {
       name: "Eco Cave Gardens",
       description:
         "Eco Cave Gardens is a cluster of interconnected caves and hanging gardens, offering a fun experience for kids and nature lovers.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/eco-cave-garden-168065.jpg",
+      image: "/ecocave.jpeg",
     },
   ];
 
   return (
     <div className="p-8 bg-gray-50">
+      <div className="flex justify-center mb-8 w-full">
+        <Image
+          src="https://images.unsplash.com/photo-1610712147665-04400af97a32?q=80&w=1974&auto=format&fit=crop"
+          alt="Nainital"
+          width={1000}
+          height={1000}
+          className="rounded-xl shadow-lg"
+        />
+      </div>
+
       <div className="text-center mb-10">
         <h1 className="md:text-5xl text-3xl font-bold text-gray-900 mb-4 font-serif">
           Nainital
@@ -85,10 +88,10 @@ const Page = () => {
         <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 font-serif">
           The Mall Road, running along the edge of the lake, is the heart of
           Nainital's social and cultural life. Lined with colonial-style
-          buildings, cafes, and shops, it&apos;s an ideal spot for leisurely walks
-          and shopping for local handicrafts, woolens, and candles. The nearby
-          Naina Devi Temple is a major pilgrimage site, believed to be one of
-          the 51 Shakti Peeths.
+          buildings, cafes, and shops, it&apos;s an ideal spot for leisurely
+          walks and shopping for local handicrafts, woolens, and candles. The
+          nearby Naina Devi Temple is a major pilgrimage site, believed to be
+          one of the 51 Shakti Peeths.
         </p>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 font-serif">
           For panoramic views of the Himalayas, visitors can take a cable car
@@ -99,23 +102,13 @@ const Page = () => {
         </p>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 font-serif">
           Nainital is also home to several prestigious educational institutions,
-          including the historic Sherwood College. The town&apos;s colonial heritage
-          is evident in the architecture of the Governor's House (Raj Bhavan), a
-          majestic British-era building surrounded by lush gardens and a golf
-          course. With its mix of natural splendor, cultural richness, and
-          historical significance, Nainital remains one of Uttarakhand&apos;s most
-          beloved destinations.
+          including the historic Sherwood College. The town&apos;s colonial
+          heritage is evident in the architecture of the Governor's House (Raj
+          Bhavan), a majestic British-era building surrounded by lush gardens
+          and a golf course. With its mix of natural splendor, cultural
+          richness, and historical significance, Nainital remains one of
+          Uttarakhand&apos;s most beloved destinations.
         </p>
-      </div>
-
-      <div className="flex justify-center mb-8 w-full">
-        <Image
-          src="https://images.unsplash.com/photo-1610712147665-04400af97a32?q=80&w=1974&auto=format&fit=crop"
-          alt="Nainital"
-          width={1000}
-          height={1000}
-          className="rounded-xl shadow-lg"
-        />
       </div>
 
       <div className="mb-16">

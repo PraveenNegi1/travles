@@ -3,6 +3,8 @@ import FormPage from "@/components/form";
 import Hero from "@/components/Hero";
 import DestinationPage from "./Destinations/page";
 import HomePage from "@/components/home";
+import DiversityPage from "@/components/Regions";
+import Cta from "@/components/Cta";
 
 
 export default function Home() {
@@ -12,6 +14,8 @@ export default function Home() {
       {/* <Hero />
       <Animation /> */}
       {/* <FormPage/> */}
+      <DiversityPage />
+      <Cta />
 
     </div>
   );
