@@ -10,18 +10,20 @@ const Page = () => {
       image:
         "https://images.unsplash.com/photo-1612438214708-f428a707dd4e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
+    
+
     {
-      name: "Guptkashi",
+      name: "Tungnath",
       description:
-        "Guptkashi is a sacred town known for the Vishwanath Temple dedicated to Lord Shiva. It holds religious significance and offers stunning views of the Chaukhamba peaks.",
-      image: "https://www.euttaranchal.com/tourism/photos/guptkashi-162065.jpg",
+        "Tungnath is one of the Panch Kedar temples, dedicated to Lord Shiva. It is surrounded by rhododendron forests and offers a peaceful atmosphere.",
+      image: "/Tungnath-Temple.jpg",
     },
     {
       name: "Triyuginarayan Temple",
       description:
         "Triyuginarayan Temple is believed to be the place where Lord Shiva and Goddess Parvati were married. A perpetual fire burns in front of the temple as a symbol of their union.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/triyuginarayan-temple-158065.jpg",
+        "/Triyuginarayan.jpg",
     },
   ];
 
@@ -30,27 +32,27 @@ const Page = () => {
       name: "Chopta",
       description:
         "Chopta, known as the 'Mini Switzerland of India,' is a starting point for the Tungnath trek. It offers breathtaking views of the Himalayan peaks.",
-      image: "https://www.euttaranchal.com/tourism/photos/chopta-166065.jpg",
+      image: "/chopta-mountain.webp",
     },
-    {
-      name: "Rudranath",
-      description:
-        "Rudranath is one of the Panch Kedar temples, dedicated to Lord Shiva. It is surrounded by rhododendron forests and offers a peaceful atmosphere.",
-      image: "https://www.euttaranchal.com/tourism/photos/rudranath-167065.jpg",
-    },
+    
     {
       name: "Deoria Tal",
       description:
         "Deoria Tal is a pristine lake known for its reflection of the Chaukhamba peaks. It is a popular trekking destination surrounded by dense forests.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/deoria-tal-169065.jpg",
+        "/deoriyatal.jpg",
     },
     {
-      name: "Augustmuni",
+      name: "Kartik Swami ",
+      description:"Kartik Swami Temple is a sacred Hindu temple located in the Rudraprayag district of Uttarakhand, dedicated to Lord Kartikeya, the son of Lord Shiva and Goddess Parvati.",
+            image:
+        "/Kartik-Swami-Temple.jpg",
+    },
+    {
+      name: "Guptkashi",
       description:
-        "Augustmuni is the site where the sage Agastya is believed to have meditated. It houses the Agasteshwar Mahadev Temple and offers spiritual significance.",
-      image:
-        "https://www.euttaranchal.com/tourism/photos/augustmuni-168065.jpg",
+        "Guptkashi is a sacred town known for the Vishwanath Temple dedicated to Lord Shiva. It holds religious significance and offers stunning views of the Chaukhamba peaks.",
+      image: "/GuptKashi-Tours.jpg",
     },
   ];
 

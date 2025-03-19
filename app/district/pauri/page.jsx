@@ -8,21 +8,21 @@ const Page = () => {
       description:
         "Kandoliya Temple is dedicated to Kandoliya Devta and is located amidst pine forests. It offers scenic views of the Himalayan ranges and the Alaknanda Valley.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/kandoliya-temple-159065.jpg",
+        "/kandoliya-temple.webp",
     },
     {
       name: "Jwalpa Devi Temple",
       description:
         "Jwalpa Devi Temple is a famous Shakti Peeth dedicated to Goddess Jwalpa. Pilgrims visit the temple throughout the year, especially during Navratri.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/jwalpa-devi-temple-162065.jpg",
+        "/jwalpa-devi-temple.avif",
     },
     {
       name: "Kyunkaleshwar Mahadev Temple",
       description:
         "Kyunkaleshwar Mahadev Temple is an ancient Shiva temple believed to have been established by Adi Shankaracharya. It features intricate carvings and a peaceful atmosphere.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/kyunkaleshwar-temple-158065.jpg",
+        "/kyunkaleshwar-mahadev-temple.jpg",
     },
   ];
 
@@ -31,27 +31,27 @@ const Page = () => {
       name: "Khirsu",
       description:
         "Khirsu is a quiet hill station surrounded by apple orchards and oak forests. It offers panoramic views of the snow-capped Himalayas.",
-      image: "https://www.euttaranchal.com/tourism/photos/khirsu-166065.jpg",
+      image: "/khirsu.jpg",
     },
     {
       name: "Nag Devta Temple",
       description:
         "Nag Devta Temple is dedicated to the serpent god and is located on a hilltop. It provides a stunning view of the surrounding valleys and hills.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/nag-devta-temple-167065.jpg",
+        "/nagraja.jpg",
     },
     {
       name: "Tara Kund",
       description:
         "Tara Kund is a small lake situated at a high altitude. It is surrounded by lush meadows and is a popular trekking destination.",
-      image: "https://www.euttaranchal.com/tourism/photos/tara-kund-169065.jpg",
+      image: "/Tara-Kund.webp",
     },
     {
       name: "Dhari Devi Temple",
       description:
         "Dhari Devi Temple is situated on the banks of the Alaknanda River and is dedicated to Goddess Dhari. It is considered a protector of the Char Dham pilgrimage.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/dhari-devi-temple-168065.jpg",
+        "/dhari-devi-temple.jpg",
     },
   ];
 

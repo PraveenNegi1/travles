@@ -8,21 +8,28 @@ const Page = () => {
       description:
         "Kapileshwar Mahadev Temple is a sacred cave temple dedicated to Lord Shiva. It is located amidst lush greenery and offers a peaceful atmosphere.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/kapileshwar-mahadev-temple-159065.jpg",
+        "/kaplipeshwermandir.jpg",
     },
     {
       name: "Thal Kedar Temple",
       description:
         "Thal Kedar Temple is an ancient Shiva temple situated at a high altitude. It attracts devotees and trekkers for its spiritual significance and scenic views.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/thal-kedar-temple-162065.jpg",
+        "/thal-kedar-temple.jpeg",
     },
     {
       name: "Patal Bhuvaneshwar",
       description:
         "Patal Bhuvaneshwar is a limestone cave temple dedicated to Lord Shiva. The cave features intricate natural rock formations and holds religious significance.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/patal-bhuvaneshwar-158065.jpg",
+        "/patalbhuvanshwer.webp",
+    },
+
+    {
+      name: "Om Parvat",
+      description:
+        " Om Parvat, located in Pithoragarh, is a sacred mountain where the snow formation naturally creates the symbol 'ॐ'(Om).",
+      image: "/om-parvat.jpg",
     },
   ];
 
@@ -32,26 +39,33 @@ const Page = () => {
       description:
         "Askot Wildlife Sanctuary is home to diverse flora and fauna, including the Himalayan musk deer. It offers breathtaking views of the surrounding peaks.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/askot-wildlife-sanctuary-166065.jpg",
+        "/-Askot-Musk-Deer-SanctuaryPithoragarh-Uttarakhand.webp",
     },
     {
       name: "Munsiyari",
       description:
         "Munsiyari is a picturesque hill station known for its panoramic views of the Panchachuli peaks. It serves as a base for various treks in the region.",
-      image: "https://www.euttaranchal.com/tourism/photos/munsiyari-167065.jpg",
+      image: "/Nanda-Devi-Munsiyari-Pithoragarh.jpg",
     },
     {
       name: "Narayan Ashram",
       description:
         "Narayan Ashram is a spiritual and educational center established in 1936. It offers a serene environment and is surrounded by stunning landscapes.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/narayan-ashram-169065.jpg",
+        "/narayanashram.jpg",
     },
     {
       name: "Jauljibi",
       description:
         "Jauljibi is a small town located at the confluence of the Kali and Gori rivers. It is known for its annual trade fair and vibrant local culture.",
-      image: "https://www.euttaranchal.com/tourism/photos/jauljibi-168065.jpg",
+      image: "/jauljibi.jpg",
+    },
+
+    {
+      name: "Darma Valley",
+      description:
+        " Nestled in Pithoragarh, Darma Valley is known for its lush greenery, quaint villages, and breathtaking trekking routes.",
+      image: "/darmavalley.jpg",
     },
   ];
 

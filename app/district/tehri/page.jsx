@@ -51,6 +51,12 @@ const Page = () => {
         "New Tehri is a modern town overlooking the Tehri Lake. It serves as the administrative center of the district.",
       image: "https://www.euttaranchal.com/tourism/photos/new-tehri-168065.jpg",
     },
+    {
+      name: "Khatling Glacier",
+      description:
+        "Khatling glacier is located in district Tehri Garhwal of Uttarakhand, the state which is known for his high, calm and beautiful hills.",
+      image: "https://www.euttaranchal.com/tourism/photos/new-tehri-168065.jpg",
+    },
   ];
 
   return (
@@ -66,15 +72,15 @@ const Page = () => {
       </div>
 
       <div className="text-center mb-10">
-        <h1 className="md:text-5xl text-3xl font-bold text-gray-900 mb-4 font-serif">
-          Tehri Garhwal
+        <h1 className="md:text-5xl text-3xl font-bold text-gray-900 mb-4">
+          Tehri Garhwal 
         </h1>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto font-serif">
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto ">
           Tehri is famous for its massive dam, scenic landscapes, and spiritual
           significance. It offers a perfect blend of adventure, nature, and
           tranquility.
         </p>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 font-serif">
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 ">
           Situated at the confluence of the Bhagirathi and Bhilangna rivers,
           Tehri Garhwal is known for the Tehri Dam, one of the tallest dams in
           the world. The dam, standing at a height of 260.5 meters, generates
@@ -83,14 +89,14 @@ const Page = () => {
           dam, known as Tehri Lake, has become a hub for water sports and
           adventure activities.
         </p>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 font-serif">
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 ">
           Tehri Lake offers thrilling opportunities for jet skiing, kayaking,
           banana boat rides, and parasailing, attracting adventure enthusiasts
           from across the country. The calm waters of the lake, surrounded by
           lush green hills and the snow-capped Himalayas, provide a breathtaking
           backdrop for relaxation and exploration.
         </p>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 font-serif">
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 ">
           Apart from its modern marvel, Tehri is deeply rooted in spirituality
           and history. The old town of Tehri, which now lies submerged beneath
           the reservoir, was once the capital of the Garhwal Kingdom. The region
@@ -98,14 +104,14 @@ const Page = () => {
           to Goddess Shakti, and the Surkanda Devi Temple, offering panoramic
           views of the Himalayas.
         </p>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 font-serif">
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 ">
           The nearby town of New Tehri is a planned settlement with
           well-developed infrastructure and serves as a base for exploring the
           region. The Kunjapuri Temple, perched at an altitude of 1,676 meters,
           is a popular destination for witnessing the mesmerizing sunrise over
           the Himalayan peaks, including Swargarohini and Bandarpunch.
         </p>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 font-serif">
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 ">
           Tehri Garhwal also offers scenic trekking trails through dense
           forests, alpine meadows, and remote villages. The trek to Nag Tibba,
           located at an altitude of 3,022 meters, is one of the most popular
@@ -114,7 +120,7 @@ const Page = () => {
           vibrant local fairs and festivals, where traditional music, dance, and
           cuisine come alive.
         </p>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 font-serif">
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 ">
           Tehri Garhwal&apos;s blend of engineering marvel, natural beauty, and
           spiritual significance makes it a unique destination, appealing to
           both adventure seekers and spiritual travelers alike.
@@ -122,7 +128,7 @@ const Page = () => {
       </div>
 
       <div className="mb-16">
-        <h2 className="text-3xl font-semibold text-gray-800 mb-6 font-serif">
+        <h2 className="text-3xl font-semibold text-gray-800 mb-6 ">
           Religious Places in Tehri
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -141,14 +147,14 @@ const Page = () => {
               <h3 className="text-xl font-bold text-blue-600 mb-2">
                 {place.name}
               </h3>
-              <p className="text-gray-700 font-serif">{place.description}</p>
+              <p className="text-gray-700 ">{place.description}</p>
             </div>
           ))}
         </div>
       </div>
 
       <div>
-        <h2 className="text-3xl font-semibold text-gray-800 mb-6 font-serif">
+        <h2 className="text-3xl font-semibold text-gray-800 mb-6 ">
           Attractions in Tehri
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -167,7 +173,7 @@ const Page = () => {
               <h3 className="text-xl font-bold text-green-600 mb-2">
                 {attraction.name}
               </h3>
-              <p className="text-gray-700 font-serif">
+              <p className="text-gray-700 ">
                 {attraction.description}
               </p>
             </div>
