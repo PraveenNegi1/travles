@@ -58,7 +58,7 @@ const Page = () => {
 
   return (
     <div className="p-8 bg-gray-50">
-      <div className="flex justify-center mb-8 w-full">
+      <div className="flex justify-center mb-8 w-full ">
         <Image
           src="/Town_of_Bageshwar.jpg"
           alt="Bageshwar"
@@ -67,7 +67,7 @@ const Page = () => {
           className="rounded-xl shadow-lg"
         />
       </div>
-      <div className="text-center mb-10">
+      <div className="text-center mb-10 merriweather">
         <h1 className="md:text-5xl text-3xl font-bold text-gray-900 mb-4 font-serif">
           Bageshwar
         </h1>
@@ -99,7 +99,7 @@ const Page = () => {
         </p>
       </div>
 
-      <div className="mb-16">
+      <div className="mb-16 merriweather">
         <h2 className="text-3xl font-semibold text-gray-800 mb-6 font-serif">
           Religious Places in Bageshwar
         </h2>
@@ -126,7 +126,7 @@ const Page = () => {
       </div>
 
       {/* Trekking Places Section */}
-      <div>
+      <div className="merriweather">
         <h2 className="text-3xl font-semibold text-gray-800 mb-6 font-serif">
           Trekking Places in Bageshwar
         </h2>

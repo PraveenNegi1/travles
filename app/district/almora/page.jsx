@@ -67,8 +67,8 @@ const Page = () => {
           className="rounded-xl shadow-lg"
         />
       </div>
-
-      <div className="text-center mb-8">
+ 
+      <div className="text-center mb-8 merriweather">
         <h1 className="md:text-5xl text-3xl font-serif font-bold text-gray-800 mb-4">
           Almora
         </h1>
@@ -101,7 +101,7 @@ const Page = () => {
         </p>
       </div>
 
-      <div className="mb-12">
+      <div className="mb-12 merriweather">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           Religious Places in Almora
         </h2>
@@ -127,7 +127,7 @@ const Page = () => {
         </div>
       </div>
 
-      <div>
+      <div className="merriweather">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           Trekking Places in Almora
         </h2>

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const DestinationPage = () => {
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">
+    <div className="min-h-screen bg-gray-50 text-gray-800 merriweather ">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -33,7 +33,7 @@ const DestinationPage = () => {
           </motion.p>
           <Link
             href="/district"
-            className="mt-6 inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full transition duration-300 shadow-lg"
+            className="mt-6 inline-block bg-[#205781] hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full transition duration-300 shadow-lg"
           >
             Discover More
           </Link>
@@ -78,7 +78,7 @@ const DestinationPage = () => {
               title: "Haridwar - The Gateway to the Gods",
               description:
                 "Famous for the Ganga Aarti at Har Ki Pauri, Haridwar is one of the seven holiest places in India.",
-              image: "https://source.unsplash.com/400x300/?haridwar",
+              image: "/haridwar.webp",
             },
             {
               title: "Rishikesh - Yoga Capital of the World",

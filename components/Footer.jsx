@@ -1,15 +1,15 @@
 "use client";
 import Link from "next/link";
-import { FaInstagram, FaFacebook, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-8">
+    <footer className="bg-[#336D82] text-[#FAF1E6] py-8">
       <div className="container mx-auto px-4 ">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h2 className="text-lg font-semibold mb-4">About Us</h2>
-            <p className="text-gray-300">
+            <p className="text-[#FAF1E6]">
               Discover the world's best destinations with us. Your adventure
               starts here!
             </p>
@@ -62,7 +62,7 @@ const Footer = () => {
                 href="https://www.linkedin.com/in/praveen-negi1/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-700 hover:text-blue-800 transition duration-300 transform hover:scale-105 hover:shadow-xl"
+                className="text-[#FAF1E6] hover:text-blue-800 transition duration-300 transform hover:scale-105 hover:shadow-xl"
               >
                 <FaLinkedin size={24} />
               </a>
@@ -78,13 +78,13 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-blue-700 my-6"></div>
+        <div className="border-t border-[#FAF1E6] my-6"></div>
 
         <div className="flex flex-col md:flex-row items-center justify-between">
-          <p className="text-gray-400 text-sm">
+          <p className="text-[#FAF1E6] text-sm">
             © {new Date().getFullYear()} TravelGo. All rights reserved.
           </p>
-          <p className="text-gray-400 text-sm">Designed with for travelers.</p>
+          <p className="text-[#FAF1E6] text-sm">Designed with for travelers.</p>
         </div>
       </div>
     </footer>

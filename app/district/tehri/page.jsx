@@ -8,21 +8,21 @@ const Page = () => {
       description:
         "Chandrabadni Temple is dedicated to Goddess Sati and offers panoramic views of the Himalayan peaks. It is located at an altitude of 2,277 meters.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/chandrabadni-temple-159065.jpg",
+        "/chandrabadni-img3.jpg",
     },
     {
       name: "Surkanda Devi Temple",
       description:
         "Surkanda Devi Temple is one of the Shakti Peethas, dedicated to Goddess Parvati. It is located at a height of 2,757 meters and offers stunning mountain views.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/surkanda-devi-temple-162065.jpg",
+        "/Surkanda-Devi-Temple-1.jpg",
     },
     {
       name: "Sem Mukhem Temple",
       description:
         "Sem Mukhem Temple is dedicated to Lord Nag Raja. It is surrounded by thick forests and is known for its peaceful atmosphere.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/sem-mukhem-temple-158065.jpg",
+        "/sem-mukhem.jpg",
     },
   ];
 
@@ -31,31 +31,31 @@ const Page = () => {
       name: "Tehri Dam",
       description:
         "Tehri Dam is one of the tallest dams in the world. It offers adventure activities like boating, jet skiing, and kayaking.",
-      image: "https://www.euttaranchal.com/tourism/photos/tehri-dam-166065.jpg",
+      image: "/tehridam.jpg",
     },
     {
       name: "Dhanaulti",
       description:
         "Dhanaulti is a serene hill station known for its eco-parks, Deodar forests, and breathtaking mountain views.",
-      image: "https://www.euttaranchal.com/tourism/photos/dhanaulti-167065.jpg",
+      image: "/dhanaulti.jpg",
     },
     {
       name: "Kanatal",
       description:
         "Kanatal is a hidden gem known for its apple orchards and camping spots. It offers stunning views of snow-covered peaks.",
-      image: "https://www.euttaranchal.com/tourism/photos/kanatal-169065.jpg",
+      image: "/kanatal-tour-package.jpg",
     },
     {
       name: "New Tehri",
       description:
         "New Tehri is a modern town overlooking the Tehri Lake. It serves as the administrative center of the district.",
-      image: "https://www.euttaranchal.com/tourism/photos/new-tehri-168065.jpg",
+      image: "/New-Tehri.jpg",
     },
     {
       name: "Khatling Glacier",
       description:
         "Khatling glacier is located in district Tehri Garhwal of Uttarakhand, the state which is known for his high, calm and beautiful hills.",
-      image: "https://www.euttaranchal.com/tourism/photos/new-tehri-168065.jpg",
+      image: "/khatling-glacier.jpg",
     },
   ];
 
@@ -71,7 +71,7 @@ const Page = () => {
         />
       </div>
 
-      <div className="text-center mb-10">
+      <div className="text-center mb-10 merriweather">
         <h1 className="md:text-5xl text-3xl font-bold text-gray-900 mb-4">
           Tehri Garhwal 
         </h1>
@@ -127,7 +127,7 @@ const Page = () => {
         </p>
       </div>
 
-      <div className="mb-16">
+      <div className="mb-16 merriweather">
         <h2 className="text-3xl font-semibold text-gray-800 mb-6 ">
           Religious Places in Tehri
         </h2>
@@ -153,7 +153,7 @@ const Page = () => {
         </div>
       </div>
 
-      <div>
+      <div className="merriweather">
         <h2 className="text-3xl font-semibold text-gray-800 mb-6 ">
           Attractions in Tehri
         </h2>

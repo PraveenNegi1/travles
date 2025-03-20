@@ -108,30 +108,31 @@ export default function Page() {
         Districts of Uttarakhand
       </h1>
 
-      <div className="md:px-24">
-      <p className="text-center text-lg mb-8 text-gray-600">
-        Explore the beauty and diversity of Uttarakhand's districts, each
-        offering its own unique charm and attractions. From the snow-capped
-        peaks of the Garhwal Himalayas to the serene lakes of Kumaon,
-        Uttarakhand is a land of unmatched natural splendor and spiritual
-        significance.
-      </p>
-      <p className="text-center text-lg mb-8 text-gray-600">
-        Discover the sacred rivers and ancient temples that define the cultural
-        heartbeat of the state. Experience the vibrant traditions, warm
-        hospitality, and rich history that make Uttarakhand a captivating
-        destination for travelers and pilgrims alike.
-      </p>
-      <p className="text-center text-lg mb-8 text-gray-600">
-        Whether you're seeking adventure in the rugged mountain trails,
-        tranquility in the peaceful valleys, or a spiritual awakening at the
-        holy sites, Uttarakhand offers an experience that touches the soul. Each
-        district has its own story to tell, inviting you to immerse yourself in
-        the natural and cultural treasures of the 'Land of the Gods.'
-      </p>
+      <div className="md:px-24 merriweather text-[20px] ">
+        <p className="text-center  mb-8 text-gray-600 ">
+          Explore the beauty and diversity of Uttarakhand's districts, each
+          offering its own unique charm and attractions. From the snow-capped
+          peaks of the Garhwal Himalayas to the serene lakes of Kumaon,
+          Uttarakhand is a land of unmatched natural splendor and spiritual
+          significance.
+        </p>
+        <p className="text-center mb-8 text-gray-600">
+          Discover the sacred rivers and ancient temples that define the
+          cultural heartbeat of the state. Experience the vibrant traditions,
+          warm hospitality, and rich history that make Uttarakhand a captivating
+          destination for travelers and pilgrims alike.
+        </p>
+        <p className="text-center  mb-8 text-gray-600">
+          Whether you're seeking adventure in the rugged mountain trails,
+          tranquility in the peaceful valleys, or a spiritual awakening at the
+          holy sites, Uttarakhand offers an experience that touches the soul.
+          Each district has its own story to tell, inviting you to immerse
+          yourself in the natural and cultural treasures of the 'Land of the
+          Gods.'
+        </p>
       </div>
 
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-16 merriweather">
         <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 mb-10 text-center font-serif">
           Explore Uttarakhand's Districts
         </h2>
@@ -163,16 +164,16 @@ export default function Page() {
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900">
+                <h3 className="text-2xl font-bold text-gray-900">
                   {district.name}
                 </h3>
-                <p className="text-gray-600 mt-3">{district.description}</p>
+                <p className="text-gray-600 text-[20px] mt-3">{district.description}</p>
               </div>
 
               <div className="mt-4 mb-4 flex justify-end items-end">
                 <button
                   onClick={() => handleClick(district.name)}
-                  className="border bg-gradient-to-r from-blue-400 to-blue-700 rounded-lg mx-4 p-2 text-white font-serif cursor-pointer"
+                  className="border bg-[#205781] rounded-lg mx-4 p-2 text-white font-serif cursor-pointer"
                 >
                   know more
                 </button>

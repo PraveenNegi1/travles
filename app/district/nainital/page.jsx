@@ -68,7 +68,7 @@ const Page = () => {
         />
       </div>
 
-      <div className="text-center mb-10">
+      <div className="text-center mb-10 merriweather">
         <h1 className="md:text-5xl text-3xl font-bold text-gray-900 mb-4 font-serif">
           Nainital
         </h1>
@@ -111,7 +111,7 @@ const Page = () => {
         </p>
       </div>
 
-      <div className="mb-16">
+      <div className="mb-16 merriweather">
         <h2 className="text-3xl font-semibold text-gray-800 mb-6 font-serif">
           Lakes in Nainital
         </h2>
@@ -137,7 +137,7 @@ const Page = () => {
         </div>
       </div>
 
-      <div>
+      <div className="merriweather">
         <h2 className="text-3xl font-semibold text-gray-800 mb-6 font-serif">
           Attractions in Nainital
         </h2>

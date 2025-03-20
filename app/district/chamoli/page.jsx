@@ -58,7 +58,7 @@ const Page = () => {
 
   return (
     <div className="p-6 bg-gray-50">
-      <div className="flex justify-center mb-8 w-full">
+      <div className="flex justify-center mb-8 w-full  ">
         <Image
           src="https://images.unsplash.com/photo-1740217078341-c2a42a248f7e?q=80&w=2070&auto=format&fit=crop"
           alt="Chamoli"
@@ -67,7 +67,7 @@ const Page = () => {
           className="rounded-xl shadow-lg"
         />
       </div>
-      <div className="text-center mb-8">
+      <div className="text-center mb-8 merriweather">
         <h1 className="md:text-5xl text-3xl font-serif font-bold text-gray-800 mb-4">
           Chamoli
         </h1>
@@ -100,7 +100,7 @@ const Page = () => {
         </p>
       </div>
 
-      <div className="mb-12">
+      <div className="mb-12 merriweather">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4 inline-block font-serif">
           Religious Places in Chamoli
         </h2>
@@ -126,7 +126,7 @@ const Page = () => {
         </div>
       </div>
 
-      <div>
+      <div className="merriweather">
         <h2 className="text-2xl font-semibold text-gray-800 mb-4 inline-block font-serif">
           Trekking Places in Chamoli
         </h2>

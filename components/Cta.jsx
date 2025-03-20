@@ -4,12 +4,11 @@ import React from 'react'
 const Cta = () => {
   return (
     <div>
-        {/* CTA Section */}
-      <section className="py-16 bg-blue-600 text-center text-white">
-        <h2 className="text-3xl md:text-4xl font-bold">
+      <section className="py-16 bg-gradient-to-r from-blue-100 to-blue-50 text-center ">
+        <h2 className="text-3xl md:text-4xl font-bold merriweather">
           Plan Your Journey to Uttarakhand
         </h2>
-        <p className="text-lg mt-2">Embark on an unforgettable adventure</p>
+        <p className="text-lg mt-2 merriweather">Embark on an unforgettable adventure</p>
         <Link
           href="https://www.google.com/maps?q=Uttarakhand"
           target="_blank"
