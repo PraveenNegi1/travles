@@ -4,7 +4,7 @@ import React from 'react'
 const Cta = () => {
   return (
     <div>
-      <section className="py-16 bg-gradient-to-r from-blue-100 to-blue-50 text-center ">
+      <section className="py-16 text-center ">
         <h2 className="text-3xl md:text-4xl font-bold merriweather">
           Plan Your Journey to Uttarakhand
         </h2>

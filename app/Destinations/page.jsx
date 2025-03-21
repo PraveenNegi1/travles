@@ -70,7 +70,7 @@ const DestinationPage = () => {
           transition={{ duration: 0.5 }}
           className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6 text-center"
         >
-          Top Attractions
+          Top Destination
         </motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
@@ -84,13 +84,25 @@ const DestinationPage = () => {
               title: "Rishikesh - Yoga Capital of the World",
               description:
                 "Known for its yoga ashrams and the iconic Laxman Jhula, Rishikesh attracts spiritual seekers from around the world.",
-              image: "https://source.unsplash.com/400x300/?rishikesh",
+              image: "/reshikesh.webp",
             },
             {
               title: "Nainital - The Lake District",
               description:
                 "Surrounded by mountains, Nainital is famous for its picturesque lakes and pleasant weather.",
-              image: "https://source.unsplash.com/400x300/?nainital",
+              image: "https://images.unsplash.com/photo-1610712147665-04400af97a32?q=80&w=1974&auto=format&fit=crop",
+            },
+            {
+              title: "Auli - The Skiing Paradise of India 🏔️🎿",
+              description:
+                "Auli is a popular Himalayan ski resort and hill station in the northern Indian state of Uttarakhand.",
+              image: "/auli-adventure.jpg",
+            },
+            {
+              title: "Chopta - Mini Switzerland of India",
+              description:
+                "Chopta, Uttarakhand, is a breathtaking hill station and the base for the Tungnath Temple, the highest Shiva temple in the world. ",
+              image: "/chopta.jpg",
             },
           ].map((attraction, index) => (
             <motion.div

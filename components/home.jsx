@@ -25,22 +25,11 @@ const HomePage = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="text-lg md:text-2xl text-gray-300 mt-4 merriweather "
+            className="text-lg md:text-2xl text-white mt-4 merriweather "
           >
             Discover the land of gods and breathtaking beauty
           </motion.p>
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <Link
-            href="/district"
-            className="mt-6 inline-block bg-[#205781] hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full transition duration-300 shadow-lg merriweather"
-            >
-              Discover More
-            </Link>
-          </motion.div>
+         
         </div>
       </div>
 
@@ -55,7 +44,7 @@ const HomePage = () => {
             Welcome to Uttarakhand
           </h2>
 
-          <div className="merriweather text-[20px] ">
+          <div className="merriweather md:text-[20px] ">
           <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto ">
             Uttarakhand, known as the "Land of Gods," is a paradise for nature
             lovers and spiritual seekers. From the snow-clad peaks of the

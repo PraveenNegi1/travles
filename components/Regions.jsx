@@ -14,10 +14,10 @@ const DiversityPage = () => {
           />
         </div>
         <div className="p-6 md:w-1/2 ">
-          <h2 className="text-3xl font-extrabold text-gray-800 mb-4 inline-block font-serif">
+          <h2 className="md:text-3xl text-2xl font-extrabold text-gray-800 mb-4 inline-block font-serif">
             Diversity of Garhwal
           </h2>
-          <ul className="list-none list-inside text-gray-700 space-y-2 merriweather text-[20px] ">
+          <ul className="list-none list-inside text-gray-700 space-y-2 merriweather md:text-[20px] ">
             <li>
               <span className="font-bold">Rich Cultural Heritage:</span> Known for traditional
               music, dance, and festivals.
@@ -66,10 +66,10 @@ const DiversityPage = () => {
           />
         </div>
         <div className="p-6 md:w-1/2 merriweather">
-          <h2 className="text-3xl font-extrabold text-gray-800 mb-4 inline-block font-serif">
+          <h2 className="md:text-3xl text-2xl font-extrabold text-gray-800 mb-4 inline-block font-serif">
             Diversity of Kumaon
           </h2>
-          <ul className="list-none list-inside text-gray-700 space-y-2 merriweather text-[20px] ">
+          <ul className="list-none list-inside text-gray-700 space-y-2 merriweather md:text-[20px] ">
             <li>
               <span className="font-bold">Vibrant Culture:</span> Famous for colorful festivals,
               folk music, and crafts.

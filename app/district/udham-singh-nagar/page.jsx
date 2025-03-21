@@ -8,21 +8,21 @@ const Page = () => {
       description:
         "Nanakmatta Sahib is a revered Sikh pilgrimage site associated with Guru Nanak Dev Ji. It is situated on the banks of the Ghaggar River.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/nanakmatta-sahib-159065.jpg",
+        "/Gurdwara_Nanak_Matta_Sahib.jpg",
     },
     {
       name: "Purnagiri Temple",
       description:
         "Purnagiri Temple is one of the 108 Siddha Peethas dedicated to Goddess Purnagiri. It is located atop a hill and offers panoramic views of the surrounding valleys.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/purnagiri-temple-162065.jpg",
+        "/Purnagiri-temple-7.jpg",
     },
     {
       name: "Chaiti Devi Temple",
       description:
         "Chaiti Devi Temple is a popular Hindu temple dedicated to Goddess Chaiti. It attracts numerous devotees during the Chaitra Navratri festival.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/chaiti-devi-temple-158065.jpg",
+        "/Maa-Bal-Sundari-Chaiti-Devi-Temple.webp",
     },
   ];
 
@@ -32,25 +32,25 @@ const Page = () => {
       description:
         "Jim Corbett National Park is a renowned wildlife sanctuary known for its rich biodiversity and Bengal tigers. It offers jeep safaris and eco-tourism activities.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/jim-corbett-national-park-166065.jpg",
+        "/jimcorbett.jpeg",
     },
     {
       name: "Khatima",
       description:
         "Khatima is a picturesque town known for its tea gardens and natural beauty. It serves as a gateway to the Nepal border.",
-      image: "https://www.euttaranchal.com/tourism/photos/khatima-167065.jpg",
+      image: "/khatima.jpeg",
     },
     {
       name: "Rudrapur",
       description:
         "Rudrapur is the industrial hub of Uttarakhand. It is known for its manufacturing industries and modern infrastructure.",
-      image: "https://www.euttaranchal.com/tourism/photos/rudrapur-169065.jpg",
+      image: "/Rudrapur.avif",
     },
     {
       name: "Sitarganj",
       description:
         "Sitarganj is a peaceful town surrounded by lush green fields. It is known for its agricultural activities and vibrant local markets.",
-      image: "https://www.euttaranchal.com/tourism/photos/sitarganj-168065.jpg",
+      image: "/Sitarganj.jpg",
     },
   ];
 
@@ -58,7 +58,7 @@ const Page = () => {
     <div className="p-8 bg-gray-50">
       <div className="flex justify-center mb-8 w-full">
         <Image
-          src="https://images.unsplash.com/photo-1582565433311-197b3eaf4239?q=80&w=1976&auto=format&fit=crop"
+          src="/Udham-singh-nagar.jpg"
           alt="Udham Singh Nagar"
           width={1000}
           height={1000}

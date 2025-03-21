@@ -104,11 +104,11 @@ export default function Page() {
 
   return (
     <div className="p-6">
-      <h1 className="text-center font-serif text-4xl font-bold mb-6">
+      <h1 className="text-center font-serif md:text-4xl text-3xl font-bold mb-6">
         Districts of Uttarakhand
       </h1>
 
-      <div className="md:px-24 merriweather text-[20px] ">
+      <div className="md:px-24 merriweather md:text-[20px] ">
         <p className="text-center  mb-8 text-gray-600 ">
           Explore the beauty and diversity of Uttarakhand's districts, each
           offering its own unique charm and attractions. From the snow-capped
@@ -167,7 +167,7 @@ export default function Page() {
                 <h3 className="text-2xl font-bold text-gray-900">
                   {district.name}
                 </h3>
-                <p className="text-gray-600 text-[20px] mt-3">{district.description}</p>
+                <p className="text-gray-600 md:text-[20px] mt-3">{district.description}</p>
               </div>
 
               <div className="mt-4 mb-4 flex justify-end items-end">

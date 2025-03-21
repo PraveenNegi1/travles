@@ -8,21 +8,21 @@ const Page = () => {
       description:
         "Gangotri Temple is one of the four Char Dham pilgrimage sites. It is dedicated to Goddess Ganga and situated at an altitude of 3,100 meters.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/gangotri-temple-159065.jpg",
+        "/Gangotri-Dham-Temple.jpg",
     },
     {
       name: "Yamunotri Temple",
       description:
         "Yamunotri Temple is dedicated to Goddess Yamuna. It is located at an altitude of 3,293 meters and is the starting point of the Char Dham Yatra.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/yamunotri-temple-162065.jpg",
+        "/Yamunotri_Dham.webp",
     },
     {
       name: "Vishwanath Temple",
       description:
         "Vishwanath Temple in Uttarkashi is dedicated to Lord Shiva. It is one of the oldest temples in the region and holds immense religious significance.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/vishwanath-temple-158065.jpg",
+        "/kashi-vishwanath-uttarkashi.jpg",
     },
   ];
 
@@ -32,28 +32,28 @@ const Page = () => {
       description:
         "Dayara Bugyal is a high-altitude meadow offering stunning views of the Himalayas. It is a popular trekking destination.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/dayara-bugyal-166065.jpg",
+        "/Dayara-Bugyal-7.webp",
     },
     {
       name: "Har Ki Doon",
       description:
         "Har Ki Doon is a cradle-shaped valley known for its rich flora and fauna. It offers breathtaking views of snow-covered peaks.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/har-ki-doon-167065.jpg",
+        "/harkidoon.webp",
     },
     {
       name: "Dodital Lake",
       description:
         "Dodital Lake is a serene freshwater lake surrounded by pine and oak forests. It is also considered the birthplace of Lord Ganesha.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/dodital-lake-169065.jpg",
+        "/dodital.jpg",
     },
     {
       name: "Nachiketa Tal",
       description:
         "Nachiketa Tal is a pristine lake surrounded by lush green forests. It is named after Nachiketa, a character from Hindu mythology.",
       image:
-        "https://www.euttaranchal.com/tourism/photos/nachiketa-tal-168065.jpg",
+        "/nachiketa-tal-lake.webp",
     },
   ];
 
