@@ -21,12 +21,12 @@ const Navbar = () => {
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5, ease: "easeInOut" }}
-          className="text-2xl font-extrabold text-[#FAF1E6]  tracking-wide"
+          className="text-2xl font-extrabold text-[#FAF1E6]  tracking-wide merriweather"
         >
           Travels
         </motion.h1>
 
-        <ul className="hidden md:flex space-x-8 merriweather text-[20px] gap-10">
+        <ul className="hidden md:flex space-x-8 merriweather text-[18px] gap-4">
           <li>
             <Link
               href="/"
@@ -69,7 +69,7 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-        <ul className="mr-10 hidden">
+        <ul className="mr-10 hidden md:block merriweather text-[18px]">
           <li>
             <Link
               href="/Contect"
