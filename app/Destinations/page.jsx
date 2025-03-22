@@ -7,6 +7,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Image from "next/image";
 
 const attractions = [
   {
@@ -39,6 +40,57 @@ const attractions = [
     description:
       "Chopta, Uttarakhand, is a breathtaking hill station and the base for the Tungnath Temple, the highest Shiva temple in the world.",
     image: "/chopta.jpg",
+  },
+];
+const activities = [
+  {
+    title: "Skiing in Auli",
+    image: "/auli-skiing-tour.jpg",
+    icon: "🎿",
+    description:
+      "Experience the thrill of skiing in Auli, a paradise for snow sports lovers with breathtaking views of the Himalayas.",
+  },
+  {
+    title: "River Rafting in Rishikesh",
+    image: "/riverRafting.jpg",
+    icon: "🚣‍♂️",
+    description:
+      "Feel the adrenaline rush while rafting through the rapids of the Ganges in Rishikesh, India's adventure capital.",
+  },
+  {
+    title: "Trekking in the Valley of Flowers",
+    image: "/trackingof vallyofflower.jpg",
+    icon: "🥾",
+    description:
+      "Explore the mesmerizing beauty of the Valley of Flowers, a UNESCO World Heritage Site known for its vibrant flora.",
+  },
+  {
+    title: "Camping and Star Gazing in Chopta",
+    image: "/camp-in-chopta.jpg",
+    icon: "⛺",
+    description:
+      "Escape into the wilderness of Chopta, known as the mini Switzerland of India, and enjoy a night under the stars.",
+  },
+  {
+    title: "Wildlife Safari in Jim Corbett National Park",
+    image: "/junglesafari1.jpg",
+    icon: "🐯",
+    description:
+      "Witness the majestic Royal Bengal Tiger and diverse wildlife in their natural habitat at Jim Corbett National Park.",
+  },
+  {
+    title: "Paragliding in Mukteshwar",
+    image: "/camp-purple-paragliding-mukteshwar-8246726.webp",
+    icon: "🪂",
+    description:
+      "Soar like a bird over the picturesque landscapes of Mukteshwar, offering stunning views of the Himalayas.",
+  },
+  {
+    title: "Bungee Jumping in Rishikesh",
+    image: "/bungee-jumping-in-rishikesh.jpg",
+    icon: "🤸‍♂️",
+    description:
+      "Experience the thrill of free-fall from India's highest bungee jumping point in Rishikesh.",
   },
 ];
 
@@ -101,7 +153,7 @@ const DestinationPage = () => {
           }}
           navigation
           pagination={{ clickable: true }}
-          autoplay={{ delay: 3000, disableOnInteraction: false }} 
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
           className="py-8 space-y-10"
         >
           {attractions.map((attraction, index) => (
@@ -139,13 +191,35 @@ const DestinationPage = () => {
         >
           Adventure Activities
         </motion.h2>
-        <ul className="text-lg text-gray-600 leading-relaxed text-center max-w-3xl mx-auto space-y-3">
-          <li>🎿 Skiing in Auli</li>
-          <li>🚣‍♂️ River Rafting in Rishikesh</li>
-          <li>🥾 Trekking in the Valley of Flowers</li>
-          <li>⛺ Camping and Star Gazing in Chopta</li>
-          <li>🐯 Wildlife Safari in Jim Corbett National Park</li>
-        </ul>
+        <div className="space-y-12 max-w-4xl mx-auto">
+          {activities.map((activity, index) => (
+            <div
+              key={index}
+              className={`flex flex-col md:flex-row ${
+                index % 2 === 0 ? "md:flex-row-reverse" : ""
+              } items-center gap-6`}
+            >
+              <div className="md:w-1/2">
+                <Image
+                  src={activity.image}
+                  alt={activity.title}
+                  width={500}
+                  height={300}
+                  className="rounded-lg shadow-lg"
+                />
+              </div>
+              <div className="md:w-1/2 text-center md:text-left">
+                <h3 className="text-2xl font-semibold text-gray-900 flex items-center justify-center md:justify-start">
+                  <span className="mr-2 text-3xl">{activity.icon}</span>
+                  {activity.title}
+                </h3>
+                <p className="text-lg text-gray-600 mt-2">
+                  {activity.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="container mx-auto px-4 py-16 poppins-thin">
