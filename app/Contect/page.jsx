@@ -43,78 +43,99 @@ function FormPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
-      <form
-        onSubmit={handleSubmit}
-        className=" shadow-2xl border-[#205781] border rounded-2xl p-8 max-w-md w-full space-y-6 transform transition duration-300 hover:scale-105 merriweather"
-      >
-        <h2 className="text-3xl font-extrabold text-center text-gray-800 ">
-          Contact Us
-        </h2>
-
-        <input
-          type="hidden"
-          name="access_key"
-          value="YOUR_WEB3FORMS_ACCESS_KEY"
-        />
-
-        <div>
-          <label className="block text-gray-600 font-medium mb-1">Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="mt-1 w-full p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#205781] transition duration-300"
-            required
+    <div
+      className="min-h-screen flex items-center justify-center p-6 bg-gray-100 bg-no-repeat bg-cover "
+      // style={{
+      //   backgroundImage:
+      //     "url('/uttarakhand_drainage_map.jpg')",
+      // }}
+    >
+      <div className="bg-white shadow-2xl rounded-2xl overflow-hidden flex flex-col md:flex-row w-full max-w-4xl">
+        <div className="w-full md:w-1/2">
+          <img
+            src="/uttarakhand.jpg"
+            alt="Beautiful Uttarakhand"
+            className="w-full h-full object-cover"
           />
         </div>
 
-        <div>
-          <label className="block text-gray-600 font-medium mb-1">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="mt-1 w-full p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#205781] transition duration-300"
-            required
-          />
-        </div>
+        <div className="w-full md:w-1/2 p-8">
+          <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-6">
+            Contact Us
+          </h2>
 
-        <div>
-          <label className="block text-gray-600 font-medium mb-1">Phone</label>
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="mt-1 w-full p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#205781] transition duration-300"
-            required
-          />
-        </div>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <input
+              type="hidden"
+              name="access_key"
+              value="YOUR_WEB3FORMS_ACCESS_KEY"
+            />
 
-        <div>
-          <label className="block text-gray-600 font-medium mb-1">
-            Message
-          </label>
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            rows="4"
-            className="mt-1 w-full p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#205781] transition duration-300"
-            required
-          />
-        </div>
+            <div>
+              <label className="block text-gray-600 font-medium mb-1">
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#205781] transition duration-300"
+                required
+              />
+            </div>
 
-        <button
-          type="submit"
-          className="w-full text-white p-3 rounded-xl shadow-md bg-[#205781] hover:shadow-lg merriweather text-[20px]"
-        >
-          Submit
-        </button>
-      </form>
+            <div>
+              <label className="block text-gray-600 font-medium mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#205781] transition duration-300"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-600 font-medium mb-1">
+                Phone
+              </label>
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#205781] transition duration-300"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-600 font-medium mb-1">
+                Message
+              </label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows="4"
+                className="w-full p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#205781] transition duration-300"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full text-white p-3 rounded-xl shadow-md bg-[#205781] hover:shadow-lg text-[20px]"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }

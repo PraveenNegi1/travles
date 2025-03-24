@@ -8,6 +8,14 @@ export default function HowToReach() {
           How to Reach Uttarakhand
         </h1>
 
+        {/* <div className="w-full md:w-[600px] md:h-[500px] ">
+          <img
+            src="/uttarakhand_drainage_map.jpg"
+            alt="Beautiful Uttarakhand"
+            className="w-full h-full object-cover"
+          />
+        </div> */}
+
         <section className="mb-6 p-4 bg-blue-50 rounded-lg">
           <h2 className="text-2xl font-semibold text-blue-800">By Air</h2>
           <p className="mt-2 text-gray-700">

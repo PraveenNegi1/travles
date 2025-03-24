@@ -233,7 +233,13 @@ const DestinationPage = () => {
         <p className="text-lg text-gray-600 leading-relaxed text-center max-w-3xl mx-auto">
           Uttarakhand is home to the famous Char Dham Yatra – Badrinath,
           Kedarnath, Gangotri, and Yamunotri. Pilgrims from across the globe
-          visit these sacred shrines seeking blessings and spiritual peace.
+          visit these sacred shrines seeking blessings and spiritual peace. The
+          journey through the majestic Himalayas, serene rivers, and lush green
+          valleys enhances the divine experience, making it a soul-enriching
+          pilgrimage. The state's rich spiritual heritage, ancient temples, and
+          sacred rituals create an aura of devotion, drawing seekers and
+          devotees year after year to immerse themselves in faith and
+          tranquility.
         </p>
       </div>
     </div>
