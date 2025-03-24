@@ -37,7 +37,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div className="md:flex items-center gap-6 mb-6 merriweather">
+        {/* <div className="md:flex items-center gap-6 mb-6 merriweather">
           <div className="flex-1 bg-blue-50 p-4 rounded-lg shadow-md transition duration-300 transform hover:scale-105 hover:shadow-xl">
             <h3 className="text-xl font-semibold text-blue-700 mb-2">
               Tailored Itineraries
@@ -56,7 +56,7 @@ export default function Page() {
               a stress-free travel experience.
             </p>
           </div>
-        </div>
+        </div> */}
 
         <div className="bg-gray-100 p-6 rounded-xl shadow-md merriweather">
           <h2 className="md:text-3xl text-2xl font-bold text-gray-900 mb-4 text-center">
@@ -94,8 +94,8 @@ export default function Page() {
         </div>
 
         <p className="text-gray-700 leading-relaxed merriweather md:text-[20px] mt-6">
-          Thank you for choosing  Travels. Let us make your journey
-          truly special. Start exploring today and discover the wonders of this
+          Thank you for choosing Travels. Let us make your journey truly
+          special. Start exploring today and discover the wonders of this
           heavenly state!
         </p>
       </div>

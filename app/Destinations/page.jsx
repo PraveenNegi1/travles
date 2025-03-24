@@ -118,7 +118,7 @@ const DestinationPage = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-lg md:text-xl text-gray-300 mt-4 text-center poppins-thin"
+            className="text-lg md:text-xl text-gray-300 mt-4 text-center merriweather"
           >
             Explore the beauty of the Himalayas and sacred temples
           </motion.p>
@@ -131,8 +131,7 @@ const DestinationPage = () => {
         </div>
       </motion.div>
 
-      {/* Top Destination Section with Swiper */}
-      <div className="container mx-auto px-4 py-16 bg-gradient-to-b from-blue-50 to-white rounded-lg poppins-thin">
+      <div className="container mx-auto px-4 py-16 bg-gradient-to-b from-blue-50 to-white rounded-lg merriweather">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -154,7 +153,7 @@ const DestinationPage = () => {
           navigation
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
-          className="py-8 space-y-10"
+          className="py-8 space-y-10 "
         >
           {attractions.map((attraction, index) => (
             <SwiperSlide key={index}>
@@ -182,7 +181,7 @@ const DestinationPage = () => {
         </Swiper>
       </div>
 
-      <div className="container mx-auto px-4 py-16 poppins-thin">
+      <div className="container mx-auto px-4 py-16 merriweather">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -222,7 +221,7 @@ const DestinationPage = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-16 poppins-thin">
+      <div className="container mx-auto px-4 py-16 merriweather">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
