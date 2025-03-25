@@ -153,7 +153,7 @@ const DestinationPage = () => {
           navigation
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
-          className="py-8 space-y-10 "
+          className="py-8 space-y-16 "
         >
           {attractions.map((attraction, index) => (
             <SwiperSlide key={index}>
