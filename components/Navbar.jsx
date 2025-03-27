@@ -76,7 +76,7 @@ const Navbar = () => {
               className="text-[#FAF1E6] font-medium hover:text-blue-300"
               onClick={() => setIsOpen(false)}
             >
-              Contect Us
+              Contact Us
             </Link>
           </li>
         </ul>
@@ -147,7 +147,7 @@ const Navbar = () => {
                   className="text-[#FAF1E6] text-lg font-medium hover:text-blue-300"
                   onClick={() => setIsOpen(false)}
                 >
-                  Contect Us
+                  Contact Us
                 </Link>
               </li>
             </ul>

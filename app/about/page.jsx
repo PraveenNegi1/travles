@@ -36,28 +36,6 @@ export default function Page() {
             experience the magic of Uttarakhand in the best possible way.
           </p>
         </div>
-
-        {/* <div className="md:flex items-center gap-6 mb-6 merriweather">
-          <div className="flex-1 bg-blue-50 p-4 rounded-lg shadow-md transition duration-300 transform hover:scale-105 hover:shadow-xl">
-            <h3 className="text-xl font-semibold text-blue-700 mb-2">
-              Tailored Itineraries
-            </h3>
-            <p className="text-gray-600">
-              Get customized travel plans suited to your preferences and budget,
-              ensuring a hassle-free experience.
-            </p>
-          </div>
-          <div className="flex-1 bg-green-50 p-4 rounded-lg shadow-md transition duration-300 transform hover:scale-105 hover:shadow-xl mt-6 md:mt-0">
-            <h3 className="text-xl font-semibold text-green-700 mb-2">
-              Hassle-Free Booking
-            </h3>
-            <p className="text-gray-600">
-              Enjoy secure bookings, guided tours, and 24/7 customer support for
-              a stress-free travel experience.
-            </p>
-          </div>
-        </div> */}
-
         <div className="bg-gray-100 p-6 rounded-xl shadow-md merriweather">
           <h2 className="md:text-3xl text-2xl font-bold text-gray-900 mb-4 text-center">
             Why Choose Us?

@@ -29,7 +29,6 @@ const HomePage = () => {
           >
             Discover the land of gods and breathtaking beauty
           </motion.p>
-         
         </div>
       </div>
 
@@ -45,41 +44,43 @@ const HomePage = () => {
           </h2>
 
           <div className="merriweather md:text-[20px] ">
-          <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto ">
-            Uttarakhand, known as the "Land of Gods," is a paradise for nature
-            lovers and spiritual seekers. From the snow-clad peaks of the
-            Himalayas to the holy rivers of the Ganges, Uttarakhand offers a
-            blend of adventure, peace, and spirituality.
-          </p>
-          <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto mt-4">
-            Home to the famous Char Dham pilgrimage sites — Yamunotri, Gangotri,
-            Kedarnath, and Badrinath — Uttarakhand holds immense religious
-            significance for Hindus. The state&apos;s sacred rivers and temples
-            attract devotees and spiritual seekers from all over the world.
-          </p>
-          <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto mt-4">
-            Beyond its spiritual allure, Uttarakhand offers breathtaking natural
-            beauty. From the serene lakes of Nainital to the lush valleys of
-            Mussoorie and the rugged trails of Auli, the state is a haven for
-            trekkers, nature enthusiasts, and adventure lovers.
-          </p>
-          <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto mt-4">
-            Uttarakhand is also rich in culture and tradition. The vibrant
-            festivals, folk music, and traditional Garhwali and Kumaoni cuisine
-            reflect the deep-rooted heritage of the region. The warmth and
-            hospitality of the local people make every visitor feel at home.
-          </p>
-          <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto mt-4">
-            Whether you're seeking a peaceful retreat in the mountains, a
-            spiritual journey to the holy sites, or an adrenaline-pumping
-            adventure in the great outdoors, Uttarakhand promises an
-            unforgettable experience.
-          </p>
+            <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto ">
+              Uttarakhand, known as the "Land of Gods," is a paradise for nature
+              lovers and spiritual seekers. From the snow-clad peaks of the
+              Himalayas to the holy rivers of the Ganges, Uttarakhand offers a
+              blend of adventure, peace, and spirituality.
+            </p>
+            <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto mt-4">
+              Home to the famous Char Dham pilgrimage sites — Yamunotri,
+              Gangotri, Kedarnath, and Badrinath — Uttarakhand holds immense
+              religious significance for Hindus. The state&apos;s sacred rivers
+              and temples attract devotees and spiritual seekers from all over
+              the world.
+            </p>
+            <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto mt-4">
+              Beyond its spiritual allure, Uttarakhand offers breathtaking
+              natural beauty. From the serene lakes of Nainital to the lush
+              valleys of Mussoorie and the rugged trails of Auli, the state is a
+              haven for trekkers, nature enthusiasts, and adventure lovers.
+            </p>
+            <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto mt-4">
+              Uttarakhand is also rich in culture and tradition. The vibrant
+              festivals, folk music, and traditional Garhwali and Kumaoni
+              cuisine reflect the deep-rooted heritage of the region. The warmth
+              and hospitality of the local people make every visitor feel at
+              home.
+            </p>
+            <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto mt-4">
+              Whether you're seeking a peaceful retreat in the mountains, a
+              spiritual journey to the holy sites, or an adrenaline-pumping
+              adventure in the great outdoors, Uttarakhand promises an
+              unforgettable experience.
+            </p>
           </div>
         </div>
       </motion.section>
 
-      <section className="py-16 bg-gradient-to-r from-blue-100 to-blue-50">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12 font-serif">
             Top Highlights of Uttarakhand
@@ -128,8 +129,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
-      
     </div>
   );
 };

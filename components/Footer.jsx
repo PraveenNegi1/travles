@@ -5,8 +5,8 @@ import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className="bg-[#205781] text-[#FAF1E6] py-8 merriweather md:text-[20px]">
-      <div className="container mx-auto px-4 ">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-28 ">
+      <div className="container px-4 ">
+        <div className="grid grid-cols-1 md:flex md:justify-center items-center gap-8 md:gap-36 ">
           <div>
             <h2 className="text-lg font-semibold mb-4">About Us</h2>
             <p className="text-[#FAF1E6]">
@@ -35,14 +35,14 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-            <Link
-              href="/about"
-              className={`relative text-[#FAF1E6] font-medium transition duration-300 hover:text-blue-300 
+                <Link
+                  href="/about"
+                  className={`relative text-[#FAF1E6] font-medium transition duration-300 hover:text-blue-300 
                 `}
-            >
-              About
-            </Link>
-          </li>
+                >
+                  About
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -81,7 +81,7 @@ const Footer = () => {
 
         <div className="border-t border-[#FAF1E6] my-6"></div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between">
+        <div className="flex flex-col md:flex-row items-center justify-between md:px-4">
           <p className="text-[#FAF1E6] text-sm">
             © {new Date().getFullYear()} Travels. All rights reserved.
           </p>
