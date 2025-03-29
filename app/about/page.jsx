@@ -70,7 +70,6 @@ export default function Page() {
             </li>
           </ul>
         </div>
-
         <p className="text-gray-700 leading-relaxed merriweather md:text-[20px] mt-6">
           Thank you for choosing Travels. Let us make your journey truly
           special. Start exploring today and discover the wonders of this

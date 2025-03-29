@@ -309,12 +309,12 @@ const DestinationPage = () => {
               className="bg-white rounded-lg p-6 shadow-xl w-[750px] text-center relative"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* <button
+              <button
                 className="absolute top-2 right-4 text-gray-600 hover:text-gray-900 text-3xl"
                 onClick={() => setSelectedActivity(null)}
               >
                 &times;
-              </button> */}
+              </button>
               <div className="flex justify-center item-center">
                 <Image
                   src={selectedActivity.image}

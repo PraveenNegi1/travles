@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function HowToReach() {
   const travelModes = [
@@ -11,7 +12,7 @@ export default function HowToReach() {
       animation: {
         hidden: { x: -100, opacity: 0 },
         visible: { x: 0, opacity: 1 },
-        exit: { x: -100, opacity: 0 }, 
+        exit: { x: -100, opacity: 0 },
       },
       content: [
         "The nearest major airport is Jolly Grant Airport in Dehradun, offering daily flights to Delhi, Mumbai, and Bangalore.",
@@ -93,7 +94,15 @@ export default function HowToReach() {
       <h1 className="text-4xl font-extrabold text-center text-[#205781] mb-12">
         How to Reach Uttarakhand
       </h1>
-
+      <div className="flex justify-center mb-8 md:w-[600px] md:h-[500px]">
+        <Image
+          src="/uttarakhand-map.png"
+          alt="Almora"
+          width={1000}
+          height={1000}
+          className="rounded-xl shadow-lg"
+        />
+      </div>
       <div className="container mx-auto space-y-10">
         {travelModes.map((mode) => (
           <motion.div
