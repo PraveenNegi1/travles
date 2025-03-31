@@ -296,9 +296,11 @@ const DestinationPage = () => {
         </div>
 
         {/* Modal Popup */}
+
+        <div className="hidden md:block">
         {selectedActivity && (
           <motion.div
-            className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+            className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 "
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={() => setSelectedActivity(null)}
@@ -336,6 +338,7 @@ const DestinationPage = () => {
             </motion.div>
           </motion.div>
         )}
+        </div>
       </div>
 
       <div className="container mx-auto px-4 py-16 merriweather">

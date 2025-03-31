@@ -67,7 +67,7 @@ const Page = () => {
           className="rounded-xl shadow-lg"
         />
       </div>
- 
+
       <div className="text-center mb-8 merriweather">
         <h1 className="md:text-5xl text-3xl font-serif font-bold text-gray-800 mb-4">
           Almora

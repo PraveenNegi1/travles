@@ -30,8 +30,10 @@ const Navbar = () => {
           <li>
             <Link
               href="/"
-              className={`relative text-[#FAF1E6]  font-medium transition duration-300 hover:text-blue-300 ${
-                pathname === "/" ? "border-b-2 border-blue-300" : ""
+              className={`relative font-medium transition duration-300 px-3 py-1 rounded ${
+                pathname === "/"
+                  ? "bg-white text-[#205781]"
+                  : "text-[#FAF1E6] hover:text-blue-300"
               }`}
             >
               Home
@@ -40,8 +42,10 @@ const Navbar = () => {
           <li>
             <Link
               href="/about"
-              className={`relative text-[#FAF1E6] font-medium transition duration-300 hover:text-blue-300 ${
-                pathname === "/about" ? "border-b-2 border-blue-300" : ""
+              className={`relative font-medium transition duration-300 px-3 py-1 rounded ${
+                pathname === "/about"
+                  ? "bg-white text-[#205781]"
+                  : "text-[#FAF1E6] hover:text-blue-300"
               }`}
             >
               About
@@ -50,8 +54,10 @@ const Navbar = () => {
           <li>
             <Link
               href="/Destinations"
-              className={`relative text-[#FAF1E6]  font-medium transition duration-300 hover:text-blue-300 ${
-                pathname === "/Destinations" ? "border-b-2 border-blue-300" : ""
+              className={`relative font-medium transition duration-300 px-3 py-1 rounded ${
+                pathname === "/Destinations"
+                  ? "bg-white text-[#205781]"
+                  : "text-[#FAF1E6] hover:text-blue-300"
               }`}
             >
               Destinations
@@ -61,11 +67,26 @@ const Navbar = () => {
           <li>
             <Link
               href="/HowToReech"
-              className={`relative text-[#FAF1E6]  font-medium transition duration-300 hover:text-blue-300 ${
-                pathname === "/HowToReech" ? "border-b-2 border-blue-300" : ""
+              className={`relative font-medium transition duration-300 px-3 py-1 rounded ${
+                pathname === "/HowToReech"
+                  ? "bg-white text-[#205781]"
+                  : "text-[#FAF1E6] hover:text-blue-300"
               }`}
             >
               How To Reach
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              href="/uttarakhand"
+              className={`relative font-medium transition duration-300 px-3 py-1 rounded ${
+                pathname === "/uttarakhand"
+                  ? "bg-white text-[#205781]"
+                  : "text-[#FAF1E6] hover:text-blue-300"
+              }`}
+            >
+              Uttarakhand
             </Link>
           </li>
         </ul>
@@ -73,7 +94,11 @@ const Navbar = () => {
           <li>
             <Link
               href="/Contect"
-              className="text-[#FAF1E6] font-medium hover:text-blue-300"
+              className={`font-medium px-3 py-1 rounded ${
+                pathname === "/Contect"
+                  ? "bg-white text-[#205781]"
+                  : "text-[#FAF1E6] hover:text-blue-300"
+              }`}
               onClick={() => setIsOpen(false)}
             >
               Contact Us
@@ -106,7 +131,11 @@ const Navbar = () => {
               <li>
                 <Link
                   href="/"
-                  className="text-[#FAF1E6]  text-lg font-medium hover:text-blue-300"
+                  className={`text-lg font-medium px-3 py-1 rounded ${
+                    pathname === "/"
+                      ? "bg-white text-[#205781]"
+                      : "text-[#FAF1E6] hover:text-blue-300"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   Home
@@ -115,7 +144,11 @@ const Navbar = () => {
               <li>
                 <Link
                   href="/about"
-                  className="text-[#FAF1E6] text-lg font-medium hover:text-blue-300"
+                  className={`text-lg font-medium px-3 py-1 rounded ${
+                    pathname === "/about"
+                      ? "bg-white text-[#205781]"
+                      : "text-[#FAF1E6] hover:text-blue-300"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   About
@@ -124,7 +157,11 @@ const Navbar = () => {
               <li>
                 <Link
                   href="/Destinations"
-                  className="text-[#FAF1E6] text-lg font-medium hover:text-blue-300"
+                  className={`text-lg font-medium px-3 py-1 rounded ${
+                    pathname === "/Destinations"
+                      ? "bg-white text-[#205781]"
+                      : "text-[#FAF1E6] hover:text-blue-300"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   Destinations
@@ -134,7 +171,11 @@ const Navbar = () => {
               <li>
                 <Link
                   href="/HowToReech"
-                  className="text-[#FAF1E6] text-lg font-medium hover:text-blue-300"
+                  className={`text-lg font-medium px-3 py-1 rounded ${
+                    pathname === "/HowToReech"
+                      ? "bg-white text-[#205781]"
+                      : "text-[#FAF1E6] hover:text-blue-300"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   How To Reach
@@ -142,9 +183,26 @@ const Navbar = () => {
               </li>
 
               <li>
+            <Link
+              href="/uttarakhand"
+              className={`relative font-medium transition duration-300 px-3 py-1 rounded ${
+                pathname === "/uttarakhand"
+                  ? "bg-white text-[#205781]"
+                  : "text-[#FAF1E6] hover:text-blue-300"
+              }`}
+            >
+              Uttarakhand
+            </Link>
+          </li>
+
+              <li>
                 <Link
                   href="/Contect"
-                  className="text-[#FAF1E6] text-lg font-medium hover:text-blue-300"
+                  className={`text-lg font-medium px-3 py-1 rounded ${
+                    pathname === "/Contect"
+                      ? "bg-white text-[#205781]"
+                      : "text-[#FAF1E6] hover:text-blue-300"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   Contact Us

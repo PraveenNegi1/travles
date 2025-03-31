@@ -6,18 +6,20 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <div
-        className="relative h-[600px] bg-cover bg-center bg-black/50 "
+        className="relative min-h-[400px] sm:min-h-[500px] md:min-h-[600px] bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1608497582912-bf412dc8963e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
         }}
       >
-        <div className="absolute inset-0  flex flex-col items-center justify-center text-center">
+        <div className="absolute inset-0 bg-black/50"></div>
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6">
           <motion.h1
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="text-4xl md:text-6xl font-extrabold text-white leading-tight font-serif"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight font-serif"
           >
             Explore Uttarakhand
           </motion.h1>
@@ -25,7 +27,7 @@ const HomePage = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="text-lg md:text-2xl text-white mt-4 merriweather "
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mt-3 md:mt-4 merriweather max-w-3xl"
           >
             Discover the land of gods and breathtaking beauty
           </motion.p>
@@ -36,41 +38,41 @@ const HomePage = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1 }}
-        className="py-16 bg-white"
+        className="py-10 sm:py-12 md:py-16 bg-white"
       >
-        <div className="container mx-auto px-4 font-sans">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6 font-serif">
+        <div className="container mx-auto px-4 sm:px-6 font-sans">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 text-center mb-4 sm:mb-6 font-serif">
             Welcome to Uttarakhand
           </h2>
 
-          <div className="merriweather md:text-[20px] ">
-            <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto ">
+          <div className="merriweather text-base sm:text-lg md:text-xl space-y-3 sm:space-y-4">
+            <p className="text-gray-600 leading-relaxed text-center max-w-3xl mx-auto">
               Uttarakhand, known as the "Land of Gods," is a paradise for nature
               lovers and spiritual seekers. From the snow-clad peaks of the
               Himalayas to the holy rivers of the Ganges, Uttarakhand offers a
               blend of adventure, peace, and spirituality.
             </p>
-            <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto mt-4">
+            <p className="text-gray-600 leading-relaxed text-center max-w-3xl mx-auto">
               Home to the famous Char Dham pilgrimage sites — Yamunotri,
               Gangotri, Kedarnath, and Badrinath — Uttarakhand holds immense
               religious significance for Hindus. The state&apos;s sacred rivers
               and temples attract devotees and spiritual seekers from all over
               the world.
             </p>
-            <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto mt-4">
+            <p className="text-gray-600 leading-relaxed text-center max-w-3xl mx-auto">
               Beyond its spiritual allure, Uttarakhand offers breathtaking
               natural beauty. From the serene lakes of Nainital to the lush
               valleys of Mussoorie and the rugged trails of Auli, the state is a
               haven for trekkers, nature enthusiasts, and adventure lovers.
             </p>
-            <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto mt-4">
+            <p className="text-gray-600 leading-relaxed text-center max-w-3xl mx-auto">
               Uttarakhand is also rich in culture and tradition. The vibrant
               festivals, folk music, and traditional Garhwali and Kumaoni
               cuisine reflect the deep-rooted heritage of the region. The warmth
               and hospitality of the local people make every visitor feel at
               home.
             </p>
-            <p className=" text-gray-600 leading-relaxed text-center max-w-3xl mx-auto mt-4">
+            <p className="text-gray-600 leading-relaxed text-center max-w-3xl mx-auto">
               Whether you're seeking a peaceful retreat in the mountains, a
               spiritual journey to the holy sites, or an adrenaline-pumping
               adventure in the great outdoors, Uttarakhand promises an
@@ -80,12 +82,12 @@ const HomePage = () => {
         </div>
       </motion.section>
 
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12 font-serif">
+      <section className="py-10 sm:py-12 md:py-16">
+        <div className="container mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 text-center mb-6 sm:mb-8 md:mb-12 font-serif">
             Top Highlights of Uttarakhand
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
             {[
               {
                 title: "Himalayas",
@@ -105,28 +107,75 @@ const HomePage = () => {
                 image:
                   "https://images.unsplash.com/photo-1628152979775-851a3980851d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzc0fHx1dHRhcmFraGFuZHxlbnwwfHwwfHx8MA%3D%3D",
               },
+              {
+                title: "Serene Lakes",
+                description: "Relax by the pristine mountain lakes.",
+                image: "/deoriyatal.webp",
+              },
+              {
+                title: "Rich Culture",
+                description: "Experience the unique traditions and festivals.",
+                image: "/richculture.webp",
+              },
+              {
+                title: "Wildlife Sanctuaries",
+                description: "Discover the diverse flora and fauna.",
+                image: "/Best-Wildlife-Sanctuary-in-Uttarakhand.jpg",
+              },
             ].map((highlight, index) => (
               <motion.div
                 key={index}
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="group bg-white shadow-lg rounded-xl overflow-hidden transform hover:scale-105 transition duration-300 poppins-thin"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group bg-white shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:shadow-xl hover:scale-102 poppins-thin h-full"
               >
-                <img
-                  src={highlight.image}
-                  alt={highlight.title}
-                  className="w-full h-56 object-cover group-hover:brightness-75 transition duration-300"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900">
+                <div className="aspect-w-16 aspect-h-9 overflow-hidden">
+                  <img
+                    src={highlight.image}
+                    alt={highlight.title}
+                    className="w-full h-48 sm:h-56 object-cover group-hover:brightness-90 transition duration-300"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900">
                     {highlight.title}
                   </h3>
-                  <p className="text-gray-600 mt-3">{highlight.description}</p>
+                  <p className="text-gray-600 mt-2 sm:mt-3 text-sm sm:text-base">
+                    {highlight.description}
+                  </p>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          <div className="mt-12 text-center">
+            <Link
+              href="/Destinations"
+              className="inline-block bg-[#205781] text-white font-medium px-6 py-3 rounded-lg transition-colors duration-300"
+            >
+              View All Destinations
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-10 sm:py-12 md:py-16 text-black">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+            Ready to Experience Uttarakhand?
+          </h2>
+          <p className="mb-6 max-w-2xl mx-auto text-[#205781]">
+            Get personalized travel advice and plan your perfect Uttarakhand
+            adventure with our expert team.
+          </p>
+          <Link
+            href="/Contect"
+            className="inline-block bg-[#205781] text-white font-medium px-6 py-3 rounded-lg transition-colors duration-300"
+          >
+            Contact Us Today
+          </Link>
         </div>
       </section>
     </div>
