@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import GlobalButton from "@/components/GlobalButton";
 
 
 const geistSans = Geist({
@@ -30,6 +31,8 @@ export default function RootLayout({ children }) {
       >
           <Navbar />
         {children}
+        <GlobalButton />
+        
         <Footer />
       
       </body>

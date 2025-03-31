@@ -215,7 +215,7 @@ const DiversityPage = () => {
   const [activeTab, setActiveTab] = useState("diversity");
 
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8 min-h-screen bg-white">
+    <div className="py-16 px-4 sm:px-6 lg:px-8 min-h-screen bg-white merriweather">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 text-gray-800 font-serif relative">
           <span className="relative inline-block after:content-[''] after:absolute after:w-1/2 after:h-1 after:bg-[#205781] after:bottom-0 after:left-1/4">
@@ -227,7 +227,7 @@ const DiversityPage = () => {
           <div className="inline-flex bg-white rounded-full shadow-md p-3 border-[#205781] border-2">
             <button
               onClick={() => setActiveTab("diversity")}
-              className={`py-2 px-6 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`py-2 px-6 rounded-full text-[20px] font-medium transition-all duration-200 ${
                 activeTab === "diversity"
                   ? "bg-[#205781] text-white shadow-sm"
                   : "text-gray-600 hover:text-[#205781]"
@@ -237,7 +237,7 @@ const DiversityPage = () => {
             </button>
             <button
               onClick={() => setActiveTab("history")}
-              className={`py-2 px-6 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`py-2 px-6 rounded-full text-[20px] font-medium transition-all duration-200 ${
                 activeTab === "history"
                   ? "bg-[#205781] text-white shadow-sm"
                   : "text-gray-600 hover:text-[#205781]"
@@ -515,28 +515,7 @@ const DiversityPage = () => {
           </div>
         )}
 
-        <div className="flex justify-center mt-16">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="px-6 py-3 bg-[#205781] text-white rounded-full font-medium shadow-lg hover:bg-[#485f76] transition-colors duration-300 flex items-center"
-          >
-            <svg
-              className="w-5 h-5 mr-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 10l7-7m0 0l7 7m-7-7v18"
-              ></path>
-            </svg>
-            Back to Top
-          </button>
-        </div>
+        
       </div>
     </div>
   );

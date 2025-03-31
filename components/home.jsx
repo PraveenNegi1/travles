@@ -161,7 +161,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="py-10 sm:py-12 md:py-16 text-black">
+      <section className="py-10 sm:py-12 md:py-16 text-black merriweather">
         <div className="container mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">
             Ready to Experience Uttarakhand?

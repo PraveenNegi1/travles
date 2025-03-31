@@ -183,17 +183,18 @@ const Navbar = () => {
               </li>
 
               <li>
-            <Link
-              href="/uttarakhand"
-              className={`relative font-medium transition duration-300 px-3 py-1 rounded ${
-                pathname === "/uttarakhand"
-                  ? "bg-white text-[#205781]"
-                  : "text-[#FAF1E6] hover:text-blue-300"
-              }`}
-            >
-              Uttarakhand
-            </Link>
-          </li>
+                <Link
+                  href="/uttarakhand"
+                  className={`relative font-medium transition duration-300 px-3 py-1 rounded ${
+                    pathname === "/uttarakhand"
+                      ? "bg-white text-[#205781]"
+                      : "text-[#FAF1E6] hover:text-blue-300"
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  Uttarakhand
+                </Link>
+              </li>
 
               <li>
                 <Link
