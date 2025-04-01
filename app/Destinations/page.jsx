@@ -160,7 +160,7 @@ const activities = [
 const DestinationPage = () => {
   const [selectedActivity, setSelectedActivity] = useState(null);
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
+    <div className="min-h-screen bg-gray-50 text-gray-800 overflow-hidden">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

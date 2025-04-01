@@ -128,7 +128,7 @@ const HomePage = () => {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group bg-white shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:shadow-xl hover:scale-102 poppins-thin h-full"
+                className="group bg-white shadow-lg rounded-xl overflow-hidden transform transition duration-300 hover:shadow-xl hover:scale-102 font-serif h-full"
               >
                 <div className="aspect-w-16 aspect-h-9 overflow-hidden">
                   <img
@@ -150,7 +150,7 @@ const HomePage = () => {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-12 text-center font-serif">
             <Link
               href="/Destinations"
               className="inline-block bg-[#205781] text-white font-medium px-6 py-3 rounded-lg transition-colors duration-300"
@@ -163,7 +163,7 @@ const HomePage = () => {
 
       <section className="py-10 sm:py-12 md:py-16 text-black merriweather">
         <div className="container mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4">
             Ready to Experience Uttarakhand?
           </h2>
           <p className="mb-6 max-w-2xl mx-auto text-[#205781]">
@@ -174,7 +174,7 @@ const HomePage = () => {
             href="/Contect"
             className="inline-block bg-[#205781] text-white font-medium px-6 py-3 rounded-lg transition-colors duration-300"
           >
-            Contact Us Today
+            Contact Us
           </Link>
         </div>
       </section>

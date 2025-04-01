@@ -7,7 +7,7 @@ import { useState } from "react";
 const historyData = {
   uttarakhand: {
     title: "History of Uttarakhand",
-    image: "/uttarakhand-map.png",
+    image: "/uttarakhand1.jpg",
     content: [
       {
         label: "🏛️ Ancient Origins:",
@@ -37,7 +37,7 @@ const historyData = {
   },
   garhwal: {
     title: "History of Garhwal",
-    image: "/garhwal-history.jpg",
+    image: "/Garhwal-region.png",
     content: [
       {
         label: "📜 Ancient Era:",
@@ -71,7 +71,7 @@ const historyData = {
   },
   kumaon: {
     title: "History of Kumaon",
-    image: "/kumaon-history.jpg",
+    image: "/Kumaon-region-Uttarakhand.png",
     content: [
       {
         label: "🏺 Ancient History:",
@@ -218,16 +218,14 @@ const DiversityPage = () => {
     <div className="py-16 px-4 sm:px-6 lg:px-8 min-h-screen bg-white merriweather">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl md:text-5xl font-bold text-center mb-8 text-gray-800 font-serif relative">
-          <span className="relative inline-block after:content-[''] after:absolute after:w-1/2 after:h-1 after:bg-[#205781] after:bottom-0 after:left-1/4">
-            Uttarakhand
-          </span>
+          Uttarakhand
         </h1>
 
-        <div className="flex justify-center mb-16">
+        <div className="flex justify-center mb-16 w-full h-20">
           <div className="inline-flex bg-white rounded-full shadow-md p-3 border-[#205781] border-2">
             <button
               onClick={() => setActiveTab("diversity")}
-              className={`py-2 px-6 rounded-full text-[20px] font-medium transition-all duration-200 ${
+              className={`py-1 px-6 rounded-full md:text-[20px] text-[16px] font-medium transition-all duration-200 ${
                 activeTab === "diversity"
                   ? "bg-[#205781] text-white shadow-sm"
                   : "text-gray-600 hover:text-[#205781]"
@@ -237,7 +235,7 @@ const DiversityPage = () => {
             </button>
             <button
               onClick={() => setActiveTab("history")}
-              className={`py-2 px-6 rounded-full text-[20px] font-medium transition-all duration-200 ${
+              className={`py-1 px-6 rounded-full md:text-[20px] text-[16px] font-medium transition-all duration-200 ${
                 activeTab === "history"
                   ? "bg-[#205781] text-white shadow-sm"
                   : "text-gray-600 hover:text-[#205781]"
@@ -406,7 +404,7 @@ const DiversityPage = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60"></div>
-                  <h2 className="absolute bottom-6 left-6 lg:hidden text-3xl font-bold text-white mb-2 font-serif">
+                  <h2 className="absolute bottom-6 left-6 lg:hidden text-3xl font-bold text-black mb-2 font-serif">
                     {historyData.garhwal.title}
                   </h2>
                 </motion.div>
@@ -468,7 +466,7 @@ const DiversityPage = () => {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60"></div>
-                  <h2 className="absolute bottom-6 left-6 lg:hidden text-3xl font-bold text-white mb-2 font-serif">
+                  <h2 className="absolute bottom-6 left-6 lg:hidden text-3xl font-bold text-black mb-2 font-serif">
                     {historyData.kumaon.title}
                   </h2>
                 </motion.div>
@@ -514,8 +512,6 @@ const DiversityPage = () => {
             </div>
           </div>
         )}
-
-        
       </div>
     </div>
   );

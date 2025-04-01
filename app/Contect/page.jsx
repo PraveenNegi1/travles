@@ -53,30 +53,32 @@ function FormPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 bg-gradient-to-br from-sky-50 to-indigo-100">
-      <div className="bg-white shadow-2xl rounded-3xl overflow-hidden flex flex-col md:flex-row w-full max-w-5xl transition-all duration-300 hover:shadow-3xl">
-        <div className="w-full md:w-1/2 h-60 md:h-auto relative">
+    <div className="min-h-screen flex items-center justify-center p-3 sm:p-4 md:p-6 bg-gradient-to-br from-sky-50 to-indigo-100">
+      <div className="bg-white shadow-2xl rounded-3xl overflow-hidden flex flex-col md:flex-row w-full max-w-5xl">
+        {/* Image Section */}
+        <div className="w-full md:w-1/2 h-48 sm:h-60 md:h-auto relative">
           <img
             src="/uttarakhand.jpg"
             alt="Beautiful Uttarakhand"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6 md:p-8">
-            <h3 className="text-white text-xl md:text-2xl font-bold">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-8">
+            <h3 className="text-white text-lg sm:text-xl md:text-2xl font-bold">
               Discover Uttarakhand
             </h3>
-            <p className="text-white/90 text-sm md:text-base mt-2">
+            <p className="text-white/90 text-xs sm:text-sm md:text-base mt-1 sm:mt-2">
               Let us help you plan your perfect journey
             </p>
           </div>
         </div>
 
-        <div className="w-full md:w-1/2 p-6 md:p-8 lg:p-10">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-center text-gray-800 mb-6">
+        {/* Form Section */}
+        <div className="w-full md:w-1/2 p-4 sm:p-6 md:p-8 lg:p-10">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-center text-gray-800 mb-4 sm:mb-6">
             <span className="text-[#205781]">Contact Us</span>
           </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="hidden"
               name="access_key"
@@ -92,7 +94,7 @@ function FormPage() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition duration-300"
+                className="w-full p-2.5 sm:p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition duration-300"
                 required
                 placeholder="Your full name"
               />
@@ -107,7 +109,7 @@ function FormPage() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition duration-300"
+                className="w-full p-2.5 sm:p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition duration-300"
                 required
                 placeholder="your.email@example.com"
               />
@@ -122,7 +124,7 @@ function FormPage() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition duration-300"
+                className="w-full p-2.5 sm:p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition duration-300"
                 required
                 placeholder="+91 98765 43210"
               />
@@ -136,8 +138,8 @@ function FormPage() {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                rows="4"
-                className="w-full p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition duration-300 resize-none"
+                rows="3"
+                className="w-full p-2.5 sm:p-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent transition duration-300 resize-none"
                 required
                 placeholder="Tell us about your travel plans or questions..."
               />
@@ -146,12 +148,12 @@ function FormPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full text-white p-3 rounded-xl shadow-md bg-[#205781]  text-lg font-medium transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+              className="w-full text-white p-2.5 sm:p-3 rounded-xl shadow-md bg-[#205781] text-base sm:text-lg font-medium transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
             >
               {isSubmitting ? (
                 <span className="flex items-center justify-center">
                   <svg
-                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    className="animate-spin -ml-1 mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -178,7 +180,7 @@ function FormPage() {
             </button>
           </form>
 
-          <div className="mt-8 text-center text-gray-500 text-sm">
+          <div className="mt-6 sm:mt-8 text-center text-gray-500 text-xs sm:text-sm">
             <p>We'll get back to you within 24 hours</p>
           </div>
         </div>
