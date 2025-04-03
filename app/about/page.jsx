@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Page() {
   return (
-    <div>
+    <div className="my-11">
       <h1 className="justify-center text-center md:text-5xl text-3xl font-bold font-serif">
         About Us
       </h1>
@@ -28,7 +28,8 @@ export default function Page() {
             <span className="font-semibold text-[#205781]">Nainital</span> and{" "}
             <span className="font-semibold text-[#205781]">Mussoorie</span>, or
             challenge yourself with thrilling treks in{" "}
-            <span className="font-semibold text-[#205781]">Kedarkantha</span> and{" "}
+            <span className="font-semibold text-[#205781]">Kedarkantha</span>{" "}
+            and{" "}
             <span className="font-semibold text-[#205781]">
               Valley of Flowers
             </span>

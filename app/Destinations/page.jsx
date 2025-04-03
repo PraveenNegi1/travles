@@ -164,7 +164,7 @@ const DestinationPage = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="relative w-full h-[400px] md:h-[500px] bg-cover bg-center"
+        className="relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[500px] bg-cover bg-center"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1608942025318-1191eeade556?q=80&w=2055&auto=format&fit=crop')",
@@ -174,7 +174,7 @@ const DestinationPage = () => {
           <motion.h1
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            className="text-4xl md:text-6xl font-extrabold text-white text-center drop-shadow-lg merriweather"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold text-white text-center drop-shadow-lg merriweather"
           >
             Uttarakhand - The Land of Gods
           </motion.h1>
@@ -182,42 +182,43 @@ const DestinationPage = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-lg md:text-xl text-gray-300 mt-4 text-center merriweather"
+            className="text-base sm:text-lg md:text-xl text-gray-300 mt-2 md:mt-4 text-center merriweather"
           >
             Explore the beauty of the Himalayas and sacred temples
           </motion.p>
           <Link
             href="/district"
-            className="mt-6 inline-block bg-[#205781] hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full transition duration-300 shadow-lg"
+            className="mt-4 md:mt-6 inline-block bg-[#205781] hover:bg-blue-700 text-white font-semibold px-6 py-2 md:px-8 md:py-3 rounded-full transition duration-300 shadow-lg text-sm md:text-base"
           >
             Discover More
           </Link>
         </div>
       </motion.div>
 
-      <div className="container mx-auto px-4 py-16 bg-gradient-to-b from-blue-50 to-white rounded-lg merriweather">
+      <div className="container mx-auto px-4 py-8 md:py-16 bg-gradient-to-b from-blue-50 to-white rounded-lg merriweather">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6 text-center"
+          className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-4 md:mb-6 text-center"
         >
           Top Destinations
         </motion.h2>
 
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={20}
+          spaceBetween={10}
           slidesPerView={1}
           breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
+            480: { slidesPerView: 1, spaceBetween: 10 },
+            640: { slidesPerView: 1, spaceBetween: 15 },
+            768: { slidesPerView: 2, spaceBetween: 15 },
+            1024: { slidesPerView: 3, spaceBetween: 20 },
           }}
           navigation
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
-          className="py-8 space-y-16 "
+          className="py-4 md:py-8 space-y-10"
         >
           {attractions.map((attraction, index) => (
             <SwiperSlide key={index}>
@@ -226,18 +227,22 @@ const DestinationPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 + index * 0.1 }}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300"
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300 h-full"
               >
-                <img
-                  src={attraction.image}
-                  alt={attraction.title}
-                  className="w-full h-65 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900">
+                <div className="aspect-w-16 aspect-h-9 relative h-40 sm:h-48 md:h-56">
+                  <img
+                    src={attraction.image}
+                    alt={attraction.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-4 md:p-6">
+                  <h3 className="text-lg md:text-xl font-semibold text-gray-900">
                     {attraction.title}
                   </h3>
-                  <p className="text-gray-600 mt-2">{attraction.description}</p>
+                  <p className="text-sm md:text-base text-gray-600 mt-2">
+                    {attraction.description}
+                  </p>
                 </div>
               </motion.div>
             </SwiperSlide>
@@ -245,49 +250,54 @@ const DestinationPage = () => {
         </Swiper>
       </div>
 
-      <div className="container mx-auto px-4 py-16 merriweather">
+      <div className="container mx-auto px-4 py-8 md:py-16 merriweather ">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6 text-center"
+          className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-4 md:mb-6 text-center"
         >
           Adventure Activities
         </motion.h2>
-        <div className="space-y-12 max-w-4xl mx-auto">
+        <div className="space-y-8 md:space-y-12 max-w-4xl mx-auto">
           {activities.map((activity, index) => (
             <motion.div
               key={index}
-              className={`flex flex-col md:flex-row ${
-                index % 2 === 0 ? "md:flex-row-reverse" : ""
-              } items-center gap-6`}
-              initial={{ x: index % 2 === 0 ? 100 : -100, opacity: 0 }}
+              className={`flex flex-col ${
+                index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"
+              } items-center gap-4 md:gap-6`}
+              initial={{ x: index % 2 === 0 ? 50 : -50, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <motion.div className="md:w-1/2">
-                <Image
-                  src={activity.image}
-                  alt={activity.title}
-                  width={500}
-                  height={300}
-                  className="rounded-lg shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300"
-                  onClick={() => setSelectedActivity(activity)}
-                />
+              <motion.div className="w-full md:w-1/2">
+                <div className="relative aspect-w-16 aspect-h-9">
+                  <Image
+                    src={activity.image}
+                    alt={activity.title}
+                    width={500}
+                    height={300}
+                    layout="responsive"
+                    className="rounded-lg shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300 object-cover"
+                    onClick={() => setSelectedActivity(activity)}
+                  />
+                </div>
               </motion.div>
               <motion.div
-                className="md:w-1/2 text-center md:text-left"
-                initial={{ opacity: 0, y: 50 }}
+                className="w-full md:w-1/2 text-center md:text-left mt-3 md:mt-0"
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <h3 className="text-2xl font-semibold text-gray-900 flex items-center justify-center md:justify-start">
-                  <span className="mr-2 text-3xl">{activity.icon}</span>
+                <h3 className="text-xl md:text-2xl font-semibold text-gray-900 flex items-center justify-center md:justify-start">
+                  <span className="mr-2 text-2xl md:text-3xl">
+                    {activity.icon}
+                  </span>
                   {activity.title}
                 </h3>
-                <p className="text-lg text-gray-600 mt-2 md:hidden">
+                <p className="text-base md:text-lg text-gray-600 mt-2 px-2 md:px-0">
                   {activity.description}
                 </p>
               </motion.div>
@@ -295,62 +305,65 @@ const DestinationPage = () => {
           ))}
         </div>
 
-        {/* Modal Popup */}
-
-        <div className="hidden md:block">
-        {selectedActivity && (
-          <motion.div
-            className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 "
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            onClick={() => setSelectedActivity(null)}
-          >
+        <div className="">
+          {selectedActivity && (
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="bg-white rounded-lg p-6 shadow-xl w-[750px] text-center relative"
-              onClick={(e) => e.stopPropagation()}
+              className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 max-h-screen "
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              onClick={() => setSelectedActivity(null)}
             >
-              <button
-                className="absolute top-2 right-4 text-gray-600 hover:text-gray-900 text-3xl"
-                onClick={() => setSelectedActivity(null)}
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="bg-white rounded-2xl p-4 md:p-6 shadow-xl w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl text-center relative my-8 md:h-[450px] md:overflow-y-auto"
+                onClick={(e) => e.stopPropagation()}
               >
-                &times;
-              </button>
-              <div className="flex justify-center item-center">
-                <Image
-                  src={selectedActivity.image}
-                  alt={selectedActivity.title}
-                  width={500}
-                  height={300}
-                  className="rounded-lg mb-4"
-                />
-              </div>
-              <h3 className="text-2xl font-semibold">
-                {selectedActivity.title}
-              </h3>
-              <p className="text-lg text-gray-600 mt-2">
-                {selectedActivity.description}
-              </p>
-              <p className="text-lg text-gray-600 mt-2">
-                {selectedActivity.highlights}
-              </p>
+                <div className="flex justify-center items-center">
+                  <Image
+                    src={selectedActivity.image}
+                    alt={selectedActivity.title}
+                    width={500}
+                    height={300}
+                    className="rounded-lg mb-4 w-full h-auto"
+                  />
+                </div>
+                <h3 className="text-xl md:text-2xl font-semibold">
+                  {selectedActivity.title}
+                </h3>
+                <p className="text-base md:text-lg text-gray-600 mt-2">
+                  {selectedActivity.description}
+                </p>
+                <div className="mt-4 text-left">
+                  <h4 className="text-lg font-medium mb-2">Highlights:</h4>
+                  <ul className="list-disc pl-5 text-sm md:text-base text-gray-700 space-y-1">
+                    {selectedActivity.highlights.map((highlight, idx) => (
+                      <li key={idx}>{highlight}</li>
+                    ))}
+                  </ul>
+                </div>
+                <button
+                  className="mt-4 bg-[#205781] hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition duration-300"
+                  onClick={() => setSelectedActivity(null)}
+                >
+                  Close
+                </button>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
+          )}
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-16 merriweather">
+      <div className="container mx-auto px-4 py-8 md:py-16 merriweather">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl md:text-4xl font-semibold text-gray-900 mb-6 text-center"
+          className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-4 md:mb-6 text-center"
         >
           Spiritual Journey
         </motion.h2>
-        <p className="text-lg text-gray-600 leading-relaxed text-center max-w-3xl mx-auto">
+        <p className="text-base md:text-lg text-gray-600 leading-relaxed text-center max-w-3xl mx-auto px-2">
           Uttarakhand is home to the famous Char Dham Yatra – Badrinath,
           Kedarnath, Gangotri, and Yamunotri. Pilgrims from across the globe
           visit these sacred shrines seeking blessings and spiritual peace. The
