@@ -22,6 +22,7 @@ const HomePage = () => {
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight font-serif"
           >
             Explore Uttarakhand
+
           </motion.h1>
           <motion.p
             initial={{ y: 30, opacity: 0 }}
@@ -32,12 +33,14 @@ const HomePage = () => {
             Discover the land of gods and breathtaking beauty
           </motion.p>
         </div>
+        
       </div>
 
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1 }}
+        
         className="py-10 sm:py-12 md:py-16 bg-white"
       >
         <div className="container mx-auto px-4 sm:px-6 font-sans">

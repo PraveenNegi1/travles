@@ -167,7 +167,9 @@ export default function Page() {
                 <h3 className="text-2xl font-bold text-gray-900">
                   {district.name}
                 </h3>
-                <p className="text-gray-600 md:text-[20px] mt-3">{district.description}</p>
+                <p className="text-gray-600 md:text-[20px] mt-3">
+                  {district.description}
+                </p>
               </div>
 
               <div className="mt-4 mb-4 flex justify-end items-end">
