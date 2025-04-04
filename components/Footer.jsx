@@ -82,7 +82,7 @@ const Footer = () => {
             <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Get in Touch</h2>
             <div className="flex items-center justify-center sm:justify-start space-x-5 mt-3 sm:mt-4">
               <motion.a
-                href="https://instagram.com/yourcompany"
+                href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gradient-to-r from-[#FF0069] to-[#7638FA] p-2 rounded-full transition duration-300 hover:shadow-glow"
