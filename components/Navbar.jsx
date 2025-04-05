@@ -251,7 +251,6 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
-      {/* Content padding to avoid overlap with fixed navbar */}
       <div className="pt-16 md:pt-20"></div>
     </>
   );

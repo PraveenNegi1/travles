@@ -316,7 +316,7 @@ const DestinationPage = () => {
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="bg-white rounded-2xl p-4 md:p-6 shadow-xl w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl text-center relative my-8 md:h-[450px] md:overflow-y-auto"
+                className="bg-white  p-4 md:p-6 shadow-xl w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl text-center relative my-8 md:h-[500px] md:overflow-y-auto"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="flex justify-center items-center">

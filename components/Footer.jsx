@@ -40,16 +40,26 @@ const Footer = () => {
         className="container mx-auto px-4 sm:px-6 lg:px-8"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 md:gap-16 lg:gap-20 max-w-6xl mx-auto">
-          <motion.div variants={itemVariants} className="text-center sm:text-left">
-            <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">About Us</h2>
+          <motion.div
+            variants={itemVariants}
+            className="text-center sm:text-left"
+          >
+            <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
+              About Us
+            </h2>
             <p className="text-[#FAF1E6] text-sm sm:text-base max-w-xs mx-auto sm:mx-0">
               Discover the world's best destinations with us. Your adventure
               starts here!
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="text-center sm:text-left">
-            <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Explore</h2>
+          <motion.div
+            variants={itemVariants}
+            className="text-center sm:text-left"
+          >
+            <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
+              Explore
+            </h2>
             <ul className="space-y-2">
               <li>
                 <Link
@@ -78,8 +88,13 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="text-center sm:text-left">
-            <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Get in Touch</h2>
+          <motion.div
+            variants={itemVariants}
+            className="text-center sm:text-left"
+          >
+            <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
+              Get in Touch
+            </h2>
             <div className="flex items-center justify-center sm:justify-start space-x-5 mt-3 sm:mt-4">
               <motion.a
                 href="https://instagram.com"
@@ -128,8 +143,7 @@ const Footer = () => {
             © {new Date().getFullYear()} Travels. All rights reserved.
           </p>
           <p className="text-[#FAF1E6] text-xs sm:text-sm flex items-center">
-            Designed with{" "}
-            for travels.
+            Designed with for travels.
           </p>
         </motion.div>
       </motion.div>

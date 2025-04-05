@@ -164,23 +164,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="py-10 sm:py-12 md:py-16 text-black merriweather">
-        <div className="container mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl md:text-4xl font-bold mb-4">
-            Ready to Experience Uttarakhand?
-          </h2>
-          <p className="mb-6 max-w-2xl mx-auto text-[#205781]">
-            Get personalized travel advice and plan your perfect Uttarakhand
-            adventure with our expert team.
-          </p>
-          <Link
-            href="/Contect"
-            className="inline-block bg-[#205781] text-white font-medium px-6 py-3 rounded-lg transition-colors duration-300"
-          >
-            Contact Us
-          </Link>
-        </div>
-      </section>
     </div>
   );
 };

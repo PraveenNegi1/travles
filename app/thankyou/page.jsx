@@ -8,7 +8,7 @@ export default function ThankYouPage() {
       </div>
 
       <div className="relative z-10 bg-white p-10 rounded-3xl max-w-md w-full text-center shadow-lg backdrop-blur-sm bg-opacity-90 border border-blue-100">
-        <div className="mx-auto mb-6 w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-r from-teal-400 to-cyan-500">
+        <div className="mx-auto mb-6 w-20 h-20 flex items-center justify-center rounded-full bg-gradient-to-r from-[#205781] to-cyan-700">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-10 w-10 text-white"
@@ -25,7 +25,7 @@ export default function ThankYouPage() {
           </svg>
         </div>
 
-        <h1 className="text-4xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#205781] to-cyan-600">
+        <h1 className="text-4xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#205781] to-cyan-800">
           Thank You!
         </h1>
 
@@ -37,7 +37,7 @@ export default function ThankYouPage() {
 
         <a
           href="/"
-          className=" px-8 py-4 bg-gradient-to-r from-[#205781] to-teal-500 text-white font-semibold rounded-full shadow-lg transition duration-300 transform hover:translate-y-1 hover:shadow-xl flex items-center justify-center space-x-2"
+          className=" px-8 py-4 bg-gradient-to-r from-[#205781] to-cyan-800 text-white font-semibold rounded-full shadow-lg transition duration-300 transform hover:translate-y-1 hover:shadow-xl flex items-center justify-center space-x-2"
         >
           <span>Back to Home</span>
           <svg
