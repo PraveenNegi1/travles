@@ -215,7 +215,7 @@ const DestinationPage = () => {
             768: { slidesPerView: 2, spaceBetween: 15 },
             1024: { slidesPerView: 3, spaceBetween: 20 },
           }}
-          navigation
+          // navigation
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           className="py-4 md:py-8 space-y-10"

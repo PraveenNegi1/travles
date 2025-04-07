@@ -1,3 +1,4 @@
+import SacredDestinations from "@/components/SacredDestinations";
 import React from "react";
 
 export default function Page() {
@@ -76,6 +77,7 @@ export default function Page() {
           special. Start exploring today and discover the wonders of this
           heavenly state!
         </p>
+    
       </div>
     </div>
   );
