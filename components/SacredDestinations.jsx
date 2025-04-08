@@ -151,7 +151,6 @@ const staggerContainer = {
 
 const ImageWithFallback = ({ src, alt, className }) => {
   const [imgSrc, setImgSrc] = useState(src);
-  const [loading, setLoading] = useState(true);
 
   const handleError = useCallback(() => {
     setImgSrc("/api/placeholder/400/300");
@@ -159,18 +158,10 @@ const ImageWithFallback = ({ src, alt, className }) => {
 
   return (
     <div className={`${className} relative bg-gray-100 overflow-hidden`}>
-      {loading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-          <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-        </div>
-      )}
       <img
         src={imgSrc}
         alt={alt}
-        className={`w-full h-full object-cover transition-opacity duration-300 ${
-          loading ? "opacity-0" : "opacity-100"
-        }`}
-        onLoad={() => setLoading(false)}
+        className="w-full h-full object-cover"
         onError={handleError}
       />
     </div>
@@ -187,7 +178,7 @@ const DestinationCard = ({ place, index }) => {
         boxShadow:
           "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
       }}
-      className="bg-white border border-gray-200 rounded-2xl shadow-md transition-all duration-300 overflow-hidden focus-within:ring-2 focus-within:ring-blue-400"
+      className="bg-white border border-gray-200 rounded-2xl shadow-md transition-all duration-300  overflow-hidden focus-within:ring-2 focus-within:ring-blue-400"
       tabIndex={0}
     >
       <ImageWithFallback
@@ -196,7 +187,7 @@ const DestinationCard = ({ place, index }) => {
         className="w-full h-48"
       />
       <div className="p-5">
-        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">
+        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 font-serif">
           {place.name}
         </h3>
         <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
@@ -229,7 +220,7 @@ const DestinationGroup = ({ group, index }) => {
       >
         <h2
           id={`heading-${group.id}`}
-          className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-gray-800 underline underline-offset-4 group-hover:text-blue-600 transition-colors"
+          className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-gray-800 underline underline-offset-4 group-hover:text-[#205781] transition-colors merriweather"
         >
           {group.title}
         </h2>
@@ -268,7 +259,7 @@ const SacredDestinations = () => {
           variants={fadeIn}
           className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 text-black sm:mb-16"
         >
-          <span className="bg-gradient-to-r from-blue-600 via-green-500 to-teal-500 bg-clip-text text-transparent">
+          <span className="text-black font-serif">
             Sacred Destinations of Uttarakhand
           </span>
         </motion.h1>
@@ -280,7 +271,7 @@ const SacredDestinations = () => {
         ))}
       </main>
 
-      <footer className="mt-16 text-center text-gray-500 text-sm">
+      <footer className="mt-16 text-center text-gray-500 text-lg">
         <p>
           Explore the divine journey through the sacred sites of Uttarakhand
         </p>
