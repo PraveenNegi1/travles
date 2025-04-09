@@ -9,8 +9,7 @@ const Page = () => {
       name: "Kedarnath Temple",
       description:
         "Kedarnath Temple is one of the twelve Jyotirlingas of Lord Shiva, situated at an altitude of 3,583 meters. It is a major pilgrimage site and part of the Char Dham Yatra.",
-      image:
-        "https://images.unsplash.com/photo-1612438214708-f428a707dd4e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image: "/images/kedar/kedarnath.avif",
     },
 
     {

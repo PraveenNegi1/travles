@@ -48,7 +48,7 @@ export default function GlobalButton() {
     <>
       {isVisible && isMobileOrTablet && (
         <button
-          className="fixed bottom-8 right-6 p-3 bg-white text-[#205781] rounded-2xl shadow-lg hover:bg-[#485f76] transition-colors duration-300 flex items-center justify-center z-50"
+          className="fixed bottom-8 right-6 p-3 bg-white text-[#205781] border-[#205781] border-2 rounded-2xl shadow-lg hover:bg-[#485f76] transition-colors duration-300 flex items-center justify-center z-50"
           onClick={scrollToTop}
         >
           <svg

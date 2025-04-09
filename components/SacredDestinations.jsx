@@ -2,7 +2,6 @@
 
 import React, { useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 const groups = [
   {
@@ -53,35 +52,35 @@ const groups = [
       {
         id: "kedarnath",
         name: "Kedarnath",
-        image: "https://source.unsplash.com/400x300/?kedarnath,temple",
+        image: "/images/kedar/kedarnath.avif",
         description:
           "The most famous of the Panch Kedar, Kedarnath is one of the twelve Jyotirlingas and is dedicated to Lord Shiva. It is believed that Shiva took refuge here in the form of a bull after the Kurukshetra war. The temple stands at 3,583 meters and is surrounded by snow-capped peaks.",
       },
       {
         id: "madmaheshwar",
         name: "Madmaheshwar",
-        image: "https://source.unsplash.com/400x300/?mountains,shivatemple",
+        image: "/images/kedar/Madhyamaheshwar.JPG",
         description:
           "This temple is located at an elevation of 3,289 meters in the Garhwal Himalayas. It is believed that the navel of Shiva appeared here. Surrounded by lush meadows and a backdrop of Chaukhamba peaks, it offers a tranquil spiritual experience.",
       },
       {
         id: "tungnath",
         name: "Tungnath",
-        image: "https://source.unsplash.com/400x300/?tungnath,shivatemple",
+        image: "/Tungnath-Temple.jpg",
         description:
           "At an altitude of 3,680 meters, Tungnath is the highest Shiva temple in the world. It is associated with the arms of Shiva and lies on the Chandrashila trek route. Its stunning location and spiritual aura attract both pilgrims and trekkers.",
       },
       {
         id: "rudranath",
         name: "Rudranath",
-        image: "https://source.unsplash.com/400x300/?rudranath,uttarakhand",
+        image: "/Rudranath-Temple.webp",
         description:
           "This natural rock temple is where the face of Lord Shiva is worshipped. Located amidst rhododendron forests and alpine meadows, Rudranath provides a scenic and meditative atmosphere for devotees.",
       },
       {
         id: "kalpeshwar",
         name: "Kalpeshwar",
-        image: "https://source.unsplash.com/400x300/?kalpeshwar,temple",
+        image: "/images/kedar/Kalpeshwar.webp",
         description:
           "The only Panch Kedar temple accessible throughout the year, Kalpeshwar is located in the Urgam Valley. It is associated with Lord Shiva's hair (jata) and is reached after a short trek through terraced fields and ancient villages.",
       },
@@ -94,35 +93,35 @@ const groups = [
       {
         id: "devprayag",
         name: "Devprayag",
-        image: "https://source.unsplash.com/400x300/?devprayag,confluence",
+        image: "/images/pryags/Devprayag.jpeg",
         description:
           "Devprayag marks the confluence of the Alaknanda and Bhagirathi rivers to form the sacred Ganga. It holds immense spiritual significance and is believed to be the meditation site of sage Devasharma.",
       },
       {
         id: "rudraprayag",
         name: "Rudraprayag",
-        image: "https://source.unsplash.com/400x300/?rudraprayag,river",
+        image: "/images/pryags/rudraprayag.jpg",
         description:
           "Here, the Alaknanda meets the Mandakini River. The place is named after Lord Rudra (a form of Shiva) and has ancient temples such as Rudranath and Chamunda Devi that enhance its sanctity.",
       },
       {
         id: "karnaprayag",
         name: "Karnaprayag",
-        image: "https://source.unsplash.com/400x300/?karnaprayag,river",
+        image: "/images/pryags/Karanprayag1.jpg",
         description:
           "This confluence of the Alaknanda and Pindar rivers is named after Karna from the Mahabharata. It is believed that Karna meditated and performed penance here to attain divine powers.",
       },
       {
         id: "nandaprayag",
         name: "Nandaprayag",
-        image: "https://source.unsplash.com/400x300/?nandaprayag,river",
+        image: "/images/pryags/Nandaprayag-1.jpg",
         description:
           "At Nandaprayag, the Alaknanda and Nandakini rivers meet. It is associated with King Nanda, the foster father of Lord Krishna, and is surrounded by beautiful Himalayan vistas.",
       },
       {
         id: "vishnuprayag",
         name: "Vishnuprayag",
-        image: "https://source.unsplash.com/400x300/?vishnuprayag,confluence",
+        image: "/images/pryags/Vishnuprayag.webp",
         description:
           "The first of the five Prayags, Vishnuprayag is the confluence of the Alaknanda and Dhauliganga rivers. According to mythology, Sage Narada meditated here and was blessed by Lord Vishnu.",
       },
@@ -178,7 +177,7 @@ const DestinationCard = ({ place, index }) => {
         boxShadow:
           "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
       }}
-      className="bg-white border border-gray-200 rounded-2xl shadow-md transition-all duration-300  overflow-hidden focus-within:ring-2 focus-within:ring-blue-400"
+      className="bg-white border border-gray-200 rounded-2xl shadow-md  transition-all duration-300  overflow-hidden focus-within:ring-2 focus-within:ring-blue-400"
       tabIndex={0}
     >
       <ImageWithFallback
@@ -209,7 +208,7 @@ const DestinationGroup = ({ group, index }) => {
       viewport={{ once: true, margin: "-100px" }}
       variants={fadeIn}
       custom={index}
-      className="mb-12 md:mb-20"
+      className="mb-12 md:mb-20 "
       aria-labelledby={`heading-${group.id}`}
     >
       <button
@@ -235,7 +234,7 @@ const DestinationGroup = ({ group, index }) => {
       {isExpanded && (
         <motion.div
           id={`section-${group.id}`}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 mt-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 sm:gap-8 mt-6"
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
@@ -251,7 +250,7 @@ const DestinationGroup = ({ group, index }) => {
 
 const SacredDestinations = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-20">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-20 ">
       <header>
         <motion.h1
           initial="hidden"
