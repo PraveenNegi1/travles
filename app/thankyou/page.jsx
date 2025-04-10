@@ -2,9 +2,9 @@ export default function ThankYouPage() {
   return (
     <div className="flex items-center justify-center min-h-screen p-4">
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-20">
-        <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-blue-200 animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-24 h-24 rounded-full bg-teal-200 animate-pulse"></div>
-        <div className="absolute top-1/4 right-1/4 w-16 h-16 rounded-full bg-cyan-200 animate-pulse"></div>
+        <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-blue-400 animate-pulse"></div>
+        <div className="absolute bottom-10 right-10 w-24 h-24 rounded-full bg-teal-400 animate-pulse"></div>
+        <div className="absolute top-1/4 right-1/4 w-16 h-16 rounded-full bg-cyan-300 animate-pulse"></div>
       </div>
 
       <div className="relative z-10 bg-white p-10 rounded-3xl max-w-md w-full text-center shadow-lg backdrop-blur-sm bg-opacity-90 border border-blue-100">

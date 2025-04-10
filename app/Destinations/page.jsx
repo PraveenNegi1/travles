@@ -159,6 +159,7 @@ const activities = [
 
 const DestinationPage = () => {
   const [selectedActivity, setSelectedActivity] = useState(null);
+
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 overflow-hidden">
       <motion.div
@@ -215,7 +216,6 @@ const DestinationPage = () => {
             768: { slidesPerView: 2, spaceBetween: 15 },
             1024: { slidesPerView: 3, spaceBetween: 20 },
           }}
-          // navigation
           pagination={{ clickable: true }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           className="py-4 md:py-8 space-y-10"
@@ -250,7 +250,7 @@ const DestinationPage = () => {
         </Swiper>
       </div>
 
-      <div className="container mx-auto px-4 py-8 md:py-16 merriweather ">
+      <div className="container mx-auto px-4 py-8 md:py-16 merriweather">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -278,7 +278,6 @@ const DestinationPage = () => {
                     alt={activity.title}
                     width={500}
                     height={300}
-                    layout="responsive"
                     className="rounded-lg shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300 object-cover"
                     onClick={() => setSelectedActivity(activity)}
                   />
@@ -300,58 +299,89 @@ const DestinationPage = () => {
                 <p className="text-base md:text-lg text-gray-600 mt-2 px-2 md:px-0">
                   {activity.description}
                 </p>
+                <button
+                  onClick={() => setSelectedActivity(activity)}
+                  className="mt-3 bg-[#205781] hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition duration-300 text-sm"
+                >
+                  View Details
+                </button>
               </motion.div>
             </motion.div>
           ))}
         </div>
 
-        <div className="">
-          {selectedActivity && (
+        {selectedActivity && (
+          <motion.div
+            className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50 overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            onClick={() => setSelectedActivity(null)}
+          >
             <motion.div
-              className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 max-h-screen "
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              onClick={() => setSelectedActivity(null)}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="bg-white rounded-xl p-4 sm:p-6 shadow-xl w-full max-w-xs sm:max-w-md md:max-w-2xl text-left relative mx-auto my-8"
+              onClick={(e) => e.stopPropagation()}
             >
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                className="bg-white  p-4 md:p-6 shadow-xl w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl text-center relative my-8 md:h-[500px] md:overflow-y-auto"
-                onClick={(e) => e.stopPropagation()}
+              <button
+                className="absolute right-4 top-4 bg-gray-200 hover:bg-gray-300 rounded-full p-2 text-gray-700 z-10 transition-colors duration-300"
+                onClick={() => setSelectedActivity(null)}
               >
-                <div className="flex justify-center items-center">
-                  <Image
-                    src={selectedActivity.image}
-                    alt={selectedActivity.title}
-                    width={500}
-                    height={300}
-                    className="rounded-lg mb-4 w-full h-auto"
-                  />
-                </div>
-                <h3 className="text-xl md:text-2xl font-semibold">
-                  {selectedActivity.title}
-                </h3>
-                <p className="text-base md:text-lg text-gray-600 mt-2">
-                  {selectedActivity.description}
-                </p>
-                <div className="mt-4 text-left">
-                  <h4 className="text-lg font-medium mb-2">Highlights:</h4>
-                  <ul className="list-disc pl-5 text-sm md:text-base text-gray-700 space-y-1">
-                    {selectedActivity.highlights.map((highlight, idx) => (
-                      <li key={idx}>{highlight}</li>
-                    ))}
-                  </ul>
-                </div>
-                <button
-                  className="mt-4 bg-[#205781] hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition duration-300"
-                  onClick={() => setSelectedActivity(null)}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
                 >
-                  Close
-                </button>
-              </motion.div>
+                  <path
+                    fillRule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </button>
+              <div className="flex flex-col md:flex-row gap-6">
+                <div className="md:w-1/2">
+                  <div className="relative pb-[60%] md:pb-[75%] rounded-lg overflow-hidden">
+                    <Image
+                      src={selectedActivity.image}
+                      alt={selectedActivity.title}
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-lg"
+                    />
+                  </div>
+                </div>
+
+                <div className="md:w-1/2">
+                  <div className="flex items-center mb-3">
+                    <span className="text-3xl mr-3">
+                      {selectedActivity.icon}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900">
+                      {selectedActivity.title}
+                    </h3>
+                  </div>
+                  <p className="text-base text-gray-700 mb-4">
+                    {selectedActivity.description}
+                  </p>
+
+                  <div className="mt-4">
+                    <h4 className="text-lg font-semibold mb-2 text-gray-800">
+                      Highlights:
+                    </h4>
+                    <ul className="list-disc pl-5 text-sm sm:text-base text-gray-700 space-y-1.5 max-h-60 sm:max-h-80 overflow-y-auto pr-2">
+                      {selectedActivity.highlights.map((highlight, idx) => (
+                        <li key={idx}>{highlight}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </motion.div>
-          )}
-        </div>
+          </motion.div>
+        )}
       </div>
 
       <div className="container mx-auto px-4 py-8 md:py-16 merriweather">

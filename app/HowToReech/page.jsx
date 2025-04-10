@@ -91,7 +91,7 @@ export default function HowToReach() {
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col items-center py-12 px-4 overflow-hidden">
-      <h1 className="text-4xl font-extrabold text-center text-[#205781] mb-12">
+      <h1 className="text-4xl font-extrabold text-center text-[#205781] mb-12 font-serif">
         How to Reach Uttarakhand
       </h1>
       <div className="flex justify-center mb-8 md:w-[600px] md:h-[500px]">
@@ -115,10 +115,10 @@ export default function HowToReach() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             variants={mode.animation}
           >
-            <h2 className={`text-2xl font-semibold ${mode.textColor}`}>
+            <h2 className={`text-2xl font-semibold font-serif ${mode.textColor}`}>
               {mode.title}
             </h2>
-            <ul className="mt-3 text-gray-700 space-y-2">
+            <ul className="mt-3 text-gray-700 space-y-2 merriweather text-[16px] md:text-[20px]">
               {mode.content.map((text, idx) => (
                 <li key={idx}>• {text}</li>
               ))}

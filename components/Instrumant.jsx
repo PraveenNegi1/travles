@@ -73,7 +73,7 @@ const BadyaYantra = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 text-gray-800 relative inline-block"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold font-serif mb-6 text-gray-800 relative inline-block"
           >
             <span className="bg-clip-text text-black ">
               Traditional Musical Instruments
@@ -87,7 +87,7 @@ const BadyaYantra = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.7 }}
-            className="max-w-3xl mx-auto text-gray-600 text-sm sm:text-base lg:text-lg"
+            className="max-w-3xl mx-auto text-gray-600 text-[16px] md:text-[20px]  merriweather "
           >
             Uttarakhand&apos;s folk music is incomplete without its rich and
             diverse traditional instruments, known as
@@ -128,10 +128,10 @@ const BadyaYantra = () => {
               </div>
 
               <div className="p-5 md:p-6">
-                <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-3">
+                <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-3 font-serif">
                   {instrument.name}
                 </h3>
-                <p className="text-gray-600 text-sm sm:text-base">
+                <p className="text-gray-600 md:text-[20px] text-[16px] merriweather">
                   {instrument.description}
                 </p>
               </div>

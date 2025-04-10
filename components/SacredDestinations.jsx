@@ -189,7 +189,7 @@ const DestinationCard = ({ place, index }) => {
         <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 font-serif">
           {place.name}
         </h3>
-        <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+        <p className="md:text-[20px] text-[16px] merriweather text-gray-700 leading-relaxed ">
           {place.description}
         </p>
       </div>
@@ -270,7 +270,7 @@ const SacredDestinations = () => {
         ))}
       </main>
 
-      <footer className="mt-16 text-center text-gray-500 text-lg">
+      <footer className="mt-16 text-center text-gray-500 text-lg merriweather">
         <p>
           Explore the divine journey through the sacred sites of Uttarakhand
         </p>
