@@ -22,6 +22,12 @@ const Page = () => {
         "Kyunkaleshwar Mahadev Temple is an ancient Shiva temple believed to have been established by Adi Shankaracharya. It features intricate carvings and a peaceful atmosphere.",
       image: "/kyunkaleshwar-mahadev-temple.jpg",
     },
+    {
+      name: "Dhari Devi Temple",
+      description:
+        "Dhari Devi Temple is situated on the banks of the Alaknanda River and is dedicated to Goddess Dhari. It is considered a protector of the Char Dham pilgrimage.",
+      image: "/dhari-devi-temple.jpg",
+    },
   ];
 
   const attractions = [
@@ -43,12 +49,7 @@ const Page = () => {
         "Tara Kund is a small lake situated at a high altitude. It is surrounded by lush meadows and is a popular trekking destination.",
       image: "/Tara-Kund.webp",
     },
-    {
-      name: "Dhari Devi Temple",
-      description:
-        "Dhari Devi Temple is situated on the banks of the Alaknanda River and is dedicated to Goddess Dhari. It is considered a protector of the Char Dham pilgrimage.",
-      image: "/dhari-devi-temple.jpg",
-    },
+    
   ];
 
   const CountUp = ({ end, duration }) => {
@@ -83,7 +84,7 @@ const Page = () => {
       <div className="bg-[#205781] p-8 flex flex-col items-center text-center">
         <div className="text-[#FAF1E6] mb-3">{icon}</div>
         <div className="text-[#FAF1E6] text-5xl font-bold mb-1">
-          <CountUp end={value} duration={2000} />
+          <CountUp end={value} duration={5000} />
           {unit}
         </div>
         <div className="text-[#FAF1E6] text-xl mb-2">{label}</div>

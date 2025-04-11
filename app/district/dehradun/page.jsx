@@ -90,7 +90,7 @@ const Page = () => {
       <div className="bg-[#205781] p-8 flex flex-col items-center text-center">
         <div className="text-[#FAF1E6] mb-3">{icon}</div>
         <div className="text-[#FAF1E6] text-5xl font-bold mb-1">
-          <CountUp end={value} duration={2000} />
+          <CountUp end={value} duration={5000} />
           {unit}
         </div>
         <div className="text-[#FAF1E6] text-xl mb-2">{label}</div>
