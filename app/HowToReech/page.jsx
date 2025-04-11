@@ -94,10 +94,10 @@ export default function HowToReach() {
       <h1 className="text-4xl font-extrabold text-center text-[#205781] mb-12 font-serif">
         How to Reach Uttarakhand
       </h1>
-      <div className="flex justify-center mb-8 md:w-[600px] md:h-[500px]">
+      <div className="flex justify-center mb-8 md:w-[650px] md:h-[550px]">
         <Image
-          src="/uttarakhand-map.png"
-          alt="Almora"
+          src="/uttarakhandmap.jpg"
+          alt="Uttarakhand"
           width={1000}
           height={1000}
           className="rounded-xl shadow-lg"
@@ -115,7 +115,9 @@ export default function HowToReach() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             variants={mode.animation}
           >
-            <h2 className={`text-2xl font-semibold font-serif ${mode.textColor}`}>
+            <h2
+              className={`text-2xl font-semibold font-serif ${mode.textColor}`}
+            >
               {mode.title}
             </h2>
             <ul className="mt-3 text-gray-700 space-y-2 merriweather text-[16px] md:text-[20px]">

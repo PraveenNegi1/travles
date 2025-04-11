@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 export default function GlobalButton() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const checkDeviceType = () => {
@@ -11,28 +12,25 @@ export default function GlobalButton() {
       setIsMobileOrTablet(isMobileTabletView);
     };
 
-    const toggleVisibility = () => {
-      const footer =
-        document.querySelector("footer") || document.getElementById("footer");
-
-      if (footer) {
-        const footerPosition = footer.getBoundingClientRect();
-        if (footerPosition.top < window.innerHeight) {
-          setIsVisible(true);
-        } else {
-          setIsVisible(false);
-        }
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Button is visible when scrolling up and not at the top of the page
+      if (currentScrollY < lastScrollY.current && currentScrollY > 100) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
       }
+
+      lastScrollY.current = currentScrollY;
     };
 
     checkDeviceType();
-    toggleVisibility();
-
-    window.addEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", checkDeviceType);
 
     return () => {
-      window.removeEventListener("scroll", toggleVisibility);
+      window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", checkDeviceType);
     };
   }, []);

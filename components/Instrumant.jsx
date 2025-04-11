@@ -112,7 +112,7 @@ const BadyaYantra = () => {
               }}
               className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100"
             >
-              <div className="relative h-60 sm:h-64 md:h-72 w-full overflow-hidden">
+              <div className="relative h-60  w-full overflow-hidden">
                 <Image
                   src={instrument.image}
                   alt={instrument.name}
