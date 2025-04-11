@@ -189,7 +189,7 @@ const DestinationCard = ({ place, index }) => {
         <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 font-serif">
           {place.name}
         </h3>
-        <p className="md:text-[20px] text-[16px] merriweather text-gray-700 leading-relaxed ">
+        <p className="text-base sm:text-lg md:text-xl merriweather text-gray-700 leading-relaxed ">
           {place.description}
         </p>
       </div>
