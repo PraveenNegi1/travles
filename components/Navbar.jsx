@@ -107,7 +107,7 @@ const Navbar = () => {
                 <li key={item.href} className="relative group">
                   <Link
                     href={item.href}
-                    className={`relative font-medium transition-all duration-300 px-3 py-2 rounded-full flex items-center gap-1.5 text-sm lg:text-base hover:scale-105 ${
+                    className={`relative font-medium transition-all duration-300 px-3 py-2 rounded-full flex items-center gap-1.5 text-sm md:text-[18px] hover:scale-105 ${
                       pathname === item.href
                         ? "bg-white text-[#205781] shadow-md"
                         : "text-[#FAF1E6] hover:bg-[#FAF1E6]/10"
