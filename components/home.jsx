@@ -1,8 +1,37 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const HomePage = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block relative w-20 h-20">
+            <div className="absolute top-0 left-0 w-full h-full">
+              <div className="w-20 h-20 border-8 border-gray-200 rounded-full"></div>
+              <div className="w-20 h-20 border-8 border-t-[#205781] rounded-full animate-spin absolute top-0 left-0"></div>
+            </div>
+          </div>
+          <p className="mt-4 text-lg font-serif text-gray-700">
+            Loading Uttarakhand...
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-100">
       <div
