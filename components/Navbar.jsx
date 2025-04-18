@@ -37,7 +37,6 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
-  // Close sidebar when route changes
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
@@ -70,6 +69,17 @@ const Navbar = () => {
       icon: <Phone size={20} strokeWidth={2} />,
     },
   ];
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
 
   return (
     <>

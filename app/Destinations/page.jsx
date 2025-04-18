@@ -299,12 +299,7 @@ const DestinationPage = () => {
                 <p className="text-base md:text-lg text-gray-600 mt-2 px-2 md:px-0">
                   {activity.description}
                 </p>
-                <button
-                  onClick={() => setSelectedActivity(activity)}
-                  className="mt-3 bg-[#205781] hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition duration-300 text-sm"
-                >
-                  View Details
-                </button>
+               
               </motion.div>
             </motion.div>
           ))}

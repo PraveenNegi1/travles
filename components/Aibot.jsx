@@ -65,64 +65,69 @@ const PREDEFINED_QA = [
   },
   {
     id: "q11",
-    question: "What adventure activities are available in Uttarakhand beyond trekking?",
+    question:
+      "What adventure activities are available in Uttarakhand beyond trekking?",
     answer:
-      "Uttarakhand offers numerous adventure activities besides trekking. Rishikesh is famous for white water rafting on the Ganges with rapids ranging from Grade I to IV. Paragliding opportunities exist in Ranikhet, Mukteshwar, and Bhimtal. Auli provides excellent skiing facilities during winter months (December-February). Rock climbing and mountaineering expeditions are popular in the Garhwal Himalayas, with training institutes in Uttarkashi. Other activities include mountain biking in Mussoorie and surrounding areas, camping in scenic locations like Chopta and Dhanaulti, bungee jumping and flying fox in Rishikesh, and wildlife safaris in Jim Corbett and Rajaji National Parks. For water enthusiasts, kayaking and cliff jumping are available at various river spots."
+      "Uttarakhand offers numerous adventure activities besides trekking. Rishikesh is famous for white water rafting on the Ganges with rapids ranging from Grade I to IV. Paragliding opportunities exist in Ranikhet, Mukteshwar, and Bhimtal. Auli provides excellent skiing facilities during winter months (December-February). Rock climbing and mountaineering expeditions are popular in the Garhwal Himalayas, with training institutes in Uttarkashi. Other activities include mountain biking in Mussoorie and surrounding areas, camping in scenic locations like Chopta and Dhanaulti, bungee jumping and flying fox in Rishikesh, and wildlife safaris in Jim Corbett and Rajaji National Parks. For water enthusiasts, kayaking and cliff jumping are available at various river spots.",
   },
   {
     id: "q12",
     question: "How should I prepare for the Char Dham Yatra in Uttarakhand?",
     answer:
-      "For the Char Dham Yatra (Yamunotri, Gangotri, Kedarnath, Badrinath), thorough preparation is essential. Plan at least 10-12 days for the complete circuit. Register for the official Yatra and obtain necessary permits online before arrival. Physical fitness preparation is crucial, especially for Kedarnath which involves a challenging 16 km trek. Pack appropriately with warm, layered clothing, comfortable walking shoes, rain protection, and basic medications including those for altitude sickness. Consider hiring local guides or joining organized tours that handle logistics. Acclimatize properly to prevent altitude-related issues, especially at Kedarnath and Badrinath which are at high elevations. The pilgrimage routes typically remain open from April/May to October/November, with precise dates announced annually based on religious calendars and weather conditions."
+      "For the Char Dham Yatra (Yamunotri, Gangotri, Kedarnath, Badrinath), thorough preparation is essential. Plan at least 10-12 days for the complete circuit. Register for the official Yatra and obtain necessary permits online before arrival. Physical fitness preparation is crucial, especially for Kedarnath which involves a challenging 16 km trek. Pack appropriately with warm, layered clothing, comfortable walking shoes, rain protection, and basic medications including those for altitude sickness. Consider hiring local guides or joining organized tours that handle logistics. Acclimatize properly to prevent altitude-related issues, especially at Kedarnath and Badrinath which are at high elevations. The pilgrimage routes typically remain open from April/May to October/November, with precise dates announced annually based on religious calendars and weather conditions.",
   },
   {
     id: "q13",
     question: "What wildlife can be spotted in Uttarakhand's national parks?",
     answer:
-      "Uttarakhand's diverse ecosystems host rich wildlife across its six national parks and numerous sanctuaries. Jim Corbett National Park, India's oldest national park, is famous for Bengal tigers, Asian elephants, leopards, and over 600 bird species. Rajaji National Park features elephants, tigers, leopards, deer species, and sloth bears. The high-altitude Nanda Devi National Park (a UNESCO World Heritage site) protects rare Himalayan species like snow leopards, Himalayan black bears, musk deer, and colorful pheasants. Valley of Flowers National Park showcases rare alpine flowers, alongside Himalayan tahrs and occasional sightings of red fox. Gangotri National Park is home to snow leopards, brown bears, and blue sheep. Best wildlife viewing periods are generally March to June and October to February, with organized safaris available in most protected areas."
+      "Uttarakhand's diverse ecosystems host rich wildlife across its six national parks and numerous sanctuaries. Jim Corbett National Park, India's oldest national park, is famous for Bengal tigers, Asian elephants, leopards, and over 600 bird species. Rajaji National Park features elephants, tigers, leopards, deer species, and sloth bears. The high-altitude Nanda Devi National Park (a UNESCO World Heritage site) protects rare Himalayan species like snow leopards, Himalayan black bears, musk deer, and colorful pheasants. Valley of Flowers National Park showcases rare alpine flowers, alongside Himalayan tahrs and occasional sightings of red fox. Gangotri National Park is home to snow leopards, brown bears, and blue sheep. Best wildlife viewing periods are generally March to June and October to February, with organized safaris available in most protected areas.",
   },
   {
     id: "q14",
     question: "What are the traditional arts and crafts of Uttarakhand?",
     answer:
-      "Uttarakhand has a vibrant tradition of arts and crafts reflecting its mountain culture. Aipan is a ritualistic folk art featuring geometric patterns painted with rice paste on red backgrounds for auspicious occasions. Woodcarving is prominent, especially in the Kumaon region, with intricate designs on doors, windows, and household items. Ringaal bamboo craft produces utilitarian items like baskets, mats, and containers. Copper work (Tamta) creates decorative and religious items, while woolen handloom products include Pankhi shawls, Thulma carpets, and colorful Garhwali caps (Pahari Topi). Wax printing on fabric is practiced in specific regions. The state also produces distinctive wooden masks used in local folk performances and Pahari miniature paintings with religious themes. Visitors can purchase authentic crafts from state emporiums in major towns or directly from artisan villages."
+      "Uttarakhand has a vibrant tradition of arts and crafts reflecting its mountain culture. Aipan is a ritualistic folk art featuring geometric patterns painted with rice paste on red backgrounds for auspicious occasions. Woodcarving is prominent, especially in the Kumaon region, with intricate designs on doors, windows, and household items. Ringaal bamboo craft produces utilitarian items like baskets, mats, and containers. Copper work (Tamta) creates decorative and religious items, while woolen handloom products include Pankhi shawls, Thulma carpets, and colorful Garhwali caps (Pahari Topi). Wax printing on fabric is practiced in specific regions. The state also produces distinctive wooden masks used in local folk performances and Pahari miniature paintings with religious themes. Visitors can purchase authentic crafts from state emporiums in major towns or directly from artisan villages.",
   },
   {
     id: "q15",
     question: "What are the major festivals celebrated in Uttarakhand?",
     answer:
-      "Uttarakhand celebrates numerous vibrant festivals throughout the year. Kumbh Mela, held in Haridwar every 12 years, attracts millions of pilgrims for holy dips in the Ganges (next occurring in 2034). The colorful Holi is celebrated with unique regional traditions like Khadi Holi (musical gatherings) and Baithki Holi (sitting celebrations) in Kumaon. Harela, a significant agricultural festival, marks the planting season with seedling ceremonies and special dishes. Phool Dei in spring features children bringing flowers to households for good fortune. Other important celebrations include Uttarayani Mela in Bageshwar with cultural performances, Nanda Devi Raj Jat Yatra (occurring every 12 years) which is a lengthy pilgrimage procession, Basant Panchami marking the arrival of spring, and Makar Sankranti which features ritual bathing in sacred rivers. Most festivals include unique regional folk dances, traditional music, and special culinary preparations."
+      "Uttarakhand celebrates numerous vibrant festivals throughout the year. Kumbh Mela, held in Haridwar every 12 years, attracts millions of pilgrims for holy dips in the Ganges (next occurring in 2034). The colorful Holi is celebrated with unique regional traditions like Khadi Holi (musical gatherings) and Baithki Holi (sitting celebrations) in Kumaon. Harela, a significant agricultural festival, marks the planting season with seedling ceremonies and special dishes. Phool Dei in spring features children bringing flowers to households for good fortune. Other important celebrations include Uttarayani Mela in Bageshwar with cultural performances, Nanda Devi Raj Jat Yatra (occurring every 12 years) which is a lengthy pilgrimage procession, Basant Panchami marking the arrival of spring, and Makar Sankranti which features ritual bathing in sacred rivers. Most festivals include unique regional folk dances, traditional music, and special culinary preparations.",
   },
   {
     id: "q16",
-    question: "What precautions should visitors take regarding health and safety in Uttarakhand?",
+    question:
+      "What precautions should visitors take regarding health and safety in Uttarakhand?",
     answer:
-      "When visiting Uttarakhand, several health and safety precautions are important. For health, acclimatize gradually when traveling to high altitudes (above 2,500m) to prevent altitude sickness, staying hydrated and avoiding alcohol. Carry necessary medications including those for altitude sickness, stomach issues, and personal prescriptions. Drink only bottled or purified water and be cautious with street food, especially during monsoon. For safety, check weather forecasts and road conditions regularly, particularly during monsoon (July-September) when landslides are common. Register with local authorities before undertaking remote treks. Respect wildlife by maintaining distance and following park rules. Dress modestly when visiting religious sites. During winter travel in higher regions, check for road closures due to snow. Cell phone connectivity may be limited in remote areas, so inform someone about your itinerary. For emergency assistance, contact the Uttarakhand Tourism helpline or the local police."
+      "When visiting Uttarakhand, several health and safety precautions are important. For health, acclimatize gradually when traveling to high altitudes (above 2,500m) to prevent altitude sickness, staying hydrated and avoiding alcohol. Carry necessary medications including those for altitude sickness, stomach issues, and personal prescriptions. Drink only bottled or purified water and be cautious with street food, especially during monsoon. For safety, check weather forecasts and road conditions regularly, particularly during monsoon (July-September) when landslides are common. Register with local authorities before undertaking remote treks. Respect wildlife by maintaining distance and following park rules. Dress modestly when visiting religious sites. During winter travel in higher regions, check for road closures due to snow. Cell phone connectivity may be limited in remote areas, so inform someone about your itinerary. For emergency assistance, contact the Uttarakhand Tourism helpline or the local police.",
   },
   {
     id: "q17",
-    question: "What are some lesser-known destinations in Uttarakhand worth visiting?",
+    question:
+      "What are some lesser-known destinations in Uttarakhand worth visiting?",
     answer:
-      "Beyond the popular tourist spots, Uttarakhand offers many hidden gems. Munsiyari, near the Tibet border, provides spectacular Himalayan panoramas including Panchachuli peaks without the typical crowds. Kausani, which Gandhi called the 'Switzerland of India,' offers stunning sunrise views over Himalayan ranges. Abbott Mount, a tiny hill station established during British rule, features colonial architecture and peaceful surroundings. Chakrata, once a restricted military area, has pristine forests and waterfalls like Tiger Falls. Chaukori in the Kumaon region offers tea gardens with mountain backdrops. The ancient temple complex of Jageshwar contains over 100 small stone temples dating from the 8th-18th centuries. Khirsu provides panoramic views of snow-capped peaks with few tourists. For unique cultural experiences, visit the Mana village (last Indian village near Badrinath), Kalap in remote Garhwal known for traditional lifestyles, or Peora with its fruit orchards and terraced farms."
+      "Beyond the popular tourist spots, Uttarakhand offers many hidden gems. Munsiyari, near the Tibet border, provides spectacular Himalayan panoramas including Panchachuli peaks without the typical crowds. Kausani, which Gandhi called the 'Switzerland of India,' offers stunning sunrise views over Himalayan ranges. Abbott Mount, a tiny hill station established during British rule, features colonial architecture and peaceful surroundings. Chakrata, once a restricted military area, has pristine forests and waterfalls like Tiger Falls. Chaukori in the Kumaon region offers tea gardens with mountain backdrops. The ancient temple complex of Jageshwar contains over 100 small stone temples dating from the 8th-18th centuries. Khirsu provides panoramic views of snow-capped peaks with few tourists. For unique cultural experiences, visit the Mana village (last Indian village near Badrinath), Kalap in remote Garhwal known for traditional lifestyles, or Peora with its fruit orchards and terraced farms.",
   },
   {
     id: "q18",
-    question: "What should I know about the local customs and etiquette in Uttarakhand?",
+    question:
+      "What should I know about the local customs and etiquette in Uttarakhand?",
     answer:
-      "Understanding local customs enhances your Uttarakhand experience. Religious sites require modest dress (covering shoulders and knees) and removing footwear before entering temples. Photography may be prohibited inside certain shrines; always ask permission before photographing people, especially during ceremonies. Greet locals with a respectful 'Namaste' with folded hands. The culture is generally conservative, so public displays of affection should be avoided. When visiting homes, small gifts are appreciated; remove shoes before entering. Traditional village homes might follow strict practices regarding kitchen purity—follow the host's lead. Respect nature by not littering and adhering to sustainable tourism practices. When participating in local festivals, observe before joining in. Drinking alcohol is prohibited near many religious sites. The diverse region has different customs between Garhwal and Kumaon areas; local guides can provide specific guidance for each region you visit."
+      "Understanding local customs enhances your Uttarakhand experience. Religious sites require modest dress (covering shoulders and knees) and removing footwear before entering temples. Photography may be prohibited inside certain shrines; always ask permission before photographing people, especially during ceremonies. Greet locals with a respectful 'Namaste' with folded hands. The culture is generally conservative, so public displays of affection should be avoided. When visiting homes, small gifts are appreciated; remove shoes before entering. Traditional village homes might follow strict practices regarding kitchen purity—follow the host's lead. Respect nature by not littering and adhering to sustainable tourism practices. When participating in local festivals, observe before joining in. Drinking alcohol is prohibited near many religious sites. The diverse region has different customs between Garhwal and Kumaon areas; local guides can provide specific guidance for each region you visit.",
   },
   {
     id: "q19",
     question: "What are the shopping opportunities in Uttarakhand?",
     answer:
-      "Uttarakhand offers diverse shopping experiences for authentic local products. Woolen items are popular, including Pashmina shawls, Angora products from Uttarkashi, and colorful hand-knitted sweaters, caps, and socks. Traditional copper utensils known as 'Tamta' make unique souvenirs, particularly from Almora. Wooden crafts from Kumaon feature intricate carvings on masks, walking sticks, and decorative items. Local food products worth purchasing include pine honey, Rhododendron (Buransh) juice, various pickles, Kumaoni spices, and local millets. Pahadi paintings depicting religious themes and miniature art styles are available in cultural centers. For shopping destinations, visit Mall Road in Mussoorie and Nainital, Tibetan Market in Dehradun, Gandhi Road in Rishikesh, and state government emporiums in major towns for certified authentic crafts. Village haats (weekly markets) offer genuine local products at better prices, although bargaining is expected in most non-fixed price shops."
+      "Uttarakhand offers diverse shopping experiences for authentic local products. Woolen items are popular, including Pashmina shawls, Angora products from Uttarkashi, and colorful hand-knitted sweaters, caps, and socks. Traditional copper utensils known as 'Tamta' make unique souvenirs, particularly from Almora. Wooden crafts from Kumaon feature intricate carvings on masks, walking sticks, and decorative items. Local food products worth purchasing include pine honey, Rhododendron (Buransh) juice, various pickles, Kumaoni spices, and local millets. Pahadi paintings depicting religious themes and miniature art styles are available in cultural centers. For shopping destinations, visit Mall Road in Mussoorie and Nainital, Tibetan Market in Dehradun, Gandhi Road in Rishikesh, and state government emporiums in major towns for certified authentic crafts. Village haats (weekly markets) offer genuine local products at better prices, although bargaining is expected in most non-fixed price shops.",
   },
   {
     id: "q20",
-    question: "How is the mobile connectivity and internet access throughout Uttarakhand?",
+    question:
+      "How is the mobile connectivity and internet access throughout Uttarakhand?",
     answer:
-      "Mobile connectivity and internet access vary significantly across Uttarakhand. Major towns like Dehradun, Haridwar, Rishikesh, Mussoorie, and Nainital have reliable 4G coverage from all major Indian telecom providers (Jio, Airtel, Vi, BSNL). Popular tourist destinations generally maintain steady connectivity. However, in remote areas, mountainous regions, and deep valleys, network coverage becomes limited or non-existent. BSNL typically has the widest coverage in remote areas, though signal strength may be inconsistent. During the Char Dham pilgrimage routes, connectivity is available at major stops but may disappear between locations. High-altitude trekking routes often have no connectivity for days. Internet cafes exist in larger towns, and most hotels and restaurants in tourist areas offer Wi-Fi, though speed may be slower than urban standards. For critical communication needs during remote travel, consider renting satellite phones where legally permitted. It's advisable to download offline maps, complete important communications before heading to remote areas, and inform family or friends about potential communication blackout periods."
-  }
+      "Mobile connectivity and internet access vary significantly across Uttarakhand. Major towns like Dehradun, Haridwar, Rishikesh, Mussoorie, and Nainital have reliable 4G coverage from all major Indian telecom providers (Jio, Airtel, Vi, BSNL). Popular tourist destinations generally maintain steady connectivity. However, in remote areas, mountainous regions, and deep valleys, network coverage becomes limited or non-existent. BSNL typically has the widest coverage in remote areas, though signal strength may be inconsistent. During the Char Dham pilgrimage routes, connectivity is available at major stops but may disappear between locations. High-altitude trekking routes often have no connectivity for days. Internet cafes exist in larger towns, and most hotels and restaurants in tourist areas offer Wi-Fi, though speed may be slower than urban standards. For critical communication needs during remote travel, consider renting satellite phones where legally permitted. It's advisable to download offline maps, complete important communications before heading to remote areas, and inform family or friends about potential communication blackout periods.",
+  },
 ];
 
 const AIChatPopup = () => {
@@ -308,9 +313,15 @@ const AIChatPopup = () => {
     setShowSuggestions(!showSuggestions);
   };
 
+  useEffect(() => {
+    if (!isOpen) {
+      localStorage.removeItem("chatMessages");
+      initializeDefaultMessage();
+    }
+  }, [isOpen]);
+
   return (
     <div className="relative">
-      {/* Chat button - responsive for all devices */}
       <button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-[#205781] text-white rounded-full p-3 sm:p-4 shadow-lg transition-all duration-300 z-10 flex items-center space-x-1 sm:space-x-2"
@@ -332,14 +343,12 @@ const AIChatPopup = () => {
         <span className="hidden sm:inline">Chat with AI</span>
       </button>
 
-      {/* Chat popup - fully responsive */}
       {isOpen && (
         <div className="fixed inset-0 bg-gray-200 bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
           <div
             ref={popupRef}
             className="flex flex-col w-full h-full sm:h-[90vh] md:w-[85vw] lg:w-[75vw] xl:w-[65vw] bg-gray-50 rounded-lg sm:rounded-xl shadow-2xl overflow-hidden animate-fadeIn"
           >
-            {/* Header */}
             <div className="bg-[#205781] text-white p-3 sm:p-4 flex items-center justify-between">
               <div className="flex items-center">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 flex items-center justify-center mr-2 sm:mr-3">
@@ -394,7 +403,6 @@ const AIChatPopup = () => {
               </div>
             </div>
 
-            {/* Messages area */}
             <div className="flex-1 overflow-y-auto p-3 sm:p-4 bg-gray-100">
               {messages.map((message, index) => (
                 <div
@@ -490,7 +498,6 @@ const AIChatPopup = () => {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Suggestions section - collapsible on mobile */}
             <div className="bg-white border-t border-gray-200">
               <div className="p-2 sm:p-3">
                 <div className="flex justify-between items-center">
@@ -549,9 +556,7 @@ const AIChatPopup = () => {
                         onClick={() => handleQuestionSelect(qa.id)}
                         className="text-blue-600 bg-blue-50 hover:bg-blue-100 transition-colors text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-1 rounded-full whitespace-nowrap"
                       >
-                        {qa.question.length > 60
-                          ? qa.question.substring(0, 80) + "..."
-                          : qa.question}
+                        {qa.question}
                       </button>
                     ))}
                   </div>
