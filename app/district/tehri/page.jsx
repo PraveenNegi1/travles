@@ -56,6 +56,12 @@ const Page = () => {
         "Khatling glacier is located in district Tehri Garhwal of Uttarakhand, the state which is known for his high, calm and beautiful hills.",
       image: "/khatling-glacier.jpg",
     },
+    {
+      name: "Panwali Kantha ( Bugyal )",
+      description:
+        "Panwali Kantha is a beautiful meadow located in the Tehri Garhwal district. It is known for its lush green landscapes and panoramic views of the Himalayas.",
+      image: "/images/panwali-kantha-trek.jpg",
+    },
   ];
 
   const CountUp = ({ end, duration }) => {
