@@ -8,12 +8,12 @@ const Laptop = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [videoSrc, setVideoSrc] = useState("/solarVideo.mp4");
+  const [videoSrc, setVideoSrc] = useState("/video/travlevideo.mp4");
   useEffect(() => {
     const checkMobile = () => {
       const isMobileView = window.innerWidth < 768;
       setIsMobile(isMobileView);
-      setVideoSrc(isMobileView ? "/solarVideoSmall.mp4" : "/solarVideo.mp4");
+      setVideoSrc(isMobileView ? "/video/travlevideo.mp4" : "/video/travlevideo.mp4");
     };
     checkMobile();
     window.addEventListener("resize", checkMobile);
