@@ -64,7 +64,7 @@ const Navbar = () => {
       icon: <Mountain size={20} strokeWidth={2} />,
     },
     {
-     href:"/contact",
+      href: "/contact",
       label: "Contact Us",
       icon: <Phone size={20} strokeWidth={2} />,
     },
@@ -169,7 +169,6 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
