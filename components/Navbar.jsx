@@ -64,7 +64,7 @@ const Navbar = () => {
       icon: <Mountain size={20} strokeWidth={2} />,
     },
     {
-      href: "/Contect",
+     href:"/contact",
       label: "Contact Us",
       icon: <Phone size={20} strokeWidth={2} />,
     },
@@ -144,7 +144,7 @@ const Navbar = () => {
             </ul>
 
             <Link
-              href="/Contect"
+              href="/contact"
               className={`font-medium px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-1.5 text-sm lg:text-base hover:scale-105 ${
                 pathname === "/Contect"
                   ? "bg-white text-[#205781] shadow-md"

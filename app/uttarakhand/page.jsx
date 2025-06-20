@@ -114,7 +114,6 @@ const diversityData = [
     id: "garhwal",
     title: "Diversity of Garhwal",
     image: "/garhwal.jpg",
-
     contentAnimation: {
       hidden: { y: -100, opacity: 0 },
       visible: { y: 0, opacity: 1 },
@@ -161,7 +160,6 @@ const diversityData = [
     id: "kumaon",
     title: "Diversity of Kumaon",
     image: "/kumon.jpg",
-
     contentAnimation: {
       hidden: { y: 100, opacity: 0 },
       visible: { y: 0, opacity: 1 },
@@ -211,6 +209,142 @@ const diversityData = [
   },
 ];
 
+const geographyData = [
+  {
+    id: "uttarakhand",
+    title: "Geography of Uttarakhand",
+    image: "/uttarakhand-geography.jpg",
+    contentAnimation: {
+      hidden: { y: 100, opacity: 0 },
+      visible: { y: 0, opacity: 1 },
+    },
+    imageAnimation: {
+      hidden: { x: -100, opacity: 0 },
+      visible: { x: 0, opacity: 1 },
+    },
+    content: [
+      {
+        label: "🏔️ Himalayan Landscape:",
+        text: "Located in northern India, Uttarakhand spans 53,483 km², with 86% of its terrain being mountainous, dominated by the Himalayas.",
+      },
+      {
+        label: "🌍 Regional Divisions:",
+        text: "Divided into two regions: Garhwal in the west and Kumaon in the east, separated by the Nanda Devi mountain range.",
+      },
+      {
+        label: "🗻 Major Peaks:",
+        list: [
+          "Nanda Devi (7,816 m, second-highest peak in India)",
+          "Kamet (7,756 m)",
+          "Badrinath (7,138 m)",
+        ],
+      },
+      {
+        label: "🌊 Rivers and Glaciers:",
+        text: "The Ganges and Yamuna originate from Gangotri and Yamunotri glaciers, respectively, with other rivers like Alaknanda and Bhagirathi shaping the landscape.",
+      },
+      {
+        label: "🌲 Forest Cover:",
+        text: "Approximately 65% of the state is forested, supporting diverse flora and fauna, including rare medicinal herbs and wildlife like snow leopards and tigers.",
+      },
+      {
+        label: "🏞️ National Parks:",
+        list: [
+          "Jim Corbett National Park (India’s first tiger reserve)",
+          "Valley of Flowers (UNESCO World Heritage Site)",
+          "Nanda Devi National Park (UNESCO World Heritage Site)",
+        ],
+      },
+    ],
+  },
+  {
+    id: "garhwal",
+    title: "Geography of Garhwal",
+    image: "/garhwal-geography.jpg",
+    contentAnimation: {
+      hidden: { y: -100, opacity: 0 },
+      visible: { y: 0, opacity: 1 },
+    },
+    imageAnimation: {
+      hidden: { x: 100, opacity: 0 },
+      visible: { x: 0, opacity: 1 },
+    },
+    content: [
+      {
+        label: "🌄 Mountainous Terrain:",
+        text: "Garhwal, in western Uttarakhand, is characterized by rugged Himalayan peaks and deep valleys, covering districts like Dehradun, Haridwar, and Chamoli.",
+      },
+      {
+        label: "🗻 Key Peaks:",
+        list: [
+          "Chaukhamba (7,138 m)",
+          "Trisul (7,120 m)",
+          "Gangotri Group (6,672–6,856 m)",
+        ],
+      },
+      {
+        label: "🌊 Sacred Rivers:",
+        text: "The Ganges, formed by the confluence of the Alaknanda and Bhagirathi at Devprayag, originates here, along with the Yamuna from Yamunotri.",
+      },
+      {
+        label: "🏞️ Natural Wonders:",
+        text: "Home to the Valley of Flowers, a UNESCO site known for its alpine meadows, and Hemkund Sahib, a high-altitude lake and pilgrimage site.",
+      },
+      {
+        label: "🌲 Biodiversity:",
+        text: "Dense forests of pine, deodar, and oak support wildlife like Himalayan tahr, musk deer, and monal pheasants.",
+      },
+      {
+        label: "⛷️ Adventure Hub:",
+        text: "Auli, a renowned skiing destination, offers stunning views of Nanda Devi and other peaks.",
+      },
+    ],
+  },
+  {
+    id: "kumaon",
+    title: "Geography of Kumaon",
+    image: "/kumaon-geography.jpg",
+    contentAnimation: {
+      hidden: { y: 100, opacity: 0 },
+      visible: { y: 0, opacity: 1 },
+    },
+    imageAnimation: {
+      hidden: { x: -100, opacity: 0 },
+      visible: { x: 0, opacity: 1 },
+    },
+    content: [
+      {
+        label: "🏞️ Scenic Hills:",
+        text: "Kumaon, in eastern Uttarakhand, features rolling hills and lakes, covering districts like Nainital, Almora, and Pithoragarh.",
+      },
+      {
+        label: "🗻 Prominent Peaks:",
+        list: [
+          "adi kailash (5,945 m)",
+          "Panchachuli (6,355–6,904 m)",
+          "Nanda Kot (6,861 m)",
+        ],
+      },
+      {
+        label: "🌊 Lakes and Rivers:",
+        text: "Known for lakes like Nainital, Bhimtal, and Sattal, with rivers like Kali and Gori flowing through the region.",
+      },
+      {
+        label: "🐅 Wildlife Reserves:",
+        text: "Jim Corbett National Park, India’s first tiger reserve, is a biodiversity hotspot with tigers, elephants, and over 600 bird species.",
+      },
+      {
+        label: "🌲 Forested Hills:",
+        text: "Oak and rhododendron forests dominate, supporting wildlife like leopards, barking deer, and Himalayan black bears.",
+      },
+      {
+        label: "🌄 Viewpoints:",
+        text: "Kausani and Ranikhet offer panoramic Himalayan views, with Kausani famously called the 'Switzerland of India' by Mahatma Gandhi.",
+      },
+    ],
+  },
+];
+
 const DiversityPage = () => {
   const [activeTab, setActiveTab] = useState("diversity");
 
@@ -242,6 +376,16 @@ const DiversityPage = () => {
               }`}
             >
               Rich History
+            </button>
+            <button
+              onClick={() => setActiveTab("geography")}
+              className={`py-1 px-6 rounded-full md:text-[20px] text-[16px] font-medium transition-all duration-200 ${
+                activeTab === "geography"
+                  ? "bg-[#205781] text-white shadow-sm"
+                  : "text-gray-600 hover:text-[#205781]"
+              }`}
+            >
+              Geography
             </button>
           </div>
         </div>
@@ -323,193 +467,152 @@ const DiversityPage = () => {
               </div>
             ))}
           </div>
+        ) : activeTab === "history" ? (
+          <div className="space-y-24">
+            {Object.values(historyData).map((region, index) => (
+              <div key={index} className="group">
+                <div
+                  className={`flex flex-col lg:flex-row ${
+                    index % 2 !== 0 ? "lg:flex-row-reverse" : ""
+                  } items-center rounded-2xl shadow-xl overflow-hidden bg-white transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1`}
+                >
+                  <motion.div
+                    className="lg:w-1/2 relative overflow-hidden h-64 sm:h-80 md:h-96 lg:h-auto"
+                    initial={{ x: index % 2 !== 0 ? 100 : -100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                  >
+                    <Image
+                      src={region.image}
+                      alt={region.title}
+                      width={800}
+                      height={600}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60"></div>
+                    <h2 className="absolute bottom-6 left-6 lg:hidden text-3xl font-bold text-white mb-2 font-serif">
+                      {region.title}
+                    </h2>
+                  </motion.div>
+
+                  <motion.div
+                    className="p-6 sm:p-8 lg:p-10 lg:w-1/2"
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{
+                      duration: 0.8,
+                      ease: "easeOut",
+                      staggerChildren: 0.1,
+                      delayChildren: 0.2,
+                    }}
+                  >
+                    <h2 className="hidden lg:block text-3xl lg:text-4xl font-bold text-gray-800 mb-6 font-serif border-l-4 border-[#205781] pl-4">
+                      {region.title}
+                    </h2>
+                    <ul className="text-gray-700 space-y-4 md:text-lg leading-relaxed">
+                      {region.content.map((item, idx) => (
+                        <motion.li
+                          key={idx}
+                          variants={{
+                            hidden: { y: 20, opacity: 0 },
+                            visible: { y: 0, opacity: 1 },
+                          }}
+                          initial="hidden"
+                          whileInView="visible"
+                          viewport={{ once: true }}
+                          transition={{ delay: idx * 0.1 }}
+                          className="bg-gray-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+                        >
+                          <span className="font-semibold text-gray-900 block mb-1">
+                            {item.label}
+                          </span>
+                          <span>{item.text}</span>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </div>
+              </div>
+            ))}
+          </div>
         ) : (
           <div className="space-y-24">
-            <div className="group">
-              <div className="flex flex-col lg:flex-row items-center rounded-2xl shadow-xl overflow-hidden bg-white transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
-                <motion.div
-                  className="lg:w-1/2 relative overflow-hidden h-64 sm:h-80 md:h-96 lg:h-auto"
-                  initial={{ x: -100, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 1, ease: "easeOut" }}
+            {geographyData.map((region, index) => (
+              <div key={region.id} className="group">
+                <div
+                  className={`flex flex-col lg:flex-row ${
+                    index % 2 !== 0 ? "lg:flex-row-reverse" : ""
+                  } items-center rounded-2xl shadow-xl overflow-hidden bg-white transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1`}
                 >
-                  <Image
-                    src={historyData.uttarakhand.image}
-                    alt={historyData.uttarakhand.title}
-                    width={800}
-                    height={600}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60"></div>
-                  <h2 className="absolute bottom-6 left-6 lg:hidden text-3xl font-bold text-white mb-2 font-serif">
-                    {historyData.uttarakhand.title}
-                  </h2>
-                </motion.div>
+                  <motion.div
+                    className="lg:w-1/2 relative overflow-hidden h-64 sm:h-80 md:h-96 lg:h-auto"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    variants={region.imageAnimation}
+                  >
+                    <Image
+                      src={region.image}
+                      alt={region.title}
+                      width={800}
+                      height={600}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60"></div>
+                    <h2 className="absolute bottom-6 left-6 lg:hidden text-3xl font-bold text-white mb-2 font-serif">
+                      {region.title}
+                    </h2>
+                  </motion.div>
 
-                <motion.div
-                  className="p-6 sm:p-8 lg:p-10 lg:w-1/2"
-                  initial={{ y: 50, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{
-                    duration: 0.8,
-                    ease: "easeOut",
-                    staggerChildren: 0.1,
-                    delayChildren: 0.2,
-                  }}
-                >
-                  <h2 className="hidden lg:block text-3xl lg:text-4xl font-bold text-gray-800 mb-6 font-serif border-l-4 border-[#205781] pl-4">
-                    {historyData.uttarakhand.title}
-                  </h2>
-                  <ul className="text-gray-700 space-y-4 md:text-lg leading-relaxed">
-                    {historyData.uttarakhand.content.map((item, idx) => (
-                      <motion.li
-                        key={idx}
-                        variants={{
-                          hidden: { y: 20, opacity: 0 },
-                          visible: { y: 0, opacity: 1 },
-                        }}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="bg-gray-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                      >
-                        <span className="font-semibold text-gray-900 block mb-1">
-                          {item.label}
-                        </span>
-                        <span>{item.text}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </motion.div>
+                  <motion.div
+                    className="p-6 sm:p-8 lg:p-10 lg:w-1/2"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{
+                      duration: 0.8,
+                      ease: "easeOut",
+                      staggerChildren: 0.1,
+                      delayChildren: 0.2,
+                    }}
+                    variants={region.contentAnimation}
+                  >
+                    <h2 className="hidden lg:block text-3xl lg:text-4xl font-bold text-gray-800 mb-6 font-serif border-l-4 border-[#205781] pl-4">
+                      {region.title}
+                    </h2>
+                    <ul className="text-gray-700 space-y-4 md:text-lg leading-relaxed">
+                      {region.content.map((item, idx) => (
+                        <motion.li
+                          key={idx}
+                          variants={{
+                            hidden: { y: 20, opacity: 0 },
+                            visible: { y: 0, opacity: 1 },
+                          }}
+                          className="bg-gray-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+                        >
+                          <span className="font-semibold text-gray-900 block mb-1">
+                            {item.label}
+                          </span>
+                          {item.text && <span>{item.text}</span>}
+                          {item.list && (
+                            <ul className="pl-6 mt-2 space-y-1 list-disc marker:text-[#205781]">
+                              {item.list.map((subItem, subIdx) => (
+                                <li key={subIdx} className="text-gray-600">
+                                  {subItem}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </div>
               </div>
-            </div>
-
-            <div className="group">
-              <div className="flex flex-col lg:flex-row-reverse items-center rounded-2xl shadow-xl overflow-hidden bg-white transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
-                <motion.div
-                  className="lg:w-1/2 relative overflow-hidden h-64 sm:h-80 md:h-96 lg:h-auto"
-                  initial={{ x: 100, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                >
-                  <Image
-                    src={historyData.garhwal.image}
-                    alt={historyData.garhwal.title}
-                    width={800}
-                    height={600}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60"></div>
-                  <h2 className="absolute bottom-6 left-6 lg:hidden text-3xl font-bold text-black mb-2 font-serif">
-                    {historyData.garhwal.title}
-                  </h2>
-                </motion.div>
-
-                <motion.div
-                  className="p-6 sm:p-8 lg:p-10 lg:w-1/2"
-                  initial={{ y: 50, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{
-                    duration: 0.8,
-                    ease: "easeOut",
-                    staggerChildren: 0.1,
-                    delayChildren: 0.2,
-                  }}
-                >
-                  <h2 className="hidden lg:block text-3xl lg:text-4xl font-bold text-gray-800 mb-6 font-serif border-l-4 border-[#205781] pl-4">
-                    {historyData.garhwal.title}
-                  </h2>
-                  <ul className="text-gray-700 space-y-4 md:text-lg leading-relaxed">
-                    {historyData.garhwal.content.map((item, idx) => (
-                      <motion.li
-                        key={idx}
-                        variants={{
-                          hidden: { y: 20, opacity: 0 },
-                          visible: { y: 0, opacity: 1 },
-                        }}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="bg-gray-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                      >
-                        <span className="font-semibold text-gray-900 block mb-1">
-                          {item.label}
-                        </span>
-                        <span>{item.text}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </motion.div>
-              </div>
-            </div>
-
-            <div className="group">
-              <div className="flex flex-col lg:flex-row items-center rounded-2xl shadow-xl overflow-hidden bg-white transition-all duration-300 hover:shadow-2xl transform hover:-translate-y-1">
-                <motion.div
-                  className="lg:w-1/2 relative overflow-hidden h-64 sm:h-80 md:h-96 lg:h-auto"
-                  initial={{ x: -100, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                >
-                  <Image
-                    src={historyData.kumaon.image}
-                    alt={historyData.kumaon.title}
-                    width={800}
-                    height={600}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60"></div>
-                  <h2 className="absolute bottom-6 left-6 lg:hidden text-3xl font-bold text-black mb-2 font-serif">
-                    {historyData.kumaon.title}
-                  </h2>
-                </motion.div>
-
-                <motion.div
-                  className="p-6 sm:p-8 lg:p-10 lg:w-1/2"
-                  initial={{ y: 50, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{
-                    duration: 0.8,
-                    ease: "easeOut",
-                    staggerChildren: 0.1,
-                    delayChildren: 0.2,
-                  }}
-                >
-                  <h2 className="hidden lg:block text-3xl lg:text-4xl font-bold text-gray-800 mb-6 font-serif border-l-4 border-[#205781] pl-4">
-                    {historyData.kumaon.title}
-                  </h2>
-                  <ul className="text-gray-700 space-y-4 md:text-lg leading-relaxed">
-                    {historyData.kumaon.content.map((item, idx) => (
-                      <motion.li
-                        key={idx}
-                        variants={{
-                          hidden: { y: 20, opacity: 0 },
-                          visible: { y: 0, opacity: 1 },
-                        }}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="bg-gray-50 p-3 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
-                      >
-                        <span className="font-semibold text-gray-900 block mb-1">
-                          {item.label}
-                        </span>
-                        <span>{item.text}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                </motion.div>
-              </div>
-            </div>
+            ))}
           </div>
         )}
       </div>
