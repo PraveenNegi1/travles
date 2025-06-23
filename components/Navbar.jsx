@@ -97,20 +97,21 @@ const Navbar = () => {
         }`}
       >
         <div className="mx-auto px-4 py-2 sm:px-6 flex justify-between items-center overflow-hidden">
-          <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5, ease: "easeInOut" }}
-            className="flex items-center space-x-2"
-          >
-            <div className="bg-white text-[#205781] p-2 md:p-2 rounded-full shadow-md">
-              <Map size={18} className="md:w-5 md:h-5" />
-            </div>
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#FAF1E6] tracking-wide merriweather">
-              Travels
-            </h1>
-          </motion.div>
-
+          <Link href="/">
+            <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5, ease: "easeInOut" }}
+              className="flex items-center space-x-2 cursor-pointer"
+            >
+              <div className="bg-white text-[#205781] p-2 md:p-2 rounded-full shadow-md">
+                <Map size={18} className="md:w-5 md:h-5" />
+              </div>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#FAF1E6] tracking-wide merriweather">
+                Travels
+              </h1>
+            </motion.div>
+          </Link>
           <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
             <ul className="flex space-x-2 lg:space-x-4 merriweather">
               {navItems.slice(0, 5).map((item) => (

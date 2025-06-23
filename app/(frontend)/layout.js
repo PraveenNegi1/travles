@@ -1,10 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "/app/globals.css";
+import { Toaster } from "react-hot-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GlobalButton from "@/components/GlobalButton";
 import AIChatPopup from "@/components/Aibot";
-import { Toaster } from "react-hot-toast"; // ✅ import toast component
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,12 +23,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <Navbar />
+      <Toaster position="top-center" reverseOrder={false} />
+      {children}
+      <GlobalButton />
+      <AIChatPopup />
+      <Footer />
+    </body>
   );
 }
