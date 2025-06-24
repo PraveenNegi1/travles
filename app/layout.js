@@ -1,4 +1,6 @@
+import GlobalButton from "@/components/GlobalButton";
 import "./globals.css";
+import AIChatPopup from "@/components/Aibot";
 
 export const metadata = {
   title: "Travles",
@@ -8,7 +10,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>{children}
+        <GlobalButton />
+        <AIChatPopup />
+      </body>
     </html>
   );
 }

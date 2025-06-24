@@ -323,7 +323,7 @@ const AIChatPopup = () => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-[#205781] text-white rounded-full p-3 sm:p-4 shadow-lg transition-all duration-300 z-10 flex items-center space-x-1 sm:space-x-2"
+        className="fixed bottom-4 right-14 sm:bottom-6 sm:right-16 bg-[#205781] text-white rounded-full p-3 sm:p-4 shadow-lg transition-all duration-300 z-10 flex items-center space-x-1 sm:space-x-2"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

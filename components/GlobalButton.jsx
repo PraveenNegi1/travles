@@ -3,18 +3,12 @@ import React, { useState, useEffect, useRef } from "react";
 
 export default function GlobalButton() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const checkDeviceType = () => {
-      const isMobileTabletView = window.innerWidth < 1024;
-      setIsMobileOrTablet(isMobileTabletView);
-    };
-
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Button is visible when scrolling up and not at the top of the page
       if (currentScrollY < lastScrollY.current && currentScrollY > 100) {
         setIsVisible(true);
@@ -25,13 +19,10 @@ export default function GlobalButton() {
       lastScrollY.current = currentScrollY;
     };
 
-    checkDeviceType();
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", checkDeviceType);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", checkDeviceType);
     };
   }, []);
 
@@ -44,9 +35,9 @@ export default function GlobalButton() {
 
   return (
     <>
-      {isVisible && isMobileOrTablet && (
+      {isVisible && (
         <button
-          className="fixed   left-1/2 bottom-8  p-3 bg-white text-[#205781] border-[#205781] border-2 rounded-2xl shadow-lg hover:bg-[#485f76] transition-colors duration-300  z-50"
+          className="fixed right-2 bottom-8 p-3 bg-white text-[#205781] border-[#205781] border-2 rounded-2xl shadow-lg hover:bg-[#485f76] transition-colors duration-300 z-50"
           onClick={scrollToTop}
         >
           <svg
