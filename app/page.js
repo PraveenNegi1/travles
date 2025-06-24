@@ -1,8 +1,4 @@
-import HomePage from "@/components/home";
 import HomePage1 from "@/components/HomePage1";
-import BadyaYantra from "@/components/Instrumant";
-import Laptop from "@/components/Laptop";
-import SacredDestinations from "@/components/SacredDestinations";
 
 export default function Home() {
   return (
