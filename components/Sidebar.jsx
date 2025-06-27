@@ -21,7 +21,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-60 h-screen bg-white dark:bg-gray-900 shadow-lg border-r border-gray-200 dark:border-gray-700 p-4 hidden sm:block transition-colors">
+    <aside className="w-60 font-serif h-screen bg-white dark:bg-gray-900 shadow-lg border-r border-gray-200 dark:border-gray-700 p-4 hidden sm:block transition-colors">
       <h2 className="text-xl font-bold text-blue-700 dark:text-yellow-300 mb-6">
         Dashboard
       </h2>

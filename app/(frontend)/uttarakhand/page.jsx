@@ -213,7 +213,7 @@ const geographyData = [
   {
     id: "uttarakhand",
     title: "Geography of Uttarakhand",
-    image: "/uttarakhand-geography.jpg",
+    image: "/images/Uttarakhand-Physical-Map-.png",
     contentAnimation: {
       hidden: { y: 100, opacity: 0 },
       visible: { y: 0, opacity: 1 },
@@ -260,7 +260,7 @@ const geographyData = [
   {
     id: "garhwal",
     title: "Geography of Garhwal",
-    image: "/garhwal-geography.jpg",
+    image: "/images/Location-map-of-Garhwal-Himalaya.png",
     contentAnimation: {
       hidden: { y: -100, opacity: 0 },
       visible: { y: 0, opacity: 1 },
@@ -303,7 +303,7 @@ const geographyData = [
   {
     id: "kumaon",
     title: "Geography of Kumaon",
-    image: "/kumaon-geography.jpg",
+    image: "/images/Three-Sub-cultural-realms-of-the-Kumaon-Himalaya.png",
     contentAnimation: {
       hidden: { y: 100, opacity: 0 },
       visible: { y: 0, opacity: 1 },

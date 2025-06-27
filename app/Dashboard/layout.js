@@ -2,7 +2,7 @@
 "use client";
 import { ThemeProvider } from "@/context/ThemeContext";
 import ThemeToggle from "@/components/ThemeToggle";
-import Sidebar from "@/components/Sidebar"; // Assume you have this
+import Sidebar from "@/components/Sidebar"; 
 
 export default function DashboardLayout({ children }) {
   return (

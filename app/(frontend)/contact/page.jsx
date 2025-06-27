@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
@@ -9,12 +9,33 @@ import toast from "react-hot-toast";
 function FormPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [source, setSource] = useState("Direct");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
+
+  // ✅ Detect lead source from URL or referrer
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmSource = urlParams.get("utm_source");
+    const referrer = document.referrer;
+
+    if (utmSource) {
+      setSource(utmSource);
+    } else if (referrer) {
+      try {
+        const ref = new URL(referrer);
+        setSource(ref.hostname); // Only domain, like "google.com"
+      } catch {
+        setSource(referrer); // Fallback full URL
+      }
+    } else {
+      setSource("Direct");
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,6 +50,7 @@ function FormPage() {
       await addDoc(collection(db, "contacts"), {
         ...formData,
         createdAt: Timestamp.now(),
+        source, // 🔥 Save the detected source here
       });
 
       toast.success("Message sent successfully!");
@@ -68,9 +90,7 @@ function FormPage() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="group">
-              <label className="block text-gray-600 font-medium mb-1 text-sm">
-                Name
-              </label>
+              <label className="block text-gray-600 font-medium mb-1 text-sm">Name</label>
               <input
                 type="text"
                 name="name"
@@ -83,9 +103,7 @@ function FormPage() {
             </div>
 
             <div className="group">
-              <label className="block text-gray-600 font-medium mb-1 text-sm">
-                Email
-              </label>
+              <label className="block text-gray-600 font-medium mb-1 text-sm">Email</label>
               <input
                 type="email"
                 name="email"
@@ -98,9 +116,7 @@ function FormPage() {
             </div>
 
             <div className="group">
-              <label className="block text-gray-600 font-medium mb-1 text-sm">
-                Phone
-              </label>
+              <label className="block text-gray-600 font-medium mb-1 text-sm">Phone</label>
               <input
                 type="tel"
                 name="phone"
@@ -113,9 +129,7 @@ function FormPage() {
             </div>
 
             <div className="group">
-              <label className="block text-gray-600 font-medium mb-1 text-sm">
-                Message
-              </label>
+              <label className="block text-gray-600 font-medium mb-1 text-sm">Message</label>
               <textarea
                 name="message"
                 value={formData.message}
@@ -140,19 +154,8 @@ function FormPage() {
                     fill="none"
                     viewBox="0 0 24 24"
                   >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    />
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.37 0 0 5.37 0 12h4z"
-                    />
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.37 0 0 5.37 0 12h4z" />
                   </svg>
                   Submitting...
                 </span>
@@ -161,6 +164,11 @@ function FormPage() {
               )}
             </button>
           </form>
+
+          {/* Display detected source for debugging */}
+          <p className="text-xs text-gray-400 mt-4 text-center">
+            <span className="font-medium">Source:</span> {source}
+          </p>
         </div>
       </div>
     </div>

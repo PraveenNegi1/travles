@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>{children}
         <GlobalButton />
-        <AIChatPopup />
+        {/* <AIChatPopup /> */}
       </body>
     </html>
   );

@@ -54,7 +54,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-gradient-to-r from-[#1a4766] via-[#205781] to-[#1a4766] text-[#FAF1E6] py-10 sm:py-12 md:py-16 merriweather overflow-hidden">
+    <footer className="relative bg-gradient-to-r from-[#1a4766] via-[#205781] to-[#1a4766] text-[#FAF1E6] py-10 sm:py-12 md:py-16 merriweather overflow-hidden md:text-[18px]">
       {/* Wave Pattern */}
       <div className="absolute top-0 left-0 w-full h-16 bg-wave-pattern bg-repeat-x bg-[length:100px_16px] opacity-20"></div>
 
@@ -159,17 +159,7 @@ const Footer = () => {
               Quick Links
             </h2>
             <ul className="space-y-3">
-              <motion.li
-                whileHover={{ x: 5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <button
-                  onClick={handleScrollToTop}
-                  className="relative text-[#EDE4D3] text-sm sm:text-base font-medium transition duration-300 hover:text-[#FFD700] after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-[#FFD700] after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full flex items-center gap-2 mx-auto sm:mx-0"
-                >
-                  <FaArrowUp size={16} /> Back to Top
-                </button>
-              </motion.li>
+            
               <motion.li
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
