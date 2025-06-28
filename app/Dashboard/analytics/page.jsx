@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { format } from "date-fns";
+import { format, getDay } from "date-fns";
 import {
   BarChart,
   Bar,
@@ -22,14 +22,16 @@ import {
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
-
-
 export default function LeadsAnalytics() {
   const [data, setData] = useState([]);
   const [totalLeads, setTotalLeads] = useState(0);
   const [latestDate, setLatestDate] = useState("");
   const [peakDay, setPeakDay] = useState("");
   const [leadSources, setLeadSources] = useState([]);
+  const [avgLeads, setAvgLeads] = useState(0);
+  const [weekdayData, setWeekdayData] = useState([]);
+
+  const COLORS = ["#93c5fd", "#6ee7b7", "#fcd34d", "#fca5a5", "#a5b4fc"];
 
   useEffect(() => {
     const fetchLeads = async () => {
@@ -43,10 +45,14 @@ export default function LeadsAnalytics() {
         return acc;
       }, {});
 
-      const formatted = Object.entries(grouped).map(([date, count]) => ({
-        date,
-        count,
-      }));
+      const formatted = Object.entries(grouped)
+        .map(([date, count]) => ({
+          date,
+          count,
+          sortDate: new Date(`${date} 2024`),
+        }))
+        .sort((a, b) => a.sortDate - b.sortDate)
+        .map(({ date, count }) => ({ date, count }));
 
       const sourceGroup = raw.reduce((acc, item) => {
         const src = item.source || "Unknown";
@@ -68,11 +74,27 @@ export default function LeadsAnalytics() {
         curr.count > prev.count ? curr : prev
       );
 
-      setLeadSources(sourceFormatted);
+      const uniqueDays = new Set(formatted.map((d) => d.date));
+      const avgLeads = Math.round(raw.length / uniqueDays.size);
+
+      const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      const weekdayGroup = raw.reduce((acc, item) => {
+        const weekday = weekdays[getDay(item.createdAt.toDate())];
+        acc[weekday] = (acc[weekday] || 0) + 1;
+        return acc;
+      }, {});
+      const weekdayFormatted = weekdays.map((day) => ({
+        day,
+        count: weekdayGroup[day] || 0,
+      }));
+
       setData(formatted);
+      setLeadSources(sourceFormatted);
       setTotalLeads(raw.length);
       setLatestDate(format(sortedByDate[0], "dd MMM yyyy"));
       setPeakDay(`${max.date} (${max.count})`);
+      setAvgLeads(avgLeads);
+      setWeekdayData(weekdayFormatted);
     };
 
     fetchLeads();
@@ -80,7 +102,7 @@ export default function LeadsAnalytics() {
 
   return (
     <motion.div
-      className="p-4 sm:p-6 font-serif md:p-10 min-h-screen bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-800"
+      className="p-4 sm:p-6 font-serif md:p-10 md:ml-60 min-h-screen bg-gradient-to-br from-indigo-50 to-white dark:from-gray-900 dark:to-gray-800"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -88,9 +110,9 @@ export default function LeadsAnalytics() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-10">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-indigo-800 dark:text-white flex items-center gap-3">
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-700 dark:text-white flex items-center gap-3">
             <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-purple-400 blur-2xl animate-pulse dark:bg-blue-800" />
+              <div className="absolute inset-0 rounded-full bg-purple-300 blur-2xl animate-pulse dark:bg-blue-800" />
               <Sparkles className="relative text-indigo-600 dark:text-yellow-400 w-6 h-6 z-10" />
             </div>
             Analytics Dashboard
@@ -100,109 +122,139 @@ export default function LeadsAnalytics() {
           </p>
         </div>
 
-        {/* Summary Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-5 mb-10">
           {[
             { label: "Total Leads", value: totalLeads },
             { label: "Latest Submission", value: latestDate || "—" },
             { label: "Peak Day", value: peakDay || "—" },
+            { label: "Avg Leads / Day", value: avgLeads || "—" },
           ].map((item, i) => (
             <div
               key={i}
-              className="bg-white dark:bg-gray-800 border border-indigo-100 dark:border-gray-700 rounded-xl p-6 text-center shadow-md hover:shadow-xl transition-all"
+              className="bg-[#f9fafb] dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 text-center shadow-md hover:shadow-xl transition-all"
             >
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
                 {item.label}
               </p>
-              <p className="text-2xl font-bold text-indigo-800 dark:text-yellow-400">
+              <p className="text-2xl font-bold text-slate-700 dark:text-yellow-400">
                 {item.value}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {/* Bar Chart */}
-          <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-lg">
-            <h2 className="text-xl font-bold text-indigo-800 dark:text-yellow-300 mb-4">
-              📊 Leads Per Day
-            </h2>
-            {data.length === 0 ? (
-              <p className="text-gray-600 dark:text-gray-400">
-                No data available yet.
-              </p>
-            ) : (
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={data}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="date" stroke="#94a3b8" />
-                  <YAxis allowDecimals={false} stroke="#94a3b8" />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: "#1f2937",
-                      borderRadius: 8,
-                      border: "none",
-                      color: "white",
-                    }}
-                  />
-                  <Legend />
-                  <Bar
-                    dataKey="count"
-                    fill="url(#colorUv)"
-                    radius={[10, 10, 0, 0]}
-                  />
-                  <defs>
-                    <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#6366f1" stopOpacity={0.8} />
-                      <stop
-                        offset="95%"
-                        stopColor="#a5b4fc"
-                        stopOpacity={0.2}
-                      />
-                    </linearGradient>
-                  </defs>
-                </BarChart>
-              </ResponsiveContainer>
-            )}
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
+          <ChartCard title="📊 Leads Per Day">
+            <BarChartComponent data={data} />
+          </ChartCard>
 
-          {/* Line Chart */}
-          <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-lg">
-            <h2 className="text-xl font-bold text-indigo-800 dark:text-yellow-300 mb-4">
-              📈 Trend Overview
-            </h2>
-            {data.length === 0 ? (
-              <p className="text-gray-600 dark:text-gray-400">
-                No data available yet.
-              </p>
-            ) : (
-              <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={data}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="date" stroke="#94a3b8" />
-                  <YAxis allowDecimals={false} stroke="#94a3b8" />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: "#1f2937",
-                      borderRadius: 8,
-                      border: "none",
-                      color: "white",
-                    }}
-                  />
-                  <Legend />
-                  <Line
-                    type="monotone"
-                    dataKey="count"
-                    stroke="#10b981"
-                    strokeWidth={3}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            )}
-          </div>
+          <ChartCard title="📈 Trend Overview">
+            <LineChartComponent data={data} />
+          </ChartCard>
+        </div>
+
+        {/* Lead Sources & Weekday */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <ChartCard title="🧭 Lead Sources">
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={leadSources}
+                  cx="50%"  
+                  cy="50%"
+                  labelLine={false}
+                  label={({ name, value }) => `${name}: ${value}`}
+                  outerRadius={100}
+                  dataKey="value"
+                >
+                  {leadSources.map((_, index) => (
+                    <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+              </PieChart>
+            </ResponsiveContainer>
+          </ChartCard>
+
+          <ChartCard title="📅 Leads by Weekday">
+            <BarChartComponent data={weekdayData} xKey="day" />
+          </ChartCard>
         </div>
       </div>
     </motion.div>
+  );
+}
+
+// Chart wrapper with consistent styles
+function ChartCard({ title, children }) {
+  return (
+    <div className="bg-[#f9fafb] dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-lg">
+      <h2 className="text-xl font-bold text-slate-700 dark:text-yellow-300 mb-4">
+        {title}
+      </h2>
+      {children}
+    </div>
+  );
+}
+
+// Reusable Bar Chart
+function BarChartComponent({ data, xKey = "date" }) {
+  if (!data.length) {
+    return (
+      <p className="text-gray-600 dark:text-gray-400">No data available.</p>
+    );
+  }
+
+  return (
+    <ResponsiveContainer width="100%" height={300}>
+      <BarChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey={xKey} stroke="#94a3b8" />
+        <YAxis allowDecimals={false} stroke="#94a3b8" />
+        <Tooltip
+          contentStyle={{
+            backgroundColor: "#ffffff",
+            borderRadius: 8,
+            border: "1px solid #e5e7eb",
+            color: "#1f2937",
+            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.05)",
+          }}
+        />
+        <Bar dataKey="count" fill="#93c5fd" radius={[8, 8, 0, 0]} />
+      </BarChart>
+    </ResponsiveContainer>
+  );
+}
+
+// Reusable Line Chart
+function LineChartComponent({ data }) {
+  if (!data.length) {
+    return (
+      <p className="text-gray-600 dark:text-gray-400">No data available.</p>
+    );
+  }
+
+  return (
+    <ResponsiveContainer width="100%" height={300}>
+      <LineChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="date" stroke="#94a3b8" />
+        <YAxis allowDecimals={false} stroke="#94a3b8" />
+        <Tooltip
+          contentStyle={{
+            backgroundColor: "#ffffff",
+            borderRadius: 8,
+            border: "1px solid #e5e7eb",
+            color: "#1f2937",
+            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.05)",
+          }}
+        />
+        <Line
+          type="monotone"
+          dataKey="count"
+          stroke="#34d399"
+          strokeWidth={3}
+        />
+      </LineChart>
+    </ResponsiveContainer>
   );
 }

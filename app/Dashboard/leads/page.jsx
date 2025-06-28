@@ -58,19 +58,19 @@ export default function LeadsPage() {
     setSearchTerm(value);
     const filtered = leads.filter(
       (lead) =>
-        lead.name.toLowerCase().includes(value) ||
-        lead.email.toLowerCase().includes(value) ||
-        lead.phone.toLowerCase().includes(value)
+        lead.name?.toLowerCase().includes(value) ||
+        lead.email?.toLowerCase().includes(value) ||
+        lead.phone?.toLowerCase().includes(value)
     );
     setFilteredLeads(filtered);
-    setCurrentPage(1); // Reset to page 1 on search
+    setCurrentPage(1);
   };
 
   const handleDelete = async (id) => {
-    const confirm = window.confirm(
+    const confirmDelete = window.confirm(
       "Are you sure you want to delete this lead?"
     );
-    if (!confirm) return;
+    if (!confirmDelete) return;
 
     try {
       await deleteDoc(doc(db, "contacts", id));
@@ -92,14 +92,14 @@ export default function LeadsPage() {
 
   return (
     <motion.div
-      className="min-h-screen p-4 font-serif sm:p-6 bg-gradient-to-br from-sky-50 to-white dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100"
+      className="min-h-screen p-4 font-serif md:ml-60 sm:p-6 bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <div className="max-w-7xl mx-auto space-y-6">
         <motion.h1
-          className="text-3xl sm:text-4xl font-extrabold text-center text-blue-800 dark:text-yellow-400"
+          className="text-3xl sm:text-4xl font-extrabold text-center text-gray-700 dark:text-yellow-400"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -107,7 +107,6 @@ export default function LeadsPage() {
           🧾 Leads Dashboard
         </motion.h1>
 
-        {/* Search */}
         <div className="flex justify-end">
           <div className="relative w-full max-w-md">
             <input
@@ -121,7 +120,6 @@ export default function LeadsPage() {
           </div>
         </div>
 
-        {/* Table */}
         {loading ? (
           <div className="flex justify-center items-center h-40">
             <Loader2 className="h-6 w-6 animate-spin text-blue-600" />
@@ -134,13 +132,13 @@ export default function LeadsPage() {
         ) : (
           <div className="overflow-auto rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
             <table className="min-w-full table-auto">
-              <thead className="bg-sky-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 sticky top-0 z-10">
+              <thead className="bg-blue-100 dark:bg-gray-700 text-gray-800 dark:text-gray-100 sticky top-0 z-10">
                 <tr>
                   {["Name", "Email", "Phone", "Message", "Date", "Action"].map(
                     (heading) => (
                       <th
                         key={heading}
-                        className="px-4 py-3 text-left text-[18px] font-semibold whitespace-nowrap"
+                        className="px-4 py-3 text-left text-[17px] font-semibold whitespace-nowrap"
                       >
                         {heading}
                       </th>
@@ -152,7 +150,7 @@ export default function LeadsPage() {
                 {paginatedLeads.map((lead, i) => (
                   <motion.tr
                     key={lead.id}
-                    className="border-t border-gray-200 dark:border-gray-700 hover:bg-sky-50 dark:hover:bg-gray-700 transition-all text-[16px]"
+                    className="border-t border-gray-200 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-gray-700 transition-all text-[15px]"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.03 }}
@@ -188,13 +186,12 @@ export default function LeadsPage() {
           </div>
         )}
 
-        {/* Pagination Controls */}
         {filteredLeads.length > ITEMS_PER_PAGE && (
           <div className="flex justify-between items-center mt-6">
             <button
               disabled={currentPage === 1}
               onClick={() => setCurrentPage((prev) => prev - 1)}
-              className="flex items-center gap-1 px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium hover:bg-sky-50 dark:hover:bg-gray-700 disabled:opacity-50"
+              className="flex items-center gap-1 px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium hover:bg-blue-50 dark:hover:bg-gray-700 disabled:opacity-50"
             >
               <ChevronLeft className="w-4 h-4" /> Prev
             </button>
@@ -206,7 +203,7 @@ export default function LeadsPage() {
             <button
               disabled={currentPage === totalPages}
               onClick={() => setCurrentPage((prev) => prev + 1)}
-              className="flex items-center gap-1 px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium hover:bg-sky-50 dark:hover:bg-gray-700 disabled:opacity-50"
+              className="flex items-center gap-1 px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm font-medium hover:bg-blue-50 dark:hover:bg-gray-700 disabled:opacity-50"
             >
               Next <ChevronRight className="w-4 h-4" />
             </button>
