@@ -15,18 +15,17 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-useEffect(() => {
-  setUsername("");
-  setPassword("");
-  setShowPassword(false);
-  setError("");
+  useEffect(() => {
+    setUsername("");
+    setPassword("");
+    setShowPassword(false);
+    setError("");
 
-  const passwordInput = document.getElementById("password");
-  if (passwordInput) {
-    passwordInput.value = "";
-  }
-}, []);
-
+    const passwordInput = document.getElementById("password");
+    if (passwordInput) {
+      passwordInput.value = "";
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
