@@ -86,7 +86,7 @@ export default function LoginPage() {
 
       <div className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
         <Image
-          src="/logo/Animation.gif"
+          src="/logo/Animation-2.gif"
           alt="Car Animation"
           width={150}
           height={125}
