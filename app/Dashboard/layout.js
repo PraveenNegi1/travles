@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import ThemeToggle from "@/components/ThemeToggle";
 import Sidebar from "@/components/Sidebar"; 
 
-export default function DashboardLayout({ children }) {
+export default function dashboardLayout({ children }) {
   return (
     <ThemeProvider>
       <div className="flex min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">

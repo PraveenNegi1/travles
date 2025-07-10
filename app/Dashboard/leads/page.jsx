@@ -107,7 +107,7 @@ export default function LeadsPage() {
               <Users className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 dark:from-violet-400 dark:via-purple-400 dark:to-indigo-400 bg-clip-text text-transparent">
-              Leads Dashboard
+              Leads dashboard
             </h1>
             <Sparkles className="w-6 h-6 text-purple-500 dark:text-purple-400 animate-pulse" />
           </div>

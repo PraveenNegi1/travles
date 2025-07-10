@@ -58,7 +58,7 @@ export default function LoginPage() {
       document.cookie = `token=${token}; path=/;`;
       toast.success("🎉 Welcome back! Redirecting...");
       setTimeout(() => {
-        router.push("/Dashboard/leads");
+        router.push("/dashboard/leads");
       }, 1000);
     } catch (err) {
       toast.error("❌ Invalid email or password");
@@ -77,7 +77,7 @@ export default function LoginPage() {
       document.cookie = `token=${token}; path=/;`;
       toast.success("🚀 Google sign-in successful!");
       setTimeout(() => {
-        router.push("/Dashboard/leads");
+        router.push("/dashboard/leads");
       }, 1000);
     } catch (err) {
       if (err.code === "auth/popup-closed-by-user") {
@@ -166,7 +166,7 @@ export default function LoginPage() {
             </h1>
             <p className="text-white/70 text-sm flex items-center justify-center gap-2 font-medium">
               <Shield className="w-4 h-4" />
-              Secure Dashboard Access
+              Secure dashboard Access
               <Sparkles className="w-4 h-4" />
             </p>
           </div>

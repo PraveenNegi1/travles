@@ -203,7 +203,7 @@ export default function LeadsAnalytics() {
               </div>
               <div>
                 <h1 className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-gray-900 via-purple-900 to-violet-900 dark:from-white dark:via-purple-100 dark:to-violet-100 bg-clip-text text-transparent">
-                  Analytics Dashboard
+                  Analytics dashboard
                 </h1>
                 <p className="text-gray-600 dark:text-gray-300 mt-2 text-lg">
                   Visualize lead trends, sources, and engagement with real-time

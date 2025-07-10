@@ -3,8 +3,8 @@ import { NextResponse } from "next/server";
 export function middleware(request) {
   const token = request.cookies.get("token")?.value;
 
-  // Protect /Dashboard and /Dashboard/leads routes
-  if (request.nextUrl.pathname.startsWith("/Dashboard") && !token) {
+  // Protect /dashboard and /dashboard/leads routes
+  if (request.nextUrl.pathname.startsWith("/dashboard") && !token) {
     // Redirect to login if no token
     return NextResponse.redirect(new URL("/login", request.url));
   }
@@ -14,5 +14,5 @@ export function middleware(request) {
 
 // Specify the paths to apply the middleware
 export const config = {
-  matcher: ["/Dashboard/:path*"],
+  matcher: ["/dashboard/:path*"],
 };
