@@ -10,15 +10,15 @@ const historyData = {
     image: "/uttarakhand1.jpg",
     content: [
       {
-        label: "🏛️ Ancient Origins:",
+        label: " Ancient Origins:",
         text: "Known as 'Kedarkhand' in ancient times, the region finds mention in the Puranas and Mahabharata.",
       },
       {
-        label: "🏰 Medieval Period:",
+        label: " Medieval Period:",
         text: "Ruled by various dynasties including the Kunindas, Katyuris, Panwars, Karkotas, and Chands.",
       },
       {
-        label: "⚔️ Gorkha Invasion:",
+        label: " Gorkha Invasion:",
         text: "The Gorkhas of Nepal conquered the region in the late 18th century before being defeated by the British in 1815.",
       },
       {
@@ -26,11 +26,11 @@ const historyData = {
         text: "Following the Anglo-Nepalese War (1814-1816), the region was annexed to British India under the Treaty of Sugauli.",
       },
       {
-        label: "🪧 Separate State Movement:",
+        label: " Separate State Movement:",
         text: "The movement for a separate state gained momentum in the 1990s led by organizations like Uttarakhand Kranti Dal.",
       },
       {
-        label: "🗓️ Statehood:",
+        label: " Statehood:",
         text: "On November 9, 2000, Uttarakhand (initially named Uttaranchal) was carved out of Uttar Pradesh as the 27th state of India.",
       },
     ],
@@ -40,23 +40,23 @@ const historyData = {
     image: "/Garhwal-region.png",
     content: [
       {
-        label: "📜 Ancient Era:",
+        label: " Ancient Era:",
         text: "Originally known as 'Kedar Khand' in ancient Hindu texts, Garhwal was considered the abode of gods.",
       },
       {
-        label: "👑 Katyuri Dynasty:",
+        label: " Katyuri Dynasty:",
         text: "One of the earliest rulers (7th-11th century CE), who established their capital at Baijnath in present-day Kumaon.",
       },
       {
-        label: "🏯 Panwar Dynasty:",
+        label: " Panwar Dynasty:",
         text: "Following the decline of Katyuris, Garhwal was ruled by the Panwar dynasty for nearly 1000 years (823-1804 CE).",
       },
       {
-        label: "🛡️ Kingdom of Garhwal:",
+        label: " Kingdom of Garhwal:",
         text: "Established by Ajay Pal (1358), who unified 52 small garhs (fortresses) forming 'Garhwal' - the land of many forts.",
       },
       {
-        label: "⚔️ Gorkha Invasion:",
+        label: " Gorkha Invasion:",
         text: "In 1804, the Gorkhas invaded Garhwal, defeating King Pradyumna Shah. His son Sudarshan Shah reclaimed the western part with British help in 1815.",
       },
       {
@@ -74,23 +74,23 @@ const historyData = {
     image: "/Kumaon-region-Uttarakhand.png",
     content: [
       {
-        label: "🏺 Ancient History:",
+        label: " Ancient History:",
         text: "Archaeological evidence suggests human settlement since prehistoric times. The region is mentioned in ancient texts as 'Kurmanchal'.",
       },
       {
-        label: "👑 Katyuri Dynasty:",
+        label: " Katyuri Dynasty:",
         text: "The first major dynasty (7th-11th century CE) established their capital at Baijnath, building numerous temples and irrigation systems.",
       },
       {
-        label: "🏰 Chand Dynasty:",
+        label: " Chand Dynasty:",
         text: "Ruled from the 11th to 18th century, establishing their capital at Champawat and later shifting to Almora in 1563.",
       },
       {
-        label: "🏛️ Cultural Golden Age:",
+        label: " Cultural Golden Age:",
         text: "Under Chand rulers, particularly during Raja Baz Bahadur Chand's reign (1638-1678), Kumaon experienced cultural and artistic flourishing.",
       },
       {
-        label: "⚔️ Gorkha Invasion:",
+        label: " Gorkha Invasion:",
         text: "In 1790, the Gorkhas of Nepal invaded and conquered Kumaon, ending Chand rule. Their harsh administration led to local discontent.",
       },
       {
@@ -98,7 +98,7 @@ const historyData = {
         text: "Following the Anglo-Nepalese War, the British gained control of Kumaon in 1815 and established administrative headquarters at Nainital in 1841.",
       },
       {
-        label: "🪧 Freedom Movement:",
+        label: " Freedom Movement:",
         text: "Kumaon played a significant role in India's freedom struggle, with notable participation in the Non-Cooperation Movement and Civil Disobedience Movement.",
       },
       {
@@ -124,30 +124,30 @@ const diversityData = [
     },
     content: [
       {
-        label: "🌿 Rich Cultural Heritage:",
+        label: " Rich Cultural Heritage:",
         text: "Known for traditional music, dance, and festivals.",
       },
       {
-        label: "🛕 Sacred Pilgrimage:",
+        label: " Sacred Pilgrimage:",
         text: "Home to the Char Dham — Badrinath, Kedarnath, Gangotri, and Yamunotri.",
       },
       {
-        label: "🎶 Folk Music & Dance:",
+        label: " Folk Music & Dance:",
         text: '"Pandav Nritya" and "Langvir Nritya" showcase its spiritual roots.',
       },
       {
-        label: "🍛 Cuisine:",
+        label: " Cuisine:",
         text: 'Famous for "Chainsoo," "Aloo Ke Gutke," and "Mandua Roti."',
       },
       {
-        label: "🎊 Festivals:",
+        label: " Festivals:",
         list: [
           "Phool Dei (celebrating spring)",
           "Ghee Sankranti (harvest festival)",
         ],
       },
       {
-        label: "🏞️ Major Attractions:",
+        label: " Major Attractions:",
         list: [
           "Valley of Flowers (UNESCO site)",
           "Tungnath Temple (world's highest Shiva temple)",
@@ -170,19 +170,19 @@ const diversityData = [
     },
     content: [
       {
-        label: "🎨 Vibrant Culture:",
+        label: " Vibrant Culture:",
         text: "Famous for colorful festivals, folk music, and crafts.",
       },
       {
-        label: "🏔️ Scenic Beauty:",
+        label: " Scenic Beauty:",
         text: "Known for the lush green hills of Almora and tranquil lakes of Nainital.",
       },
       {
-        label: "🎶 Folk Music & Dance:",
+        label: " Folk Music & Dance:",
         text: 'Includes "Hudka" and "Turri" instruments, reflecting themes of nature and love.',
       },
       {
-        label: "🍛 Cuisine:",
+        label: " Cuisine:",
         list: [
           "Bhatt Ki Churkani (black bean curry)",
           "Thechwani (radish-based curry)",
@@ -190,7 +190,7 @@ const diversityData = [
         ],
       },
       {
-        label: "🎊 Festivals:",
+        label: " Festivals:",
         list: [
           "Nanda Devi Fair (Goddess Nanda celebration)",
           "Hilljatra (harvest festival)",
@@ -198,7 +198,7 @@ const diversityData = [
         ],
       },
       {
-        label: "🌄 Major Attractions:",
+        label: " Major Attractions:",
         list: [
           "Jim Corbett National Park (India's first tiger reserve)",
           "Ranikhet (colonial hill station)",
@@ -224,15 +224,15 @@ const geographyData = [
     },
     content: [
       {
-        label: "🏔️ Himalayan Landscape:",
+        label: " Himalayan Landscape:",
         text: "Located in northern India, Uttarakhand spans 53,483 km², with 86% of its terrain being mountainous, dominated by the Himalayas.",
       },
       {
-        label: "🌍 Regional Divisions:",
+        label: " Regional Divisions:",
         text: "Divided into two regions: Garhwal in the west and Kumaon in the east, separated by the Nanda Devi mountain range.",
       },
       {
-        label: "🗻 Major Peaks:",
+        label: " Major Peaks:",
         list: [
           "Nanda Devi (7,816 m, second-highest peak in India)",
           "Kamet (7,756 m)",
@@ -240,15 +240,15 @@ const geographyData = [
         ],
       },
       {
-        label: "🌊 Rivers and Glaciers:",
+        label: " Rivers and Glaciers:",
         text: "The Ganges and Yamuna originate from Gangotri and Yamunotri glaciers, respectively, with other rivers like Alaknanda and Bhagirathi shaping the landscape.",
       },
       {
-        label: "🌲 Forest Cover:",
+        label: " Forest Cover:",
         text: "Approximately 65% of the state is forested, supporting diverse flora and fauna, including rare medicinal herbs and wildlife like snow leopards and tigers.",
       },
       {
-        label: "🏞️ National Parks:",
+        label: " National Parks:",
         list: [
           "Jim Corbett National Park (India’s first tiger reserve)",
           "Valley of Flowers (UNESCO World Heritage Site)",
@@ -271,11 +271,11 @@ const geographyData = [
     },
     content: [
       {
-        label: "🌄 Mountainous Terrain:",
+        label: " Mountainous Terrain:",
         text: "Garhwal, in western Uttarakhand, is characterized by rugged Himalayan peaks and deep valleys, covering districts like Dehradun, Haridwar, and Chamoli.",
       },
       {
-        label: "🗻 Key Peaks:",
+        label: " Key Peaks:",
         list: [
           "Chaukhamba (7,138 m)",
           "Trisul (7,120 m)",
@@ -283,19 +283,19 @@ const geographyData = [
         ],
       },
       {
-        label: "🌊 Sacred Rivers:",
+        label: " Sacred Rivers:",
         text: "The Ganges, formed by the confluence of the Alaknanda and Bhagirathi at Devprayag, originates here, along with the Yamuna from Yamunotri.",
       },
       {
-        label: "🏞️ Natural Wonders:",
+        label: " Natural Wonders:",
         text: "Home to the Valley of Flowers, a UNESCO site known for its alpine meadows, and Hemkund Sahib, a high-altitude lake and pilgrimage site.",
       },
       {
-        label: "🌲 Biodiversity:",
+        label: " Biodiversity:",
         text: "Dense forests of pine, deodar, and oak support wildlife like Himalayan tahr, musk deer, and monal pheasants.",
       },
       {
-        label: "⛷️ Adventure Hub:",
+        label: " Adventure Hub:",
         text: "Auli, a renowned skiing destination, offers stunning views of Nanda Devi and other peaks.",
       },
     ],
@@ -314,11 +314,11 @@ const geographyData = [
     },
     content: [
       {
-        label: "🏞️ Scenic Hills:",
+        label: "Scenic Hills:",
         text: "Kumaon, in eastern Uttarakhand, features rolling hills and lakes, covering districts like Nainital, Almora, and Pithoragarh.",
       },
       {
-        label: "🗻 Prominent Peaks:",
+        label: " Prominent Peaks:",
         list: [
           "adi kailash (5,945 m)",
           "Panchachuli (6,355–6,904 m)",
@@ -326,19 +326,19 @@ const geographyData = [
         ],
       },
       {
-        label: "🌊 Lakes and Rivers:",
+        label: " Lakes and Rivers:",
         text: "Known for lakes like Nainital, Bhimtal, and Sattal, with rivers like Kali and Gori flowing through the region.",
       },
       {
-        label: "🐅 Wildlife Reserves:",
+        label: " Wildlife Reserves:",
         text: "Jim Corbett National Park, India’s first tiger reserve, is a biodiversity hotspot with tigers, elephants, and over 600 bird species.",
       },
       {
-        label: "🌲 Forested Hills:",
+        label: " Forested Hills:",
         text: "Oak and rhododendron forests dominate, supporting wildlife like leopards, barking deer, and Himalayan black bears.",
       },
       {
-        label: "🌄 Viewpoints:",
+        label: " Viewpoints:",
         text: "Kausani and Ranikhet offer panoramic Himalayan views, with Kausani famously called the 'Switzerland of India' by Mahatma Gandhi.",
       },
     ],

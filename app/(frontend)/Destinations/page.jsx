@@ -46,7 +46,7 @@ const activities = [
   {
     title: "Skiing in Auli",
     image: "/auli-skiing-tour.jpg",
-    icon: "🎿",
+    icon: "",
     description:
       "Experience the thrill of skiing in Auli, a paradise for snow sports lovers with breathtaking views of the Himalayas.",
     highlights: [
@@ -61,7 +61,7 @@ const activities = [
   {
     title: "River Rafting in Rishikesh",
     image: "/riverRafting.jpg",
-    icon: "🚣‍♂️",
+    icon: "",
     description:
       "Feel the adrenaline rush while rafting through the rapids of the Ganges in Rishikesh, India's adventure capital.",
     highlights: [
@@ -78,7 +78,7 @@ const activities = [
   {
     title: "Trekking in the Valley of Flowers",
     image: "/trackingof vallyofflower.jpg",
-    icon: "🥾",
+    icon: "",
     description:
       "Explore the mesmerizing beauty of the Valley of Flowers, a UNESCO World Heritage Site known for its vibrant flora.",
     highlights: [
@@ -96,7 +96,7 @@ const activities = [
   {
     title: "Camping and Star Gazing in Chopta",
     image: "/camp-in-chopta.jpg",
-    icon: "⛺",
+    icon: "",
     description:
       "Escape into the wilderness of Chopta, known as the mini Switzerland of India, and enjoy a night under the stars.",
     highlights: [
@@ -111,7 +111,7 @@ const activities = [
   {
     title: "Wildlife Safari in Jim Corbett National Park",
     image: "/junglesafari1.jpg",
-    icon: "🐯",
+    icon: "",
     description:
       "Witness the majestic Royal Bengal Tiger and diverse wildlife in their natural habitat at Jim Corbett National Park.",
     highlights: [
@@ -127,7 +127,7 @@ const activities = [
   {
     title: "Paragliding in Mukteshwar",
     image: "/camp-purple-paragliding-mukteshwar-8246726.webp",
-    icon: "🪂",
+    icon: "",
     description:
       "Soar like a bird over the picturesque landscapes of Mukteshwar, offering stunning views of the Himalayas.",
     highlights: [
@@ -143,7 +143,7 @@ const activities = [
   {
     title: "Bungee Jumping in Rishikesh",
     image: "/bungee-jumping-in-rishikesh.jpg",
-    icon: "🤸‍♂️",
+    icon: "",
     description:
       "Experience the thrill of free-fall from India's highest bungee jumping point in Rishikesh.",
     highlights: [

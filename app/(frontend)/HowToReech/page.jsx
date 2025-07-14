@@ -6,7 +6,7 @@ export default function HowToReach() {
   const travelModes = [
     {
       id: 1,
-      title: "By Air ✈️",
+      title: "By Air ",
       bgColor: "bg-blue-50",
       textColor: "text-blue-800",
       animation: {
@@ -23,7 +23,7 @@ export default function HowToReach() {
     },
     {
       id: 2,
-      title: "By Rail 🚆",
+      title: "By Rail ",
       bgColor: "bg-green-50",
       textColor: "text-green-800",
       animation: {
@@ -40,7 +40,7 @@ export default function HowToReach() {
     },
     {
       id: 3,
-      title: "By Road 🚗",
+      title: "By Road ",
       bgColor: "bg-blue-50",
       textColor: "text-blue-800",
       animation: {
@@ -57,7 +57,7 @@ export default function HowToReach() {
     },
     {
       id: 4,
-      title: "By Bus 🚌",
+      title: "By Bus ",
       bgColor: "bg-yellow-50",
       textColor: "text-yellow-800",
       animation: {
@@ -73,7 +73,7 @@ export default function HowToReach() {
     },
     {
       id: 5,
-      title: "Self-Drive 🚙",
+      title: "Self-Drive ",
       bgColor: "bg-gray-50",
       textColor: "text-gray-800",
       animation: {
