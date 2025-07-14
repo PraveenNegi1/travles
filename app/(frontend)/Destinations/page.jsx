@@ -203,7 +203,7 @@ const DestinationPage = () => {
           transition={{ duration: 0.5 }}
           className="text-2xl sm:text-3xl md:text-4xl font-semibold text-gray-900 mb-4 md:mb-6 text-center"
         >
-          Top Destinations
+          Top destinations
         </motion.h2>
 
         <Swiper
@@ -227,9 +227,9 @@ const DestinationPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 + index * 0.1 }}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300 h-full"
+                className="bg-white rounded-xl shadow-lg overflow-hidden   h-full"
               >
-                <div className="aspect-w-16 aspect-h-9 relative h-40 sm:h-48 md:h-56">
+                <div className=" relative h-[220px] sm:h-48 md:h-[250px]">
                   <img
                     src={attraction.image}
                     alt={attraction.title}

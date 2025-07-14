@@ -248,7 +248,7 @@ const DestinationGroup = ({ group, index }) => {
   );
 };
 
-const SacredDestinations = () => {
+const Sacreddestinations = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-20 ">
       <header>
@@ -259,7 +259,7 @@ const SacredDestinations = () => {
           className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-12 text-black sm:mb-16"
         >
           <span className="text-black font-serif">
-            Sacred Destinations of Uttarakhand
+            Sacred destinations of Uttarakhand
           </span>
         </motion.h1>
       </header>
@@ -279,4 +279,4 @@ const SacredDestinations = () => {
   );
 };
 
-export default SacredDestinations;
+export default Sacreddestinations;

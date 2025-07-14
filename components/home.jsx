@@ -181,10 +181,10 @@ const HomePage = () => {
 
           <div className="mt-12 text-center font-serif">
             <Link
-              href="/Destinations"
+              href="/destinations"
               className="inline-block bg-[#205781] text-white font-medium px-6 py-3 rounded-lg transition-colors duration-300"
             >
-              View All Destinations
+              View All destinations
             </Link>
           </div>
         </div>

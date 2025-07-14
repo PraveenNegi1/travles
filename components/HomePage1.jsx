@@ -1,6 +1,6 @@
 import React from "react";
 import HomePage from "./home";
-import SacredDestinations from "./SacredDestinations";
+import Sacreddestinations from "./Sacreddestinations";
 import BadyaYantra from "./Instrumant";
 import Laptop from "./Laptop";
 import Navbar from "./Navbar";
@@ -11,7 +11,7 @@ export default function HomePage1() {
     <div>
       <Navbar />
       <HomePage />
-      <SacredDestinations />
+      <Sacreddestinations />
       <BadyaYantra />
       <Laptop />
       <Footer />

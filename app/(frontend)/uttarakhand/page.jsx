@@ -22,7 +22,7 @@ const historyData = {
         text: "The Gorkhas of Nepal conquered the region in the late 18th century before being defeated by the British in 1815.",
       },
       {
-        label: "🇬🇧 British Rule:",
+        label: "British Rule:",
         text: "Following the Anglo-Nepalese War (1814-1816), the region was annexed to British India under the Treaty of Sugauli.",
       },
       {
@@ -94,7 +94,7 @@ const historyData = {
         text: "In 1790, the Gorkhas of Nepal invaded and conquered Kumaon, ending Chand rule. Their harsh administration led to local discontent.",
       },
       {
-        label: "🇬🇧 British Rule:",
+        label: "British Rule:",
         text: "Following the Anglo-Nepalese War, the British gained control of Kumaon in 1815 and established administrative headquarters at Nainital in 1841.",
       },
       {
@@ -331,7 +331,7 @@ const geographyData = [
       },
       {
         label: " Wildlife Reserves:",
-        text: "Jim Corbett National Park, India’s first tiger reserve, is a biodiversity hotspot with tigers, elephants, and over 600 bird species.",
+        text: "Jim Corbett National Park, India's first tiger reserve, is a biodiversity hotspot with tigers, elephants, and over 600 bird species.",
       },
       {
         label: " Forested Hills:",

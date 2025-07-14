@@ -21,7 +21,6 @@ const Navbar = () => {
   const [hidden, setHidden] = useState(false);
   const sidebarRef = useRef(null);
 
-  // Close sidebar when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -49,7 +48,7 @@ const Navbar = () => {
       icon: <Info size={20} strokeWidth={2} />,
     },
     {
-      href: "/Destinations",
+      href: "/destinations",
       label: "Destinations",
       icon: <Compass size={20} strokeWidth={2} />,
     },
@@ -183,7 +182,6 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
-      {/* Mobile Sidebar - Now on the right side */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
