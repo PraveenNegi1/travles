@@ -21,6 +21,7 @@ const Navbar = () => {
   const [scrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const sidebarRef = useRef(null);
+  
 
   useEffect(() => {
     const handleClickOutside = (event) => {
