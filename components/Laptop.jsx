@@ -156,7 +156,7 @@ const Laptop = () => {
           >
             <motion.div
               ref={laptopRef}
-              className="absolute w-[110%] h-[150%] sm:h-[550px] bg-transparent z-10"
+              className="absolute w-[110%] h-[150%] sm:h-[520px] bg-transparent z-10 mt-10"
               style={{
                 transformStyle: "preserve-3d",
                 rotateX: lidRotation,

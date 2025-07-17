@@ -12,6 +12,7 @@ import {
   Phone,
   Globe,
   Info,
+  Package,
 } from "lucide-react";
 
 const Navbar = () => {
@@ -63,18 +64,19 @@ const Navbar = () => {
       icon: <Mountain size={20} strokeWidth={2} />,
     },
     {
+      href: "/packages",
+      label: "Packages",
+      icon: <Package size={20} strokeWidth={2} />,
+    },
+    {
       href: "/contact",
       label: "Contact Us",
       icon: <Phone size={20} strokeWidth={2} />,
     },
   ];
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
 
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -84,10 +86,7 @@ const Navbar = () => {
     <>
       <motion.nav
         initial={{ y: -50, opacity: 0 }}
-        animate={{
-          y: hidden ? -100 : 0,
-          opacity: 1,
-        }}
+        animate={{ y: hidden ? -100 : 0, opacity: 1 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className={`fixed w-full z-40 transition-all duration-300 ${
           scrolled
@@ -111,9 +110,11 @@ const Navbar = () => {
               </h1>
             </motion.div>
           </Link>
+
+          {/* Desktop Nav Items */}
           <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
             <ul className="flex space-x-2 lg:space-x-4 merriweather">
-              {navItems.slice(0, 5).map((item) => (
+              {navItems.map((item) => (
                 <li key={item.href} className="relative group">
                   <Link
                     href={item.href}
@@ -133,7 +134,6 @@ const Navbar = () => {
                       />
                     )}
                   </Link>
-
                   <motion.span
                     className={`absolute -bottom-1 left-1/2 w-0 h-0.5 bg-white rounded-full transform -translate-x-1/2 transition-all duration-300 ${
                       pathname === item.href ? "hidden" : "group-hover:w-1/2"
@@ -142,20 +142,9 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-
-            <Link
-              href="/contact"
-              className={`font-medium px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-1.5 text-sm lg:text-base hover:scale-105 ${
-                pathname === "/Contect"
-                  ? "bg-white text-[#205781] shadow-md"
-                  : "bg-[#FAF1E6]/10 text-[#FAF1E6] hover:bg-[#FAF1E6]/20"
-              }`}
-            >
-              <Phone size={16} strokeWidth={2.5} />
-              Contact Us
-            </Link>
           </div>
 
+          {/* Hamburger Menu (Mobile) */}
           <div className="md:hidden">
             <motion.button
               whileTap={{ scale: 0.95 }}
@@ -169,6 +158,7 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
+      {/* Mobile Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -182,6 +172,7 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
+      {/* Mobile Sidebar */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -259,6 +250,7 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
+      {/* Padding for fixed nav */}
       <div className="pt-16 md:pt-20"></div>
     </>
   );
