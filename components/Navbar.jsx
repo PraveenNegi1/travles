@@ -50,7 +50,7 @@ const Navbar = () => {
       icon: <Info size={20} strokeWidth={2} />,
     },
     {
-      href: "/destinations",
+      href: "/Destinations",
       label: "Destinations",
       icon: <Compass size={20} strokeWidth={2} />,
     },
