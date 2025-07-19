@@ -17,7 +17,6 @@ function FormPage() {
     message: "",
   });
 
-  // ✅ Detect lead source from URL or referrer
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const utmSource = urlParams.get("utm_source");
@@ -28,9 +27,9 @@ function FormPage() {
     } else if (referrer) {
       try {
         const ref = new URL(referrer);
-        setSource(ref.hostname); // Only domain, like "google.com"
+        setSource(ref.hostname); 
       } catch {
-        setSource(referrer); // Fallback full URL
+        setSource(referrer); 
       }
     } else {
       setSource("Direct");
@@ -50,7 +49,7 @@ function FormPage() {
       await addDoc(collection(db, "contacts"), {
         ...formData,
         createdAt: Timestamp.now(),
-        source, // 🔥 Save the detected source here
+        source, 
       });
 
       toast.success("Message sent successfully!");

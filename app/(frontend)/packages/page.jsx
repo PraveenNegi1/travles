@@ -14,8 +14,9 @@ import {
   Eye,
   TrendingUp,
   Zap,
-  Image,
 } from "lucide-react";
+import Popup from "@/components/PopUp";
+import Image from "next/image";
 
 const PackagesPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -23,6 +24,7 @@ const PackagesPage = () => {
   const [showMobileFilter, setShowMobileFilter] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -245,10 +247,20 @@ const PackagesPage = () => {
                 : "translate-y-10 opacity-0"
             }`}
           >
-            <div className="flex justify-center mb-8">
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm rounded-full p-6 border border-white border-opacity-20 shadow-2xl hover:scale-110 transition-transform duration-300">
-                <Mountain className="text-white" size={64} />
+            <div className="relative inline-block group">
+              <div className="absolute inset-0  rounded-2xl  opacity-75 group-hover:opacity-100 transition-all duration-300"></div>
+              <div className="relative bg-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/20">
+                <Image
+                  src="/logo/Animation-2.gif"
+                  alt="Car Animation"
+                  width={100}
+                  height={80}
+                  className="mx-auto rounded-xl"
+                  priority
+                />
               </div>
+              <div className="absolute -top-2 -right-2 w-5 h-5 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full animate-ping"></div>
+              <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-gradient-to-br from-green-400 to-blue-500 rounded-full animate-pulse"></div>
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-5xl font-black mb-8 text-white  bg-clip-text  leading-tight">
               Discover Uttarakhand
@@ -481,13 +493,17 @@ const PackagesPage = () => {
                       </span>
                     </div>
                   </div>
-                  <button className="bg-[#205781] text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 group">
+                  <button
+                    onClick={() => setIsPopupOpen(true)}
+                    className="bg-[#205781] text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center gap-2 group"
+                  >
                     <span>Book Now</span>
                   </button>
                 </div>
               </div>
             </div>
           ))}
+          <Popup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
         </div>
       </div>
 
