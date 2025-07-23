@@ -7,89 +7,171 @@ import { motion } from "framer-motion";
 
 const PackagesPage = () => {
   return (
-    <div className="min-h-screen font-serif py-8 md:py-12 lg:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4 tracking-tight">
-            Discover Uttarakhand Adventures
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-6">
-            Explore our curated travel packages for an unforgettable journey
-          </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-teal-500 mx-auto rounded-full"></div>
-        </motion.div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-teal-50 font-serif relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-teal-200/30 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-purple-200/20 to-pink-200/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-green-200/20 to-blue-200/20 rounded-full blur-3xl animate-pulse delay-500"></div>
+      </div>
 
-        <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {packages.map((pkg, index) => (
+      <div className="relative z-10 py-8 md:py-12 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Hero Section */}
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center mb-16 md:mb-20"
+          >
             <motion.div
-              key={pkg.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="inline-flex items-center bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-teal-700 border border-teal-200/50 shadow-sm mb-6"
             >
-              <Link
-                href={`/packages/${pkg.id}`}
-                className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100"
+              <span className="w-2 h-2 bg-teal-500 rounded-full mr-2 animate-pulse"></span>
+              Premium Travel Experiences
+            </motion.div>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold bg-gradient-to-r from-gray-900 via-blue-800 to-teal-700 bg-clip-text text-transparent mb-6 tracking-tight leading-tight">
+              Discover Uttarakhand
+              <br className="hidden sm:block" />
+              <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">
+                Adventures
+              </span>
+            </h1>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed"
+            >
+              Embark on extraordinary journeys through pristine mountains,
+              serene valleys, and spiritual destinations with our expertly
+              curated travel experiences
+            </motion.p>
+
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="w-32 h-1.5 bg-gradient-to-r from-blue-600 via-teal-500 to-green-500 mx-auto rounded-full shadow-lg"
+            ></motion.div>
+          </motion.div>
+
+          {/* Packages Grid */}
+          <div className="grid gap-6 sm:gap-8 lg:gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+            {packages.map((pkg, index) => (
+              <motion.div
+                key={pkg.id}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.15,
+                  ease: "easeOut",
+                }}
+                whileHover={{
+                  y: -8,
+                  transition: { duration: 0.3, ease: "easeOut" },
+                }}
+                className="group"
               >
-                <div className="relative overflow-hidden">
-                  <Image
-                    src={pkg.image}
-                    alt={pkg.title}
-                    width={800}
-                    height={500}
-                    className="rounded-t-2xl object-cover h-48 sm:h-56 w-full transition-transform duration-500 group-hover:scale-110"
-                    priority={index < 3}
-                  />
-                  <div className="absolute top-4 right-4 bg-teal-500 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-semibold shadow-md transform group-hover:scale-105 transition-transform">
-                    {pkg.price}
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
+                <Link
+                  href={`/packages/${pkg.id}`}
+                  className="block bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/50 hover:border-teal-200/50 relative"
+                >
+                  {/* Image Container */}
+                  <div className="relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10"></div>
 
-                <div className="p-4 sm:p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <h2 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-teal-600 transition-colors duration-300">
-                      {pkg.title}
-                    </h2>
-                    <span className="text-xs sm:text-sm text-blue-700 bg-blue-100 px-2 py-1 rounded-full font-medium">
+                    <Image
+                      src={pkg.image}
+                      alt={pkg.title}
+                      width={800}
+                      height={500}
+                      className="rounded-t-3xl object-cover h-52 sm:h-60 lg:h-64 w-full transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+                      priority={index < 3}
+                    />
+
+                    {/* Price Badge */}
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="absolute top-4 right-4 z-20"
+                    >
+                      <div className="bg-gradient-to-r from-teal-500 to-blue-600 text-white px-4 py-2 rounded-2xl text-sm font-bold shadow-xl backdrop-blur-sm border border-white/20">
+                        <span className="drop-shadow-sm">{pkg.price}</span>
+                      </div>
+                    </motion.div>
+
+                    {/* Duration Badge */}
+                    <div className="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur-sm text-gray-800 px-3 py-1.5 rounded-2xl text-xs font-semibold shadow-lg border border-gray-200/50">
                       {pkg.duration}
-                    </span>
+                    </div>
+
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-teal-900/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 z-10"></div>
                   </div>
 
-                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-4 line-clamp-3">
-                    {pkg.description}
-                  </p>
+                  {/* Content */}
+                  <div className="p-6 sm:p-7 lg:p-8 relative">
+                    {/* Decorative Element */}
+                    <div className="absolute top-0 left-6 w-12 h-1 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full transform -translate-y-0.5"></div>
 
-                  <div className="flex items-center justify-between">
-                    <span className="text-teal-600 font-bold text-base sm:text-lg">
-                      {pkg.price}
-                    </span>
-                    <div className="flex items-center text-blue-700 font-semibold text-sm sm:text-base group-hover:text-teal-600 transition-colors duration-300">
-                      Explore Now
-                      <svg
-                        className="w-4 h-4 sm:w-5 sm:h-5 ml-1 transform group-hover:translate-x-2 transition-transform duration-300"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                    <div className="mb-4">
+                      <h2 className="text-xl sm:text-2xl lg:text-2xl font-bold text-gray-900 group-hover:text-teal-700 transition-colors duration-300 leading-tight mb-2">
+                        {pkg.title}
+                      </h2>
+                    </div>
+
+                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 line-clamp-3 group-hover:text-gray-700 transition-colors duration-300">
+                      {pkg.description}
+                    </p>
+
+                    {/* Bottom Section */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-col">
+                        <span className="text-xs text-gray-500 uppercase tracking-wide font-medium mb-1">
+                          Starting From
+                        </span>
+                        <span className="text-teal-600 font-bold text-lg sm:text-xl">
+                          {pkg.price}
+                        </span>
+                      </div>
+
+                      <motion.div
+                        whileHover={{ x: 5 }}
+                        className="flex items-center bg-gradient-to-r from-blue-600 to-teal-600 text-white px-4 py-2.5 rounded-2xl font-semibold text-sm shadow-md group-hover:shadow-lg transition-all duration-300"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
+                        <span className="mr-2">Explore</span>
+                        <motion.svg
+                          whileHover={{ x: 3 }}
+                          className="w-4 h-4 transition-transform duration-300"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M13 7l5 5m0 0l-5 5m5-5H6"
+                          />
+                        </motion.svg>
+                      </motion.div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+
+                  {/* Card Shine Effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 transform translate-x-full group-hover:-translate-x-full transition-transform duration-1000"></div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
