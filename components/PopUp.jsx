@@ -2,9 +2,8 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { db } from "@/lib/firebase"; 
+import { db } from "@/lib/firebase";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
-import toast from "react-hot-toast";
 
 const Popup = ({
   isOpen,
@@ -42,12 +41,10 @@ const Popup = ({
 
       await addDoc(collection(db, "travelInquiries"), data);
 
-      toast.success("Message sent and saved to database!");
       form.reset();
       onClose();
     } catch (error) {
       console.error("Error:", error);
-      toast.error("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }

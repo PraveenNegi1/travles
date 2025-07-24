@@ -179,7 +179,7 @@ const PackageDetails = () => {
 
           {/* Right Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-xl p-6 shadow-lg border sticky top-6">
+            <div className="bg-white rounded-xl p-6 shadow-lg border sticky top-28">
               <div className="mb-6">
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-3xl font-bold text-[#205781]">
