@@ -7,8 +7,10 @@ const Popup = ({
   isOpen,
   onClose,
   title = "Contact Us",
-  subtitle = "Let's discuss your perfect stay",
+  subtitle = "Let's discuss your perfect travel",
   apiEndpoint = "/api/send-email",
+  price,
+  packageTitle,
 }) => {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -18,11 +20,14 @@ const Popup = ({
 
     const form = e.target;
     const data = {
-      name: form.name.value,
-      email: form.email.value,
-      phone: form.phone.value,
-      message: form.message.value,
+      name: form.elements.name.value,
+      email: form.elements.email.value,
+      phone: form.elements.phone.value,
+      message: form.elements.message.value,
+      packageTitle: packageTitle || "N/A",
+      price: price || "N/A",
     };
+    console.log("Form Data:", data);
 
     try {
       const res = await fetch(apiEndpoint, {
@@ -117,6 +122,13 @@ const Popup = ({
           <p className="text-slate-700 dark:text-slate-300 text-sm sm:text-base mt-1">
             {subtitle}
           </p>
+
+          {packageTitle && price && (
+            <p className="mt-4 text-[17px] font-semibold text-[#205781]">
+              Booking for: <span className="font-bold">{packageTitle}</span> —{" "}
+              <span className="text-green-600">{price}</span>
+            </p>
+          )}
         </motion.div>
 
         <motion.form
@@ -125,17 +137,17 @@ const Popup = ({
           animate="visible"
           className="space-y-4"
         >
-          <motion.div variants={inputVariants} className="group relative">
+          <motion.div variants={inputVariants}>
             <input
-              type="text"
-              name="name"
+              type="name"
+              name="Name"
               placeholder="Your Name"
               required
               className="w-full p-3 border border-slate-300 rounded-xl bg-white text-sm sm:text-base focus:ring-2 focus:ring-indigo-400 outline-none transition"
             />
           </motion.div>
 
-          <motion.div variants={inputVariants} className="group relative">
+          <motion.div variants={inputVariants}>
             <input
               type="email"
               name="email"
@@ -145,7 +157,7 @@ const Popup = ({
             />
           </motion.div>
 
-          <motion.div variants={inputVariants} className="group relative">
+          <motion.div variants={inputVariants}>
             <input
               type="tel"
               name="phone"
@@ -155,7 +167,7 @@ const Popup = ({
             />
           </motion.div>
 
-          <motion.div variants={inputVariants} className="group relative">
+          <motion.div variants={inputVariants}>
             <textarea
               name="message"
               rows="4"

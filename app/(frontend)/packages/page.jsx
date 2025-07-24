@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const PackagesPage = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-teal-50 font-serif relative overflow-hidden">
+    <div className="min-h-screen  font-serif relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-teal-200/30 rounded-full blur-3xl animate-pulse"></div>
@@ -28,16 +28,16 @@ const PackagesPage = () => {
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="inline-flex items-center bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-teal-700 border border-teal-200/50 shadow-sm mb-6"
+              className="inline-flex items-center bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-[#205781] border border-teal-200/50 shadow-sm mb-6"
             >
               <span className="w-2 h-2 bg-teal-500 rounded-full mr-2 animate-pulse"></span>
               Premium Travel Experiences
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold bg-gradient-to-r from-gray-900 via-blue-800 to-teal-700 bg-clip-text text-transparent mb-6 tracking-tight leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold bg-gradient-to-r from-gray-900 via-blue-800 to-[#205781] bg-clip-text text-transparent mb-6 tracking-tight leading-tight">
               Discover Uttarakhand
               <br className="hidden sm:block" />
-              <span className="bg-gradient-to-r from-teal-600 to-blue-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#205781] to-blue-600 bg-clip-text text-transparent">
                 Adventures
               </span>
             </h1>
@@ -57,7 +57,7 @@ const PackagesPage = () => {
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="w-32 h-1.5 bg-gradient-to-r from-blue-600 via-teal-500 to-green-500 mx-auto rounded-full shadow-lg"
+              className="w-32 h-1.5 bg-gradient-to-r from-blue-600 via-[#205781] to-[#09263d] mx-auto rounded-full shadow-lg"
             ></motion.div>
           </motion.div>
 
@@ -101,7 +101,7 @@ const PackagesPage = () => {
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       className="absolute top-4 right-4 z-20"
                     >
-                      <div className="bg-gradient-to-r from-teal-500 to-blue-600 text-white px-4 py-2 rounded-2xl text-sm font-bold shadow-xl backdrop-blur-sm border border-white/20">
+                      <div className="bg-gradient-to-r from-[#205781] to-blue-600 text-white px-4 py-2 rounded-2xl text-sm font-bold shadow-xl backdrop-blur-sm border border-white/20">
                         <span className="drop-shadow-sm">{pkg.price}</span>
                       </div>
                     </motion.div>
@@ -118,7 +118,7 @@ const PackagesPage = () => {
                   {/* Content */}
                   <div className="p-6 sm:p-7 lg:p-8 relative">
                     {/* Decorative Element */}
-                    <div className="absolute top-0 left-6 w-12 h-1 bg-gradient-to-r from-teal-500 to-blue-500 rounded-full transform -translate-y-0.5"></div>
+                    <div className="absolute top-0 left-6 w-12 h-1 bg-gradient-to-r from-teal-500 to-[#205781] rounded-full transform -translate-y-0.5"></div>
 
                     <div className="mb-4">
                       <h2 className="text-xl sm:text-2xl lg:text-2xl font-bold text-gray-900 group-hover:text-teal-700 transition-colors duration-300 leading-tight mb-2">
@@ -136,14 +136,14 @@ const PackagesPage = () => {
                         <span className="text-xs text-gray-500 uppercase tracking-wide font-medium mb-1">
                           Starting From
                         </span>
-                        <span className="text-teal-600 font-bold text-lg sm:text-xl">
+                        <span className="text-[#205781] font-bold text-lg sm:text-xl">
                           {pkg.price}
                         </span>
                       </div>
 
                       <motion.div
                         whileHover={{ x: 5 }}
-                        className="flex items-center bg-gradient-to-r from-blue-600 to-teal-600 text-white px-4 py-2.5 rounded-2xl font-semibold text-sm shadow-md group-hover:shadow-lg transition-all duration-300"
+                        className="flex items-center bg-gradient-to-r from-[#205781] to-teal-600 text-white px-4 py-2.5 rounded-2xl font-semibold text-sm shadow-md group-hover:shadow-lg transition-all duration-300"
                       >
                         <span className="mr-2">Explore</span>
                         <motion.svg
