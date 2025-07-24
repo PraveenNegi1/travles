@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { db } from "@/lib/firebase"; 
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+import toast from "react-hot-toast";
 
 const Popup = ({
   isOpen,
@@ -19,6 +22,7 @@ const Popup = ({
     setIsLoading(true);
 
     const form = e.target;
+
     const data = {
       name: form.elements.name.value,
       email: form.elements.email.value,
@@ -26,26 +30,24 @@ const Popup = ({
       message: form.elements.message.value,
       packageTitle: packageTitle || "N/A",
       price: price || "N/A",
+      createdAt: Timestamp.now(),
     };
-    console.log("Form Data:", data);
 
     try {
-      const res = await fetch(apiEndpoint, {
+      await fetch(apiEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
 
-      if (res.ok) {
-        alert("Message sent successfully!");
-        form.reset();
-        onClose();
-      } else {
-        alert("Failed to send message.");
-      }
+      await addDoc(collection(db, "travelInquiries"), data);
+
+      toast.success("Message sent and saved to database!");
+      form.reset();
+      onClose();
     } catch (error) {
       console.error("Error:", error);
-      alert("An error occurred.");
+      toast.error("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -139,8 +141,8 @@ const Popup = ({
         >
           <motion.div variants={inputVariants}>
             <input
-              type="name"
-              name="Name"
+              type="text"
+              name="name"
               placeholder="Your Name"
               required
               className="w-full p-3 border border-slate-300 rounded-xl bg-white text-sm sm:text-base focus:ring-2 focus:ring-indigo-400 outline-none transition"

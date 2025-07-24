@@ -37,7 +37,6 @@ Message: ${message}
         <p><strong>Message:</strong> ${message}</p>
          <p><strong>Package:</strong> ${packageTitle || "Not provided"}</p>
         <p><strong>Price:</strong> ${price || "Not provided"}</p>
-        <p><strong>Message:</strong> ${message}</p>
       </div>
     `,
     };

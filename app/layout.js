@@ -1,6 +1,7 @@
 import GlobalButton from "@/components/GlobalButton";
 import "./globals.css";
 import AIChatPopup from "@/components/Aibot";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "Travles | Explore Incredible destinations",
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {children}
+          <Toaster position="top-right" />
         <GlobalButton />
         {/* <AIChatPopup /> */}
       </body>

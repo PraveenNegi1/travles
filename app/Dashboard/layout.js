@@ -14,6 +14,7 @@ export default function dashboardLayout({ children }) {
             <ThemeToggle />
           </div>
           {children}
+           
         </main>
       </div>
     </ThemeProvider>
