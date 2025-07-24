@@ -15,13 +15,14 @@ import {
   Mountain,
   Camera,
 } from "lucide-react";
-import Popup from "@/components/Popup"; // ✅ adjust path if different
+import Popup from "@/components/PopUp";
+
 
 const PackageDetails = () => {
   const pathname = usePathname();
   const slug = pathname.split("/").pop();
   const pkg = packages.find((item) => item.id === slug);
-  const [isPopupOpen, setIsPopupOpen] = useState(false); // ✅ state for popup
+  const [isPopupOpen, setIsPopupOpen] = useState(false); 
 
   if (!pkg) {
     return (
