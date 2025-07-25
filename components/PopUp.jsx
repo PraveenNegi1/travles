@@ -82,7 +82,7 @@ const Popup = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center px-3 sm:px-5"
+      className="fixed inset-0  bg-black/70 backdrop-blur-md z-50 flex items-center justify-center px-3 sm:px-5"
       onClick={onClose}
     >
       <motion.div
@@ -91,13 +91,13 @@ const Popup = ({
         animate="visible"
         exit="exit"
         onClick={(e) => e.stopPropagation()}
-        className="bg-white/80 dark:bg-[#0f172a]/90 backdrop-blur-lg p-5 sm:p-8 rounded-2xl w-full max-w-lg shadow-2xl border border-white/20 relative overflow-y-auto max-h-[90vh]"
+        className="bg-white/80  dark:bg-[#0f172a]/90 backdrop-blur-lg p-5 sm:p-8 rounded-2xl w-full max-w-lg shadow-2xl border border-white/20 relative overflow-y-auto max-h-[90vh]"
       >
         <motion.button
           onClick={onClose}
           whileHover={{ scale: 1.1, rotate: 90 }}
           whileTap={{ scale: 0.9 }}
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 w-9 h-9 bg-[#205781] text-white rounded-full flex items-center justify-center text-lg font-bold hover:shadow-xl transition-all"
+          className="absolute top-3 cursor-pointer right-3 sm:top-4 sm:right-4 w-9 h-9 bg-[#205781] text-white rounded-full flex items-center justify-center text-lg font-bold hover:shadow-xl transition-all"
         >
           ✕
         </motion.button>
@@ -108,13 +108,7 @@ const Popup = ({
           transition={{ delay: 0.2 }}
           className="text-center mb-6 sm:mb-8"
         >
-          <motion.div
-            animate={{ rotate: [0, 10, -10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="text-3xl mb-1"
-          >
-            📞
-          </motion.div>
+          
           <h2 className="text-2xl sm:text-3xl font-bold bg-[#205781] bg-clip-text text-transparent">
             {title}
           </h2>
@@ -134,7 +128,7 @@ const Popup = ({
           onSubmit={handleSubmit}
           initial="hidden"
           animate="visible"
-          className="space-y-4"
+          className="space-y-4 "
         >
           <motion.div variants={inputVariants}>
             <input
@@ -142,7 +136,7 @@ const Popup = ({
               name="name"
               placeholder="Your Name"
               required
-              className="w-full p-3 border border-slate-300 rounded-xl bg-white text-sm sm:text-base focus:ring-2 focus:ring-indigo-400 outline-none transition"
+              className="w-full p-3 border  border-slate-300 rounded-xl bg-white text-sm sm:text-base focus:ring-2 focus:ring-indigo-400 outline-none transition"
             />
           </motion.div>
 
@@ -182,7 +176,7 @@ const Popup = ({
             disabled={isLoading}
             whileHover={!isLoading ? { scale: 1.02 } : {}}
             whileTap={!isLoading ? { scale: 0.98 } : {}}
-            className={`w-full text-white font-semibold py-3 rounded-xl bg-gradient-to-r from-[#205781] to-purple-700 shadow-lg hover:shadow-xl transition duration-300 ${
+            className={`w-full text-white font-semibold py-3 cursor-pointer rounded-xl bg-gradient-to-r from-[#205781] to-purple-700 shadow-lg hover:shadow-xl transition duration-300 ${
               isLoading ? "cursor-not-allowed opacity-80" : ""
             }`}
           >

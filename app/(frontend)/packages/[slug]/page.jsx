@@ -42,7 +42,7 @@ const PackageDetails = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 font-serif">
       {/* Top Banner */}
-      <div className="relative h-[60vh] sm:h-[70vh] w-full overflow-hidden">
+      <div className="relative md:h-[70vh] h-[40vh]  md:w-full  overflow-hidden">
         <Image
           src={pkg.image}
           alt={pkg.title}
@@ -215,12 +215,12 @@ const PackageDetails = () => {
 
               <button
                 onClick={() => setIsPopupOpen(true)} // ✅ open popup
-                className="w-full bg-[#205781] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition"
+                className="w-full cursor-pointer bg-[#205781] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition"
               >
                 Book Now
               </button>
 
-              <div className="mt-6 pt-6 border-t border-gray-200">
+              <div className="mt-6 pt-6 border-t border-gray-200 cursor-pointer">
                 <p className="text-sm text-gray-600 mb-2">
                   Need help with booking?
                 </p>

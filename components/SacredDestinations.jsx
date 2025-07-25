@@ -2,6 +2,8 @@
 
 import React, { useState, useCallback } from "react";
 import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const groups = [
   {
@@ -177,7 +179,7 @@ const DestinationCard = ({ place, index }) => {
         boxShadow:
           "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
       }}
-      className="bg-white border border-gray-200 rounded-2xl shadow-md  transition-all duration-300  overflow-hidden focus-within:ring-2 focus-within:ring-blue-400"
+      className="bg-white border border-gray-200 rounded-2xl shadow-md transition-all duration-300 overflow-hidden focus-within:ring-2 focus-within:ring-blue-400"
       tabIndex={0}
     >
       <ImageWithFallback
@@ -189,7 +191,7 @@ const DestinationCard = ({ place, index }) => {
         <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 font-serif">
           {place.name}
         </h3>
-        <p className="text-base sm:text-lg md:text-xl merriweather text-gray-700 leading-relaxed ">
+        <p className="text-base sm:text-lg md:text-xl merriweather text-gray-700 leading-relaxed">
           {place.description}
         </p>
       </div>
@@ -208,7 +210,7 @@ const DestinationGroup = ({ group, index }) => {
       viewport={{ once: true, margin: "-100px" }}
       variants={fadeIn}
       custom={index}
-      className="mb-12 md:mb-20 "
+      className="mb-12 md:mb-20"
       aria-labelledby={`heading-${group.id}`}
     >
       <button
@@ -232,17 +234,35 @@ const DestinationGroup = ({ group, index }) => {
       </button>
 
       {isExpanded && (
-        <motion.div
-          id={`section-${group.id}`}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 sm:gap-8 mt-6"
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-        >
-          {group.places.map((place, placeIndex) => (
-            <DestinationCard key={place.id} place={place} index={placeIndex} />
-          ))}
-        </motion.div>
+        <>
+          {/* ✅ Mobile Swiper Carousel */}
+          <div className="sm:hidden mt-6">
+            <Swiper spaceBetween={16} slidesPerView={1}>
+              {group.places.map((place, placeIndex) => (
+                <SwiperSlide key={place.id}>
+                  <DestinationCard place={place} index={placeIndex} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+
+          {/* ✅ Grid Layout for sm and above */}
+          <motion.div
+            id={`section-${group.id}`}
+            className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 sm:gap-8 mt-6"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            {group.places.map((place, placeIndex) => (
+              <DestinationCard
+                key={place.id}
+                place={place}
+                index={placeIndex}
+              />
+            ))}
+          </motion.div>
+        </>
       )}
     </motion.section>
   );
@@ -250,7 +270,7 @@ const DestinationGroup = ({ group, index }) => {
 
 const Sacreddestinations = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-20 ">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-12 md:py-20">
       <header>
         <motion.h1
           initial="hidden"
