@@ -215,7 +215,7 @@ const DestinationGroup = ({ group, index }) => {
     >
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full flex items-center justify-center gap-2 group focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-lg py-2"
+        className="w-full flex items-center justify-center gap-2 group  rounded-lg py-2"
         aria-expanded={isExpanded}
         aria-controls={`section-${group.id}`}
       >
@@ -235,7 +235,6 @@ const DestinationGroup = ({ group, index }) => {
 
       {isExpanded && (
         <>
-          {/* ✅ Mobile Swiper Carousel */}
           <div className="sm:hidden mt-6">
             <Swiper spaceBetween={16} slidesPerView={1}>
               {group.places.map((place, placeIndex) => (
@@ -246,7 +245,6 @@ const DestinationGroup = ({ group, index }) => {
             </Swiper>
           </div>
 
-          {/* ✅ Grid Layout for sm and above */}
           <motion.div
             id={`section-${group.id}`}
             className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 sm:gap-8 mt-6"
