@@ -152,11 +152,9 @@ const staggerContainer = {
 
 const ImageWithFallback = ({ src, alt, className }) => {
   const [imgSrc, setImgSrc] = useState(src);
-
   const handleError = useCallback(() => {
     setImgSrc("/api/placeholder/400/300");
   }, []);
-
   return (
     <div className={`${className} relative bg-gray-100 overflow-hidden`}>
       <img
@@ -169,35 +167,33 @@ const ImageWithFallback = ({ src, alt, className }) => {
   );
 };
 
-const DestinationCard = ({ place, index }) => {
-  return (
-    <motion.div
-      custom={index}
-      variants={fadeIn}
-      whileHover={{
-        y: -8,
-        boxShadow:
-          "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-      }}
-      className="bg-white border border-gray-200 rounded-2xl shadow-md transition-all duration-300 overflow-hidden focus-within:ring-2 focus-within:ring-blue-400"
-      tabIndex={0}
-    >
-      <ImageWithFallback
-        src={place.image}
-        alt={`View of ${place.name}`}
-        className="w-full h-48"
-      />
-      <div className="p-5">
-        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 font-serif">
-          {place.name}
-        </h3>
-        <p className="text-base sm:text-lg md:text-xl merriweather text-gray-700 leading-relaxed">
-          {place.description}
-        </p>
-      </div>
-    </motion.div>
-  );
-};
+const DestinationCard = ({ place, index }) => (
+  <motion.div
+    custom={index}
+    variants={fadeIn}
+    whileHover={{
+      y: -8,
+      boxShadow:
+        "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    }}
+    className="bg-white border border-gray-200 rounded-2xl shadow-md transition-all duration-300 overflow-hidden focus-within:ring-2 focus-within:ring-blue-400"
+    tabIndex={0}
+  >
+    <ImageWithFallback
+      src={place.image}
+      alt={`View of ${place.name}`}
+      className="w-full h-48"
+    />
+    <div className="p-5">
+      <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2 font-serif">
+        {place.name}
+      </h3>
+      <p className="text-base sm:text-lg md:text-xl merriweather text-gray-700 leading-relaxed">
+        {place.description}
+      </p>
+    </div>
+  </motion.div>
+);
 
 const DestinationGroup = ({ group, index }) => {
   const [isExpanded, setIsExpanded] = useState(true);
@@ -213,9 +209,16 @@ const DestinationGroup = ({ group, index }) => {
       className="mb-12 md:mb-20"
       aria-labelledby={`heading-${group.id}`}
     >
+      {/* Title - simple in mobile, toggle in desktop */}
+      <div className="block sm:hidden text-center py-2">
+        <h2 className="text-xl font-bold text-gray-800 underline underline-offset-4 merriweather">
+          {group.title}
+        </h2>
+      </div>
+
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full flex items-center justify-center gap-2 group  rounded-lg py-2"
+        className="hidden sm:flex w-full items-center justify-center gap-2 group rounded-lg py-2"
         aria-expanded={isExpanded}
         aria-controls={`section-${group.id}`}
       >
@@ -235,7 +238,7 @@ const DestinationGroup = ({ group, index }) => {
 
       {isExpanded && (
         <>
-          <div className="sm:hidden mt-6">
+          <div className="block sm:hidden mt-6">
             <Swiper spaceBetween={16} slidesPerView={1}>
               {group.places.map((place, placeIndex) => (
                 <SwiperSlide key={place.id}>
