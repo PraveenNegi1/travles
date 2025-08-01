@@ -299,7 +299,6 @@ const DestinationPage = () => {
                 <p className="text-base md:text-lg text-gray-600 mt-2 px-2 md:px-0">
                   {activity.description}
                 </p>
-               
               </motion.div>
             </motion.div>
           ))}

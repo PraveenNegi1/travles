@@ -22,7 +22,6 @@ const Navbar = () => {
   const [hidden, setHidden] = useState(false);
   const sidebarRef = useRef(null);
 
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -92,10 +91,10 @@ const Navbar = () => {
         className={`fixed w-full z-40 transition-all duration-300 ${
           scrolled
             ? "bg-[#205781]/95 backdrop-blur-md py-2 shadow-lg"
-            : "bg-gradient-to-r from-[#205781] to-[#1c4e75] py-3 md:py-4"
+            : "bg-gradient-to-r from-[#205781] to-[#1c4e75] py-3 lg:py-4"
         }`}
       >
-        <div className="mx-auto px-4 py-2 sm:px-6 flex justify-between items-center overflow-hidden">
+        <div className="mx-auto px-3 sm:px-5 lg:px-6 py-2 flex justify-between items-center overflow-hidden">
           <Link href="/">
             <motion.div
               initial={{ x: -50, opacity: 0 }}
@@ -103,23 +102,24 @@ const Navbar = () => {
               transition={{ delay: 0.2, duration: 0.5, ease: "easeInOut" }}
               className="flex items-center space-x-2 cursor-pointer"
             >
-              <div className="bg-white text-[#205781] p-2 md:p-2 rounded-full shadow-md">
-                <Map size={18} className="md:w-5 md:h-5" />
+              
+              <div className="w-[100px] h-[60px]">
+                <img
+                  src="/logo/Raahi.png"
+                  alt="Beautiful Uttarakhand"
+                  className=" object-cover object-top"
+                />
               </div>
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#FAF1E6] tracking-wide merriweather">
-                Travels
-              </h1>
             </motion.div>
           </Link>
 
-          {/* Desktop Nav Items */}
-          <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
-            <ul className="flex space-x-2 lg:space-x-4 merriweather">
+          <div className="hidden lg:flex items-center space-x-2 xl:space-x-4">
+            <ul className="flex flex-wrap items-center space-x-2 xl:space-x-4 whitespace-nowrap merriweather">
               {navItems.map((item) => (
                 <li key={item.href} className="relative group">
                   <Link
                     href={item.href}
-                    className={`relative font-medium transition-all duration-300 px-3 py-2 rounded-full flex items-center gap-1.5 text-sm md:text-[18px] hover:scale-105 ${
+                    className={`relative font-medium transition-all duration-300 px-2 py-1.5 lg:px-2.5 lg:py-1.5 xl:px-3 xl:py-2 rounded-full flex items-center gap-1 text-sm lg:text-[15px] xl:text-[17px] hover:scale-105 whitespace-nowrap ${
                       pathname === item.href
                         ? "bg-white text-[#205781] shadow-md"
                         : "text-[#FAF1E6] hover:bg-[#FAF1E6]/10"
@@ -145,8 +145,7 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* Hamburger Menu (Mobile) */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
@@ -159,7 +158,6 @@ const Navbar = () => {
         </div>
       </motion.nav>
 
-      {/* Mobile Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -167,13 +165,12 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
             onClick={() => setIsOpen(false)}
           />
         )}
       </AnimatePresence>
 
-      {/* Mobile Sidebar */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -182,7 +179,7 @@ const Navbar = () => {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: 300, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed top-0 right-0 h-full w-64 z-50 md:hidden"
+            className="fixed top-0 right-0 h-full w-[85%] max-w-[280px] z-50 lg:hidden"
           >
             <div className="h-full bg-gradient-to-b from-[#205781] to-[#1a496e] shadow-xl flex flex-col">
               <div className="flex items-center justify-between p-4 border-b border-[#FAF1E6]/10">
@@ -193,18 +190,21 @@ const Navbar = () => {
                   <X size={18} />
                 </button>
                 <div className="flex items-center space-x-2">
-                  <div className="bg-white text-[#205781] p-1.5 rounded-full shadow-md">
-                    <Map size={16} />
+                 
+
+                  <div className="w-[80px] h-[50px]">
+                    <img
+                      src="/logo/Raahi.png"
+                      alt="Beautiful Uttarakhand"
+                      className=" object-cover"
+                    />
                   </div>
-                  <h1 className="text-xl font-extrabold text-[#FAF1E6] tracking-wide merriweather">
-                    Travels
-                  </h1>
                 </div>
               </div>
 
               <div className="overflow-y-auto flex-grow">
                 <motion.ul
-                  className="py-4 px-2 space-y-1 merriweather"
+                  className="py-4 px-2 space-y-1 merriweather text-[15px] sm:text-base"
                   variants={{
                     hidden: { opacity: 0 },
                     show: {
@@ -227,7 +227,7 @@ const Navbar = () => {
                     >
                       <Link
                         href={item.href}
-                        className={`flex items-center gap-3 text-base font-medium px-4 py-3 rounded-lg ${
+                        className={`flex items-center gap-2 sm:gap-3 text-[15px] sm:text-base font-medium px-3 py-2.5 sm:px-4 sm:py-3 rounded-lg ${
                           pathname === item.href
                             ? "bg-white text-[#205781] shadow-md"
                             : "text-[#FAF1E6] hover:bg-[#FAF1E6]/10 active:bg-[#FAF1E6]/20"
@@ -242,7 +242,7 @@ const Navbar = () => {
               </div>
 
               <div className="p-4 border-t border-[#FAF1E6]/10">
-                <p className="text-[#FAF1E6]/70 text-sm text-center">
+                <p className="text-[#FAF1E6]/70 text-xs sm:text-sm text-center">
                   Explore the beauty of travel with us
                 </p>
               </div>
@@ -251,8 +251,7 @@ const Navbar = () => {
         )}
       </AnimatePresence>
 
-      {/* Padding for fixed nav */}
-      <div className="pt-16 md:pt-20"></div>
+      <div className="pt-16 lg:pt-20"></div>
     </>
   );
 };
