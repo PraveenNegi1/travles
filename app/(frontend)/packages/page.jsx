@@ -24,10 +24,9 @@ const PackagesPage = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center mb-16 md:mb-20"
           >
-          
-            <h1 className="text-3xl sm:text-5xl md:text-6xl  font-extrabold bg-gradient-to-r from-gray-900 via-blue-800 to-[#205781] bg-clip-text text-transparent mb-6 tracking-tight leading-tight">
+            <h1 className="text-3xl  md:text-5xl  font-extrabold bg-gradient-to-r from-gray-900 via-blue-800 to-[#205781] bg-clip-text text-transparent mb-6 tracking-tight leading-tight">
               Discover Uttarakhand
-              <br className="hidden sm:block" /> {" "}
+              <br className="hidden sm:block" />{" "}
               <span className="bg-gradient-to-r from-[#205781] to-blue-600 bg-clip-text text-transparent">
                 Adventures
               </span>
@@ -112,7 +111,7 @@ const PackagesPage = () => {
                     <div className="absolute top-0 left-6 w-12 h-1 bg-gradient-to-r from-teal-500 to-[#205781] rounded-full transform -translate-y-0.5"></div>
 
                     <div className="mb-4">
-                      <h2 className="text-xl sm:text-2xl lg:text-2xl font-bold text-gray-900 group-hover:text-teal-700 transition-colors duration-300 leading-tight mb-2">
+                      <h2 className="text-xl   font-bold text-gray-900 group-hover:text-teal-700 transition-colors duration-300 leading-tight mb-2">
                         {pkg.title}
                       </h2>
                     </div>

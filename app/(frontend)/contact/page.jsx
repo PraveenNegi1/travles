@@ -63,7 +63,7 @@ function FormPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-3 sm:p-4 md:p-6 bg-gradient-to-br from-sky-50 to-indigo-100">
+    <div className="min-h-screen flex items-center justify-center p-3 sm:p-4 md:p-6 bg-gradient-to-br from-sky-50 to-indigo-100 font-serif">
       <div className="bg-white shadow-2xl rounded-3xl overflow-hidden flex flex-col md:flex-row w-full max-w-5xl">
         <div className="w-full md:w-1/2 h-48 sm:h-60 md:h-auto relative">
           <img

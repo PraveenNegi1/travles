@@ -196,7 +196,7 @@ const Footer = () => {
           className="flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-4 sm:gap-0"
         >
           <p className="text-[#EDE4D3] text-xs sm:text-sm">
-            © {new Date().getFullYear()} Travels. All rights reserved.
+            © {new Date().getFullYear()} Raaही. All rights reserved.
           </p>
         </motion.div>
       </motion.div>

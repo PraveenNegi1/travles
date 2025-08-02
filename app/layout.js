@@ -2,7 +2,7 @@ import GlobalButton from "@/components/GlobalButton";
 import "./globals.css";
 
 export const metadata = {
-  title: "Travles | Explore Incredible destinations",
+  title: "Raaही | Explore Incredible destinations",
   description:
     "Discover amazing travel destinations, plan your perfect trip, and explore the beauty of nature and culture with Travles.",
   keywords: [
@@ -16,7 +16,7 @@ export const metadata = {
     "adventure travel",
     "cultural tours",
   ],
-  authors: [{ name: "Travles Team", url: "https://travles-ten.vercel.app/" }],
+  authors: [{ name: "Raaही Team", url: "https://travles-ten.vercel.app/" }],
   openGraph: {
     title: "Travles | Explore Incredible destinations",
     description:
@@ -28,7 +28,7 @@ export const metadata = {
         url: "https://travles-ten.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Travles - Explore Incredible destinations",
+        alt: "Raaही - Explore Incredible destinations",
       },
     ],
     locale: "en_US",

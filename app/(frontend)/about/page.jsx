@@ -14,7 +14,7 @@ export default function Page() {
         <div className="merriweather md:text-[20px]">
           <p className="text-gray-700 leading-relaxed mb-4">
             Welcome to{" "}
-            <span className="font-semibold text-[#205781]">Travels</span> — your
+            <span className="font-semibold text-[#205781]">Raaही</span> — your
             trusted companion for exploring the divine land of Uttarakhand!
             Known as the "Land of Gods," Uttarakhand is a paradise of
             breathtaking landscapes, serene pilgrimage sites, and thrilling
@@ -155,7 +155,7 @@ export default function Page() {
             Our Commitment to Sustainability
           </h2>
           <p className="text-gray-700 leading-relaxed merriweather text-[20px]">
-            At Travels, we believe in responsible tourism that benefits local
+            At Raaही, we believe in responsible tourism that benefits local
             communities and preserves Uttarakhand's pristine environment. Our
             initiatives include:
           </p>
@@ -173,7 +173,7 @@ export default function Page() {
         </div>
 
         <p className="text-gray-700 leading-relaxed merriweather md:text-[20px] mt-6">
-          Thank you for choosing Travels. Let us make your journey truly
+          Thank you for choosing Raaही. Let us make your journey truly
           special. Start exploring today and discover the wonders of this
           heavenly state!
         </p>

@@ -103,7 +103,7 @@ const Navbar = () => {
               className="flex items-center space-x-2 cursor-pointer"
             >
               
-              <div className="w-[100px] h-[60px]">
+              <div className="w-[100px] h-[30px]">
                 <img
                   src="/logo/Raahi.png"
                   alt="Beautiful Uttarakhand"
