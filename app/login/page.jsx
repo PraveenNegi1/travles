@@ -93,20 +93,16 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen font-serif flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4 relative overflow-hidden">
-      {/* Enhanced Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Floating Particles */}
         <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400 rounded-full animate-float delay-0"></div>
         <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-purple-400 rounded-full animate-float delay-1000"></div>
         <div className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-cyan-400 rounded-full animate-float delay-2000"></div>
         <div className="absolute bottom-1/3 right-1/4 w-1 h-1 bg-pink-400 rounded-full animate-float delay-3000"></div>
 
-        {/* Gradient Orbs */}
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-600/30 to-purple-600/30 rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-cyan-600/20 to-blue-600/20 rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-full blur-3xl animate-pulse-slow delay-2000"></div>
 
-        {/* Grid Pattern */}
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       </div>
 
@@ -133,17 +129,13 @@ export default function LoginPage() {
           mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        {/* Main login card */}
         <div className="bg-white/10 backdrop-blur-2xl shadow-2xl rounded-3xl p-8 border border-white/20 relative overflow-hidden">
-          {/* Animated Border */}
           <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-3xl blur-sm animate-pulse-border"></div>
 
-          {/* Decorative Elements */}
           <div className="absolute -top-6 -right-6 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full opacity-80 animate-bounce-slow"></div>
           <div className="absolute -bottom-6 -left-6 w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full opacity-80 animate-bounce-slow delay-1000"></div>
           <div className="absolute top-1/2 -right-4 w-6 h-6 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full opacity-60 animate-bounce-slow delay-2000"></div>
 
-          {/* Logo Section */}
           <div className="text-center mb-8 relative">
             <div className="relative inline-block group">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-md opacity-75 group-hover:opacity-100 transition-all duration-300"></div>
@@ -172,7 +164,6 @@ export default function LoginPage() {
           </div>
 
           <div className="space-y-6">
-            {/* Email Input */}
             <div className="space-y-3">
               <label
                 htmlFor="username"
@@ -205,7 +196,6 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Password Input */}
             <div className="space-y-3">
               <label
                 htmlFor="password"
@@ -251,7 +241,6 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Error Message */}
             {error && (
               <div className="bg-red-500/10 backdrop-blur-xl border border-red-500/30 rounded-2xl p-4 text-red-200 text-sm font-medium animate-shake-enhanced">
                 <div className="flex items-center gap-2">
@@ -261,7 +250,6 @@ export default function LoginPage() {
               </div>
             )}
 
-            {/* Login Button */}
             <button
               type="submit"
               disabled={loading}
@@ -282,7 +270,6 @@ export default function LoginPage() {
               )}
             </button>
 
-            {/* Divider */}
             <div className="relative my-8">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-white/20"></div>
