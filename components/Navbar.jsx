@@ -102,7 +102,6 @@ const Navbar = () => {
               transition={{ delay: 0.2, duration: 0.5, ease: "easeInOut" }}
               className="flex items-center space-x-2 cursor-pointer"
             >
-              
               <div className="w-[100px] h-[30px]">
                 <img
                   src="/logo/Raahi.png"
@@ -112,7 +111,6 @@ const Navbar = () => {
               </div>
             </motion.div>
           </Link>
-
           <div className="hidden lg:flex items-center space-x-2 xl:space-x-4">
             <ul className="flex flex-wrap items-center space-x-2 xl:space-x-4 whitespace-nowrap merriweather">
               {navItems.map((item) => (
@@ -157,7 +155,6 @@ const Navbar = () => {
           </div>
         </div>
       </motion.nav>
-
       <AnimatePresence>
         {isOpen && (
           <motion.div
