@@ -233,6 +233,7 @@ const PackageDetails = () => {
           </div>
         </div>
       </div>
+      
 
       {/* ✅ Booking Popup */}
       <Popup
