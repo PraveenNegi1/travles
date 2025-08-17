@@ -10,7 +10,7 @@ export default function dashboardHome() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        router.replace("/dashboard/leads");
+        router.replace("/Dashboard/leads");
       } else {
         router.replace("/(frontend)/login");
       }

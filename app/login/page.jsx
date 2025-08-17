@@ -58,7 +58,7 @@ export default function LoginPage() {
       document.cookie = `token=${token}; path=/;`;
       toast.success("🎉 Welcome back! Redirecting...");
       setTimeout(() => {
-        router.push("/dashboard/leads");
+        router.push("/Dashboard/leads");
       }, 1000);
     } catch (err) {
       toast.error("❌ Invalid email or password");
@@ -77,7 +77,7 @@ export default function LoginPage() {
       document.cookie = `token=${token}; path=/;`;
       toast.success("🚀 Google sign-in successful!");
       setTimeout(() => {
-        router.push("/dashboard/leads");
+        router.push("/Dashboard/leads");
       }, 1000);
     } catch (err) {
       if (err.code === "auth/popup-closed-by-user") {
