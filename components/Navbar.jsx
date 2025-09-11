@@ -128,7 +128,7 @@ const Navbar = () => {
                     {pathname === item.href && (
                       <motion.span
                         layoutId="navIndicator"
-                        className="absolute inset-0 rounded-full bg-white -z-10"
+                        className="absolute inset-0 rounded-full "
                         transition={{ type: "spring", duration: 0.5 }}
                       />
                     )}
