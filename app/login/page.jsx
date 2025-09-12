@@ -77,7 +77,7 @@ export default function LoginPage() {
       document.cookie = `token=${token}; path=/;`;
       toast.success("🚀 Google sign-in successful!");
       setTimeout(() => {
-        router.push("/Dashboard/leads");
+        router.push("/dashboard/leads");
       }, 1000);
     } catch (err) {
       if (err.code === "auth/popup-closed-by-user") {

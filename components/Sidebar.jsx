@@ -14,14 +14,14 @@ const Sidebar = () => {
   const navItems = [
     {
       name: "Leads",
-      href: "/Dashboard/leads",
+      href: "/dashboard/leads",
       icon: <List className="w-5 h-5" />,
       gradient: "from-emerald-400 to-cyan-400",
       hoverGradient: "from-emerald-500 to-cyan-500",
     },
     {
       name: "Analytics",
-      href: "/Dashboard/analytics",
+      href: "/dashboard/analytics",
       icon: <BarChart2 className="w-5 h-5" />,
       gradient: "from-violet-400 to-purple-400",
       hoverGradient: "from-violet-500 to-purple-500",

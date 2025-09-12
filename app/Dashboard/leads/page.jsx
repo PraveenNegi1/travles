@@ -1,5 +1,4 @@
 "use client";
-
 import {
   collection,
   getDocs,
@@ -22,6 +21,7 @@ import {
   MessageSquare,
   Calendar,
   Sparkles,
+  X,
 } from "lucide-react";
 import { db } from "@/lib/firebase";
 
@@ -33,6 +33,7 @@ export default function LeadsPage() {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedLead, setSelectedLead] = useState(null);
 
   useEffect(() => {
     const fetchLeads = async () => {
@@ -228,7 +229,8 @@ export default function LeadsPage() {
                 {paginatedLeads.map((lead) => (
                   <tr
                     key={lead.id}
-                    className="border-t border-slate-200 dark:border-slate-700 hover:bg-purple-50 dark:hover:bg-slate-700/50 transition-all duration-300 text-sm"
+                    onClick={() => setSelectedLead(lead)}
+                    className="border-t border-slate-200 dark:border-slate-700 hover:bg-purple-50 dark:hover:bg-slate-700/50 transition-all duration-300 text-sm cursor-pointer"
                   >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
@@ -255,7 +257,10 @@ export default function LeadsPage() {
                     </td>
                     <td className="px-6 py-4">
                       <button
-                        onClick={() => handleDelete(lead.id)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDelete(lead.id);
+                        }}
                         className="p-2 bg-gradient-to-r from-red-500 to-pink-500 rounded-xl text-white hover:scale-105 transition duration-300"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -302,6 +307,57 @@ export default function LeadsPage() {
           </div>
         )}
       </div>
+
+      {/* Popup Modal */}
+      {selectedLead && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-lg w-full p-6 relative">
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedLead(null)}
+              className="absolute top-4 right-4 text-slate-500 hover:text-slate-900 dark:hover:text-white"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Lead Details */}
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-purple-600">
+                Lead Details
+              </h2>
+              <div className="flex items-center gap-3">
+                <Users className="w-5 h-5 text-purple-500" />
+                <span className="font-medium">{selectedLead.name}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="w-5 h-5 text-purple-500" />
+                <span>{selectedLead.email}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="w-5 h-5 text-purple-500" />
+                <span>{selectedLead.phone}</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <MessageSquare className="w-5 h-5 text-purple-500 mt-1" />
+                <p className="text-slate-700 dark:text-slate-300">
+                  {selectedLead.message || "No message provided"}
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Calendar className="w-5 h-5 text-purple-500" />
+                <span>
+                  {selectedLead.createdAt?.toDate
+                    ? format(
+                        selectedLead.createdAt.toDate(),
+                        "dd MMM yyyy, hh:mm a"
+                      )
+                    : "N/A"}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
