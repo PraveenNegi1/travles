@@ -12,7 +12,6 @@ import {
   Tooltip,
   ResponsiveContainer,
   CartesianGrid,
-  Legend,
   LineChart,
   Line,
   PieChart,
@@ -44,15 +43,34 @@ export default function LeadsAnalytics() {
   const [avgLeads, setAvgLeads] = useState(0);
   const [weekdayData, setWeekdayData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [collectionSources, setCollectionSources] = useState([]);
+  const [confirmationStatus, setConfirmationStatus] = useState([]);
 
   const MAIN_COLOR = "#1c4e75";
+  const PIE_COLORS = ["#1c4e75","#00FF00",  "#FF0000"];
 
   useEffect(() => {
     const fetchLeads = async () => {
       try {
         setIsLoading(true);
-        const snapshot = await getDocs(collection(db, "contacts"));
-        const raw = snapshot.docs.map((doc) => doc.data());
+
+        // Fetch from contacts
+        const contactsSnapshot = await getDocs(collection(db, "contacts"));
+        const contactsRaw = contactsSnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          collection: "contacts",
+        }));
+
+        // Fetch from travelInquiries
+        const travelSnapshot = await getDocs(collection(db, "travelInquiries"));
+        const travelRaw = travelSnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          collection: "travelInquiries",
+        }));
+
+        // Merge both
+        const raw = [...contactsRaw, ...travelRaw];
+
         if (!raw.length) {
           setIsLoading(false);
           return;
@@ -107,6 +125,39 @@ export default function LeadsAnalytics() {
           count: weekdayGroup[day] || 0,
         }));
 
+        // New: Collection sources (contacts vs travelInquiries)
+        const collectionGroup = raw.reduce((acc, item) => {
+          const col = item.collection;
+          acc[col] = (acc[col] || 0) + 1;
+          return acc;
+        }, {});
+        const collectionFormatted = Object.entries(collectionGroup).map(
+          ([collection, count]) => ({
+            name: collection,
+            value: count,
+          })
+        );
+
+        // New: Confirmation status
+        const statusGroup = raw.reduce((acc, item) => {
+          let status;
+          if (item.confirmed === true) {
+            status = "Confirmed";
+          } else if (item.confirmed === false) {
+            status = "Not Confirmed";
+          } else {
+            status = "Pending";
+          }
+          acc[status] = (acc[status] || 0) + 1;
+          return acc;
+        }, {});
+        const statusFormatted = Object.entries(statusGroup).map(
+          ([status, count]) => ({
+            name: status,
+            value: count,
+          })
+        );
+
         setData(formatted);
         setLeadSources(sourceFormatted);
         setTotalLeads(raw.length);
@@ -114,6 +165,8 @@ export default function LeadsAnalytics() {
         setPeakDay(`${max.date} (${max.count})`);
         setAvgLeads(avgLeads);
         setWeekdayData(weekdayFormatted);
+        setCollectionSources(collectionFormatted);
+        setConfirmationStatus(statusFormatted);
       } catch (error) {
         console.error("Error fetching leads:", error);
       } finally {
@@ -175,13 +228,15 @@ export default function LeadsAnalytics() {
             {statCards.map((item, i) => (
               <motion.div
                 key={i}
-                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm"
+                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+                           rounded-xl p-6 shadow-md hover:shadow-lg hover:shadow-[#1c4e75]/30 
+                           transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
               >
                 <div className="flex items-center justify-between mb-4">
-                  <div className="p-2 rounded-lg bg-[#1c4e75]">
+                  <div className="p-2 rounded-full bg-[#1c4e75]">
                     <item.icon className="w-5 h-5 text-white" />
                   </div>
                 </div>
@@ -197,17 +252,29 @@ export default function LeadsAnalytics() {
 
           {/* Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
-            <ChartCard title="Leads Per Day" icon={BarChart3} color={MAIN_COLOR}>
+            <ChartCard
+              title="Leads Per Day"
+              icon={BarChart3}
+              color={MAIN_COLOR}
+            >
               <BarChartComponent data={data} color={MAIN_COLOR} />
             </ChartCard>
 
-            <ChartCard title="Trend Overview" icon={Activity} color={MAIN_COLOR}>
+            <ChartCard
+              title="Trend Overview"
+              icon={Activity}
+              color={MAIN_COLOR}
+            >
               <LineChartComponent data={data} color={MAIN_COLOR} />
             </ChartCard>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <ChartCard title="Lead Sources" icon={PieChartIcon} color={MAIN_COLOR}>
+            <ChartCard
+              title="Lead Sources"
+              icon={PieChartIcon}
+              color={MAIN_COLOR}
+            >
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
                   <Pie
@@ -216,20 +283,95 @@ export default function LeadsAnalytics() {
                     cy="50%"
                     labelLine={false}
                     label={({ name, value }) => `${name}: ${value}`}
-                    outerRadius={100}
+                    outerRadius={110}
                     dataKey="value"
                   >
                     {leadSources.map((_, i) => (
-                      <Cell key={i} fill={MAIN_COLOR} />
+                      <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
                     ))}
                   </Pie>
-                  <Tooltip />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: MAIN_COLOR,
+                      color: "white",
+                      borderRadius: "8px",
+                      border: "none",
+                    }}
+                  />
                 </PieChart>
               </ResponsiveContainer>
             </ChartCard>
 
+            {/* Heartbeat style */}
             <ChartCard title="Leads by Weekday" icon={Zap} color={MAIN_COLOR}>
-              <BarChartComponent data={weekdayData} xKey="day" color={MAIN_COLOR} />
+              <HeartbeatChartComponent data={weekdayData} color={MAIN_COLOR} />
+            </ChartCard>
+          </div>
+
+          {/* New Charts */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
+            <ChartCard
+              title="Leads by Collection"
+              icon={PieChartIcon}
+              color={MAIN_COLOR}
+            >
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={collectionSources}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    label={({ name, value }) => `${name}: ${value}`}
+                    outerRadius={110}
+                    dataKey="value"
+                  >
+                    {collectionSources.map((_, i) => (
+                      <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: MAIN_COLOR,
+                      color: "white",
+                      borderRadius: "8px",
+                      border: "none",
+                    }}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            </ChartCard>
+
+            <ChartCard
+              title="Confirmation Status"
+              icon={PieChartIcon}
+              color={MAIN_COLOR}
+            >
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart>
+                  <Pie
+                    data={confirmationStatus}
+                    cx="50%"
+                    cy="50%"
+                    labelLine={false}
+                    label={({ name, value }) => `${name}: ${value}`}
+                    outerRadius={110}
+                    dataKey="value"
+                  >
+                    {confirmationStatus.map((_, i) => (
+                      <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: MAIN_COLOR,
+                      color: "white",
+                      borderRadius: "8px",
+                      border: "none",
+                    }}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
             </ChartCard>
           </div>
         </div>
@@ -241,12 +383,13 @@ export default function LeadsAnalytics() {
 function ChartCard({ title, children, icon: Icon, color }) {
   return (
     <motion.div
-      whileHover={{ scale: 1.01 }}
+      whileHover={{ scale: 1.02 }}
       transition={{ type: "spring", stiffness: 300 }}
-      className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm"
+      className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
+                 rounded-xl p-6 shadow-md hover:shadow-lg hover:shadow-[#1c4e75]/30 transition-all"
     >
       <div className="flex items-center gap-3 mb-6">
-        <div className="p-2 rounded-lg" style={{ backgroundColor: color }}>
+        <div className="p-2 rounded-full" style={{ backgroundColor: color }}>
           <Icon className="w-5 h-5 text-white" />
         </div>
         <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -261,8 +404,8 @@ function ChartCard({ title, children, icon: Icon, color }) {
 function BarChartComponent({ data, xKey = "date", color }) {
   if (!data.length) {
     return (
-      <div className="flex items-center justify-center h-[300px] text-gray-500 dark:text-gray-400">
-        <Database className="w-10 h-10 opacity-40" />
+      <div className="flex flex-col items-center justify-center h-[300px] text-gray-500 dark:text-gray-400">
+        <Database className="w-10 h-10 opacity-40 mb-2" />
         <p>No data available</p>
       </div>
     );
@@ -271,11 +414,24 @@ function BarChartComponent({ data, xKey = "date", color }) {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart data={data}>
+        <defs>
+          <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={color} stopOpacity={0.9} />
+            <stop offset="100%" stopColor={color} stopOpacity={0.3} />
+          </linearGradient>
+        </defs>
         <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" opacity={0.3} />
         <XAxis dataKey={xKey} stroke="#6b7280" fontSize={12} />
         <YAxis allowDecimals={false} stroke="#6b7280" fontSize={12} />
-        <Tooltip />
-        <Bar dataKey="count" fill={color} radius={[4, 4, 0, 0]} />
+        <Tooltip
+          contentStyle={{
+            backgroundColor: "#1c4e75",
+            color: "white",
+            borderRadius: "8px",
+            border: "none",
+          }}
+        />
+        <Bar dataKey="count" fill="url(#barGradient)" radius={[6, 6, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );
@@ -284,8 +440,8 @@ function BarChartComponent({ data, xKey = "date", color }) {
 function LineChartComponent({ data, color }) {
   if (!data.length) {
     return (
-      <div className="flex items-center justify-center h-[300px] text-gray-500 dark:text-gray-400">
-        <Activity className="w-10 h-10 opacity-40" />
+      <div className="flex flex-col items-center justify-center h-[300px] text-gray-500 dark:text-gray-400">
+        <Activity className="w-10 h-10 opacity-40 mb-2" />
         <p>No data available</p>
       </div>
     );
@@ -294,19 +450,91 @@ function LineChartComponent({ data, color }) {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <AreaChart data={data}>
+        <defs>
+          <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={color} stopOpacity={0.4} />
+            <stop offset="100%" stopColor={color} stopOpacity={0.05} />
+          </linearGradient>
+        </defs>
         <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" opacity={0.3} />
         <XAxis dataKey="date" stroke="#6b7280" fontSize={12} />
         <YAxis allowDecimals={false} stroke="#6b7280" fontSize={12} />
-        <Tooltip />
+        <Tooltip
+          contentStyle={{
+            backgroundColor: "#1c4e75",
+            color: "white",
+            borderRadius: "8px",
+            border: "none",
+          }}
+        />
         <Area
           type="monotone"
           dataKey="count"
           stroke={color}
           strokeWidth={2}
-          fill={color}
-          fillOpacity={0.2}
+          fill="url(#lineGradient)"
         />
       </AreaChart>
+    </ResponsiveContainer>
+  );
+}
+
+function HeartbeatChartComponent({ data, color }) {
+  if (!data.length) {
+    return (
+      <div className="flex flex-col items-center justify-center h-[300px] text-gray-500 dark:text-gray-400">
+        <Zap className="w-10 h-10 opacity-40 mb-2" />
+        <p>No data available</p>
+      </div>
+    );
+  }
+
+  return (
+    <ResponsiveContainer width="100%" height={300}>
+      <LineChart data={data}>
+        <defs>
+          <linearGradient id="pulseGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={color} stopOpacity={0.8} />
+            <stop offset="100%" stopColor={color} stopOpacity={0.1} />
+          </linearGradient>
+        </defs>
+        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" opacity={0.3} />
+        <XAxis dataKey="day" stroke="#6b7280" fontSize={12} />
+        <YAxis allowDecimals={false} stroke="#6b7280" fontSize={12} />
+        <Tooltip
+          contentStyle={{
+            backgroundColor: color,
+            color: "white",
+            borderRadius: "8px",
+            border: "none",
+          }}
+        />
+        <Line
+          type="monotone"
+          dataKey="count"
+          stroke={color}
+          strokeWidth={3}
+          dot={{
+            r: 5,
+            stroke: "white",
+            strokeWidth: 2,
+            fill: color,
+          }}
+          activeDot={{
+            r: 8,
+            stroke: "white",
+            strokeWidth: 2,
+            fill: color,
+            className: "animate-ping",
+          }}
+        />
+        <Area
+          type="monotone"
+          dataKey="count"
+          stroke="none"
+          fill="url(#pulseGradient)"
+        />
+      </LineChart>
     </ResponsiveContainer>
   );
 }
