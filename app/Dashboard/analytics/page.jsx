@@ -31,10 +31,7 @@ import {
   Activity,
   Zap,
   BarChart3,
-  ArrowUpRight,
-  Star,
   Database,
-  Flame,
   PieChart as PieChartIcon,
 } from "lucide-react";
 
@@ -48,7 +45,7 @@ export default function LeadsAnalytics() {
   const [weekdayData, setWeekdayData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const COLORS = ["#6366f1", "#8b5cf6", "#ec4899", "#f59e0b", "#10b981"];
+  const MAIN_COLOR = "#1c4e75";
 
   useEffect(() => {
     const fetchLeads = async () => {
@@ -128,48 +125,17 @@ export default function LeadsAnalytics() {
   }, []);
 
   const statCards = [
-    {
-      label: "Total Leads",
-      value: totalLeads,
-      icon: Users,
-      gradient: "from-violet-500 to-purple-600",
-      bgColor: "bg-violet-50 dark:bg-violet-900/20",
-      textColor: "text-violet-600 dark:text-violet-400",
-    },
-    {
-      label: "Latest Submission",
-      value: latestDate || "—",
-      icon: Calendar,
-      gradient: "from-blue-500 to-cyan-500",
-      bgColor: "bg-blue-50 dark:bg-blue-900/20",
-      textColor: "text-blue-600 dark:text-blue-400",
-    },
-    {
-      label: "Peak Day",
-      value: peakDay || "—",
-      icon: TrendingUp,
-      gradient: "from-pink-500 to-rose-500",
-      bgColor: "bg-pink-50 dark:bg-pink-900/20",
-      textColor: "text-pink-600 dark:text-pink-400",
-    },
-    {
-      label: "Avg Leads / Day",
-      value: avgLeads || "—",
-      icon: Target,
-      gradient: "from-amber-500 to-orange-500",
-      bgColor: "bg-amber-50 dark:bg-amber-900/20",
-      textColor: "text-amber-600 dark:text-amber-400",
-    },
+    { label: "Total Leads", value: totalLeads, icon: Users },
+    { label: "Latest Submission", value: latestDate || "—", icon: Calendar },
+    { label: "Peak Day", value: peakDay || "—", icon: TrendingUp },
+    { label: "Avg Leads / Day", value: avgLeads || "—", icon: Target },
   ];
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="relative">
-            <div className="w-16 h-16 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin mx-auto mb-4"></div>
-            <Flame className="absolute inset-0 w-6 h-6 text-purple-600 m-auto animate-pulse" />
-          </div>
+          <div className="w-12 h-12 border-4 border-gray-300 border-t-[#1c4e75] rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-300 font-medium">
             Loading analytics...
           </p>
@@ -179,12 +145,7 @@ export default function LeadsAnalytics() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div>
-
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <motion.div
         className="relative p-4 sm:p-6 font-serif md:p-10 md:ml-60"
         initial={{ opacity: 0, y: 30 }}
@@ -192,105 +153,61 @@ export default function LeadsAnalytics() {
         transition={{ duration: 0.6 }}
       >
         <div className="max-w-7xl mx-auto">
-          {/* Enhanced Header */}
+          {/* Header */}
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-4">
-              <div className="relative">
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-violet-500 to-purple-600 blur-xl animate-pulse opacity-75"></div>
-                <div className="relative bg-gradient-to-r from-violet-500 to-purple-600 p-3 rounded-2xl shadow-2xl">
-                  <Sparkles className="text-white w-8 h-8" />
-                </div>
+              <div className="p-3 rounded-xl bg-[#1c4e75]">
+                <Sparkles className="text-white w-6 h-6" />
               </div>
               <div>
-                <h1 className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-gray-900 via-purple-900 to-violet-900 dark:from-white dark:via-purple-100 dark:to-violet-100 bg-clip-text text-transparent">
-                  Analytics dashboard
+                <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+                  Analytics Dashboard
                 </h1>
-                <p className="text-gray-600 dark:text-gray-300 mt-2 text-lg">
-                  Visualize lead trends, sources, and engagement with real-time
-                  data
+                <p className="text-gray-600 dark:text-gray-400 mt-2 text-base">
+                  Visualize lead trends, sources, and engagement
                 </p>
-              </div>
-            </div>
-
-            {/* Live indicator */}
-            <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span>Live Firebase Data</span>
-              </div>
-              <div className="w-1 h-1 bg-gray-400 rounded-full"></div>
-              <div className="flex items-center gap-2">
-                <Database className="w-4 h-4" />
-                <span>Real-time Analytics</span>
               </div>
             </div>
           </div>
 
-          {/* Enhanced Stats Cards */}
+          {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {statCards.map((item, i) => (
               <motion.div
                 key={i}
-                className="group relative overflow-hidden"
+                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
               >
-                <div
-                  className={`absolute inset-0 ${item.bgColor} opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`}
-                ></div>
-
-                <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/50 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-                  <div className="flex items-start justify-between mb-4">
-                    <div
-                      className={`p-3 rounded-xl bg-gradient-to-r ${item.gradient} shadow-lg`}
-                    >
-                      <item.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Star className="w-4 h-4 text-yellow-500" />
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
-                      {item.label}
-                    </p>
-                    <p className={`text-2xl font-bold ${item.textColor}`}>
-                      {item.value}
-                    </p>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-2 rounded-lg bg-[#1c4e75]">
+                    <item.icon className="w-5 h-5 text-white" />
                   </div>
                 </div>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                  {item.label}
+                </p>
+                <p className="text-2xl font-bold text-[#1c4e75]">
+                  {item.value}
+                </p>
               </motion.div>
             ))}
           </div>
 
-          {/* Enhanced Charts Grid */}
+          {/* Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
-            <ChartCard
-              title="📊 Leads Per Day"
-              icon={BarChart3}
-              gradient="from-blue-500 to-purple-600"
-            >
-              <BarChartComponent data={data} />
+            <ChartCard title="Leads Per Day" icon={BarChart3} color={MAIN_COLOR}>
+              <BarChartComponent data={data} color={MAIN_COLOR} />
             </ChartCard>
 
-            <ChartCard
-              title="📈 Trend Overview"
-              icon={Activity}
-              gradient="from-emerald-500 to-teal-600"
-            >
-              <LineChartComponent data={data} />
+            <ChartCard title="Trend Overview" icon={Activity} color={MAIN_COLOR}>
+              <LineChartComponent data={data} color={MAIN_COLOR} />
             </ChartCard>
           </div>
 
-          {/* Lead Sources & Weekday */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <ChartCard
-              title="🧭 Lead Sources"
-              icon={PieChartIcon}
-              gradient="from-pink-500 to-rose-600"
-            >
+            <ChartCard title="Lead Sources" icon={PieChartIcon} color={MAIN_COLOR}>
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart>
                   <Pie
@@ -302,30 +219,17 @@ export default function LeadsAnalytics() {
                     outerRadius={100}
                     dataKey="value"
                   >
-                    {leadSources.map((_, index) => (
-                      <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                    {leadSources.map((_, i) => (
+                      <Cell key={i} fill={MAIN_COLOR} />
                     ))}
                   </Pie>
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: "rgba(255, 255, 255, 0.95)",
-                      borderRadius: 12,
-                      border: "1px solid #e5e7eb",
-                      color: "#1f2937",
-                      boxShadow: "0 10px 25px rgba(0, 0, 0, 0.15)",
-                      backdropFilter: "blur(10px)",
-                    }}
-                  />
+                  <Tooltip />
                 </PieChart>
               </ResponsiveContainer>
             </ChartCard>
 
-            <ChartCard
-              title="📅 Leads by Weekday"
-              icon={Zap}
-              gradient="from-amber-500 to-orange-600"
-            >
-              <BarChartComponent data={weekdayData} xKey="day" />
+            <ChartCard title="Leads by Weekday" icon={Zap} color={MAIN_COLOR}>
+              <BarChartComponent data={weekdayData} xKey="day" color={MAIN_COLOR} />
             </ChartCard>
           </div>
         </div>
@@ -334,46 +238,32 @@ export default function LeadsAnalytics() {
   );
 }
 
-function ChartCard({ title, children, icon: Icon, gradient }) {
+function ChartCard({ title, children, icon: Icon, color }) {
   return (
     <motion.div
-      className="group relative overflow-hidden"
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ scale: 1.01 }}
       transition={{ type: "spring", stiffness: 300 }}
+      className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm"
     >
-      <div
-        className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl"
-        style={{ background: `linear-gradient(to right, #8b5cf6, #ec4899)` }}
-      ></div>
-
-      <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/50 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300">
-        <div className="flex items-center gap-3 mb-6">
-          <div
-            className={`p-2 rounded-lg bg-gradient-to-r ${gradient} shadow-lg`}
-          >
-            <Icon className="w-5 h-5 text-white" />
-          </div>
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-            {title}
-          </h2>
-          <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity">
-            <Star className="w-4 h-4 text-yellow-500" />
-          </div>
+      <div className="flex items-center gap-3 mb-6">
+        <div className="p-2 rounded-lg" style={{ backgroundColor: color }}>
+          <Icon className="w-5 h-5 text-white" />
         </div>
-        {children}
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+          {title}
+        </h2>
       </div>
+      {children}
     </motion.div>
   );
 }
 
-function BarChartComponent({ data, xKey = "date" }) {
+function BarChartComponent({ data, xKey = "date", color }) {
   if (!data.length) {
     return (
       <div className="flex items-center justify-center h-[300px] text-gray-500 dark:text-gray-400">
-        <div className="text-center">
-          <Database className="w-12 h-12 mx-auto mb-2 opacity-50" />
-          <p>No data available</p>
-        </div>
+        <Database className="w-10 h-10 opacity-40" />
+        <p>No data available</p>
       </div>
     );
   }
@@ -381,39 +271,22 @@ function BarChartComponent({ data, xKey = "date" }) {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart data={data}>
-        <defs>
-          <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.9} />
-            <stop offset="95%" stopColor="#6366f1" stopOpacity={0.7} />
-          </linearGradient>
-        </defs>
         <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" opacity={0.3} />
         <XAxis dataKey={xKey} stroke="#6b7280" fontSize={12} />
         <YAxis allowDecimals={false} stroke="#6b7280" fontSize={12} />
-        <Tooltip
-          contentStyle={{
-            backgroundColor: "rgba(255, 255, 255, 0.95)",
-            borderRadius: 12,
-            border: "1px solid #e5e7eb",
-            color: "#1f2937",
-            boxShadow: "0 10px 25px rgba(0, 0, 0, 0.15)",
-            backdropFilter: "blur(10px)",
-          }}
-        />
-        <Bar dataKey="count" fill="url(#barGradient)" radius={[8, 8, 0, 0]} />
+        <Tooltip />
+        <Bar dataKey="count" fill={color} radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );
 }
 
-function LineChartComponent({ data }) {
+function LineChartComponent({ data, color }) {
   if (!data.length) {
     return (
       <div className="flex items-center justify-center h-[300px] text-gray-500 dark:text-gray-400">
-        <div className="text-center">
-          <Activity className="w-12 h-12 mx-auto mb-2 opacity-50" />
-          <p>No data available</p>
-        </div>
+        <Activity className="w-10 h-10 opacity-40" />
+        <p>No data available</p>
       </div>
     );
   }
@@ -421,31 +294,17 @@ function LineChartComponent({ data }) {
   return (
     <ResponsiveContainer width="100%" height={300}>
       <AreaChart data={data}>
-        <defs>
-          <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#10b981" stopOpacity={0.8} />
-            <stop offset="95%" stopColor="#10b981" stopOpacity={0.1} />
-          </linearGradient>
-        </defs>
         <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" opacity={0.3} />
         <XAxis dataKey="date" stroke="#6b7280" fontSize={12} />
         <YAxis allowDecimals={false} stroke="#6b7280" fontSize={12} />
-        <Tooltip
-          contentStyle={{
-            backgroundColor: "rgba(255, 255, 255, 0.95)",
-            borderRadius: 12,
-            border: "1px solid #e5e7eb",
-            color: "#1f2937",
-            boxShadow: "0 10px 25px rgba(0, 0, 0, 0.15)",
-            backdropFilter: "blur(10px)",
-          }}
-        />
+        <Tooltip />
         <Area
           type="monotone"
           dataKey="count"
-          stroke="#10b981"
-          strokeWidth={3}
-          fill="url(#colorGradient)"
+          stroke={color}
+          strokeWidth={2}
+          fill={color}
+          fillOpacity={0.2}
         />
       </AreaChart>
     </ResponsiveContainer>

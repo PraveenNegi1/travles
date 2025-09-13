@@ -20,12 +20,12 @@ import {
   Phone,
   MessageSquare,
   Calendar,
-  Sparkles,
   X,
 } from "lucide-react";
 import { db } from "@/lib/firebase";
 
 const ITEMS_PER_PAGE = 10;
+const MAIN_COLOR = "#1c4e75";
 
 export default function LeadsPage() {
   const [leads, setLeads] = useState([]);
@@ -97,27 +97,14 @@ export default function LeadsPage() {
   );
 
   return (
-    <div className="min-h-screen px-4 py-6 sm:px-6 font-serif md:ml-60 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative">
-      {/* Background Decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto space-y-8 relative z-10">
+    <div className="min-h-screen px-4 py-6 sm:px-6 font-serif md:ml-60 bg-white dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto space-y-8">
         {/* Heading */}
-        <div className="text-center space-y-4">
-          <div className="flex justify-center items-center gap-3 flex-wrap">
-            <div className="p-3 bg-gradient-to-r from-violet-500 to-purple-500 rounded-2xl shadow-lg">
-              <Users className="w-8 h-8 text-white" />
-            </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-              Leads dashboard
-            </h1>
-            <Sparkles className="w-6 h-6 text-purple-500 animate-pulse" />
-          </div>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-medium">
+        <div className="text-center space-y-2">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+            Leads Dashboard
+          </h1>
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400">
             Manage and track your valuable leads
           </p>
         </div>
@@ -129,34 +116,34 @@ export default function LeadsPage() {
               icon: <Users className="w-6 h-6 text-white" />,
               label: "Total Leads",
               value: leads.length,
-              bg: "from-blue-500 to-cyan-500",
             },
             {
               icon: <Search className="w-6 h-6 text-white" />,
               label: "Filtered Results",
               value: filteredLeads.length,
-              bg: "from-emerald-500 to-teal-500",
             },
             {
               icon: <Calendar className="w-6 h-6 text-white" />,
               label: "Current Page",
               value: `${currentPage} / ${totalPages}`,
-              bg: "from-orange-500 to-red-500",
             },
           ].map((item, idx) => (
             <div
               key={idx}
-              className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-white/20 dark:border-slate-700/50 transform hover:scale-105 transition-all duration-300"
+              className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-sm"
             >
               <div className="flex items-center gap-4">
-                <div className={`p-3 bg-gradient-to-r ${item.bg} rounded-xl`}>
+                <div
+                  className="p-3 rounded-lg"
+                  style={{ backgroundColor: MAIN_COLOR }}
+                >
                   {item.icon}
                 </div>
                 <div>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     {item.label}
                   </p>
-                  <p className="text-2xl font-bold text-slate-800 dark:text-slate-100">
+                  <p className="text-2xl font-bold text-gray-900 dark:text-white">
                     {item.value}
                   </p>
                 </div>
@@ -167,15 +154,19 @@ export default function LeadsPage() {
 
         {/* Search */}
         <div className="flex justify-center w-full">
-          <div className="relative w-full max-w-lg px-4">
+          <div className="relative w-full max-w-lg">
             <input
               type="text"
               value={searchTerm}
               onChange={handleSearch}
               placeholder="Search by name, email or phone..."
-              className="w-full p-4 pr-12 rounded-2xl border-2 border-purple-200 dark:border-purple-700 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm text-slate-800 dark:text-slate-100 shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-slate-500 dark:placeholder-slate-400 transition-all duration-300"
+              className="w-full p-4 pr-12 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2"
+              style={{ focusRingColor: MAIN_COLOR }}
             />
-            <div className="absolute right-4 top-4 p-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg">
+            <div
+              className="absolute right-4 top-4 p-1 rounded-md"
+              style={{ backgroundColor: MAIN_COLOR }}
+            >
               <Search className="h-5 w-5 text-white" />
             </div>
           </div>
@@ -184,26 +175,33 @@ export default function LeadsPage() {
         {/* Loader or Table */}
         {loading ? (
           <div className="flex justify-center items-center h-40">
-            <div className="text-center">
-              <Loader2 className="h-8 w-8 animate-spin text-purple-600 dark:text-purple-400 mx-auto mb-4" />
-              <span className="text-lg text-purple-600 dark:text-purple-400 font-medium">
-                Loading leads...
-              </span>
-            </div>
+            <Loader2
+              className="h-8 w-8 animate-spin mx-auto mb-4"
+              style={{ color: MAIN_COLOR }}
+            />
+            <span className="text-lg font-medium" style={{ color: MAIN_COLOR }}>
+              Loading leads...
+            </span>
           </div>
         ) : paginatedLeads.length === 0 ? (
           <div className="text-center py-16">
-            <div className="p-4 bg-gradient-to-r from-gray-500 to-slate-500 rounded-2xl w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+            <div
+              className="p-4 rounded-xl w-16 h-16 mx-auto mb-4 flex items-center justify-center"
+              style={{ backgroundColor: MAIN_COLOR }}
+            >
               <Users className="w-8 h-8 text-white" />
             </div>
-            <p className="text-xl text-slate-600 dark:text-slate-400 font-medium">
+            <p className="text-xl text-gray-600 dark:text-gray-400 font-medium">
               No leads found matching your criteria
             </p>
           </div>
         ) : (
-          <div className="overflow-auto rounded-3xl shadow-2xl border border-white/20 dark:border-slate-700/50 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm">
+          <div className="overflow-auto rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
             <table className="min-w-[800px] table-auto w-full">
-              <thead className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white sticky top-0 z-10">
+              <thead
+                style={{ backgroundColor: MAIN_COLOR }}
+                className="text-white"
+              >
                 <tr>
                   {[
                     { label: "Name", icon: Users },
@@ -230,14 +228,17 @@ export default function LeadsPage() {
                   <tr
                     key={lead.id}
                     onClick={() => setSelectedLead(lead)}
-                    className="border-t border-slate-200 dark:border-slate-700 hover:bg-purple-50 dark:hover:bg-slate-700/50 transition-all duration-300 text-sm cursor-pointer"
+                    className="border-t border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 text-sm cursor-pointer"
                   >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg">
+                        <div
+                          className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                          style={{ backgroundColor: MAIN_COLOR }}
+                        >
                           {lead.name?.[0]?.toUpperCase() || "?"}
                         </div>
-                        <span className="font-medium text-slate-800 dark:text-slate-100">
+                        <span className="font-medium text-gray-900 dark:text-white">
                           {lead.name}
                         </span>
                       </div>
@@ -261,7 +262,8 @@ export default function LeadsPage() {
                           e.stopPropagation();
                           handleDelete(lead.id);
                         }}
-                        className="p-2 bg-gradient-to-r from-red-500 to-pink-500 rounded-xl text-white hover:scale-105 transition duration-300"
+                        className="p-2 rounded-md text-white hover:scale-105 transition"
+                        style={{ backgroundColor: "#b91c1c" }} // red delete button
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -279,17 +281,24 @@ export default function LeadsPage() {
             <button
               disabled={currentPage === 1}
               onClick={() => setCurrentPage((prev) => prev - 1)}
-              className="w-full sm:w-auto flex items-center gap-2 px-6 py-3 rounded-2xl bg-white/80 dark:bg-slate-800/80 border border-purple-200 dark:border-purple-700 text-purple-600 dark:text-purple-400 font-medium hover:bg-purple-50 dark:hover:bg-slate-700/50 disabled:opacity-50 transition-all duration-300"
+              className="w-full sm:w-auto flex items-center gap-2 px-6 py-3 rounded-md border text-sm font-medium disabled:opacity-50"
+              style={{
+                borderColor: MAIN_COLOR,
+                color: MAIN_COLOR,
+              }}
             >
               <ChevronLeft className="w-5 h-5" />
               Previous
             </button>
 
             <div className="flex items-center gap-4">
-              <div className="px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-2xl text-white font-medium shadow-lg">
+              <div
+                className="px-6 py-3 rounded-md text-white font-medium"
+                style={{ backgroundColor: MAIN_COLOR }}
+              >
                 Page {currentPage} of {totalPages}
               </div>
-              <div className="text-sm text-slate-600 dark:text-slate-400 hidden sm:block">
+              <div className="text-sm text-gray-600 dark:text-gray-400 hidden sm:block">
                 Showing {startIndex + 1}-
                 {Math.min(startIndex + ITEMS_PER_PAGE, filteredLeads.length)} of{" "}
                 {filteredLeads.length}
@@ -299,7 +308,11 @@ export default function LeadsPage() {
             <button
               disabled={currentPage === totalPages}
               onClick={() => setCurrentPage((prev) => prev + 1)}
-              className="w-full sm:w-auto flex items-center gap-2 px-6 py-3 rounded-2xl bg-white/80 dark:bg-slate-800/80 border border-purple-200 dark:border-purple-700 text-purple-600 dark:text-purple-400 font-medium hover:bg-purple-50 dark:hover:bg-slate-700/50 disabled:opacity-50 transition-all duration-300"
+              className="w-full sm:w-auto flex items-center gap-2 px-6 py-3 rounded-md border text-sm font-medium disabled:opacity-50"
+              style={{
+                borderColor: MAIN_COLOR,
+                color: MAIN_COLOR,
+              }}
             >
               Next
               <ChevronRight className="w-5 h-5" />
@@ -311,40 +324,41 @@ export default function LeadsPage() {
       {/* Popup Modal */}
       {selectedLead && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50">
-          <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl max-w-lg w-full p-6 relative">
-            {/* Close Button */}
+          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg max-w-lg w-full p-6 relative">
             <button
               onClick={() => setSelectedLead(null)}
-              className="absolute top-4 right-4 text-slate-500 hover:text-slate-900 dark:hover:text-white"
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
               <X className="w-6 h-6" />
             </button>
 
-            {/* Lead Details */}
             <div className="space-y-4">
-              <h2 className="text-2xl font-bold text-purple-600">
+              <h2 className="text-2xl font-bold" style={{ color: MAIN_COLOR }}>
                 Lead Details
               </h2>
               <div className="flex items-center gap-3">
-                <Users className="w-5 h-5 text-purple-500" />
+                <Users className="w-5 h-5" style={{ color: MAIN_COLOR }} />
                 <span className="font-medium">{selectedLead.name}</span>
               </div>
               <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-purple-500" />
+                <Mail className="w-5 h-5" style={{ color: MAIN_COLOR }} />
                 <span>{selectedLead.email}</span>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-purple-500" />
+                <Phone className="w-5 h-5" style={{ color: MAIN_COLOR }} />
                 <span>{selectedLead.phone}</span>
               </div>
               <div className="flex items-start gap-3">
-                <MessageSquare className="w-5 h-5 text-purple-500 mt-1" />
-                <p className="text-slate-700 dark:text-slate-300">
+                <MessageSquare
+                  className="w-5 h-5 mt-1"
+                  style={{ color: MAIN_COLOR }}
+                />
+                <p className="text-gray-700 dark:text-gray-300">
                   {selectedLead.message || "No message provided"}
                 </p>
               </div>
               <div className="flex items-center gap-3">
-                <Calendar className="w-5 h-5 text-purple-500" />
+                <Calendar className="w-5 h-5" style={{ color: MAIN_COLOR }} />
                 <span>
                   {selectedLead.createdAt?.toDate
                     ? format(
