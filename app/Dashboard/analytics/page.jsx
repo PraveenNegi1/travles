@@ -47,7 +47,7 @@ export default function LeadsAnalytics() {
   const [confirmationStatus, setConfirmationStatus] = useState([]);
 
   const MAIN_COLOR = "#1c4e75";
-  const PIE_COLORS = ["#1c4e75","#00FF00",  "#FF0000"];
+  const PIE_COLORS = ["#1c4e75", "#06402B", "#FF0000"];
 
   useEffect(() => {
     const fetchLeads = async () => {
@@ -76,6 +76,7 @@ export default function LeadsAnalytics() {
           return;
         }
 
+        // Leads per day
         const grouped = raw.reduce((acc, item) => {
           const date = format(item.createdAt.toDate(), "dd MMM");
           acc[date] = (acc[date] || 0) + 1;
@@ -91,6 +92,7 @@ export default function LeadsAnalytics() {
           .sort((a, b) => a.sortDate - b.sortDate)
           .map(({ date, count }) => ({ date, count }));
 
+        // Lead sources
         const sourceGroup = raw.reduce((acc, item) => {
           const src = item.source || "Unknown";
           acc[src] = (acc[src] || 0) + 1;
@@ -103,17 +105,21 @@ export default function LeadsAnalytics() {
           })
         );
 
+        // Latest submission
         const sortedByDate = raw
           .map((item) => item.createdAt.toDate())
           .sort((a, b) => b - a);
 
+        // Peak day
         const max = formatted.reduce((prev, curr) =>
           curr.count > prev.count ? curr : prev
         );
 
+        // Average leads
         const uniqueDays = new Set(formatted.map((d) => d.date));
         const avgLeads = Math.round(raw.length / uniqueDays.size);
 
+        // Weekday data
         const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
         const weekdayGroup = raw.reduce((acc, item) => {
           const weekday = weekdays[getDay(item.createdAt.toDate())];
@@ -125,7 +131,7 @@ export default function LeadsAnalytics() {
           count: weekdayGroup[day] || 0,
         }));
 
-        // New: Collection sources (contacts vs travelInquiries)
+        // Collection sources
         const collectionGroup = raw.reduce((acc, item) => {
           const col = item.collection;
           acc[col] = (acc[col] || 0) + 1;
@@ -138,16 +144,9 @@ export default function LeadsAnalytics() {
           })
         );
 
-        // New: Confirmation status
+        // Confirmation status (Yes / No only)
         const statusGroup = raw.reduce((acc, item) => {
-          let status;
-          if (item.confirmed === true) {
-            status = "Confirmed";
-          } else if (item.confirmed === false) {
-            status = "Not Confirmed";
-          } else {
-            status = "Pending";
-          }
+          const status = item.confirmed ? "Yes" : "No"; // Only Yes / No
           acc[status] = (acc[status] || 0) + 1;
           return acc;
         }, {});
@@ -158,6 +157,7 @@ export default function LeadsAnalytics() {
           })
         );
 
+        // Set state
         setData(formatted);
         setLeadSources(sourceFormatted);
         setTotalLeads(raw.length);
@@ -302,13 +302,11 @@ export default function LeadsAnalytics() {
               </ResponsiveContainer>
             </ChartCard>
 
-            {/* Heartbeat style */}
             <ChartCard title="Leads by Weekday" icon={Zap} color={MAIN_COLOR}>
               <HeartbeatChartComponent data={weekdayData} color={MAIN_COLOR} />
             </ChartCard>
           </div>
 
-          {/* New Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
             <ChartCard
               title="Leads by Collection"

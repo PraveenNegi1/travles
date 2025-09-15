@@ -22,76 +22,63 @@ import {
   MessageSquare,
   Calendar,
   X,
-  Edit3,
+  Edit,
   CheckCircle,
   XCircle,
-  Package,
-  IndianRupee,
+  ChevronDown,
 } from "lucide-react";
 import { db } from "@/lib/firebase";
 
-const ITEMS_PER_PAGE = 10;
 const MAIN_COLOR = "#1c4e75";
 
 export default function LeadsPage() {
   const [leads, setLeads] = useState([]);
   const [filteredLeads, setFilteredLeads] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedLead, setSelectedLead] = useState(null);
-
-  // Edit state
   const [isEditing, setIsEditing] = useState(false);
-  const [editForm, setEditForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-    packageTitle: "",
-    price: "",
-  });
+  const [editForm, setEditForm] = useState({});
+  const [dropdownOpen, setDropdownOpen] = useState(null); 
 
+  const leadsPerPage = 10;
+
+  // Fetch leads
   useEffect(() => {
     const fetchLeads = async () => {
       try {
-        // ✅ Fetch contacts
-        const contactsQ = query(
+        const contactsQuery = query(
           collection(db, "contacts"),
           orderBy("createdAt", "desc")
         );
-        const contactsSnap = await getDocs(contactsQ);
-        const contacts = contactsSnap.docs.map((d) => ({
-          id: d.id,
-          source: "contacts",
-          ...d.data(),
-        }));
-
-        // ✅ Fetch travelInquiries
-        const travelQ = query(
+        const travelQuery = query(
           collection(db, "travelInquiries"),
           orderBy("createdAt", "desc")
         );
-        const travelSnap = await getDocs(travelQ);
-        const travel = travelSnap.docs.map((d) => ({
-          id: d.id,
+
+        const [contactsSnap, travelSnap] = await Promise.all([
+          getDocs(contactsQuery),
+          getDocs(travelQuery),
+        ]);
+
+        const contactsData = contactsSnap.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+          source: "contacts",
+        }));
+        const travelData = travelSnap.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
           source: "travelInquiries",
-          ...d.data(),
         }));
 
-        // ✅ Merge and sort
-        const all = [...contacts, ...travel].sort((a, b) => {
-          const dateA = a.createdAt?.toDate
-            ? a.createdAt.toDate()
-            : new Date(0);
-          const dateB = b.createdAt?.toDate
-            ? b.createdAt.toDate()
-            : new Date(0);
-          return dateB - dateA;
-        });
+        const allLeads = [...contactsData, ...travelData].sort(
+          (a, b) => b.createdAt?.seconds - a.createdAt?.seconds
+        );
 
-        setLeads(all);
-        setFilteredLeads(all);
+        setLeads(allLeads);
+        setFilteredLeads(allLeads);
       } catch (error) {
         console.error("Error fetching leads:", error);
       } finally {
@@ -102,22 +89,19 @@ export default function LeadsPage() {
     fetchLeads();
   }, []);
 
-  const handleSearch = (e) => {
-    const value = e.target.value.toLowerCase();
-    setSearchTerm(value);
+  // Search filter
+  useEffect(() => {
     const filtered = leads.filter(
       (lead) =>
-        lead.name?.toLowerCase().includes(value) ||
-        lead.email?.toLowerCase().includes(value) ||
-        lead.phone?.toLowerCase().includes(value) ||
-        lead.message?.toLowerCase().includes(value) || // Fixed typo here
-        lead.packageTitle?.toLowerCase().includes(value) ||
-        lead.price?.toLowerCase().includes(value)
+        lead.name?.toLowerCase().includes(search.toLowerCase()) ||
+        lead.email?.toLowerCase().includes(search.toLowerCase()) ||
+        lead.phone?.toLowerCase().includes(search.toLowerCase())
     );
     setFilteredLeads(filtered);
     setCurrentPage(1);
-  };
+  }, [search, leads]);
 
+  // Delete lead
   const handleDelete = async (lead) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this lead?"
@@ -125,20 +109,28 @@ export default function LeadsPage() {
     if (!confirmDelete) return;
 
     try {
-      await deleteDoc(doc(db, lead.source, lead.id));
-      const updated = leads.filter((l) => l.id !== lead.id);
+      const leadRef = doc(db, lead.source, lead.id);
+      await deleteDoc(leadRef);
+
+      const updated = leads.filter(
+        (l) => !(l.id === lead.id && l.source === lead.source)
+      );
       setLeads(updated);
       setFilteredLeads(updated);
+      setSelectedLead(null);
+      setDropdownOpen(null);
     } catch (error) {
       console.error("Error deleting lead:", error);
       alert("Failed to delete lead.");
     }
   };
 
-  // Edit
+  // Edit lead
   const handleEdit = (lead) => {
     setIsEditing(true);
     setEditForm({
+      id: lead.id,
+      source: lead.source,
       name: lead.name || "",
       email: lead.email || "",
       phone: lead.phone || "",
@@ -146,18 +138,26 @@ export default function LeadsPage() {
       packageTitle: lead.packageTitle || "",
       price: lead.price || "",
     });
+    setSelectedLead(lead);
+    setDropdownOpen(null);
   };
 
+  // Save edited lead
   const handleSaveEdit = async () => {
     try {
-      const leadRef = doc(db, selectedLead.source, selectedLead.id);
-      await updateDoc(leadRef, { ...editForm });
+      const { id, source, ...updates } = editForm;
+      if (!updates.packageTitle) delete updates.packageTitle;
+      if (!updates.price) delete updates.price;
+
+      const leadRef = doc(db, source, id);
+      await updateDoc(leadRef, updates);
+
       const updated = leads.map((l) =>
-        l.id === selectedLead.id ? { ...l, ...editForm } : l
+        l.id === id && l.source === source ? { ...l, ...updates } : l
       );
       setLeads(updated);
       setFilteredLeads(updated);
-      setSelectedLead({ ...selectedLead, ...editForm });
+      setSelectedLead({ ...selectedLead, ...updates });
       setIsEditing(false);
     } catch (error) {
       console.error("Error updating lead:", error);
@@ -170,330 +170,326 @@ export default function LeadsPage() {
     try {
       const leadRef = doc(db, selectedLead.source, selectedLead.id);
       await updateDoc(leadRef, { confirmed: status });
+
       const updated = leads.map((l) =>
-        l.id === selectedLead.id ? { ...l, confirmed: status } : l
+        l.id === selectedLead.id && l.source === selectedLead.source
+          ? { ...l, confirmed: status }
+          : l
       );
       setLeads(updated);
       setFilteredLeads(updated);
-      setSelectedLead(null);
+      setSelectedLead({ ...selectedLead, confirmed: status });
+      setDropdownOpen(null);
     } catch (error) {
       console.error("Error updating confirmation:", error);
       alert("Failed to update confirmation.");
     }
   };
 
-  const totalPages = Math.ceil(filteredLeads.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedLeads = filteredLeads.slice(
-    startIndex,
-    startIndex + ITEMS_PER_PAGE
-  );
+  // Pagination
+  const indexOfLastLead = currentPage * leadsPerPage;
+  const indexOfFirstLead = indexOfLastLead - leadsPerPage;
+  const currentLeads = filteredLeads.slice(indexOfFirstLead, indexOfLastLead);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Loader2 className="w-10 h-10 animate-spin text-[#1c4e75]" />
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen px-4 py-6 sm:px-6 font-serif md:ml-60 bg-white dark:bg-gray-900">
-      <h1 className="text-3xl font-bold mb-2 text-[#1c4e75] dark:text-white" >
-        Leads
+    <div className="p-4 md:p-6 max-w-7xl mx-auto md:ml-64 font-serif">
+    <div className="flex justify-between ">
+        <h1 className="text-3xl font-bold mb-6 text-[#1c4e75] dark:text-white text-center md:text-left">
+        Leads Dashboard
       </h1>
-      <p className="mb-6 text-gray-600 dark:text-gray-300">
+    <div className="flex justify-end">
+        <p className="mb-6 text-gray-600 dark:text-white text-2xl">
         Total Leads: <span className="font-semibold">{leads.length}</span>
       </p>
+    </div>
 
+    </div>
       {/* Search */}
-      <div className="flex items-center mb-4">
-        <Search className="w-5 h-5 text-gray-400 mr-2" />
+      <div className="relative mb-6 max-w-md mx-auto md:mx-0">
+        <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
         <input
           type="text"
-          value={searchTerm}
-          onChange={handleSearch}
-          placeholder="Search by name, email, phone, package, or price"
-          className="w-full px-3 py-2 border rounded-lg dark:bg-gray-800"
+          placeholder="Search leads..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="pl-10 w-full p-2 rounded-xl border dark:bg-gray-800 shadow-sm focus:ring-2 focus:ring-[#1c4e75]"
         />
       </div>
 
-      {/* Loader */}
-      {loading ? (
-        <div className="flex justify-center py-10">
-          <Loader2 className="w-8 h-8 animate-spin text-gray-400" />
-        </div>
-      ) : (
-        <div className="overflow-x-auto rounded-lg ">
-          <table className="w-full border-collapse bg-white dark:bg-gray-800  shadow">
-            <thead
-              style={{ backgroundColor: MAIN_COLOR }}
-              className="text-white"
-            >
-              <tr>
-                <th className="px-4 py-3 text-left">Name</th>
-                <th className="px-4 py-3 text-left">Email</th>
-                <th className="px-4 py-3 text-left">Phone</th>
-                                <th className="px-4 py-3 text-left">Message</th>
+      {/* Leads Table */}
+      <div className=" bg-white overflow-y-auto dark:bg-gray-900 shadow-xl rounded-2xl  h-[75vh]">
+        <table className="min-w-full  divide-y divide-gray-200 dark:divide-gray-700 text-sm">
+          <thead className=" dark:bg-[#1c4e75] bg-[#1c4e75]   dark:text-gray-300 text-white sticky top-0 z-50">
+            <tr>
+              <th className="px-4 py-3 text-left">Name</th>
+              <th className="px-4 py-3 text-left">Email</th>
+              <th className="px-4 py-3 text-left">Phone</th>
+              <th className="px-4 py-3 text-left">Message</th>
+              <th className="px-4 py-3 text-left">Package</th>
+              <th className="px-4 py-3 text-left">Price</th>
+              <th className="px-4 py-3 text-left">Source</th>
+              <th className="px-4 py-3 text-left">Confirmed</th>
+              <th className="px-4 py-3 text-left">Actions</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+            {currentLeads.map((lead) => (
+              <tr
+                key={lead.id}
+                className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-all"
+              >
+                <td className="px-4 py-3 font-medium">{lead.name}</td>
+                <td className="px-4 py-3">{lead.email}</td>
+                <td className="px-4 py-3">{lead.phone}</td>
+                <td className="px-4 py-3">{lead.message}</td>
+                <td className="px-4 py-3">{lead.packageTitle}</td>
+                <td className="px-4 py-3">{lead.price}</td>
+                <td className="px-4 py-3 capitalize">{lead.source}</td>
+                <td className="px-4 py-3">
+                  {lead.confirmed ? (
+                    <span className="text-green-600 flex items-center gap-1 font-medium">
+                      <CheckCircle size={16} /> Yes
+                    </span>
+                  ) : (
+                    <span className="text-red-600 flex items-center gap-1 font-medium">
+                      <XCircle size={16} /> No
+                    </span>
+                  )}
+                </td>
 
-                <th className="px-4 py-3 text-left">Package</th>
-                <th className="px-4 py-3 text-left">Price</th>
-                <th className="px-4 py-3 text-left">Status</th>
-                <th className="px-4 py-3 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {paginatedLeads.map((lead) => (
-                <tr
-                  key={`${lead.source}-${lead.id}`}
-                  className="border-b dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
-                  onClick={() => setSelectedLead(lead)}
-                >
-                  <td className="px-4 py-3">{lead.name}</td>
-                  <td className="px-4 py-3">{lead.email}</td>
-                  <td className="px-4 py-3">{lead.phone}</td>
-                  <td className="px-4 py-3">{lead.message}</td>
-                  <td className="px-4 py-3">{lead.packageTitle || "-"}</td>
-                  <td className="px-4 py-3">{lead.price || "-"}</td>
-                  <td className="px-4 py-3">
-                    {lead.confirmed === true ? (
-                      <span className="text-green-600 font-medium">
-                        Confirmed
-                      </span>
-                    ) : lead.confirmed === false ? (
-                      <span className="text-red-600 font-medium">
-                        Not Confirmed
-                      </span>
-                    ) : (
-                      <span className="text-gray-500">Pending</span>
-                    )}
-                  </td>
-                  <td className="px-4 py-3 text-right">
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDelete(lead);
-                      }}
-                      className="text-red-600 hover:text-red-800"
-                    >
-                      <Trash2 className="w-5 h-5" />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-
-              {paginatedLeads.length === 0 && (
-                <tr>
-                  <td
-                    colSpan="7"
-                    className="px-4 py-6 text-center text-gray-500"
+                {/* Actions Dropdown */}
+                <td className="px-4 py-3 relative">
+                  <button
+                    onClick={() =>
+                      setDropdownOpen(dropdownOpen === lead.id ? null : lead.id)
+                    }
+                    className="px-3 py-1 rounded-lg border shadow-sm bg-white text-[#1c4e75] flex items-center justify-between w-full hover:bg-gray-50"
                   >
-                    No leads found
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                    Actions
+                    <ChevronDown size={16} />
+                  </button>
 
-          {/* Pagination */}
-          <div className="flex justify-between items-center mt-4">
+                  {dropdownOpen === lead.id && (
+                    <div className="absolute right-0 mt-1 w-36 bg-white border rounded-lg shadow-lg z-20 ">
+                      <button
+                        onClick={() => setSelectedLead(lead)}
+                        className="w-full px-4 py-2 text-left text-[#1c4e75] hover:bg-gray-100 flex items-center gap-2"
+                      >
+                        <Users size={16} /> View
+                      </button>
+                      <button
+                        onClick={() => handleEdit(lead)}
+                        className="w-full px-4 py-2 text-left text-yellow-600 hover:bg-gray-100 flex items-center gap-2"
+                      >
+                        <Edit size={16} /> Edit
+                      </button>
+                      <button
+                        onClick={() => handleDelete(lead)}
+                        className="w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100 flex items-center gap-2"
+                      >
+                        <Trash2 size={16} /> Delete
+                      </button>
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Pagination */}
+      <div className="flex justify-between items-center mt-6 flex-wrap gap-3">
+        <button
+          onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
+          disabled={currentPage === 1}
+          className="px-4 py-2 flex items-center gap-1 rounded-xl border shadow-sm disabled:opacity-50"
+        >
+          <ChevronLeft size={18} /> Prev
+        </button>
+        <button
+          onClick={() =>
+            setCurrentPage((p) =>
+              indexOfLastLead < filteredLeads.length ? p + 1 : p
+            )
+          }
+          disabled={indexOfLastLead >= filteredLeads.length}
+          className="px-4 py-2 flex items-center gap-1 rounded-xl border shadow-sm disabled:opacity-50"
+        >
+          Next <ChevronRight size={18} />
+        </button>
+      </div>
+
+      {/* Lead Detail Modal */}
+      {selectedLead && !isEditing && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-xl w-full max-w-lg relative overflow-y-auto max-h-[90vh]">
             <button
-              onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-              disabled={currentPage === 1}
-              className="flex items-center gap-2 px-3 py-2 border rounded disabled:opacity-50"
+              onClick={() => setSelectedLead(null)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
             >
-              <ChevronLeft className="w-4 h-4" /> Prev
+              <X />
             </button>
-            <span>
-              Page {currentPage} of {totalPages}
-            </span>
-            <button
-              onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
-              disabled={currentPage === totalPages}
-              className="flex items-center gap-2 px-3 py-2 border rounded disabled:opacity-50"
-            >
-              Next <ChevronRight className="w-4 h-4" />
-            </button>
+
+            <h2 className="text-2xl font-bold mb-4 text-[#1c4e75]">
+              Lead Details
+            </h2>
+            <div className="space-y-2">
+              <p className="flex items-center gap-2">
+                <Users size={18} /> {selectedLead.name}
+              </p>
+              <p className="flex items-center gap-2">
+                <Mail size={18} /> {selectedLead.email}
+              </p>
+              <p className="flex items-center gap-2">
+                <Phone size={18} /> {selectedLead.phone}
+              </p>
+              <p className="flex items-center gap-2">
+                <MessageSquare size={18} /> {selectedLead.message}
+              </p>
+              {selectedLead.packageTitle && (
+                <p className="flex items-center gap-2">
+                  🎁 Package: {selectedLead.packageTitle}
+                </p>
+              )}
+              {selectedLead.price && (
+                <p className="flex items-center gap-2">
+                  💰 Price: {selectedLead.price}
+                </p>
+              )}
+              <p className="flex items-center gap-2">
+                <Calendar size={18} />{" "}
+                {selectedLead.createdAt
+                  ? format(selectedLead.createdAt.toDate(), "PPP p")
+                  : "N/A"}
+              </p>
+              <p>
+                Status:{" "}
+                {selectedLead.confirmed ? (
+                  <span className="text-green-600 font-medium">Confirmed</span>
+                ) : (
+                  <span className="text-red-600 font-medium">
+                    Not Confirmed
+                  </span>
+                )}
+              </p>
+            </div>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              <button
+                onClick={() => handleEdit(selectedLead)}
+                className="px-4 py-2 rounded-lg text-white bg-[#1c4e75] hover:bg-[#163d5b] shadow"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleConfirmStatus(true)}
+                className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 shadow"
+              >
+                Confirm
+              </button>
+              <button
+                onClick={() => handleConfirmStatus(false)}
+                className="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 shadow"
+              >
+                Not Confirm
+              </button>
+            </div>
           </div>
         </div>
       )}
 
-      {/* Popup Modal */}
-      {selectedLead && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50">
-          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-lg max-w-lg w-full p-6 relative">
+      {/* Edit Modal */}
+      {isEditing && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-xl w-full max-w-lg overflow-y-auto max-h-[90vh]">
             <button
-              onClick={() => {
-                setSelectedLead(null);
-                setIsEditing(false);
-              }}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-900 dark:hover:text-white"
+              onClick={() => setIsEditing(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
             >
-              <X className="w-6 h-6" />
+              <X />
             </button>
 
-            {/* Lead Details */}
-            {!isEditing ? (
-              <div className="space-y-4">
-                <h2
-                  className="text-2xl font-bold"
-                  style={{ color: MAIN_COLOR }}
-                >
-                  Lead Details
-                </h2>
-                <div className="flex items-center gap-3">
-                  <Users className="w-5 h-5" style={{ color: MAIN_COLOR }} />
-                  <span className="font-medium">{selectedLead.name}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5" style={{ color: MAIN_COLOR }} />
-                  <span>{selectedLead.email}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5" style={{ color: MAIN_COLOR }} />
-                  <span>{selectedLead.phone}</span>
-                </div>
-                {selectedLead.packageTitle && (
-                  <div className="flex items-center gap-3">
-                    <Package
-                      className="w-5 h-5"
-                      style={{ color: MAIN_COLOR }}
-                    />
-                    <span>{selectedLead.packageTitle}</span>
-                  </div>
-                )}
-                {selectedLead.price && (
-                  <div className="flex items-center gap-3">
-                    <IndianRupee
-                      className="w-5 h-5"
-                      style={{ color: MAIN_COLOR }}
-                    />
-                    <span>{selectedLead.price}</span>
-                  </div>
-                )}
-                <div className="flex items-start gap-3">
-                  <MessageSquare
-                    className="w-5 h-5 mt-1"
-                    style={{ color: MAIN_COLOR }}
-                  />
-                  <p className="text-gray-700 dark:text-gray-300">
-                    {selectedLead.message || "No message provided"}
-                  </p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Calendar className="w-5 h-5" style={{ color: MAIN_COLOR }} />
-                  <span>
-                    {selectedLead.createdAt?.toDate
-                      ? format(
-                          selectedLead.createdAt.toDate(),
-                          "dd MMM yyyy, hh:mm a"
-                        )
-                      : "N/A"}
-                  </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="font-medium">Status:</span>
-                  {selectedLead.confirmed === true ? (
-                    <span className="text-green-600 font-semibold">
-                      Confirmed
-                    </span>
-                  ) : selectedLead.confirmed === false ? (
-                    <span className="text-red-600 font-semibold">
-                      Not Confirmed
-                    </span>
-                  ) : (
-                    <span className="text-gray-500">Pending</span>
-                  )}
-                </div>
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-[#1c4e75]">Edit Lead</h2>
 
-                <div className="flex gap-3 mt-4 flex-wrap">
-                  <button
-                    onClick={() => handleEdit(selectedLead)}
-                    className="flex items-center gap-2 px-4 py-2 rounded-md text-white"
-                    style={{ backgroundColor: MAIN_COLOR }}
-                  >
-                    <Edit3 className="w-4 h-4" /> Edit
-                  </button>
-                  <button
-                    onClick={() => handleConfirmStatus(true)}
-                    className="flex items-center gap-2 px-4 py-2 rounded-md text-white bg-green-600"
-                  >
-                    <CheckCircle className="w-4 h-4" /> Confirm
-                  </button>
-                  <button
-                    onClick={() => handleConfirmStatus(false)}
-                    className="flex items-center gap-2 px-4 py-2 rounded-md text-white bg-red-600"
-                  >
-                    <XCircle className="w-4 h-4" /> Not Confirmed
-                  </button>
-                </div>
-              </div>
-            ) : (
-              // Edit Form
-              <div className="space-y-4">
-                <h2
-                  className="text-2xl font-bold"
-                  style={{ color: MAIN_COLOR }}
+              <input
+                className="w-full p-2 rounded-lg border dark:bg-gray-800 focus:ring-2 focus:ring-[#1c4e75]"
+                value={editForm.name}
+                onChange={(e) =>
+                  setEditForm({ ...editForm, name: e.target.value })
+                }
+                placeholder="Name"
+              />
+
+              <input
+                className="w-full p-2 rounded-lg border dark:bg-gray-800 focus:ring-2 focus:ring-[#1c4e75]"
+                value={editForm.email}
+                onChange={(e) =>
+                  setEditForm({ ...editForm, email: e.target.value })
+                }
+                placeholder="Email"
+              />
+
+              <input
+                className="w-full p-2 rounded-lg border dark:bg-gray-800 focus:ring-2 focus:ring-[#1c4e75]"
+                value={editForm.phone}
+                onChange={(e) =>
+                  setEditForm({ ...editForm, phone: e.target.value })
+                }
+                placeholder="Phone"
+              />
+
+              <textarea
+                className="w-full p-2 rounded-lg border dark:bg-gray-800 focus:ring-2 focus:ring-[#1c4e75]"
+                value={editForm.message}
+                onChange={(e) =>
+                  setEditForm({ ...editForm, message: e.target.value })
+                }
+                placeholder="Message"
+              />
+
+              <input
+                className="w-full p-2 rounded-lg border dark:bg-gray-800 focus:ring-2 focus:ring-[#1c4e75]"
+                value={editForm.packageTitle}
+                onChange={(e) =>
+                  setEditForm({ ...editForm, packageTitle: e.target.value })
+                }
+                placeholder="Package Title"
+              />
+
+              <input
+                className="w-full p-2 rounded-lg border dark:bg-gray-800 focus:ring-2 focus:ring-[#1c4e75]"
+                value={editForm.price}
+                onChange={(e) =>
+                  setEditForm({ ...editForm, price: e.target.value })
+                }
+                placeholder="Price"
+              />
+
+              <div className="flex gap-3 pt-2 flex-wrap">
+                <button
+                  onClick={handleSaveEdit}
+                  className="px-4 py-2 rounded-lg text-white bg-[#1c4e75] hover:bg-[#163d5b] shadow"
                 >
-                  Edit Lead
-                </h2>
-                <input
-                  className="w-full p-2 rounded border dark:bg-gray-800"
-                  value={editForm.name}
-                  onChange={(e) =>
-                    setEditForm({ ...editForm, name: e.target.value })
-                  }
-                  placeholder="Name"
-                />
-                <input
-                  className="w-full p-2 rounded border dark:bg-gray-800"
-                  value={editForm.email}
-                  onChange={(e) =>
-                    setEditForm({ ...editForm, email: e.target.value })
-                  }
-                  placeholder="Email"
-                />
-                <input
-                  className="w-full p-2 rounded border dark:bg-gray-800"
-                  value={editForm.phone}
-                  onChange={(e) =>
-                    setEditForm({ ...editForm, phone: e.target.value })
-                  }
-                  placeholder="Phone"
-                />
-                <textarea
-                  className="w-full p-2 rounded border dark:bg-gray-800"
-                  value={editForm.message}
-                  onChange={(e) =>
-                    setEditForm({ ...editForm, message: e.target.value })
-                  }
-                  placeholder="Message"
-                />
-                <input
-                  className="w-full p-2 rounded border dark:bg-gray-800"
-                  value={editForm.packageTitle}
-                  onChange={(e) =>
-                    setEditForm({ ...editForm, packageTitle: e.target.value })
-                  }
-                  placeholder="Package Title"
-                />
-                <input
-                  className="w-full p-2 rounded border dark:bg-gray-800"
-                  value={editForm.price}
-                  onChange={(e) =>
-                    setEditForm({ ...editForm, price: e.target.value })
-                  }
-                  placeholder="Price"
-                />
-                <div className="flex gap-3">
-                  <button
-                    onClick={handleSaveEdit}
-                    className="px-4 py-2 rounded-md text-white"
-                    style={{ backgroundColor: MAIN_COLOR }}
-                  >
-                    Save
-                  </button>
-                  <button
-                    onClick={() => setIsEditing(false)}
-                    className="px-4 py-2 rounded-md border"
-                  >
-                    Cancel
-                  </button>
-                </div>
+                  Save
+                </button>
+                <button
+                  onClick={() => setIsEditing(false)}
+                  className="px-4 py-2 rounded-lg border shadow-sm"
+                >
+                  Cancel
+                </button>
               </div>
-            )}
+            </div>
           </div>
         </div>
       )}
