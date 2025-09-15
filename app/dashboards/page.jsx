@@ -12,7 +12,7 @@ export default function dashboardHome() {
       if (user) {
         router.replace("/dashboard/leads");
       } else {
-        router.replace("/(frontend)/login");
+        router.replace("/login");
       }
     });
     return () => unsubscribe();
