@@ -136,7 +136,6 @@ const Sidebar = () => {
           })}
         </nav>
 
-        {/* Logout Button */}
         <button
           onClick={handleLogout}
           className="mt-auto flex items-center gap-3 px-4 py-3 rounded-lg bg-red-500 text-white hover:bg-red-600 transition-colors"
