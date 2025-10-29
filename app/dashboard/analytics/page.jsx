@@ -49,34 +49,33 @@ export default function LeadsAnalytics() {
   const MAIN_COLOR = "#1c4e75";
   const PIE_COLORS = ["#1c4e75", "#06402B", "#FF0000"];
 
+  const isDark =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
+
   useEffect(() => {
     const fetchLeads = async () => {
       try {
         setIsLoading(true);
 
-        // Fetch from contacts
         const contactsSnapshot = await getDocs(collection(db, "contacts"));
         const contactsRaw = contactsSnapshot.docs.map((doc) => ({
           ...doc.data(),
           collection: "contacts",
         }));
 
-        // Fetch from travelInquiries
         const travelSnapshot = await getDocs(collection(db, "travelInquiries"));
         const travelRaw = travelSnapshot.docs.map((doc) => ({
           ...doc.data(),
           collection: "travelInquiries",
         }));
 
-        // Merge both
         const raw = [...contactsRaw, ...travelRaw];
-
         if (!raw.length) {
           setIsLoading(false);
           return;
         }
 
-        // Leads per day
         const grouped = raw.reduce((acc, item) => {
           const date = format(item.createdAt.toDate(), "dd MMM");
           acc[date] = (acc[date] || 0) + 1;
@@ -92,7 +91,6 @@ export default function LeadsAnalytics() {
           .sort((a, b) => a.sortDate - b.sortDate)
           .map(({ date, count }) => ({ date, count }));
 
-        // Lead sources
         const sourceGroup = raw.reduce((acc, item) => {
           const src = item.source || "Unknown";
           acc[src] = (acc[src] || 0) + 1;
@@ -105,21 +103,17 @@ export default function LeadsAnalytics() {
           })
         );
 
-        // Latest submission
         const sortedByDate = raw
           .map((item) => item.createdAt.toDate())
           .sort((a, b) => b - a);
 
-        // Peak day
         const max = formatted.reduce((prev, curr) =>
           curr.count > prev.count ? curr : prev
         );
 
-        // Average leads
         const uniqueDays = new Set(formatted.map((d) => d.date));
         const avgLeads = Math.round(raw.length / uniqueDays.size);
 
-        // Weekday data
         const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
         const weekdayGroup = raw.reduce((acc, item) => {
           const weekday = weekdays[getDay(item.createdAt.toDate())];
@@ -131,7 +125,6 @@ export default function LeadsAnalytics() {
           count: weekdayGroup[day] || 0,
         }));
 
-        // Collection sources
         const collectionGroup = raw.reduce((acc, item) => {
           const col = item.collection;
           acc[col] = (acc[col] || 0) + 1;
@@ -144,9 +137,8 @@ export default function LeadsAnalytics() {
           })
         );
 
-        // Confirmation status (Yes / No only)
         const statusGroup = raw.reduce((acc, item) => {
-          const status = item.confirmed ? "Yes" : "No"; // Only Yes / No
+          const status = item.confirmed ? "Yes" : "No";
           acc[status] = (acc[status] || 0) + 1;
           return acc;
         }, {});
@@ -157,7 +149,6 @@ export default function LeadsAnalytics() {
           })
         );
 
-        // Set state
         setData(formatted);
         setLeadSources(sourceFormatted);
         setTotalLeads(raw.length);
@@ -216,7 +207,7 @@ export default function LeadsAnalytics() {
                 <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
                   Analytics Dashboard
                 </h1>
-                <p className="text-gray-600 dark:text-gray-400 mt-2 text-base">
+                <p className="text-gray-600 dark:text-gray-300 mt-2 text-base">
                   Visualize lead trends, sources, and engagement
                 </p>
               </div>
@@ -240,10 +231,10 @@ export default function LeadsAnalytics() {
                     <item.icon className="w-5 h-5 text-white" />
                   </div>
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+                <p className="text-sm text-gray-500 dark:text-gray-300 mb-1">
                   {item.label}
                 </p>
-                <p className="text-2xl font-bold text-[#1c4e75]">
+                <p className="text-2xl font-bold text-[#1c4e75] dark:text-white">
                   {item.value}
                 </p>
               </motion.div>
@@ -257,7 +248,11 @@ export default function LeadsAnalytics() {
               icon={BarChart3}
               color={MAIN_COLOR}
             >
-              <BarChartComponent data={data} color={MAIN_COLOR} />
+              <BarChartComponent
+                data={data}
+                color={MAIN_COLOR}
+                isDark={isDark}
+              />
             </ChartCard>
 
             <ChartCard
@@ -265,7 +260,11 @@ export default function LeadsAnalytics() {
               icon={Activity}
               color={MAIN_COLOR}
             >
-              <LineChartComponent data={data} color={MAIN_COLOR} />
+              <LineChartComponent
+                data={data}
+                color={MAIN_COLOR}
+                isDark={isDark}
+              />
             </ChartCard>
           </div>
 
@@ -275,35 +274,19 @@ export default function LeadsAnalytics() {
               icon={PieChartIcon}
               color={MAIN_COLOR}
             >
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
-                  <Pie
-                    data={leadSources}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={({ name, value }) => `${name}: ${value}`}
-                    outerRadius={110}
-                    dataKey="value"
-                  >
-                    {leadSources.map((_, i) => (
-                      <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: MAIN_COLOR,
-                      color: "white",
-                      borderRadius: "8px",
-                      border: "none",
-                    }}
-                  />
-                </PieChart>
-              </ResponsiveContainer>
+              <PieChartComponent
+                data={leadSources}
+                colors={PIE_COLORS}
+                color={MAIN_COLOR}
+              />
             </ChartCard>
 
             <ChartCard title="Leads by Weekday" icon={Zap} color={MAIN_COLOR}>
-              <HeartbeatChartComponent data={weekdayData} color={MAIN_COLOR} />
+              <HeartbeatChartComponent
+                data={weekdayData}
+                color={MAIN_COLOR}
+                isDark={isDark}
+              />
             </ChartCard>
           </div>
 
@@ -313,31 +296,11 @@ export default function LeadsAnalytics() {
               icon={PieChartIcon}
               color={MAIN_COLOR}
             >
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
-                  <Pie
-                    data={collectionSources}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={({ name, value }) => `${name}: ${value}`}
-                    outerRadius={110}
-                    dataKey="value"
-                  >
-                    {collectionSources.map((_, i) => (
-                      <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: MAIN_COLOR,
-                      color: "white",
-                      borderRadius: "8px",
-                      border: "none",
-                    }}
-                  />
-                </PieChart>
-              </ResponsiveContainer>
+              <PieChartComponent
+                data={collectionSources}
+                colors={PIE_COLORS}
+                color={MAIN_COLOR}
+              />
             </ChartCard>
 
             <ChartCard
@@ -345,31 +308,11 @@ export default function LeadsAnalytics() {
               icon={PieChartIcon}
               color={MAIN_COLOR}
             >
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChart>
-                  <Pie
-                    data={confirmationStatus}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={({ name, value }) => `${name}: ${value}`}
-                    outerRadius={110}
-                    dataKey="value"
-                  >
-                    {confirmationStatus.map((_, i) => (
-                      <Cell key={i} fill={PIE_COLORS[i % PIE_COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: MAIN_COLOR,
-                      color: "white",
-                      borderRadius: "8px",
-                      border: "none",
-                    }}
-                  />
-                </PieChart>
-              </ResponsiveContainer>
+              <PieChartComponent
+                data={confirmationStatus}
+                colors={PIE_COLORS}
+                color={MAIN_COLOR}
+              />
             </ChartCard>
           </div>
         </div>
@@ -399,15 +342,8 @@ function ChartCard({ title, children, icon: Icon, color }) {
   );
 }
 
-function BarChartComponent({ data, xKey = "date", color }) {
-  if (!data.length) {
-    return (
-      <div className="flex flex-col items-center justify-center h-[300px] text-gray-500 dark:text-gray-400">
-        <Database className="w-10 h-10 opacity-40 mb-2" />
-        <p>No data available</p>
-      </div>
-    );
-  }
+function BarChartComponent({ data, xKey = "date", color, isDark }) {
+  if (!data.length) return <NoData icon={Database} />;
 
   return (
     <ResponsiveContainer width="100%" height={300}>
@@ -418,12 +354,19 @@ function BarChartComponent({ data, xKey = "date", color }) {
             <stop offset="100%" stopColor={color} stopOpacity={0.3} />
           </linearGradient>
         </defs>
-        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" opacity={0.3} />
-        <XAxis dataKey={xKey} stroke="#6b7280" fontSize={12} />
-        <YAxis allowDecimals={false} stroke="#6b7280" fontSize={12} />
+        <CartesianGrid
+          strokeDasharray="3 3"
+          stroke={isDark ? "#374151" : "#e5e7eb"}
+        />
+        <XAxis
+          dataKey={xKey}
+          stroke={isDark ? "#d1d5db" : "#6b7280"}
+          fontSize={12}
+        />
+        <YAxis stroke={isDark ? "#d1d5db" : "#6b7280"} fontSize={12} />
         <Tooltip
           contentStyle={{
-            backgroundColor: "#1c4e75",
+            backgroundColor: isDark ? "#111827" : "#1c4e75",
             color: "white",
             borderRadius: "8px",
             border: "none",
@@ -435,15 +378,8 @@ function BarChartComponent({ data, xKey = "date", color }) {
   );
 }
 
-function LineChartComponent({ data, color }) {
-  if (!data.length) {
-    return (
-      <div className="flex flex-col items-center justify-center h-[300px] text-gray-500 dark:text-gray-400">
-        <Activity className="w-10 h-10 opacity-40 mb-2" />
-        <p>No data available</p>
-      </div>
-    );
-  }
+function LineChartComponent({ data, color, isDark }) {
+  if (!data.length) return <NoData icon={Activity} />;
 
   return (
     <ResponsiveContainer width="100%" height={300}>
@@ -454,12 +390,19 @@ function LineChartComponent({ data, color }) {
             <stop offset="100%" stopColor={color} stopOpacity={0.05} />
           </linearGradient>
         </defs>
-        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" opacity={0.3} />
-        <XAxis dataKey="date" stroke="#6b7280" fontSize={12} />
-        <YAxis allowDecimals={false} stroke="#6b7280" fontSize={12} />
+        <CartesianGrid
+          strokeDasharray="3 3"
+          stroke={isDark ? "#374151" : "#e5e7eb"}
+        />
+        <XAxis
+          dataKey="date"
+          stroke={isDark ? "#d1d5db" : "#6b7280"}
+          fontSize={12}
+        />
+        <YAxis stroke={isDark ? "#d1d5db" : "#6b7280"} fontSize={12} />
         <Tooltip
           contentStyle={{
-            backgroundColor: "#1c4e75",
+            backgroundColor: isDark ? "#111827" : "#1c4e75",
             color: "white",
             borderRadius: "8px",
             border: "none",
@@ -477,15 +420,8 @@ function LineChartComponent({ data, color }) {
   );
 }
 
-function HeartbeatChartComponent({ data, color }) {
-  if (!data.length) {
-    return (
-      <div className="flex flex-col items-center justify-center h-[300px] text-gray-500 dark:text-gray-400">
-        <Zap className="w-10 h-10 opacity-40 mb-2" />
-        <p>No data available</p>
-      </div>
-    );
-  }
+function HeartbeatChartComponent({ data, color, isDark }) {
+  if (!data.length) return <NoData icon={Zap} />;
 
   return (
     <ResponsiveContainer width="100%" height={300}>
@@ -496,12 +432,19 @@ function HeartbeatChartComponent({ data, color }) {
             <stop offset="100%" stopColor={color} stopOpacity={0.1} />
           </linearGradient>
         </defs>
-        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" opacity={0.3} />
-        <XAxis dataKey="day" stroke="#6b7280" fontSize={12} />
-        <YAxis allowDecimals={false} stroke="#6b7280" fontSize={12} />
+        <CartesianGrid
+          strokeDasharray="3 3"
+          stroke={isDark ? "#374151" : "#e5e7eb"}
+        />
+        <XAxis
+          dataKey="day"
+          stroke={isDark ? "#d1d5db" : "#6b7280"}
+          fontSize={12}
+        />
+        <YAxis stroke={isDark ? "#d1d5db" : "#6b7280"} fontSize={12} />
         <Tooltip
           contentStyle={{
-            backgroundColor: color,
+            backgroundColor: isDark ? "#111827" : color,
             color: "white",
             borderRadius: "8px",
             border: "none",
@@ -534,5 +477,46 @@ function HeartbeatChartComponent({ data, color }) {
         />
       </LineChart>
     </ResponsiveContainer>
+  );
+}
+
+function PieChartComponent({ data, colors, color }) {
+  if (!data.length) return <NoData icon={PieChartIcon} />;
+
+  return (
+    <ResponsiveContainer width="100%" height={300}>
+      <PieChart>
+        <Pie
+          data={data}
+          cx="50%"
+          cy="50%"
+          labelLine={false}
+          label={({ name, value }) => `${name}: ${value}`}
+          outerRadius={110}
+          dataKey="value"
+        >
+          {data.map((_, i) => (
+            <Cell key={i} fill={colors[i % colors.length]} />
+          ))}
+        </Pie>
+        <Tooltip
+          contentStyle={{
+            backgroundColor: color,
+            color: "white",
+            borderRadius: "8px",
+            border: "none",
+          }}
+        />
+      </PieChart>
+    </ResponsiveContainer>
+  );
+}
+
+function NoData({ icon: Icon }) {
+  return (
+    <div className="flex flex-col items-center justify-center h-[300px] text-gray-500 dark:text-gray-300">
+      <Icon className="w-10 h-10 opacity-40 mb-2" />
+      <p>No data available</p>
+    </div>
   );
 }
