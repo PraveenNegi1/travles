@@ -9,7 +9,7 @@ const Popup = ({
   isOpen,
   onClose,
   title = "Contact Us",
-  subtitle = "Let's discuss your perfect travel",
+  subtitle = "Let's discuss your perfect travel with Raaही",
   apiEndpoint = "/api/send-email",
   price,
   packageTitle,
