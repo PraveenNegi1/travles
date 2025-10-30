@@ -170,10 +170,8 @@ const AIChatPopup = () => {
 
     if (isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-      // Lock body scroll when chat is open
       document.body.style.overflow = "hidden";
     } else {
-      // Restore body scroll when chat is closed
       document.body.style.overflow = "auto";
     }
 
@@ -227,7 +225,6 @@ const AIChatPopup = () => {
       ]);
 
       setIsTyping(true);
-      // Hide suggestions when user selects a question
       setShowSuggestions(false);
 
       setTimeout(() => {
@@ -240,7 +237,6 @@ const AIChatPopup = () => {
             timestamp: new Date(),
           },
         ]);
-        // Show suggestions again after bot replies
         setShowSuggestions(true);
       }, 1500);
     }
@@ -262,7 +258,6 @@ const AIChatPopup = () => {
 
     setInputValue("");
     setIsTyping(true);
-    // Hide suggestions when user sends a message
     setShowSuggestions(false);
 
     const userQuestion = inputValue.toLowerCase();

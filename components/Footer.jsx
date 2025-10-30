@@ -55,7 +55,6 @@ const Footer = () => {
 
   return (
     <footer className="relative bg-gradient-to-r from-[#1a4766] via-[#205781] to-[#1a4766] text-[#FAF1E6] py-10 sm:py-12 md:py-16 merriweather overflow-hidden md:text-[18px]">
-      {/* Wave Pattern */}
       <div className="absolute top-0 left-0 w-full h-16 bg-wave-pattern bg-repeat-x bg-[length:100px_16px] opacity-20"></div>
 
       <motion.div
@@ -65,7 +64,6 @@ const Footer = () => {
         className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 lg:gap-16">
-          {/* About Us */}
           <motion.div
             variants={itemVariants}
             className="text-center sm:text-left"
@@ -79,7 +77,6 @@ const Footer = () => {
             </p>
           </motion.div>
 
-          {/* Explore */}
           <motion.div
             variants={itemVariants}
             className="text-center sm:text-left"
@@ -109,7 +106,6 @@ const Footer = () => {
             </ul>
           </motion.div>
 
-          {/* Get in Touch */}
           <motion.div
             variants={itemVariants}
             className="text-center sm:text-left"
@@ -150,7 +146,6 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Quick Links */}
           <motion.div
             variants={itemVariants}
             className="text-center sm:text-left"
