@@ -250,7 +250,7 @@ const geographyData = [
       {
         label: " National Parks:",
         list: [
-          "Jim Corbett National Park (India’s first tiger reserve)",
+          "Jim Corbett National Park (India's first tiger reserve)",
           "Valley of Flowers (UNESCO World Heritage Site)",
           "Nanda Devi National Park (UNESCO World Heritage Site)",
         ],
@@ -279,7 +279,7 @@ const geographyData = [
         list: [
           "Chaukhamba (7,138 m)",
           "Trisul (7,120 m)",
-          "Gangotri Group (6,672–6,856 m)",
+          "Gangotri Group (6,672 - 6,856 m)",
         ],
       },
       {
