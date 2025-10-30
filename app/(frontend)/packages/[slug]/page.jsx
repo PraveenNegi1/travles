@@ -41,7 +41,6 @@ const PackageDetails = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 font-serif">
-      {/* Top Banner */}
       <div className="relative md:h-[70vh] h-[40vh]  md:w-full  overflow-hidden">
         <Image
           src={pkg.image}
@@ -72,12 +71,9 @@ const PackageDetails = () => {
         </div>
       </div>
 
-      {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 lg:py-16">
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left Section */}
           <div className="lg:col-span-2 space-y-10">
-            {/* Quick Info */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
                 {
@@ -112,7 +108,6 @@ const PackageDetails = () => {
               ))}
             </div>
 
-            {/* About Section */}
             <div className="bg-white rounded-xl p-6 shadow border">
               <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
                 <Mountain className="w-6 h-6 text-[#205781]" />
@@ -123,7 +118,6 @@ const PackageDetails = () => {
               </p>
             </div>
 
-            {/* Highlights */}
             <div className="bg-white rounded-xl p-6 shadow border">
               <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
                 <Camera className="w-6 h-6 text-[#205781]" />
@@ -144,7 +138,6 @@ const PackageDetails = () => {
               </div>
             </div>
 
-            {/* What's Included */}
             <div className="bg-white rounded-xl p-6 shadow border">
               <h2 className="text-2xl font-bold mb-4 text-[#205781]">
                 What's Included
@@ -159,7 +152,6 @@ const PackageDetails = () => {
               </div>
             </div>
 
-            {/* Itinerary */}
             <div className="bg-white rounded-xl p-6 shadow border">
               <h2 className="text-2xl font-bold mb-6">Detailed Itinerary</h2>
               <div className="space-y-4">
@@ -178,7 +170,6 @@ const PackageDetails = () => {
             </div>
           </div>
 
-          {/* Right Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-xl p-6 shadow-lg border sticky top-28">
               <div className="mb-6">
@@ -214,7 +205,7 @@ const PackageDetails = () => {
               </div>
 
               <button
-                onClick={() => setIsPopupOpen(true)} // ✅ open popup
+                onClick={() => setIsPopupOpen(true)} 
                 className="w-full cursor-pointer bg-[#205781] text-white py-3 rounded-lg font-semibold hover:bg-blue-800 transition"
               >
                 Book Now
@@ -235,7 +226,6 @@ const PackageDetails = () => {
       </div>
       
 
-      {/* ✅ Booking Popup */}
       <Popup
         isOpen={isPopupOpen}
         onClose={() => setIsPopupOpen(false)}

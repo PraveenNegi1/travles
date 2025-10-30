@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 const PackagesPage = () => {
   return (
     <div className="min-h-screen  font-serif relative overflow-hidden">
-      {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-200/30 to-teal-200/30 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-purple-200/20 to-pink-200/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -73,7 +72,6 @@ const PackagesPage = () => {
                   href={`/packages/${pkg.id}`}
                   className="block bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/50 hover:border-teal-200/50 relative"
                 >
-                  {/* Image Container */}
                   <div className="relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10"></div>
 
@@ -86,7 +84,6 @@ const PackagesPage = () => {
                       priority={index < 3}
                     />
 
-                    {/* Price Badge */}
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       className="absolute top-4 right-4 z-20"
@@ -96,18 +93,14 @@ const PackagesPage = () => {
                       </div>
                     </motion.div>
 
-                    {/* Duration Badge */}
                     <div className="absolute top-4 left-4 z-20 bg-white/90 backdrop-blur-sm text-gray-800 px-3 py-1.5 rounded-2xl text-xs font-semibold shadow-lg border border-gray-200/50">
                       {pkg.duration}
                     </div>
 
-                    {/* Hover Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-teal-900/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 z-10"></div>
                   </div>
 
-                  {/* Content */}
                   <div className="p-6 sm:p-7 lg:p-8 relative">
-                    {/* Decorative Element */}
                     <div className="absolute top-0 left-6 w-12 h-1 bg-gradient-to-r from-teal-500 to-[#205781] rounded-full transform -translate-y-0.5"></div>
 
                     <div className="mb-4">
@@ -120,7 +113,6 @@ const PackagesPage = () => {
                       {pkg.description}
                     </p>
 
-                    {/* Bottom Section */}
                     <div className="flex items-center justify-between">
                       <div className="flex flex-col">
                         <span className="text-xs text-gray-500 uppercase tracking-wide font-medium mb-1">
@@ -154,7 +146,6 @@ const PackagesPage = () => {
                     </div>
                   </div>
 
-                  {/* Card Shine Effect */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 transform translate-x-full group-hover:-translate-x-full transition-transform duration-1000"></div>
                   </div>

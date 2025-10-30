@@ -209,7 +209,6 @@ const DestinationGroup = ({ group, index }) => {
       className="mb-12 md:mb-20"
       aria-labelledby={`heading-${group.id}`}
     >
-      {/* Title - simple in mobile, toggle in desktop */}
       <div className="block sm:hidden text-center py-2">
         <h2 className="text-xl font-bold text-gray-800 underline underline-offset-4 merriweather">
           {group.title}
