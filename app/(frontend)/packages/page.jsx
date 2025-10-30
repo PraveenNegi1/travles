@@ -16,7 +16,6 @@ const PackagesPage = () => {
 
       <div className="relative z-10 py-8 md:py-12 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Hero Section */}
           <motion.div
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -50,7 +49,6 @@ const PackagesPage = () => {
             ></motion.div>
           </motion.div>
 
-          {/* Packages Grid */}
           <div className="grid gap-6 sm:gap-8 lg:gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
             {packages.map((pkg, index) => (
               <motion.div
