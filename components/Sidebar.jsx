@@ -32,7 +32,6 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* Mobile toggle button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="sm:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-gray-100 dark:bg-gray-800 shadow-md"
@@ -40,7 +39,6 @@ const Sidebar = () => {
         {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
       </button>
 
-      {/* Mobile Sidebar (animated) */}
       <AnimatePresence>
         {isOpen && (
           <motion.aside
@@ -50,7 +48,6 @@ const Sidebar = () => {
             transition={{ type: "spring", stiffness: 260, damping: 25 }}
             className="sm:hidden w-64 fixed top-0 left-0 h-screen font-serif bg-white dark:bg-gray-900 shadow-lg border-r border-gray-200 dark:border-gray-700 p-6 flex flex-col z-40"
           >
-            {/* Logo / Brand */}
             <div className="flex items-center gap-3 mb-8">
               <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
                 <Sparkles className="w-5 h-5 text-gray-700 dark:text-gray-200" />
@@ -60,7 +57,6 @@ const Sidebar = () => {
               </h2>
             </div>
 
-            {/* Navigation */}
             <nav className="space-y-2">
               {navItems.map(({ name, href, icon }) => {
                 const isActive = pathname === href;
@@ -88,7 +84,6 @@ const Sidebar = () => {
               })}
             </nav>
 
-            {/* Logout Button */}
             <motion.button
               onClick={handleLogout}
               whileHover={{ scale: 1.02 }}
@@ -102,9 +97,7 @@ const Sidebar = () => {
         )}
       </AnimatePresence>
 
-      {/* Desktop Sidebar (always visible) */}
       <aside className="hidden sm:flex w-64 fixed top-0 left-0 h-screen font-serif bg-white dark:bg-gray-900 shadow-lg border-r border-gray-200 dark:border-gray-700 p-6 flex-col z-40">
-        {/* Logo / Brand */}
         <div className="flex items-center gap-3 mb-8">
           <div className="p-2 bg-gray-100 dark:bg-gray-800 rounded-lg">
             <Sparkles className="w-5 h-5 text-gray-700 dark:text-gray-200" />
@@ -114,7 +107,6 @@ const Sidebar = () => {
           </h2>
         </div>
 
-        {/* Navigation */}
         <nav className="space-y-2">
           {navItems.map(({ name, href, icon }) => {
             const isActive = pathname === href;
