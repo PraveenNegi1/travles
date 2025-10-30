@@ -121,10 +121,11 @@ const Footer = () => {
                   bg: "bg-gradient-to-r from-[#FF0069] to-[#7638FA]",
                 },
                 {
-                  href: "https://www.linkedin.com/in/praveen-negi1/",
+                  href: "https://www.linkedin.com/in/praveen-negi1",
                   icon: <FaLinkedin size={22} />,
                   bg: "bg-[#0077b5]",
                 },
+
                 {
                   href: "https://github.com/PraveenNegi1",
                   icon: <FaGithub size={22} />,
@@ -154,7 +155,6 @@ const Footer = () => {
               Quick Links
             </h2>
             <ul className="space-y-3">
-            
               <motion.li
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}

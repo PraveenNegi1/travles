@@ -9,7 +9,6 @@ export default function GlobalButton() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Button is visible when scrolling up and not at the top of the page
       if (currentScrollY < lastScrollY.current && currentScrollY > 100) {
         setIsVisible(true);
       } else {
