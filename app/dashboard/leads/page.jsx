@@ -212,7 +212,6 @@ export default function LeadsPage() {
     </div>
 
     </div>
-      {/* Search */}
       <div className="relative mb-6 max-w-md mx-auto md:mx-0">
         <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
         <input
@@ -224,7 +223,6 @@ export default function LeadsPage() {
         />
       </div>
 
-      {/* Leads Table */}
       <div className=" bg-white overflow-y-auto dark:bg-gray-900 shadow-xl rounded-2xl  h-[75vh]">
         <table className="min-w-full  divide-y divide-gray-200 dark:divide-gray-700 text-sm">
           <thead className=" dark:bg-[#1c4e75] bg-[#1c4e75]   dark:text-gray-300 text-white sticky top-0 z-50">

@@ -197,7 +197,6 @@ export default function LeadsAnalytics() {
         transition={{ duration: 0.6 }}
       >
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
           <div className="mb-12">
             <div className="flex items-center gap-4 mb-4">
               <div className="p-3 rounded-xl bg-[#1c4e75]">
@@ -214,7 +213,6 @@ export default function LeadsAnalytics() {
             </div>
           </div>
 
-          {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {statCards.map((item, i) => (
               <motion.div
@@ -241,7 +239,6 @@ export default function LeadsAnalytics() {
             ))}
           </div>
 
-          {/* Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
             <ChartCard
               title="Leads Per Day"
