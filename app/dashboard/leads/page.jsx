@@ -263,7 +263,6 @@ export default function LeadsPage() {
                   )}
                 </td>
 
-                {/* Actions Dropdown */}
                 <td className="px-4 py-3 relative">
                   <button
                     onClick={() =>
@@ -304,7 +303,6 @@ export default function LeadsPage() {
         </table>
       </div>
 
-      {/* Pagination */}
       <div className="flex justify-between items-center mt-6 flex-wrap gap-3">
         <button
           onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
@@ -326,7 +324,6 @@ export default function LeadsPage() {
         </button>
       </div>
 
-      {/* Lead Detail Modal */}
       {selectedLead && !isEditing && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">
           <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-xl w-full max-w-lg relative overflow-y-auto max-h-[90vh]">
@@ -405,7 +402,6 @@ export default function LeadsPage() {
         </div>
       )}
 
-      {/* Edit Modal */}
       {isEditing && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">
           <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-xl w-full max-w-lg overflow-y-auto max-h-[90vh]">
