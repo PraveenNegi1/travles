@@ -22,7 +22,7 @@ const PackagesPage = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center mb-16 md:mb-20"
           >
-            <h1 className="text-3xl  md:text-5xl  font-extrabold bg-gradient-to-r from-gray-900 via-blue-800 to-[#205781] bg-clip-text text-transparent mb-6 tracking-tight leading-tight">
+            <h1 className="text-3xl  md:text-4xl  font-extrabold bg-gradient-to-r from-gray-900 via-blue-800 to-[#205781] bg-clip-text text-transparent mb-6 tracking-tight leading-tight">
               Discover Uttarakhand
               <br className="hidden sm:block" />{" "}
               <span className="bg-gradient-to-r from-[#205781] to-blue-600 bg-clip-text text-transparent">
@@ -34,7 +34,7 @@ const PackagesPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed"
+              className="text-lg md:text-xl  text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed"
             >
               Embark on extraordinary journeys through pristine mountains,
               serene valleys, and spiritual destinations with our expertly
@@ -123,7 +123,7 @@ const PackagesPage = () => {
 
                       <motion.div
                         whileHover={{ x: 5 }}
-                        className="flex items-center bg-gradient-to-r from-[#205781] to-teal-600 text-white px-4 py-2.5 rounded-2xl font-semibold text-sm shadow-md group-hover:shadow-lg transition-all duration-300"
+                        className="flex items-center  bg-gradient-to-b from-[#205781] to-[#1a496e] text-white px-4 py-2.5 rounded-2xl font-semibold text-sm shadow-md group-hover:shadow-lg transition-all duration-300"
                       >
                         <span className="mr-2">Explore</span>
                         <motion.svg
