@@ -183,7 +183,6 @@ const PackageDetails = () => {
                     </span>
                   )}
                 </div>
-                <p className="text-sm text-gray-600">per person</p>
 
                 <div className="flex items-center gap-2 mt-3">
                   <div className="flex">
