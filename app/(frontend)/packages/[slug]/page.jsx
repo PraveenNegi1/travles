@@ -64,7 +64,7 @@ const PackageDetails = () => {
             </div>
             {pkg.trending && (
               <span className="bg-[#205781] px-3 py-1 rounded-full text-xs sm:text-sm">
-                🔥 Trending
+                 Trending
               </span>
             )}
           </div>
@@ -216,7 +216,7 @@ const PackageDetails = () => {
                   Need help with booking?
                 </p>
                 <p className="font-semibold text-[#205781]">
-                  📞 +91-9758354290
+                   +91-9758354290
                 </p>
                 <p className="text-sm text-gray-600">Available 24/7</p>
               </div>

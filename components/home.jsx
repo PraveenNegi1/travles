@@ -88,7 +88,6 @@ const HomePage = () => {
           </h2>
 
           <div className="merriweather text-base sm:text-lg md:text-xl space-y-3 sm:space-y-4">
-            {/* Desktop & Tablet View */}
             <div className="hidden sm:block space-y-4">
               {paragraphs.map((para, idx) => (
                 <p
@@ -100,7 +99,6 @@ const HomePage = () => {
               ))}
             </div>
 
-            {/* Mobile View with Toggle */}
             <div className="block sm:hidden space-y-4">
               {(showMore ? paragraphs : [paragraphs[0]]).map((para, idx) => (
                 <p

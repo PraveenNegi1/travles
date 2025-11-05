@@ -81,7 +81,6 @@ function FormPage() {
           </div>
         </div>
 
-        {/* Form Section */}
         <div className="w-full md:w-1/2 p-4 sm:p-6 md:p-8 lg:p-10">
           <h2 className="merriweather text-xl sm:text-2xl md:text-3xl font-extrabold text-center text-gray-800 mb-4 sm:mb-6">
             <span className="text-[#205781]">Contact Us</span>
@@ -164,7 +163,6 @@ function FormPage() {
             </button>
           </form>
 
-          {/* Display detected source for debugging */}
           <p className="text-xs text-gray-400 mt-4 text-center">
             <span className="font-medium">Source:</span> {source}
           </p>

@@ -6,8 +6,6 @@ import {
   FaInstagram,
   FaLinkedin,
   FaGithub,
-  FaHeart,
-  FaArrowUp,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
