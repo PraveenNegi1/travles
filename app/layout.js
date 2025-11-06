@@ -55,7 +55,6 @@ export default function RootLayout({ children }) {
       <body>
         {children}
         <GlobalButton />
-        {/* <AIChatPopup /> */}
       </body>
     </html>
   );

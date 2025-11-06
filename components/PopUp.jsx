@@ -108,7 +108,6 @@ const Popup = ({
           transition={{ delay: 0.2 }}
           className="text-center mb-6 sm:mb-8"
         >
-          
           <h2 className="text-2xl sm:text-3xl font-bold bg-[#205781] bg-clip-text text-transparent">
             {title}
           </h2>
@@ -200,9 +199,7 @@ const Popup = ({
                   <motion.span
                     animate={{ x: [0, 5, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    🚀
-                  </motion.span>
+                  ></motion.span>
                 </>
               )}
             </span>
