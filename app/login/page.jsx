@@ -76,7 +76,6 @@ export default function LoginPage() {
       <Toaster position="top-center" />
 
       <div className="w-full max-w-md bg-white shadow-md rounded-xl p-8">
-        {/* Logo */}
         <div className="text-center mb-8">
           <Image
             src="/logo/Animation-2.gif"
@@ -92,7 +91,6 @@ export default function LoginPage() {
           <p className="text-[#1c4e75] text-sm">Sign in to your account</p>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label
@@ -161,14 +159,12 @@ export default function LoginPage() {
           </button>
         </form>
 
-        {/* Divider */}
         <div className="flex items-center my-6">
           <div className="flex-grow border-t border-gray-300"></div>
           <span className="px-2 text-sm text-gray-500">or</span>
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
 
-        {/* Google Sign In */}
         <button
           type="button"
           onClick={handleGoogleSignIn}
