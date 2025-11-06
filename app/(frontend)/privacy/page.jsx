@@ -10,7 +10,6 @@ const PrivacyPolicyPage = () => {
   return (
     <div className="bg-gradient-to-b from-[#f9fafb] via-white to-[#e6f0f7] py-12 px-4 sm:px-6 lg:px-8 font-serif">
       <div className="max-w-5xl mx-auto bg-white shadow-2xl rounded-3xl p-8 sm:p-12 lg:p-16 transition-all duration-300 hover:shadow-3xl">
-        {/* HEADER */}
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-[#1c4e75] mb-4 tracking-wide">
             Privacy Policy
@@ -22,9 +21,7 @@ const PrivacyPolicyPage = () => {
           </p>
         </div>
 
-        {/* SECTIONS */}
         <section className="space-y-10 text-gray-800">
-          {/* 1. Information */}
           <div>
             <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
               1. Information We Collect
@@ -38,7 +35,6 @@ const PrivacyPolicyPage = () => {
             </ul>
           </div>
 
-          {/* 2. Use of Data */}
           <div>
             <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
               2. How We Use Your Information
@@ -52,7 +48,6 @@ const PrivacyPolicyPage = () => {
             </ul>
           </div>
 
-          {/* 3. Data Security */}
           <div>
             <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
               3. Data Security
@@ -65,7 +60,6 @@ const PrivacyPolicyPage = () => {
             </p>
           </div>
 
-          {/* 4. Sharing Info */}
           <div>
             <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
               4. Sharing Your Information
@@ -84,7 +78,6 @@ const PrivacyPolicyPage = () => {
             </ul>
           </div>
 
-          {/* 5. Cookies */}
           <div>
             <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
               5. Cookies and Tracking Technologies
@@ -96,7 +89,6 @@ const PrivacyPolicyPage = () => {
             </p>
           </div>
 
-          {/* 6. Third-Party Links */}
           <div>
             <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
               6. Third-Party Links
@@ -109,7 +101,6 @@ const PrivacyPolicyPage = () => {
             </p>
           </div>
 
-          {/* 7. Children's Privacy */}
           <div>
             <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
               7. Children&apos;s Privacy
@@ -121,7 +112,6 @@ const PrivacyPolicyPage = () => {
             </p>
           </div>
 
-          {/* 8. Policy Updates */}
           <div>
             <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
               8. Updates to This Policy
@@ -134,7 +124,6 @@ const PrivacyPolicyPage = () => {
             </p>
           </div>
 
-          {/* 9. Contact */}
           <div className="border-t border-gray-200 pt-8">
             <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
               9. Contact Us
