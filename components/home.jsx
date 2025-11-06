@@ -47,34 +47,34 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <div
-        className="relative min-h-[400px] sm:min-h-[500px] md:min-h-[600px] bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1608497582912-bf412dc8963e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50"></div>
+     <div className="relative min-h-[400px] sm:min-h-[500px] md:min-h-[600px] overflow-hidden">
+  <img
+    src="https://images.unsplash.com/photo-1608497582912-bf412dc8963e?q=80&w=2070&auto=format&fit=crop"
+    alt="Uttarakhand mountains"
+    className="absolute inset-0 w-full h-full object-contain sm:object-cover"
+  />
+  <div className="absolute inset-0 bg-black/50"></div>
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6">
-          <motion.h1
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="text-3xl sm:text-4xl md:text-5xl  font-extrabold text-white leading-tight font-serif"
-          >
-            Let the Mountains Tell You Their Stories{" "}
-          </motion.h1>
-          <motion.p
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mt-3 md:mt-4 merriweather max-w-3xl"
-          >
-            Welcome to DevBhoomi – The Land of Gods, Uttarakhand{" "}
-          </motion.p>
-        </div>
-      </div>
+  <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 sm:px-6">
+    <motion.h1
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight font-serif"
+    >
+      Let the Mountains Tell You Their Stories
+    </motion.h1>
+    <motion.p
+      initial={{ y: 30, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+      className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mt-3 md:mt-4 merriweather max-w-3xl"
+    >
+      Welcome to DevBhoomi – The Land of Gods, Uttarakhand
+    </motion.p>
+  </div>
+</div>
+
 
       <motion.section
         initial={{ opacity: 0, y: 30 }}
