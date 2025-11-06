@@ -16,7 +16,7 @@ const PrivacyPolicyPage = () => {
             Privacy Policy
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
-            At <strong>Explore Uttarakhand Tours</strong>, your privacy is our
+            At <strong>Raaही</strong>, your privacy is our
             top priority. This policy explains how we handle your data with
             transparency and care.
           </p>
@@ -46,7 +46,7 @@ const PrivacyPolicyPage = () => {
             <ul className="list-disc pl-6 text-base space-y-2">
               <li>To process bookings, queries, and travel arrangements</li>
               <li>To send confirmations, offers, and relevant travel updates</li>
-              <li>To improve our website’s performance and your experience</li>
+              <li>To improve our website&apos;s performance and your experience</li>
               <li>To comply with legal and regulatory obligations</li>
               <li>To ensure customer satisfaction and personalize our services</li>
             </ul>
@@ -112,7 +112,7 @@ const PrivacyPolicyPage = () => {
           {/* 7. Children's Privacy */}
           <div>
             <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
-              7. Children’s Privacy
+              7. Children&apos;s Privacy
             </h2>
             <p className="text-base leading-relaxed">
               Our services are not intended for children under 13. We do not
@@ -148,14 +148,13 @@ const PrivacyPolicyPage = () => {
               >
                 praveennegi247@gmail.com
               </a>{" "}
-              — we’d be happy to help.
+              — we&apos;d be happy to help.
             </p>
           </div>
         </section>
 
-        {/* FOOTER LINE */}
         <p className="text-center text-gray-500 text-sm mt-12">
-          © {new Date().getFullYear()} Explore Uttarakhand Tours. All rights reserved.
+          © {new Date().getFullYear()} Raaही. All rights reserved.
         </p>
       </div>
     </div>
