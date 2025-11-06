@@ -61,9 +61,9 @@ const HomePage = () => {
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight font-serif"
+            className="text-3xl sm:text-4xl md:text-5xl  font-extrabold text-white leading-tight font-serif"
           >
-            Explore Uttarakhand
+            Let the Mountains Tell You Their Stories{" "}
           </motion.h1>
           <motion.p
             initial={{ y: 30, opacity: 0 }}
@@ -71,7 +71,7 @@ const HomePage = () => {
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mt-3 md:mt-4 merriweather max-w-3xl"
           >
-            Discover the land of gods and breathtaking beauty
+            Welcome to DevBhoomi – The Land of Gods, Uttarakhand{" "}
           </motion.p>
         </div>
       </div>
@@ -84,7 +84,7 @@ const HomePage = () => {
       >
         <div className="container mx-auto px-4 sm:px-6 font-sans">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 text-center mb-4 sm:mb-6 font-serif">
-            Welcome to Uttarakhand
+            Welcome to DevBhoomi Uttarakhand
           </h2>
 
           <div className="merriweather text-base sm:text-lg md:text-xl space-y-3 sm:space-y-4">
