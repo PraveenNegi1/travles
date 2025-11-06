@@ -3,122 +3,160 @@ import React from "react";
 export const metadata = {
   title: "Privacy Policy - Explore Uttarakhand Tours",
   description:
-    "Learn how Explore Uttarakhand Tours collects, uses, and protects your personal information.",
+    "Understand how Explore Uttarakhand Tours collects, uses, and protects your personal information responsibly and transparently.",
 };
 
 const PrivacyPolicyPage = () => {
   return (
-    <div className="bg-gradient-to-b from-white to-gray-100 py-12 px-4 sm:px-6 lg:px-8 font-serif">
-      <div className="max-w-5xl mx-auto bg-white shadow-xl rounded-2xl p-6 sm:p-10 text-gray-800">
-        <h1 className="text-4xl font-extrabold text-center text-[#1c4e75] mb-8">
-          Privacy Policy
-        </h1>
-
-        <section className="space-y-6">
-          <p className="text-lg leading-relaxed">
-            At <strong>Explore Uttarakhand Tours</strong>, we value your privacy
-            and are committed to protecting your personal information. This
-            Privacy Policy outlines how we collect, use, and safeguard your
-            data.
+    <div className="bg-gradient-to-b from-[#f9fafb] via-white to-[#e6f0f7] py-12 px-4 sm:px-6 lg:px-8 font-serif">
+      <div className="max-w-5xl mx-auto bg-white shadow-2xl rounded-3xl p-8 sm:p-12 lg:p-16 transition-all duration-300 hover:shadow-3xl">
+        {/* HEADER */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-[#1c4e75] mb-4 tracking-wide">
+            Privacy Policy
+          </h1>
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
+            At <strong>Explore Uttarakhand Tours</strong>, your privacy is our
+            top priority. This policy explains how we handle your data with
+            transparency and care.
           </p>
+        </div>
 
+        {/* SECTIONS */}
+        <section className="space-y-10 text-gray-800">
+          {/* 1. Information */}
           <div>
-            <h2 className="text-2xl font-bold text-[#1c4e75] mb-2">
+            <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
               1. Information We Collect
             </h2>
             <ul className="list-disc pl-6 text-base space-y-2">
-              <li>Your name, email address, and phone number</li>
+              <li>Personal details such as your name, phone number, and email</li>
               <li>Travel preferences and destination interests</li>
-              <li>Payment and billing information</li>
-              <li>Usage data such as IP address, device type, and browser</li>
+              <li>Payment and billing information (handled securely)</li>
+              <li>Website usage data such as browser, device type, and IP address</li>
+              <li>Feedback or inquiries submitted through our forms</li>
             </ul>
           </div>
 
+          {/* 2. Use of Data */}
           <div>
-            <h2 className="text-2xl font-bold text-[#1c4e75] mb-2">
+            <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
               2. How We Use Your Information
             </h2>
             <ul className="list-disc pl-6 text-base space-y-2">
-              <li>To process bookings and inquiries</li>
-              <li>To send you confirmations, updates, or promotional emails</li>
-              <li>To improve our services and website experience</li>
-              <li>To comply with legal obligations</li>
+              <li>To process bookings, queries, and travel arrangements</li>
+              <li>To send confirmations, offers, and relevant travel updates</li>
+              <li>To improve our website’s performance and your experience</li>
+              <li>To comply with legal and regulatory obligations</li>
+              <li>To ensure customer satisfaction and personalize our services</li>
             </ul>
           </div>
 
+          {/* 3. Data Security */}
           <div>
-            <h2 className="text-2xl font-bold text-[#1c4e75] mb-2">
+            <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
               3. Data Security
             </h2>
             <p className="text-base leading-relaxed">
-              We implement appropriate technical and organizational measures to
-              protect your personal data from unauthorized access, alteration,
-              disclosure, or destruction.
+              We use industry-standard encryption and secure systems to protect
+              your personal information from unauthorized access, alteration, or
+              misuse. Our team regularly reviews security practices to maintain
+              the integrity of your data.
             </p>
           </div>
 
+          {/* 4. Sharing Info */}
           <div>
-            <h2 className="text-2xl font-bold text-[#1c4e75] mb-2">
+            <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
               4. Sharing Your Information
             </h2>
             <p className="text-base mb-2">
-              We do not sell or trade your personal information. We may share
-              your information with:
+              We do not sell or rent your personal information. We may share
+              your data only with:
             </p>
             <ul className="list-disc pl-6 text-base space-y-2">
-              <li>Travel partners or service providers to fulfill bookings</li>
-              <li>Government or legal authorities when required</li>
+              <li>
+                Trusted travel partners, hotels, or transportation providers
+                necessary for completing your bookings.
+              </li>
+              <li>Government or law enforcement agencies if required by law.</li>
+              <li>Third-party services assisting in marketing or analytics (with confidentiality agreements).</li>
             </ul>
           </div>
 
+          {/* 5. Cookies */}
           <div>
-            <h2 className="text-2xl font-bold text-[#1c4e75] mb-2">
-              5. Your Rights
+            <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
+              5. Cookies and Tracking Technologies
             </h2>
             <p className="text-base leading-relaxed">
-              You have the right to access, update, or delete your personal
-              data. You may also opt-out of receiving marketing communications
-              at any time.
+              Our website uses cookies to improve user experience, analyze
+              traffic, and personalize content. You can control cookie
+              preferences through your browser settings at any time.
             </p>
           </div>
 
+          {/* 6. Third-Party Links */}
           <div>
-            <h2 className="text-2xl font-bold text-[#1c4e75] mb-2">
-              6. Cookies
+            <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
+              6. Third-Party Links
             </h2>
             <p className="text-base leading-relaxed">
-              Our website uses cookies to improve user experience and track
-              website usage. You can control cookies through your browser
-              settings.
+              Our site may contain links to other websites. We are not
+              responsible for the privacy practices or content of third-party
+              sites. We recommend reviewing their privacy policies before
+              providing any personal data.
             </p>
           </div>
 
+          {/* 7. Children's Privacy */}
           <div>
-            <h2 className="text-2xl font-bold text-[#1c4e75] mb-2">
-              7. Changes to This Policy
+            <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
+              7. Children’s Privacy
             </h2>
             <p className="text-base leading-relaxed">
-              We may update this Privacy Policy from time to time. Changes will
-              be posted on this page with an updated effective date.
+              Our services are not intended for children under 13. We do not
+              knowingly collect personal data from minors. If we become aware of
+              such data collection, we promptly delete it.
             </p>
           </div>
 
+          {/* 8. Policy Updates */}
           <div>
-            <h2 className="text-2xl font-bold text-[#1c4e75] mb-2">
-              8. Contact Us
+            <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
+              8. Updates to This Policy
             </h2>
             <p className="text-base leading-relaxed">
-              If you have any questions about our Privacy Policy, feel free to
-              contact us at:{" "}
+              We may update this Privacy Policy periodically. The latest version
+              will always be available on this page, with the effective date
+              clearly stated. Continued use of our website implies acceptance of
+              the updated terms.
+            </p>
+          </div>
+
+          {/* 9. Contact */}
+          <div className="border-t border-gray-200 pt-8">
+            <h2 className="text-2xl font-bold text-[#1c4e75] mb-3">
+              9. Contact Us
+            </h2>
+            <p className="text-base leading-relaxed">
+              Have questions about our Privacy Policy or how your information is
+              handled? Contact us anytime at{" "}
               <a
                 href="mailto:praveennegi247@gmail.com"
-                className="text-blue-600 underline hover:text-blue-800"
+                className="text-[#1c4e75] underline hover:text-[#163c5c] font-semibold"
               >
                 praveennegi247@gmail.com
-              </a>
+              </a>{" "}
+              — we’d be happy to help.
             </p>
           </div>
         </section>
+
+        {/* FOOTER LINE */}
+        <p className="text-center text-gray-500 text-sm mt-12">
+          © {new Date().getFullYear()} Explore Uttarakhand Tours. All rights reserved.
+        </p>
       </div>
     </div>
   );
