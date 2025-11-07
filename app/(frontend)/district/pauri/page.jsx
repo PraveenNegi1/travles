@@ -94,13 +94,13 @@ const Page = () => {
 
   return (
     <div className="p-8 bg-gray-50">
-      <div className="flex justify-center mb-8 w-full">
+      <div className="flex justify-center mb-8 w-full h-[50vh] sm:h-[80vh] relative">
         <Image
           src="/pauri.jpeg"
           alt="Pauri Garhwal"
           width={1000}
           height={1000}
-          className="rounded-xl shadow-lg"
+          className="rounded-xl shadow-lg object-cover brightness-75 w-full h-full"
         />
       </div>
       <div className="text-center mb-10 merriweather">
