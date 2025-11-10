@@ -136,7 +136,6 @@ const activities = [
       "Enjoy tandem paragliding with experienced pilots ensuring a safe and thrilling adventure",
       "Witness breathtaking sunrise and sunset views while gliding in the sky",
       "Soar at altitudes of up to 2,200 meters, feeling the rush of wind against your face",
-      "Capture stunning aerial views of forests, villages, and fruit orchards",
       "Combine paragliding with camping, trekking, and rock climbing for a complete adventure experience",
     ],
   },
