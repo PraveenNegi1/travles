@@ -144,7 +144,7 @@ export default function Page() {
 
         <div className="bg-[#f5f8fa] p-6 rounded-xl shadow-md mb-8">
           <h2 className="md:text-3xl text-xl font-bold text-gray-900 mb-4 text-center merriweather">
-            Our Commitment to Sustainability
+            Our Commitment to Sustainability 
           </h2>
           <p className="text-gray-700 leading-relaxed merriweather text-[20px]">
             At Raaही, we believe in responsible tourism that benefits local
