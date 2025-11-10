@@ -36,14 +36,6 @@ export default function Page() {
             , we have got you covered. Our expert-curated travel plans help you
             experience the magic of Uttarakhand in the best possible way.
           </p>
-          <p className="text-gray-700 leading-relaxed mb-6">
-            Founded in 2010 by a group of passionate Uttarakhand natives, we
-            have spent over a decade helping travelers discover the soul of this
-            Himalayan state. From solo adventurers to family pilgrimages, we've
-            guided thousands of visitors through the diverse regions of Garhwal
-            and Kumaon, creating personalized journeys that connect deeply with
-            the region's cultural heritage and natural splendor.
-          </p>
         </div>
 
         <div className="bg-gray-100 p-6 rounded-xl shadow-md merriweather mb-8">
@@ -173,9 +165,8 @@ export default function Page() {
         </div>
 
         <p className="text-gray-700 leading-relaxed merriweather md:text-[20px] mt-6">
-          Thank you for choosing Raaही. Let us make your journey truly
-          special. Start exploring today and discover the wonders of this
-          heavenly state!
+          Thank you for choosing Raaही. Let us make your journey truly special.
+          Start exploring today and discover the wonders of this heavenly state!
         </p>
       </div>
     </div>
