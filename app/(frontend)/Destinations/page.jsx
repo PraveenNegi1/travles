@@ -148,7 +148,6 @@ const activities = [
       "Experience the thrill of free-fall from India's highest bungee jumping point in Rishikesh.",
     highlights: [
       "Jump from India's highest fixed platform bungee jumping site at 83 meters",
-      "Feel the ultimate adrenaline rush as you free-fall over the rocky cliffs of Rishikesh",
       "Get certified as a daredevil with an official bungee jumping certificate",
       "Enjoy breathtaking views of the lush Shivalik range and the Ganges River",
       "Located at Jumpin Heights, one of the best adventure sports centers in India",
