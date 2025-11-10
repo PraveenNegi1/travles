@@ -68,7 +68,7 @@ const HomePage = () => {
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mt-3 md:mt-4 merriweather max-w-3xl"
+            className="text-base sm:text-lg md:text-xl lg:text-3xl text-white mt-3 md:mt-4 merriweather max-w-3xl"
           >
             Welcome to DevBhoomi – The Land of Gods, Uttarakhand
           </motion.p>
