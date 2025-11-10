@@ -27,9 +27,9 @@ function FormPage() {
     } else if (referrer) {
       try {
         const ref = new URL(referrer);
-        setSource(ref.hostname); 
+        setSource(ref.hostname);
       } catch {
-        setSource(referrer); 
+        setSource(referrer);
       }
     } else {
       setSource("Direct");
@@ -49,7 +49,7 @@ function FormPage() {
       await addDoc(collection(db, "contacts"), {
         ...formData,
         createdAt: Timestamp.now(),
-        source, 
+        source,
       });
 
       toast.success("Message sent successfully!");
@@ -76,7 +76,8 @@ function FormPage() {
               Discover Uttarakhand
             </h3>
             <p className="text-white/90 text-xs sm:text-sm md:text-base mt-1 sm:mt-2">
-              Let us help you plan your perfect journey
+              Experience nature, culture, and divinity woven together in the
+              heart of the Himalayas.
             </p>
           </div>
         </div>
@@ -88,7 +89,9 @@ function FormPage() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="group">
-              <label className="block text-gray-600 font-medium mb-1 text-sm">Name</label>
+              <label className="block text-gray-600 font-medium mb-1 text-sm">
+                Name
+              </label>
               <input
                 type="text"
                 name="name"
@@ -101,7 +104,9 @@ function FormPage() {
             </div>
 
             <div className="group">
-              <label className="block text-gray-600 font-medium mb-1 text-sm">Email</label>
+              <label className="block text-gray-600 font-medium mb-1 text-sm">
+                Email
+              </label>
               <input
                 type="email"
                 name="email"
@@ -114,7 +119,9 @@ function FormPage() {
             </div>
 
             <div className="group">
-              <label className="block text-gray-600 font-medium mb-1 text-sm">Phone</label>
+              <label className="block text-gray-600 font-medium mb-1 text-sm">
+                Phone
+              </label>
               <input
                 type="tel"
                 name="phone"
@@ -127,7 +134,9 @@ function FormPage() {
             </div>
 
             <div className="group">
-              <label className="block text-gray-600 font-medium mb-1 text-sm">Message</label>
+              <label className="block text-gray-600 font-medium mb-1 text-sm">
+                Message
+              </label>
               <textarea
                 name="message"
                 value={formData.message}
@@ -152,8 +161,19 @@ function FormPage() {
                     fill="none"
                     viewBox="0 0 24 24"
                   >
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.37 0 0 5.37 0 12h4z" />
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.37 0 0 5.37 0 12h4z"
+                    />
                   </svg>
                   Submitting...
                 </span>
@@ -162,10 +182,6 @@ function FormPage() {
               )}
             </button>
           </form>
-
-          <p className="text-xs text-gray-400 mt-4 text-center">
-            <span className="font-medium">Source:</span> {source}
-          </p>
         </div>
       </div>
     </div>
