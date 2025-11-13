@@ -102,7 +102,7 @@ const Page = () => {
           alt="Rudraprayag"
           width={1000}
           height={1000}
-          className="rounded-xl shadow-lg object-cover brightness-75 w-full h-full"
+          className="rounded-xl shadow-lg object-cover brightness-80 w-full h-full"
         />
       </div>
       <div className="text-center mb-10 merriweather">
