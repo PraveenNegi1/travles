@@ -105,7 +105,7 @@ const Page = () => {
           src="https://images.unsplash.com/photo-1588305665522-1c6af1f69b09?q=80&w=2070&auto=format&fit=crop"
           alt="Almora Landscape"
           fill
-          className="object-cover brightness-75"
+          className="object-cover brightness-80"
         />
       </div>
 
