@@ -400,5 +400,4 @@ const DestinationPage = () => {
     </div>
   );
 };
-
 export default DestinationPage;
