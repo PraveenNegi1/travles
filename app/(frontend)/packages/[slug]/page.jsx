@@ -224,7 +224,6 @@ const PackageDetails = () => {
         </div>
       </div>
       
-
       <Popup
         isOpen={isPopupOpen}
         onClose={() => setIsPopupOpen(false)}
@@ -234,5 +233,4 @@ const PackageDetails = () => {
     </div>
   );
 };
-
 export default PackageDetails;
