@@ -12,16 +12,14 @@ export async function POST(req) {
     global.otpStore = global.otpStore || {};
     global.otpStore[email] = otp;
 
-    // transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.SMTP_USER, // your Gmail
-        pass: process.env.SMTP_PASS, // app password
+        user: process.env.SMTP_USER, 
+        pass: process.env.SMTP_PASS, 
       },
     });
 
-    // send mail
     await transporter.sendMail({
       from: `"Auth App" <${process.env.SMTP_USER}>`,
       to: email,
