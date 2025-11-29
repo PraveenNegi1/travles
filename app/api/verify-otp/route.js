@@ -7,7 +7,7 @@ export async function POST(req) {
 
     global.otpStore = global.otpStore || {};
     if (global.otpStore[email] && String(global.otpStore[email]) === String(otp)) {
-      delete global.otpStore[email]; // clear OTP after use
+      delete global.otpStore[email]; 
       return new Response(JSON.stringify({ success: true }), { status: 200 });
     } else {
       return new Response(JSON.stringify({ error: "Invalid OTP" }), { status: 400 });
