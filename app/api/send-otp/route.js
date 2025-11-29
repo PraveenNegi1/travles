@@ -7,10 +7,8 @@ export async function POST(req) {
       return new Response(JSON.stringify({ error: "Email required" }), { status: 400 });
     }
 
-    // generate 6-digit OTP
     const otp = Math.floor(100000 + Math.random() * 900000);
 
-    // save OTP in memory (for demo) → better use Redis/DB
     global.otpStore = global.otpStore || {};
     global.otpStore[email] = otp;
 

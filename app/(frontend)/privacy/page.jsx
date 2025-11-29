@@ -149,5 +149,4 @@ const PrivacyPolicyPage = () => {
     </div>
   );
 };
-
 export default PrivacyPolicyPage;
