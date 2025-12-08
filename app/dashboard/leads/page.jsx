@@ -393,7 +393,6 @@ export default function LeadsPage() {
             </div>
           </div>
 
-          {/* Mobile Cards */}
           <div className="lg:hidden space-y-4">
             {currentLeads.map((lead) => (
               <div
