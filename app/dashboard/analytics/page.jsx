@@ -31,7 +31,6 @@ import {
   Zap,
   BarChart3,
   Database,
-  PieChart as PieChartIcon,
 } from "lucide-react";
 
 export default function LeadsAnalytics() {
@@ -46,12 +45,43 @@ export default function LeadsAnalytics() {
   const [collectionSources, setCollectionSources] = useState([]);
   const [confirmationStatus, setConfirmationStatus] = useState([]);
 
-  const MAIN_COLOR = "#1c4e75";
-  const PIE_COLORS = ["#1c4e75", "#06402B", "#FF0000"];
+  // Enhanced color schemes
+  const COLORS = {
+    light: {
+      primary: "#3B82F6",
+      secondary: "#8B5CF6",
+      accent: "#EC4899",
+      success: "#10B981",
+      warning: "#F59E0B",
+      danger: "#EF4444",
+      gradient: ["#3B82F6", "#8B5CF6", "#EC4899", "#10B981"],
+      cardBg: "#FFFFFF",
+      border: "#E5E7EB",
+      text: "#1F2937",
+      textSecondary: "#6B7280",
+      chartGrid: "#F3F4F6",
+    },
+    dark: {
+      primary: "#60A5FA",
+      secondary: "#A78BFA",
+      accent: "#F472B6",
+      success: "#34D399",
+      warning: "#FBBF24",
+      danger: "#F87171",
+      gradient: ["#60A5FA", "#A78BFA", "#F472B6", "#34D399"],
+      cardBg: "#1F2937",
+      border: "#374151",
+      text: "#F9FAFB",
+      textSecondary: "#D1D5DB",
+      chartGrid: "#374151",
+    },
+  };
 
   const isDark =
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const theme = isDark ? COLORS.dark : COLORS.light;
 
   useEffect(() => {
     const fetchLeads = async () => {
@@ -169,85 +199,138 @@ export default function LeadsAnalytics() {
   }, []);
 
   const statCards = [
-    { label: "Total Leads", value: totalLeads, icon: Users },
-    { label: "Latest Submission", value: latestDate || "—", icon: Calendar },
-    { label: "Peak Day", value: peakDay || "—", icon: TrendingUp },
-    { label: "Avg Leads / Day", value: avgLeads || "—", icon: Target },
+    { 
+      label: "Total Leads", 
+      value: totalLeads, 
+      icon: Users, 
+      color: theme.primary,
+      bgGradient: isDark ? "from-blue-500/20 to-blue-600/20" : "from-blue-50 to-blue-100"
+    },
+    { 
+      label: "Latest Submission", 
+      value: latestDate || "—", 
+      icon: Calendar,
+      color: theme.secondary,
+      bgGradient: isDark ? "from-purple-500/20 to-purple-600/20" : "from-purple-50 to-purple-100"
+    },
+    { 
+      label: "Peak Day", 
+      value: peakDay || "—", 
+      icon: TrendingUp,
+      color: theme.accent,
+      bgGradient: isDark ? "from-pink-500/20 to-pink-600/20" : "from-pink-50 to-pink-100"
+    },
+    { 
+      label: "Avg Leads / Day", 
+      value: avgLeads || "—", 
+      icon: Target,
+      color: theme.success,
+      bgGradient: isDark ? "from-green-500/20 to-green-600/20" : "from-green-50 to-green-100"
+    },
   ];
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
         <div className="text-center">
-          <div className="w-12 h-12 border-4 border-gray-300 border-t-[#1c4e75] rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600 dark:text-gray-300 font-medium">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            className="w-16 h-16 border-4 border-blue-200 dark:border-blue-800 border-t-blue-600 dark:border-t-blue-400 rounded-full mx-auto mb-4"
+          />
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-gray-700 dark:text-gray-200 font-semibold text-lg"
+          >
             Loading analytics...
-          </p>
+          </motion.p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
       <motion.div
-        className="relative p-4 sm:p-6 font-serif md:p-10 md:ml-60"
+        className="relative p-4 sm:p-6 md:p-8 lg:p-10 md:ml-60"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="p-3 rounded-xl bg-[#1c4e75]">
-                <Sparkles className="text-white w-6 h-6" />
-              </div>
+          {/* Header */}
+          <motion.div 
+            className="mb-8 sm:mb-12"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+              <motion.div 
+                className="p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg shadow-blue-500/30 dark:shadow-blue-500/20"
+                whileHover={{ scale: 1.05, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Sparkles className="text-white w-7 h-7 sm:w-8 sm:h-8" />
+              </motion.div>
               <div>
-                <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
                   Analytics Dashboard
                 </h1>
-                <p className="text-gray-600 dark:text-gray-300 mt-2 text-base">
-                  Visualize lead trends, sources, and engagement
+                <p className="text-gray-600 dark:text-gray-300 mt-2 text-sm sm:text-base lg:text-lg">
+                  Visualize lead trends, sources, and engagement metrics
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {/* Stats Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
             {statCards.map((item, i) => (
               <motion.div
                 key={i}
-                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-                           rounded-xl p-6 shadow-md hover:shadow-lg hover:shadow-[#1c4e75]/30 
-                           transition-all duration-300"
+                className={`relative overflow-hidden bg-gradient-to-br ${item.bgGradient} backdrop-blur-sm
+                           rounded-2xl p-5 sm:p-6 shadow-lg hover:shadow-2xl 
+                           transition-all duration-300 border border-white/20 dark:border-gray-700/50`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
+                whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="p-2 rounded-full bg-[#1c4e75]">
-                    <item.icon className="w-5 h-5 text-white" />
+                <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-white/10 to-transparent rounded-full -mr-12 -mt-12" />
+                <div className="relative">
+                  <div className="flex items-center justify-between mb-4">
+                    <motion.div 
+                      className="p-2.5 sm:p-3 rounded-xl shadow-lg"
+                      style={{ backgroundColor: item.color }}
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                    </motion.div>
                   </div>
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 mb-1 font-medium">
+                    {item.label}
+                  </p>
+                  <p className="text-2xl sm:text-3xl font-bold" style={{ color: item.color }}>
+                    {item.value}
+                  </p>
                 </div>
-                <p className="text-sm text-gray-500 dark:text-gray-300 mb-1">
-                  {item.label}
-                </p>
-                <p className="text-2xl font-bold text-[#1c4e75] dark:text-white">
-                  {item.value}
-                </p>
               </motion.div>
             ))}
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
+          {/* Charts Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-8 lg:mb-10">
             <ChartCard
               title="Leads Per Day"
               icon={BarChart3}
-              color={MAIN_COLOR}
+              color={theme.primary}
+              gradient="from-blue-500 to-cyan-500"
             >
               <BarChartComponent
                 data={data}
-                color={MAIN_COLOR}
+                color={theme.primary}
                 isDark={isDark}
               />
             </ChartCard>
@@ -255,60 +338,69 @@ export default function LeadsAnalytics() {
             <ChartCard
               title="Trend Overview"
               icon={Activity}
-              color={MAIN_COLOR}
+              color={theme.secondary}
+              gradient="from-purple-500 to-pink-500"
             >
               <LineChartComponent
                 data={data}
-                color={MAIN_COLOR}
+                color={theme.secondary}
                 isDark={isDark}
               />
             </ChartCard>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-8 lg:mb-10">
             <ChartCard
               title="Lead Sources"
-              icon={PieChartIcon}
-              color={MAIN_COLOR}
+              icon={Database}
+              color={theme.accent}
+              gradient="from-pink-500 to-rose-500"
             >
               <PieChartComponent
                 data={leadSources}
-                colors={PIE_COLORS}
-                color={MAIN_COLOR}
+                colors={theme.gradient}
+                theme={theme}
               />
             </ChartCard>
 
-            <ChartCard title="Leads by Weekday" icon={Zap} color={MAIN_COLOR}>
+            <ChartCard 
+              title="Leads by Weekday" 
+              icon={Zap} 
+              color={theme.success}
+              gradient="from-green-500 to-emerald-500"
+            >
               <HeartbeatChartComponent
                 data={weekdayData}
-                color={MAIN_COLOR}
+                color={theme.success}
                 isDark={isDark}
               />
             </ChartCard>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
             <ChartCard
               title="Leads by Collection"
-              icon={PieChartIcon}
-              color={MAIN_COLOR}
+              icon={Database}
+              color={theme.warning}
+              gradient="from-orange-500 to-amber-500"
             >
               <PieChartComponent
                 data={collectionSources}
-                colors={PIE_COLORS}
-                color={MAIN_COLOR}
+                colors={theme.gradient}
+                theme={theme}
               />
             </ChartCard>
 
             <ChartCard
               title="Confirmation Status"
-              icon={PieChartIcon}
-              color={MAIN_COLOR}
+              icon={Target}
+              color={theme.danger}
+              gradient="from-red-500 to-pink-500"
             >
               <PieChartComponent
                 data={confirmationStatus}
-                colors={PIE_COLORS}
-                color={MAIN_COLOR}
+                colors={[theme.success, theme.danger]}
+                theme={theme}
               />
             </ChartCard>
           </div>
@@ -318,28 +410,35 @@ export default function LeadsAnalytics() {
   );
 }
 
-function ChartCard({ title, children, icon: Icon, color }) {
+function ChartCard({ title, children, icon: Icon, color, gradient }) {
   return (
     <motion.div
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ scale: 1.02, y: -5 }}
       transition={{ type: "spring", stiffness: 300 }}
-      className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 
-                 rounded-xl p-6 shadow-md hover:shadow-lg hover:shadow-[#1c4e75]/30 transition-all"
+      className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200/50 dark:border-gray-700/50 
+                 rounded-2xl p-5 sm:p-6 shadow-xl hover:shadow-2xl transition-all relative overflow-hidden"
     >
-      <div className="flex items-center gap-3 mb-6">
-        <div className="p-2 rounded-full" style={{ backgroundColor: color }}>
-          <Icon className="w-5 h-5 text-white" />
+      <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${gradient} opacity-10 rounded-full -mr-16 -mt-16`} />
+      <div className="relative">
+        <div className="flex items-center gap-3 mb-6">
+          <motion.div 
+            className={`p-2.5 rounded-xl bg-gradient-to-br ${gradient} shadow-lg`}
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Icon className="w-5 h-5 text-white" />
+          </motion.div>
+          <h2 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
+            {title}
+          </h2>
         </div>
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-          {title}
-        </h2>
+        {children}
       </div>
-      {children}
     </motion.div>
   );
 }
 
-function BarChartComponent({ data, xKey = "date", color, isDark }) {
+function BarChartComponent({ data, color, isDark }) {
   if (!data.length) return <NoData icon={Database} />;
 
   return (
@@ -348,28 +447,37 @@ function BarChartComponent({ data, xKey = "date", color, isDark }) {
         <defs>
           <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor={color} stopOpacity={0.9} />
-            <stop offset="100%" stopColor={color} stopOpacity={0.3} />
+            <stop offset="100%" stopColor={color} stopOpacity={0.4} />
           </linearGradient>
         </defs>
         <CartesianGrid
           strokeDasharray="3 3"
-          stroke={isDark ? "#374151" : "#e5e7eb"}
+          stroke={isDark ? "#374151" : "#E5E7EB"}
+          opacity={0.5}
         />
         <XAxis
-          dataKey={xKey}
-          stroke={isDark ? "#d1d5db" : "#6b7280"}
+          dataKey="date"
+          stroke={isDark ? "#9CA3AF" : "#6B7280"}
           fontSize={12}
+          fontWeight={500}
         />
-        <YAxis stroke={isDark ? "#d1d5db" : "#6b7280"} fontSize={12} />
+        <YAxis 
+          stroke={isDark ? "#9CA3AF" : "#6B7280"} 
+          fontSize={12}
+          fontWeight={500}
+        />
         <Tooltip
           contentStyle={{
-            backgroundColor: isDark ? "#111827" : "#1c4e75",
-            color: "white",
-            borderRadius: "8px",
-            border: "none",
+            backgroundColor: isDark ? "#1F2937" : "#FFFFFF",
+            color: isDark ? "#F9FAFB" : "#1F2937",
+            borderRadius: "12px",
+            border: `1px solid ${isDark ? "#374151" : "#E5E7EB"}`,
+            boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+            padding: "12px",
           }}
+          cursor={{ fill: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)" }}
         />
-        <Bar dataKey="count" fill="url(#barGradient)" radius={[6, 6, 0, 0]} />
+        <Bar dataKey="count" fill="url(#barGradient)" radius={[8, 8, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );
@@ -383,33 +491,42 @@ function LineChartComponent({ data, color, isDark }) {
       <AreaChart data={data}>
         <defs>
           <linearGradient id="lineGradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={color} stopOpacity={0.4} />
+            <stop offset="0%" stopColor={color} stopOpacity={0.5} />
             <stop offset="100%" stopColor={color} stopOpacity={0.05} />
           </linearGradient>
         </defs>
         <CartesianGrid
           strokeDasharray="3 3"
-          stroke={isDark ? "#374151" : "#e5e7eb"}
+          stroke={isDark ? "#374151" : "#E5E7EB"}
+          opacity={0.5}
         />
         <XAxis
           dataKey="date"
-          stroke={isDark ? "#d1d5db" : "#6b7280"}
+          stroke={isDark ? "#9CA3AF" : "#6B7280"}
           fontSize={12}
+          fontWeight={500}
         />
-        <YAxis stroke={isDark ? "#d1d5db" : "#6b7280"} fontSize={12} />
+        <YAxis 
+          stroke={isDark ? "#9CA3AF" : "#6B7280"} 
+          fontSize={12}
+          fontWeight={500}
+        />
         <Tooltip
           contentStyle={{
-            backgroundColor: isDark ? "#111827" : "#1c4e75",
-            color: "white",
-            borderRadius: "8px",
-            border: "none",
+            backgroundColor: isDark ? "#1F2937" : "#FFFFFF",
+            color: isDark ? "#F9FAFB" : "#1F2937",
+            borderRadius: "12px",
+            border: `1px solid ${isDark ? "#374151" : "#E5E7EB"}`,
+            boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+            padding: "12px",
           }}
+          cursor={{ stroke: color, strokeWidth: 2, strokeDasharray: "5 5" }}
         />
         <Area
           type="monotone"
           dataKey="count"
           stroke={color}
-          strokeWidth={2}
+          strokeWidth={3}
           fill="url(#lineGradient)"
         />
       </AreaChart>
@@ -425,26 +542,34 @@ function HeartbeatChartComponent({ data, color, isDark }) {
       <LineChart data={data}>
         <defs>
           <linearGradient id="pulseGradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={color} stopOpacity={0.8} />
-            <stop offset="100%" stopColor={color} stopOpacity={0.1} />
+            <stop offset="0%" stopColor={color} stopOpacity={0.6} />
+            <stop offset="100%" stopColor={color} stopOpacity={0.05} />
           </linearGradient>
         </defs>
         <CartesianGrid
           strokeDasharray="3 3"
-          stroke={isDark ? "#374151" : "#e5e7eb"}
+          stroke={isDark ? "#374151" : "#E5E7EB"}
+          opacity={0.5}
         />
         <XAxis
           dataKey="day"
-          stroke={isDark ? "#d1d5db" : "#6b7280"}
+          stroke={isDark ? "#9CA3AF" : "#6B7280"}
           fontSize={12}
+          fontWeight={500}
         />
-        <YAxis stroke={isDark ? "#d1d5db" : "#6b7280"} fontSize={12} />
+        <YAxis 
+          stroke={isDark ? "#9CA3AF" : "#6B7280"} 
+          fontSize={12}
+          fontWeight={500}
+        />
         <Tooltip
           contentStyle={{
-            backgroundColor: isDark ? "#111827" : color,
-            color: "white",
-            borderRadius: "8px",
-            border: "none",
+            backgroundColor: isDark ? "#1F2937" : "#FFFFFF",
+            color: isDark ? "#F9FAFB" : "#1F2937",
+            borderRadius: "12px",
+            border: `1px solid ${isDark ? "#374151" : "#E5E7EB"}`,
+            boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+            padding: "12px",
           }}
         />
         <Line
@@ -453,17 +578,16 @@ function HeartbeatChartComponent({ data, color, isDark }) {
           stroke={color}
           strokeWidth={3}
           dot={{
-            r: 5,
+            r: 6,
             stroke: "white",
-            strokeWidth: 2,
+            strokeWidth: 3,
             fill: color,
           }}
           activeDot={{
-            r: 8,
+            r: 9,
             stroke: "white",
-            strokeWidth: 2,
+            strokeWidth: 3,
             fill: color,
-            className: "animate-ping",
           }}
         />
         <Area
@@ -477,8 +601,23 @@ function HeartbeatChartComponent({ data, color, isDark }) {
   );
 }
 
-function PieChartComponent({ data, colors, color }) {
-  if (!data.length) return <NoData icon={PieChartIcon} />;
+function NoData({ icon: Icon }) {
+  return (
+    <div className="flex flex-col items-center justify-center h-[300px] text-gray-400 dark:text-gray-500">
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
+        <Icon className="w-12 h-12 opacity-30 mb-3" />
+        <p className="text-sm font-medium">No data available</p>
+      </motion.div>
+    </div>
+  );
+}
+
+function PieChartComponent({ data, colors, theme }) {
+  if (!data.length) return <NoData icon={Database} />;
 
   return (
     <ResponsiveContainer width="100%" height={300}>
@@ -488,32 +627,32 @@ function PieChartComponent({ data, colors, color }) {
           cx="50%"
           cy="50%"
           labelLine={false}
-          label={({ name, value }) => `${name}: ${value}`}
-          outerRadius={110}
+          label={({ name, value, percent }) => `${name}: ${value} (${(percent * 100).toFixed(0)}%)`}
+          outerRadius={100}
           dataKey="value"
+          stroke="none"
         >
           {data.map((_, i) => (
-            <Cell key={i} fill={colors[i % colors.length]} />
+            <Cell 
+              key={i} 
+              fill={colors[i % colors.length]}
+              style={{
+                filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.1))",
+              }}
+            />
           ))}
         </Pie>
         <Tooltip
           contentStyle={{
-            backgroundColor: color,
-            color: "white",
-            borderRadius: "8px",
-            border: "none",
+            backgroundColor: theme.cardBg,
+            color: theme.text,
+            borderRadius: "12px",
+            border: `1px solid ${theme.border}`,
+            boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+            padding: "12px",
           }}
         />
       </PieChart>
     </ResponsiveContainer>
-  );
-}
-
-function NoData({ icon: Icon }) {
-  return (
-    <div className="flex flex-col items-center justify-center h-[300px] text-gray-500 dark:text-gray-300">
-      <Icon className="w-10 h-10 opacity-40 mb-2" />
-      <p>No data available</p>
-    </div>
   );
 }
