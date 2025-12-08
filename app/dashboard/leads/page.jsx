@@ -465,7 +465,6 @@ export default function LeadsPage() {
             ))}
           </div>
 
-          {/* Pagination */}
           {totalPages > 1 && (
             <div className="mt-8 flex justify-center items-center gap-3 flex-wrap">
               <button
