@@ -86,7 +86,7 @@ export default function LoginPage() {
             priority
           />
           <h1 className="text-2xl font-bold text-[#1c4e75] mt-4">
-            Welcome Back
+            Welcome Back Admin of Raahi
           </h1>
           <p className="text-[#1c4e75] text-sm">Sign in to your account</p>
         </div>
