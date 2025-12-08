@@ -22,14 +22,26 @@ import {
   MessageSquare,
   Calendar,
   X,
-  Edit,
+  Edit3,
   CheckCircle,
   XCircle,
-  ChevronDown,
+  MoreVertical,
+  Package,
+  DollarSign,
+  Clock,
+  Check,
+  AlertCircle,
 } from "lucide-react";
 import { db } from "@/lib/firebase";
 
-const MAIN_COLOR = "#1c4e75";
+// Modern color palette
+const PRIMARY = "rgb(20, 184, 166)"; // Teal
+const PRIMARY_DARK = "rgb(15, 118, 110)";
+const ACCENT = "rgb(99, 102, 241)"; // Indigo accent
+const BG_LIGHT = "bg-gray-50";
+const BG_DARK = "bg-gray-900";
+const CARD_LIGHT = "bg-white";
+const CARD_DARK = "bg-gray-800";
 
 export default function LeadsPage() {
   const [leads, setLeads] = useState([]);
@@ -40,7 +52,7 @@ export default function LeadsPage() {
   const [selectedLead, setSelectedLead] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editForm, setEditForm] = useState({});
-  const [dropdownOpen, setDropdownOpen] = useState(null); 
+  const [dropdownOpen, setDropdownOpen] = useState(null);
 
   const leadsPerPage = 10;
 
@@ -74,7 +86,7 @@ export default function LeadsPage() {
         }));
 
         const allLeads = [...contactsData, ...travelData].sort(
-          (a, b) => b.createdAt?.seconds - a.createdAt?.seconds
+          (a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0)
         );
 
         setLeads(allLeads);
@@ -95,39 +107,31 @@ export default function LeadsPage() {
       (lead) =>
         lead.name?.toLowerCase().includes(search.toLowerCase()) ||
         lead.email?.toLowerCase().includes(search.toLowerCase()) ||
-        lead.phone?.toLowerCase().includes(search.toLowerCase())
+        lead.phone?.toLowerCase().includes(search.toLowerCase()) ||
+        lead.message?.toLowerCase().includes(search.toLowerCase())
     );
     setFilteredLeads(filtered);
     setCurrentPage(1);
   }, [search, leads]);
 
-  // Delete lead
+  // Actions
   const handleDelete = async (lead) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this lead?"
-    );
-    if (!confirmDelete) return;
+    if (!window.confirm("Are you sure you want to delete this lead?")) return;
 
     try {
-      const leadRef = doc(db, lead.source, lead.id);
-      await deleteDoc(leadRef);
-
+      await deleteDoc(doc(db, lead.source, lead.id));
       const updated = leads.filter(
         (l) => !(l.id === lead.id && l.source === lead.source)
       );
       setLeads(updated);
       setFilteredLeads(updated);
       setSelectedLead(null);
-      setDropdownOpen(null);
     } catch (error) {
-      console.error("Error deleting lead:", error);
       alert("Failed to delete lead.");
     }
   };
 
-  // Edit lead
   const handleEdit = (lead) => {
-    setIsEditing(true);
     setEditForm({
       id: lead.id,
       source: lead.source,
@@ -138,39 +142,35 @@ export default function LeadsPage() {
       packageTitle: lead.packageTitle || "",
       price: lead.price || "",
     });
-    setSelectedLead(lead);
+    setIsEditing(true);
     setDropdownOpen(null);
   };
 
-  // Save edited lead
   const handleSaveEdit = async () => {
     try {
       const { id, source, ...updates } = editForm;
-      if (!updates.packageTitle) delete updates.packageTitle;
-      if (!updates.price) delete updates.price;
+      Object.keys(updates).forEach(
+        (key) => updates[key] === "" && delete updates[key]
+      );
 
-      const leadRef = doc(db, source, id);
-      await updateDoc(leadRef, updates);
-
-      const updated = leads.map((l) =>
+      await updateDoc(doc(db, source, id), updates);
+      const updatedLeads = leads.map((l) =>
         l.id === id && l.source === source ? { ...l, ...updates } : l
       );
-      setLeads(updated);
-      setFilteredLeads(updated);
+      setLeads(updatedLeads);
+      setFilteredLeads(updatedLeads);
       setSelectedLead({ ...selectedLead, ...updates });
       setIsEditing(false);
     } catch (error) {
-      console.error("Error updating lead:", error);
       alert("Failed to update lead.");
     }
   };
 
-  // Confirm / Not Confirm
   const handleConfirmStatus = async (status) => {
     try {
-      const leadRef = doc(db, selectedLead.source, selectedLead.id);
-      await updateDoc(leadRef, { confirmed: status });
-
+      await updateDoc(doc(db, selectedLead.source, selectedLead.id), {
+        confirmed: status,
+      });
       const updated = leads.map((l) =>
         l.id === selectedLead.id && l.source === selectedLead.source
           ? { ...l, confirmed: status }
@@ -179,314 +179,532 @@ export default function LeadsPage() {
       setLeads(updated);
       setFilteredLeads(updated);
       setSelectedLead({ ...selectedLead, confirmed: status });
-      setDropdownOpen(null);
     } catch (error) {
-      console.error("Error updating confirmation:", error);
-      alert("Failed to update confirmation.");
+      alert("Failed to update status.");
     }
   };
 
   // Pagination
-  const indexOfLastLead = currentPage * leadsPerPage;
-  const indexOfFirstLead = indexOfLastLead - leadsPerPage;
-  const currentLeads = filteredLeads.slice(indexOfFirstLead, indexOfLastLead);
+  const totalPages = Math.ceil(filteredLeads.length / leadsPerPage);
+  const currentLeads = filteredLeads.slice(
+    (currentPage - 1) * leadsPerPage,
+    currentPage * leadsPerPage
+  );
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <Loader2 className="w-10 h-10 animate-spin text-[#1c4e75]" />
+      <div
+        className={`min-h-screen ${BG_LIGHT} dark:${BG_DARK} flex items-center justify-center`}
+      >
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 animate-spin text-teal-500 mx-auto mb-4" />
+          <p className="text-gray-600 dark:text-gray-300">Loading leads...</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="p-4 md:p-6 max-w-7xl mx-auto md:ml-64 font-serif">
-    <div className="flex justify-between ">
-        <h1 className="text-3xl font-bold mb-6 text-[#1c4e75] dark:text-white text-center md:text-left">
-        Leads Dashboard
-      </h1>
-    <div className="flex justify-end">
-        <p className="mb-6 text-gray-600 dark:text-white text-2xl">
-        Total Leads: <span className="font-semibold">{leads.length}</span>
-      </p>
-    </div>
+    <>
+      <div
+        className={`min-h-screen ${BG_LIGHT} dark:${BG_DARK}   px-4  sm:px-6 lg:px-8`}
+      >
+        <div className="max-w-7xl ml-60">
+          {/* Header */}
+          <div className="mb-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+                  Leads Dashboard
+                </h1>
+                <p className="mt-2 text-gray-600 dark:text-gray-400">
+                  Manage and track all your incoming leads
+                </p>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="bg-white dark:bg-gray-800 px-6 py-4 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    Total Leads
+                  </p>
+                  <p className="text-3xl font-bold text-teal-600 dark:text-teal-400">
+                    {leads.length}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    </div>
-      <div className="relative mb-6 max-w-md mx-auto md:mx-0">
-        <Search className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-        <input
-          type="text"
-          placeholder="Search leads..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="pl-10 w-full p-2 rounded-xl border dark:bg-gray-800 shadow-sm focus:ring-2 focus:ring-[#1c4e75]"
-        />
-      </div>
+          {/* Search */}
+          <div className="mb-6">
+            <div className="relative max-w-xl">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search by name, email, phone or message..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full pl-12 pr-4 py-4 rounded-2xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 transition-all shadow-sm"
+              />
+            </div>
+          </div>
 
-      <div className=" bg-white overflow-y-auto dark:bg-gray-900 shadow-xl rounded-2xl  h-[75vh]">
-        <table className="min-w-full  divide-y divide-gray-200 dark:divide-gray-700 text-sm">
-          <thead className=" dark:bg-[#1c4e75] bg-[#1c4e75]   dark:text-gray-300 text-white sticky top-0 z-50">
-            <tr>
-              <th className="px-4 py-3 text-left">Name</th>
-              <th className="px-4 py-3 text-left">Email</th>
-              <th className="px-4 py-3 text-left">Phone</th>
-              <th className="px-4 py-3 text-left">Message</th>
-              <th className="px-4 py-3 text-left">Package</th>
-              <th className="px-4 py-3 text-left">Price</th>
-              <th className="px-4 py-3 text-left">Source</th>
-              <th className="px-4 py-3 text-left">Confirmed</th>
-              <th className="px-4 py-3 text-left">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+          {/* Desktop Table */}
+          <div className="hidden lg:block bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-gradient-to-r from-teal-600 to-teal-700 text-white">
+                  <tr>
+                    <th className="px-6 py-4 text-left text-sm font-semibold">
+                      Lead
+                    </th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold">
+                      Contact
+                    </th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold">
+                      Inquiry
+                    </th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold">
+                      Package
+                    </th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold">
+                      Status
+                    </th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold">
+                      Date
+                    </th>
+                    <th className="px-6 py-4 text-center text-sm font-semibold">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                  {currentLeads.map((lead) => (
+                    <tr
+                      key={`${lead.source}-${lead.id}`}
+                      className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-all"
+                    >
+                      <td className="px-6 py-5">
+                        <div>
+                          <p className="font-semibold text-gray-900 dark:text-white">
+                            {lead.name || "N/A"}
+                          </p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400 capitalize">
+                            {lead.source}
+                          </p>
+                        </div>
+                      </td>
+                      <td className="px-6 py-5">
+                        <div className="space-y-1">
+                          <p className="text-sm flex items-center gap-2">
+                            <Mail className="w-4 h-4 text-gray-400" />
+                            <span className="text-gray-700 dark:text-gray-300">
+                              {lead.email || "-"}
+                            </span>
+                          </p>
+                          <p className="text-sm flex items-center gap-2">
+                            <Phone className="w-4 h-4 text-gray-400" />
+                            <span className="text-gray-700 dark:text-gray-300">
+                              {lead.phone || "-"}
+                            </span>
+                          </p>
+                        </div>
+                      </td>
+                      <td className="px-6 py-5">
+                        <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 max-w-xs">
+                          {lead.message || "No message"}
+                        </p>
+                      </td>
+                      <td className="px-6 py-5">
+                        {lead.packageTitle ? (
+                          <div className="space-y-1">
+                            <p className="font-medium text-gray-900 dark:text-white">
+                              {lead.packageTitle}
+                            </p>
+                            {lead.price && (
+                              <p className="text-sm text-teal-600 dark:text-teal-400 font-semibold">
+                                {lead.price}
+                              </p>
+                            )}
+                          </div>
+                        ) : (
+                          <span className="text-gray-400 text-sm">—</span>
+                        )}
+                      </td>
+                      <td className="px-6 py-5">
+                        {lead.confirmed === true ? (
+                          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300">
+                            <Check className="w-3 h-3" /> Confirmed
+                          </span>
+                        ) : lead.confirmed === false ? (
+                          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300">
+                            <XCircle className="w-3 h-3" /> Not Confirmed
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300">
+                            <AlertCircle className="w-3 h-3" /> Pending
+                          </span>
+                        )}
+                      </td>
+                      <td className="px-6 py-5 text-sm text-gray-600 dark:text-gray-400">
+                        {lead.createdAt
+                          ? format(lead.createdAt.toDate(), "MMM d, yyyy")
+                          : "N/A"}
+                      </td>
+                      <td className="px-6 py-5 text-center">
+                        <div className="relative inline-block">
+                          <button
+                            onClick={() =>
+                              setDropdownOpen(
+                                dropdownOpen === lead.id ? null : lead.id
+                              )
+                            }
+                            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
+                          >
+                            <MoreVertical className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                          </button>
+                          {dropdownOpen === lead.id && (
+                            <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-xl shadow-xl border border-gray-200 dark:border-gray-700 z-50 overflow-hidden">
+                              <button
+                                onClick={() => {
+                                  setSelectedLead(lead);
+                                  setDropdownOpen(null);
+                                }}
+                                className="w-full px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center gap-3 text-gray-700 dark:text-gray-300"
+                              >
+                                <Users className="w-4 h-4" /> View Details
+                              </button>
+                              <button
+                                onClick={() => handleEdit(lead)}
+                                className="w-full px-4 py-3 text-left hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center gap-3 text-blue-600"
+                              >
+                                <Edit3 className="w-4 h-4" /> Edit Lead
+                              </button>
+                              <button
+                                onClick={() => handleDelete(lead)}
+                                className="w-full px-4 py-3 text-left hover:bg-red-50 dark:hover:bg-red-900/50 flex items-center gap-3 text-red-600"
+                              >
+                                <Trash2 className="w-4 h-4" /> Delete
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Mobile Cards */}
+          <div className="lg:hidden space-y-4">
             {currentLeads.map((lead) => (
-              <tr
-                key={lead.id}
-                className="hover:bg-gray-50 dark:hover:bg-gray-800 transition-all"
+              <div
+                key={`${lead.source}-${lead.id}`}
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-5"
               >
-                <td className="px-4 py-3 font-medium">{lead.name}</td>
-                <td className="px-4 py-3">{lead.email}</td>
-                <td className="px-4 py-3">{lead.phone}</td>
-                <td className="px-4 py-3">{lead.message}</td>
-                <td className="px-4 py-3">{lead.packageTitle}</td>
-                <td className="px-4 py-3">{lead.price}</td>
-                <td className="px-4 py-3 capitalize">{lead.source}</td>
-                <td className="px-4 py-3">
-                  {lead.confirmed ? (
-                    <span className="text-green-600 flex items-center gap-1 font-medium">
-                      <CheckCircle size={16} /> Yes
-                    </span>
-                  ) : (
-                    <span className="text-red-600 flex items-center gap-1 font-medium">
-                      <XCircle size={16} /> No
-                    </span>
-                  )}
-                </td>
-
-                <td className="px-4 py-3 relative">
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900 dark:text-white">
+                      {lead.name || "Unnamed Lead"}
+                    </h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 capitalize">
+                      {lead.source}
+                    </p>
+                  </div>
                   <button
                     onClick={() =>
                       setDropdownOpen(dropdownOpen === lead.id ? null : lead.id)
                     }
-                    className="px-3 py-1 rounded-lg border shadow-sm bg-white text-[#1c4e75] flex items-center justify-between w-full hover:bg-gray-50"
+                    className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                   >
-                    Actions
-                    <ChevronDown size={16} />
+                    <MoreVertical className="w-5 h-5" />
                   </button>
+                </div>
 
-                  {dropdownOpen === lead.id && (
-                    <div className="absolute right-0 mt-1 w-36 bg-white border rounded-lg shadow-lg z-20 ">
-                      <button
-                        onClick={() => setSelectedLead(lead)}
-                        className="w-full px-4 py-2 text-left text-[#1c4e75] hover:bg-gray-100 flex items-center gap-2"
-                      >
-                        <Users size={16} /> View
-                      </button>
-                      <button
-                        onClick={() => handleEdit(lead)}
-                        className="w-full px-4 py-2 text-left text-yellow-600 hover:bg-gray-100 flex items-center gap-2"
-                      >
-                        <Edit size={16} /> Edit
-                      </button>
-                      <button
-                        onClick={() => handleDelete(lead)}
-                        className="w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100 flex items-center gap-2"
-                      >
-                        <Trash2 size={16} /> Delete
-                      </button>
+                <div className="space-y-3 text-sm">
+                  <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                    <Mail className="w-4 h-4" />
+                    <span>{lead.email || "No email"}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                    <Phone className="w-4 h-4" />
+                    <span>{lead.phone || "No phone"}</span>
+                  </div>
+                  {lead.packageTitle && (
+                    <div className="flex items-center gap-3">
+                      <Package className="w-4 h-4 text-teal-600" />
+                      <span className="font-medium">{lead.packageTitle}</span>
                     </div>
                   )}
-                </td>
-              </tr>
+                  <div className="text-gray-600 dark:text-gray-400 line-clamp-2">
+                    {lead.message || "No message provided"}
+                  </div>
+                </div>
+
+                <div className="mt-4 flex items-center justify-between">
+                  <div>
+                    {lead.confirmed === true ? (
+                      <span className="text-xs font-medium text-green-600 bg-green-100 px-3 py-1 rounded-full">
+                        Confirmed
+                      </span>
+                    ) : lead.confirmed === false ? (
+                      <span className="text-xs font-medium text-red-600 bg-red-100 px-3 py-1 rounded-full">
+                        Not Confirmed
+                      </span>
+                    ) : (
+                      <span className="text-xs font-medium text-yellow-600 bg-yellow-100 px-3 py-1 rounded-full">
+                        Pending
+                      </span>
+                    )}
+                  </div>
+                  <button
+                    onClick={() => setSelectedLead(lead)}
+                    className="text-teal-600 font-medium text-sm hover:underline"
+                  >
+                    View Details →
+                  </button>
+                </div>
+              </div>
             ))}
-          </tbody>
-        </table>
-      </div>
-
-      <div className="flex justify-between items-center mt-6 flex-wrap gap-3">
-        <button
-          onClick={() => setCurrentPage((p) => Math.max(p - 1, 1))}
-          disabled={currentPage === 1}
-          className="px-4 py-2 flex items-center gap-1 rounded-xl border shadow-sm disabled:opacity-50"
-        >
-          <ChevronLeft size={18} /> Prev
-        </button>
-        <button
-          onClick={() =>
-            setCurrentPage((p) =>
-              indexOfLastLead < filteredLeads.length ? p + 1 : p
-            )
-          }
-          disabled={indexOfLastLead >= filteredLeads.length}
-          className="px-4 py-2 flex items-center gap-1 rounded-xl border shadow-sm disabled:opacity-50"
-        >
-          Next <ChevronRight size={18} />
-        </button>
-      </div>
-
-      {selectedLead && !isEditing && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-xl w-full max-w-lg relative overflow-y-auto max-h-[90vh]">
-            <button
-              onClick={() => setSelectedLead(null)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
-            >
-              <X />
-            </button>
-
-            <h2 className="text-2xl font-bold mb-4 text-[#1c4e75]">
-              Lead Details
-            </h2>
-            <div className="space-y-2">
-              <p className="flex items-center gap-2">
-                <Users size={18} /> {selectedLead.name}
-              </p>
-              <p className="flex items-center gap-2">
-                <Mail size={18} /> {selectedLead.email}
-              </p>
-              <p className="flex items-center gap-2">
-                <Phone size={18} /> {selectedLead.phone}
-              </p>
-              <p className="flex items-center gap-2">
-                <MessageSquare size={18} /> {selectedLead.message}
-              </p>
-              {selectedLead.packageTitle && (
-                <p className="flex items-center gap-2">
-                  🎁 Package: {selectedLead.packageTitle}
-                </p>
-              )}
-              {selectedLead.price && (
-                <p className="flex items-center gap-2">
-                  💰 Price: {selectedLead.price}
-                </p>
-              )}
-              <p className="flex items-center gap-2">
-                <Calendar size={18} />{" "}
-                {selectedLead.createdAt
-                  ? format(selectedLead.createdAt.toDate(), "PPP p")
-                  : "N/A"}
-              </p>
-              <p>
-                Status:{" "}
-                {selectedLead.confirmed ? (
-                  <span className="text-green-600 font-medium">Confirmed</span>
-                ) : (
-                  <span className="text-red-600 font-medium">
-                    Not Confirmed
-                  </span>
-                )}
-              </p>
-            </div>
-
-            <div className="mt-6 flex flex-wrap gap-3">
-              <button
-                onClick={() => handleEdit(selectedLead)}
-                className="px-4 py-2 rounded-lg text-white bg-[#1c4e75] hover:bg-[#163d5b] shadow"
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => handleConfirmStatus(true)}
-                className="px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 shadow"
-              >
-                Confirm
-              </button>
-              <button
-                onClick={() => handleConfirmStatus(false)}
-                className="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 shadow"
-              >
-                Not Confirm
-              </button>
-            </div>
           </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="mt-8 flex justify-center items-center gap-3 flex-wrap">
+              <button
+                onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="px-5 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-md transition-all flex items-center gap-2"
+              >
+                <ChevronLeft className="w-5 h-5" /> Previous
+              </button>
+              <span className="text-sm text-gray-600 dark:text-gray-400">
+                Page <strong>{currentPage}</strong> of{" "}
+                <strong>{totalPages}</strong>
+              </span>
+              <button
+                onClick={() =>
+                  setCurrentPage((p) => Math.min(totalPages, p + 1))
+                }
+                disabled={currentPage === totalPages}
+                className="px-5 py-3 rounded-xl bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-md transition-all flex items-center gap-2"
+              >
+                Next <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          )}
         </div>
-      )}
+      </div>
 
-      {isEditing && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50 p-4">
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow-xl w-full max-w-lg overflow-y-auto max-h-[90vh]">
-            <button
-              onClick={() => setIsEditing(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
-            >
-              <X />
-            </button>
-
-            <div className="space-y-4">
-              <h2 className="text-2xl font-bold text-[#1c4e75]">Edit Lead</h2>
-
-              <input
-                className="w-full p-2 rounded-lg border dark:bg-gray-800 focus:ring-2 focus:ring-[#1c4e75]"
-                value={editForm.name}
-                onChange={(e) =>
-                  setEditForm({ ...editForm, name: e.target.value })
-                }
-                placeholder="Name"
-              />
-
-              <input
-                className="w-full p-2 rounded-lg border dark:bg-gray-800 focus:ring-2 focus:ring-[#1c4e75]"
-                value={editForm.email}
-                onChange={(e) =>
-                  setEditForm({ ...editForm, email: e.target.value })
-                }
-                placeholder="Email"
-              />
-
-              <input
-                className="w-full p-2 rounded-lg border dark:bg-gray-800 focus:ring-2 focus:ring-[#1c4e75]"
-                value={editForm.phone}
-                onChange={(e) =>
-                  setEditForm({ ...editForm, phone: e.target.value })
-                }
-                placeholder="Phone"
-              />
-
-              <textarea
-                className="w-full p-2 rounded-lg border dark:bg-gray-800 focus:ring-2 focus:ring-[#1c4e75]"
-                value={editForm.message}
-                onChange={(e) =>
-                  setEditForm({ ...editForm, message: e.target.value })
-                }
-                placeholder="Message"
-              />
-
-              <input
-                className="w-full p-2 rounded-lg border dark:bg-gray-800 focus:ring-2 focus:ring-[#1c4e75]"
-                value={editForm.packageTitle}
-                onChange={(e) =>
-                  setEditForm({ ...editForm, packageTitle: e.target.value })
-                }
-                placeholder="Package Title"
-              />
-
-              <input
-                className="w-full p-2 rounded-lg border dark:bg-gray-800 focus:ring-2 focus:ring-[#1c4e75]"
-                value={editForm.price}
-                onChange={(e) =>
-                  setEditForm({ ...editForm, price: e.target.value })
-                }
-                placeholder="Price"
-              />
-
-              <div className="flex gap-3 pt-2 flex-wrap">
+      {/* View Modal */}
+      {selectedLead && !isEditing && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-700">
+            <div className="p-8">
+              <div className="flex justify-between items-start mb-6">
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                  Lead Details
+                </h2>
                 <button
-                  onClick={handleSaveEdit}
-                  className="px-4 py-2 rounded-lg text-white bg-[#1c4e75] hover:bg-[#163d5b] shadow"
+                  onClick={() => setSelectedLead(null)}
+                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
                 >
-                  Save
+                  <X className="w-6 h-6" />
                 </button>
-                <button
-                  onClick={() => setIsEditing(false)}
-                  className="px-4 py-2 rounded-lg border shadow-sm"
-                >
-                  Cancel
-                </button>
+              </div>
+
+              <div className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-teal-100 dark:bg-teal-900 rounded-xl">
+                        <Users className="w-6 h-6 text-teal-600 dark:text-teal-400" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                          Name
+                        </p>
+                        <p className="font-semibold text-lg">
+                          {selectedLead.name}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-xl">
+                        <Mail className="w-6 h-6 text-blue-600" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                          Email
+                        </p>
+                        <p className="font-semibold">{selectedLead.email}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-green-100 dark:bg-green-900 rounded-xl">
+                        <Phone className="w-6 h-6 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                          Phone
+                        </p>
+                        <p className="font-semibold">{selectedLead.phone}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    {selectedLead.packageTitle && (
+                      <div className="flex items-center gap-4">
+                        <div className="p-3 bg-purple-100 dark:bg-purple-900 rounded-xl">
+                          <Package className="w-6 h-6 text-purple-600" />
+                        </div>
+                        <div>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
+                            Package
+                          </p>
+                          <p className="font-semibold text-lg">
+                            {selectedLead.packageTitle}
+                          </p>
+                          {selectedLead.price && (
+                            <p className="text-teal-600 font-bold">
+                              {selectedLead.price}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="flex items-center gap-4">
+                      <div className="p-3 bg-orange-100 dark:bg-orange-900 rounded-xl">
+                        <Calendar className="w-6 h-6 text-orange-600" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                          Received
+                        </p>
+                        <p className="font-semibold">
+                          {selectedLead.createdAt
+                            ? format(
+                                selectedLead.createdAt.toDate(),
+                                "MMMM d, yyyy 'at' h:mm a"
+                              )
+                            : "Unknown"}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+                    Message
+                  </p>
+                  <p className="bg-gray-50 dark:bg-gray-700 p-4 rounded-xl text-gray-800 dark:text-gray-200">
+                    {selectedLead.message || "No message provided."}
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-3 pt-4">
+                  <button
+                    onClick={() => handleEdit(selectedLead)}
+                    className="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-xl font-medium transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+                  >
+                    <Edit3 className="w-5 h-5" /> Edit Lead
+                  </button>
+                  <button
+                    onClick={() => handleConfirmStatus(true)}
+                    className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-xl font-medium transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+                  >
+                    <CheckCircle className="w-5 h-5" /> Confirm
+                  </button>
+                  <button
+                    onClick={() => handleConfirmStatus(false)}
+                    className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-xl font-medium transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+                  >
+                    <XCircle className="w-5 h-5" /> Not Confirmed
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       )}
-    </div>
+
+      {/* Edit Modal */}
+      {isEditing && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-700">
+            <div className="p-8">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                  Edit Lead
+                </h2>
+                <button
+                  onClick={() => setIsEditing(false)}
+                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+
+              <div className="space-y-5">
+                {[
+                  "name",
+                  "email",
+                  "phone",
+                  "message",
+                  "packageTitle",
+                  "price",
+                ].map((field) => (
+                  <div key={field}>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 capitalize">
+                      {field.replace(/([A-Z])/g, " $1").trim()}
+                    </label>
+                    {field === "message" ? (
+                      <textarea
+                        rows={4}
+                        value={editForm[field] || ""}
+                        onChange={(e) =>
+                          setEditForm({ ...editForm, [field]: e.target.value })
+                        }
+                        className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 transition-all"
+                      />
+                    ) : (
+                      <input
+                        type="text"
+                        value={editForm[field] || ""}
+                        onChange={(e) =>
+                          setEditForm({ ...editForm, [field]: e.target.value })
+                        }
+                        className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-4 focus:ring-teal-500/20 focus:border-teal-500 transition-all"
+                      />
+                    )}
+                  </div>
+                ))}
+
+                <div className="flex gap-4 pt-6">
+                  <button
+                    onClick={handleSaveEdit}
+                    className="flex-1 py-4 bg-teal-600 hover:bg-teal-700 text-white rounded-xl font-semibold text-lg transition-all shadow-lg hover:shadow-xl"
+                  >
+                    Save Changes
+                  </button>
+                  <button
+                    onClick={() => setIsEditing(false)}
+                    className="px-8 py-4 border border-gray-300 dark:border-gray-600 rounded-xl font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-all"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
