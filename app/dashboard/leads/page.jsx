@@ -210,7 +210,6 @@ export default function LeadsPage() {
         className={`min-h-screen ${BG_LIGHT} dark:${BG_DARK}   px-4  sm:px-6 lg:px-8`}
       >
         <div className="max-w-7xl ml-60">
-          {/* Header */}
           <div className="mb-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
@@ -234,7 +233,6 @@ export default function LeadsPage() {
             </div>
           </div>
 
-          {/* Search */}
           <div className="mb-6">
             <div className="relative max-w-xl">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -248,7 +246,6 @@ export default function LeadsPage() {
             </div>
           </div>
 
-          {/* Desktop Table */}
           <div className="hidden lg:block bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700">
             <div className="overflow-x-auto">
               <table className="w-full">
