@@ -9,7 +9,7 @@ const PREDEFINED_QA = [
     answer:
       "Uttarakhand is a state in northern India known for its natural beauty, Hindu temples, and Himalayan mountains. Formed in 2000 from the northwestern portion of Uttar Pradesh, it's often called 'Devbhumi' (Land of Gods) due to its numerous sacred sites. The state is divided into two regions: Garhwal in the northwest and Kumaon in the southeast, offering diverse landscapes from snow-capped peaks to lush valleys, national parks, and pilgrimage sites.",
   },
-  {
+  { 
     id: "q2",
     question: "How can I reach Uttarakhand?",
     answer:
