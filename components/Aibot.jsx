@@ -406,7 +406,7 @@ const AIChatPopup = () => {
                   }`}
                 >
                   {message.type === "bot" && (
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#205781] flex items-center justify-center mr-2 mt-1 flex-shrink-0">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#205781] flex items-center justify-center mr-2 mt-1 ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-4 w-4 sm:h-5 sm:w-5 text-white"
@@ -430,7 +430,7 @@ const AIChatPopup = () => {
                         : "bg-white text-gray-800 rounded-tl-none"
                     }`}
                   >
-                    <p className="break-words">{message.content}</p>
+                    <p className="">{message.content}</p>
                     <p
                       className={`text-xs mt-1 ${
                         message.type === "user"
@@ -442,7 +442,7 @@ const AIChatPopup = () => {
                     </p>
                   </div>
                   {message.type === "user" && (
-                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-300 flex items-center justify-center ml-2 mt-1 flex-shrink-0">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-300 flex items-center justify-center ml-2 mt-1 ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-4 w-4 sm:h-5 sm:w-5 text-gray-600"
@@ -464,7 +464,7 @@ const AIChatPopup = () => {
 
               {isTyping && (
                 <div className="flex mb-3 sm:mb-4 justify-start">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-600 flex items-center justify-center mr-2 flex-shrink-0">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-600 flex items-center justify-center mr-2 ">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-4 w-4 sm:h-5 sm:w-5 text-white"

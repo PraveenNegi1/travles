@@ -249,7 +249,7 @@ export default function LeadsPage() {
           <div className="hidden lg:block bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-gradient-to-r from-teal-600 to-teal-700 text-white">
+                <thead className="  text-white">
                   <tr>
                     <th className="px-6 py-4 text-left text-sm font-semibold">
                       Lead
