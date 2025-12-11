@@ -45,7 +45,6 @@ export default function LeadsAnalytics() {
   const [collectionSources, setCollectionSources] = useState([]);
   const [confirmationStatus, setConfirmationStatus] = useState([]);
 
-  // Enhanced color schemes
   const COLORS = {
     light: {
       primary: "#3B82F6",
