@@ -1,4 +1,3 @@
-// app/dashboard/layout.js
 "use client";
 import { ThemeProvider } from "@/context/ThemeContext";
 import ThemeToggle from "@/components/ThemeToggle";
