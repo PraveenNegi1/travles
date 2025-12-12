@@ -258,7 +258,6 @@ export default function LeadsAnalytics() {
         transition={{ duration: 0.6 }}
       >
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
           <motion.div 
             className="mb-8 sm:mb-12"
             initial={{ opacity: 0, y: -20 }}
