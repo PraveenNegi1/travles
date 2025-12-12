@@ -184,7 +184,6 @@ export default function LeadsPage() {
     }
   };
 
-  // Pagination
   const totalPages = Math.ceil(filteredLeads.length / leadsPerPage);
   const currentLeads = filteredLeads.slice(
     (currentPage - 1) * leadsPerPage,
