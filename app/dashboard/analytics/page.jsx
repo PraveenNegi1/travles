@@ -318,7 +318,6 @@ export default function LeadsAnalytics() {
             ))}
           </div>
 
-          {/* Charts Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-8 lg:mb-10">
             <ChartCard
               title="Leads Per Day"
