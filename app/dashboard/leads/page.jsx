@@ -55,7 +55,6 @@ export default function LeadsPage() {
 
   const leadsPerPage = 10;
 
-  // Fetch leads
   useEffect(() => {
     const fetchLeads = async () => {
       try {
