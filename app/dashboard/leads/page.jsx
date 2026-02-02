@@ -34,7 +34,7 @@ import {
 } from "lucide-react";
 import { db } from "@/lib/firebase";
 
-const PRIMARY = "rgb(20, 184, 166)"; // Teal
+const PRIMARY = "rgb(20, 184, 166)";
 const PRIMARY_DARK = "rgb(15, 118, 110)";
 const ACCENT = "rgb(99, 102, 241)"; 
 const BG_LIGHT = "bg-gray-50";
