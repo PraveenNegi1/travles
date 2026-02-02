@@ -36,7 +36,7 @@ import { db } from "@/lib/firebase";
 
 const PRIMARY = "rgb(20, 184, 166)"; // Teal
 const PRIMARY_DARK = "rgb(15, 118, 110)";
-const ACCENT = "rgb(99, 102, 241)"; // Indigo accent
+const ACCENT = "rgb(99, 102, 241)"; 
 const BG_LIGHT = "bg-gray-50";
 const BG_DARK = "bg-gray-900";
 const CARD_LIGHT = "bg-white";
