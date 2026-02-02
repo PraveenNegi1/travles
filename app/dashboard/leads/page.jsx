@@ -101,7 +101,6 @@ export default function LeadsPage() {
     fetchLeads();
   }, []);
 
-  // Search filter
   useEffect(() => {
     const filtered = leads.filter(
       (lead) =>
