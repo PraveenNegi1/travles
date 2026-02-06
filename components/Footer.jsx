@@ -52,8 +52,8 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-gradient-to-r from-[#1a4766] via-[#205781] to-[#1a4766] text-[#FAF1E6] py-10 sm:py-12 md:py-16 merriweather overflow-hidden md:text-[18px]">
-      <div className="absolute top-0 left-0 w-full h-16 bg-wave-pattern bg-repeat-x bg-[length:100px_16px] opacity-20"></div>
+    <footer className="relative bg-linear-to-r from-[#1a4766] via-[#205781] to-[#1a4766] text-[#FAF1E6] py-10 sm:py-12 md:py-16 merriweather overflow-hidden md:text-[18px]">
+      <div className="absolute top-0 left-0 w-full h-16 bg-wave-pattern bg-repeat-x bg-size-[100px_16px] opacity-20"></div>
 
       <motion.div
         initial="hidden"
