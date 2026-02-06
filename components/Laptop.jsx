@@ -105,19 +105,19 @@ const Laptop = () => {
               }}
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl overflow-hidden border-[8px] border-gray-800"
+                className="absolute inset-0 bg-linear-to-b from-gray-800 to-gray-900 rounded-3xl overflow-hidden border-[8px] border-gray-800"
                 style={{
                   transformStyle: "preserve-3d",
                 }}
               >
                 <div className="absolute inset-0 bg-black rounded-2xl overflow-hidden flex items-center justify-center">
-                  <div className="absolute top-2 w-[80px] h-[20px] bg-black rounded-full z-50 left-1/2 transform -translate-x-1/2 flex items-center justify-center">
-                    <div className="w-[8px] h-[8px] bg-gray-900 rounded-full mx-1">
+                  <div className="absolute top-2 w-20 h-5 bg-black rounded-full z-50 left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+                    <div className="w-2 h-2 bg-gray-900 rounded-full mx-1">
                       <div className="w-[3px] h-[3px] bg-gray-700 rounded-full absolute inset-0 m-auto" />
                     </div>
                   </div>
                   <motion.div
-                    className="absolute inset-0 -z-0 overflow-hidden"
+                    className="absolute inset-0 z-0 overflow-hidden"
                     style={{
                       filter: `brightness(${screenBrightness.get()})`,
                     }}
@@ -165,7 +165,7 @@ const Laptop = () => {
               }}
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-b from-gray-800 via-gray-700 to-gray-800 rounded-xl overflow-hidden"
+                className="absolute inset-0 bg-linear-to-b from-gray-800 via-gray-700 to-gray-800 rounded-xl overflow-hidden"
                 style={{
                   transformStyle: "preserve-3d",
                   boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
