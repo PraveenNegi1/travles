@@ -116,7 +116,7 @@ const BadyaYantra = () => {
                   className="object-cover absolute top-0 left-0 w-full h-full transition-transform duration-700 ease-in-out group-hover:scale-110 rounded-t-2xl"
                   style={{ objectFit: "cover" }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
                   <div className="p-3 sm:p-4 text-white font-bold text-base sm:text-lg">
                     {instrument.name}
                   </div>

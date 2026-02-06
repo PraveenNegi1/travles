@@ -136,7 +136,7 @@ const HomePage = () => {
                 640: { slidesPerView: 2 },
                 1024: { slidesPerView: 3 },
               }}
-              className="!overflow-visible"
+              className="overflow-visible"
             >
               {[
                 {
