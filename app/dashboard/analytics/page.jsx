@@ -272,7 +272,7 @@ export default function LeadsAnalytics() {
                 <Sparkles className="text-white w-7 h-7 sm:w-8 sm:h-8" />
               </motion.div>
               <div>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-linear-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
                   Analytics Dashboard
                 </h1>
                 <p className="text-gray-600 dark:text-gray-300 mt-2 text-sm sm:text-base lg:text-lg">
@@ -294,7 +294,7 @@ export default function LeadsAnalytics() {
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-white/10 to-transparent rounded-full -mr-12 -mt-12" />
+                <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-linear-to-br from-white/10 to-transparent rounded-full -mr-12 -mt-12" />
                 <div className="relative">
                   <div className="flex items-center justify-between mb-4">
                     <motion.div 
@@ -414,11 +414,11 @@ function ChartCard({ title, children, icon: Icon, color, gradient }) {
       className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border border-gray-200/50 dark:border-gray-700/50 
                  rounded-2xl p-5 sm:p-6 shadow-xl hover:shadow-2xl transition-all relative overflow-hidden"
     >
-      <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${gradient} opacity-10 rounded-full -mr-16 -mt-16`} />
+      <div className={`absolute top-0 right-0 w-32 h-32 bg-linear-to-br ${gradient} opacity-10 rounded-full -mr-16 -mt-16`} />
       <div className="relative">
         <div className="flex items-center gap-3 mb-6">
           <motion.div 
-            className={`p-2.5 rounded-xl bg-gradient-to-br ${gradient} shadow-lg`}
+            className={`p-2.5 rounded-xl bg-linear-to-br ${gradient} shadow-lg`}
             whileHover={{ rotate: 360 }}
             transition={{ duration: 0.5 }}
           >
