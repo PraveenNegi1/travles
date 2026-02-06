@@ -175,7 +175,7 @@ const Popup = ({
             disabled={isLoading}
             whileHover={!isLoading ? { scale: 1.02 } : {}}
             whileTap={!isLoading ? { scale: 0.98 } : {}}
-            className={`w-full text-white font-semibold py-3 cursor-pointer rounded-xl bg-gradient-to-r from-[#205781] to-purple-700 shadow-lg hover:shadow-xl transition duration-300 ${
+            className={`w-full text-white font-semibold py-3 cursor-pointer rounded-xl bg-linear-to-r from-[#205781] to-purple-700 shadow-lg hover:shadow-xl transition duration-300 ${
               isLoading ? "cursor-not-allowed opacity-80" : ""
             }`}
           >

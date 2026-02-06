@@ -91,7 +91,7 @@ const Navbar = () => {
         className={`fixed w-full z-40 transition-all duration-300 ${
           scrolled
             ? "bg-[#205781]/95 backdrop-blur-md py-2 shadow-lg"
-            : "bg-gradient-to-r from-[#205781] to-[#1c4e75] py-3 lg:py-4"
+            : "bg-linear-to-r from-[#205781] to-[#1c4e75] py-3 lg:py-4"
         }`}
       >
         <div className="mx-auto px-3 sm:px-5 lg:px-6 py-2 flex justify-between items-center overflow-hidden">
@@ -178,7 +178,7 @@ const Navbar = () => {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="fixed top-0 right-0 h-full w-[85%] max-w-[280px] z-50 lg:hidden"
           >
-            <div className="h-full bg-gradient-to-b from-[#205781] to-[#1a496e] shadow-xl flex flex-col">
+            <div className="h-full bg-linear-to-b from-[#205781] to-[#1a496e] shadow-xl flex flex-col">
               <div className="flex items-center justify-between p-4 border-b border-[#FAF1E6]/10">
                 <button
                   onClick={() => setIsOpen(false)}
@@ -189,7 +189,7 @@ const Navbar = () => {
                 <div className="flex items-center space-x-2">
                  
 
-                  <div className="w-[80px] h-[50px]">
+                  <div className="w-20 h-[50px]">
                     <img
                       src="/logo/Raahi.png"
                       alt="Beautiful Uttarakhand"
@@ -199,7 +199,7 @@ const Navbar = () => {
                 </div>
               </div>
 
-              <div className="overflow-y-auto flex-grow">
+              <div className="overflow-y-auto grow">
                 <motion.ul
                   className="py-4 px-2 space-y-1 merriweather text-[15px] sm:text-base"
                   variants={{
