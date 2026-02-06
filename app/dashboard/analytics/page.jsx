@@ -286,7 +286,7 @@ export default function LeadsAnalytics() {
             {statCards.map((item, i) => (
               <motion.div
                 key={i}
-                className={`relative overflow-hidden bg-gradient-to-br ${item.bgGradient} backdrop-blur-sm
+                className={`relative overflow-hidden bg-linear-to-br ${item.bgGradient} backdrop-blur-sm
                            rounded-2xl p-5 sm:p-6 shadow-lg hover:shadow-2xl 
                            transition-all duration-300 border border-white/20 dark:border-gray-700/50`}
                 initial={{ opacity: 0, y: 20 }}
