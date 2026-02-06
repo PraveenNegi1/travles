@@ -250,7 +250,7 @@ export default function LeadsAnalytics() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-blue-900">
       <motion.div
         className="relative p-4 sm:p-6 md:p-8 lg:p-10 md:ml-60"
         initial={{ opacity: 0, y: 30 }}
@@ -265,7 +265,7 @@ export default function LeadsAnalytics() {
           >
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
               <motion.div 
-                className="p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg shadow-blue-500/30 dark:shadow-blue-500/20"
+                className="p-3 sm:p-4 rounded-2xl bg-linear-to-br from-blue-500 to-purple-600 shadow-lg shadow-blue-500/30 dark:shadow-blue-500/20"
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
