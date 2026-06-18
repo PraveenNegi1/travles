@@ -1,0 +1,398 @@
+/* ============================================================
+   Blog Detail Page — Custom CSS
+   Drop this into your globals.css or import it in layout.tsx
+   ============================================================ */
+
+/* ── Reading progress bar ─────────────────────────────────── */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  z-index: 9999;
+  background: linear-gradient(90deg, #1F6F5C, #34D399);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.1s linear;
+}
+
+/* ── Smooth anchor scroll ─────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* ── Drop cap refinement ──────────────────────────────────── */
+.prose > p:first-of-type::first-letter {
+  font-size: 4.5rem;
+  line-height: 0.82;
+  float: left;
+  margin-right: 0.12em;
+  margin-top: 0.08em;
+  color: #1F6F5C;
+  font-weight: 800;
+}
+
+/* ── Prose heading anchor links ───────────────────────────── */
+.prose h2,
+.prose h3 {
+  position: relative;
+  scroll-margin-top: 5rem;
+}
+
+.prose h2 .anchor-link,
+.prose h3 .anchor-link {
+  position: absolute;
+  left: -1.4em;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  color: #1F6F5C;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: opacity 0.2s ease;
+  padding-right: 0.4em;
+}
+
+.prose h2:hover .anchor-link,
+.prose h3:hover .anchor-link {
+  opacity: 1;
+}
+
+/* ── Highlighted blockquotes ──────────────────────────────── */
+.prose blockquote {
+  position: relative;
+  border-left: none !important;
+  padding: 1.5rem 1.75rem !important;
+  margin: 2.5rem 0 !important;
+  background: linear-gradient(135deg, #F0F7F5, #E8F4F1) !important;
+  border-radius: 0 1rem 1rem 0 !important;
+}
+
+.prose blockquote::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #1F6F5C, #34D399);
+}
+
+.prose blockquote p {
+  color: #33363C !important;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+/* ── Inline code ──────────────────────────────────────────── */
+.prose code:not(pre code) {
+  background: #E9EDE9;
+  color: #15181D;
+  padding: 0.18em 0.45em;
+  border-radius: 0.35em;
+  font-size: 0.875em;
+  font-weight: 500;
+  border: 1px solid #D4DAD4;
+}
+
+/* ── Code blocks ──────────────────────────────────────────── */
+.prose pre {
+  background: #15181D !important;
+  border-radius: 1rem !important;
+  padding: 1.5rem !important;
+  overflow-x: auto;
+  border: 1px solid #2D3139;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  position: relative;
+}
+
+.prose pre::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #ff5f57, 16px 0 0 2px #febc2e, 32px 0 0 2px #28c840;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.prose pre code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  color: #c9d1d9;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+/* ── Tables ───────────────────────────────────────────────── */
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.prose thead {
+  background: linear-gradient(135deg, #1F6F5C, #2a8a73);
+}
+
+.prose thead th {
+  color: #fff !important;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem !important;
+  background: transparent !important;
+}
+
+.prose tbody tr {
+  transition: background 0.15s ease;
+}
+
+.prose tbody tr:nth-child(even) {
+  background: #F8FAFA;
+}
+
+.prose tbody tr:hover {
+  background: #F0F7F5;
+}
+
+.prose tbody td {
+  padding: 0.7rem 1rem !important;
+  border-bottom: 1px solid #E2E4E0 !important;
+  border-left: none;
+  border-right: none;
+  color: #33363C !important;
+}
+
+/* ── Image captions & figures ─────────────────────────────── */
+.prose figure {
+  margin: 2rem 0;
+}
+
+.prose figcaption {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #9CA3AF;
+  margin-top: 0.6rem;
+  font-style: italic;
+}
+
+.prose img {
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+}
+
+/* ── Ordered list custom counters ─────────────────────────── */
+.prose ol {
+  counter-reset: ol-counter;
+  list-style: none;
+  padding-left: 0.5rem;
+}
+
+.prose ol li {
+  counter-increment: ol-counter;
+  position: relative;
+  padding-left: 2.25rem;
+}
+
+.prose ol li::before {
+  content: counter(ol-counter);
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 50%;
+  background: #1F6F5C;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* ── Unordered list bullets ───────────────────────────────── */
+.prose ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  list-style: none;
+}
+
+.prose ul li::before {
+  content: '';
+  position: absolute;
+  left: 0.25rem;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1F6F5C;
+}
+
+/* ── Horizontal rules ─────────────────────────────────────── */
+.prose hr {
+  border: none !important;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #E2E4E0, transparent);
+  margin: 3rem 0 !important;
+}
+
+/* ── Sidebar TOC active state (JS-driven, add via IntersectionObserver) */
+.toc-link-active {
+  color: #1F6F5C !important;
+  border-left-color: #1F6F5C !important;
+  font-weight: 600;
+}
+
+/* ── Sidebar sticky ───────────────────────────────────────── */
+@media (min-width: 1024px) {
+  aside .sticky {
+    top: 1.5rem;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #E2E4E0 transparent;
+  }
+
+  aside .sticky::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  aside .sticky::-webkit-scrollbar-thumb {
+    background: #E2E4E0;
+    border-radius: 4px;
+  }
+}
+
+/* ── FAQ accordion animation ──────────────────────────────── */
+details[class*="group"] summary {
+  list-style: none;
+}
+
+details[class*="group"] summary::-webkit-details-marker {
+  display: none;
+}
+
+details[class*="group"] > div {
+  animation: faq-open 0.22s ease;
+}
+
+@keyframes faq-open {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Related card image zoom ──────────────────────────────── */
+.related-card-image {
+  overflow: hidden;
+}
+
+.related-card-image img {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.related-card-image:hover img {
+  transform: scale(1.06);
+}
+
+/* ── Cover image subtle parallax container ────────────────── */
+.hero-cover {
+  will-change: transform;
+}
+
+/* ── Back link underline animation ───────────────────────── */
+a.back-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+a.back-link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #1F6F5C;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+a.back-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Tag hover pill ───────────────────────────────────────── */
+a[href*="/blog?tag="] {
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+a[href*="/blog?tag="]:hover {
+  transform: translateY(-1px);
+}
+
+/* ── Author card gradient top bar ─────────────────────────── */
+.author-card-bar {
+  height: 6px;
+  background: linear-gradient(90deg, #1F6F5C 0%, #34D399 60%, #6EE7B7 100%);
+  border-radius: 0;
+}
+
+/* ── Print styles ─────────────────────────────────────────── */
+@media print {
+  aside,
+  .reading-progress,
+  header a,
+  section:last-of-type {
+    display: none !important;
+  }
+
+  .prose {
+    max-width: 100% !important;
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  .prose h2,
+  .prose h3 {
+    break-after: avoid;
+  }
+
+  .prose img {
+    max-width: 60%;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+/* ── Reduced motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

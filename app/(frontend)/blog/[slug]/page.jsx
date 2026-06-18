@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
-
 // ─── Data fetching ────────────────────────────────────────────────────────────
 
 async function getBlog(slug) {
@@ -174,11 +173,11 @@ export default async function BlogDetails({ params }) {
         }
       `}</style>
 
-      <div className="min-h-screen bg-[#F5F6F4]">
+      <div className="min-h-screen ">
 
         {/* ── Hero header ── */}
-        <header className="bg-white border-b border-[#E2E4E0]">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-10 pb-10 sm:pt-14 sm:pb-12">
+        <header className="bg-white ">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-10 sm:pt-14 sm:pb-12">
             {/* Back */}
             <a
               href="/blog"
@@ -278,7 +277,7 @@ export default async function BlogDetails({ params }) {
 
         {/* ── Cover image (full-bleed between header and body) ── */}
         {blog.coverImage && (
-          <div className="relative w-full aspect-[21/9] max-h-[520px] overflow-hidden bg-[#E9EDE9]">
+          <div className="relative w-[90vw] aspect-[12/9] max-h-[520px] overflow-hidden mx-auto  ">
             <Image
               src={blog.coverImage}
               alt={blog.title}
@@ -287,13 +286,12 @@ export default async function BlogDetails({ params }) {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
           </div>
         )}
 
         {/* ── Body ── */}
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid lg:grid-cols-[1fr_280px] gap-14 items-start">
+        <div className=" max-w-360 mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid lg:grid-cols-[1fr_380px] gap-14 items-start">
 
             {/* ── Article ── */}
             <article>
@@ -470,7 +468,7 @@ export default async function BlogDetails({ params }) {
 
             {/* ── Sidebar ── */}
             <aside className="hidden lg:block">
-              <div className="sticky top-6 space-y-6">
+              <div className="sticky top-6 space-y-14">
 
                 {/* Table of contents */}
                 {toc.length > 0 && (
@@ -479,7 +477,7 @@ export default async function BlogDetails({ params }) {
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={accent} strokeWidth="2.2">
                         <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/>
                       </svg>
-                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#5B6168]">On this page</p>
+                      <p className="text-[16px] font-bold uppercase tracking-[0.18em] text-[#5B6168]">On this page</p>
                     </div>
                     <nav aria-label="Table of contents">
                       <ul className="space-y-0.5 border-l-2 border-[#E2E4E0]">
